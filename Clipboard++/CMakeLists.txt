@@ -1,9 +1,22 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(HelloWorld)
+project(Clipboard++ LANGUAGES CXX)
 
-find_package(fmt CONFIG REQUIRED)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(HelloWorld helloworld.cpp)
+find_package(GTest CONFIG REQUIRED)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-target_link_libraries(HelloWorld PRIVATE fmt::fmt)
+# Main executable
+add_executable(${PROJECT_NAME} Clipboard++.cpp)
+
+# Test executable
+add_executable(${PROJECT_NAME}_test SimpleGTest.cpp)
+target_link_libraries(${PROJECT_NAME}_test PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
+
+# Enable testing
+enable_testing()
+include(GoogleTest)
+gtest_discover_tests(${PROJECT_NAME}_test)
