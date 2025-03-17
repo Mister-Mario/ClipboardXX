@@ -2,13 +2,23 @@
   "version": 2,
   "configurePresets": [
     {
-      "name": "vcpkg",
+      "name": "vcpkg-x64",
       "generator": "Ninja",
-      "binaryDir": "${sourceDir}/build",
+      "binaryDir": "${sourceDir}/build-x64",
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
         "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
         "VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic"
+      }
+    },
+    {
+      "name": "vcpkg-x86",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-x86",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
+        "VCPKG_TARGET_TRIPLET": "x86-mingw-dynamic"
       }
     }
   ]
