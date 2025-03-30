@@ -1,5 +1,8 @@
 {
   "dependencies": [
-    "gtest"
+    "gtest",
+    "rmlui",
+    "sdl3",
+    "sdl3-image"
   ]
 }

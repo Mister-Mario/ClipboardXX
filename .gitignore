@@ -1,5 +1,5 @@
 ##Extra ignore not found in the template
-build/
+build*/
 *.sln
 *.vcxproj*
 Clipboard++/CMakeUserPresets.json

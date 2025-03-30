@@ -1,0 +1,10 @@
+<rml>
+<head>
+    <title>Hello world</title>
+    <link type="text/rcss" href="rml.rcss"/>
+    <link type="text/rcss" href="window.rcss"/>
+</head>
+<body>
+    <p>Hello <span id="world">world</span>!</p>
+</body>
+</rml>
