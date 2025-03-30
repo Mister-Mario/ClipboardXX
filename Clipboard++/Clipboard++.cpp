@@ -1,85 +1,96 @@
-#include <RmlUi/Core.h>
+/*
+ * Copyright (c) 2006 - 2008
+ * Wandering Monster Studios Limited
+ *
+ * Any use of this program is governed by the terms of Wandering Monster
+ * Studios Limited's Licence Agreement included with this program, a copy
+ * of which can be obtained by contacting Wandering Monster Studios
+ * Limited at info@wanderingmonster.co.nz.
+ *
+ */
 
-class MyRenderInterface : public Rml::RenderInterface
-{
-    // RmlUi sends vertices, indices and draw commands through this interface for your
-    // application to render how you'd like.
-    /* ... */
-}
+ #include <RmlUi/Core.h>
+ #include <RmlUi/Debugger.h>
+ #include <RmlUi_Backend.h>
+ #include <Shell.h>
+ #include <iostream>
 
-struct ApplicationData {
-    bool show_text = true;
-    Rml::String animal = "dog";
-} my_data;
+ #if defined RMLUI_PLATFORM_WIN32
+	 #include <RmlUi_Include_Windows.h>
+ int APIENTRY WinMain(HINSTANCE /*instance_handle*/, HINSTANCE /*previous_instance_handle*/, char* /*command_line*/, int /*command_show*/)
+ #else
+ int main(int /*argc*/, char** /*argv*/)
+ #endif
+ {
+	int window_width = 1024;
+	int window_height = 768;
+	
+	// Initializes the shell which provides common functionality used by the included samples.
+	if (!Shell::Initialize()){
+		std::cout << "Falla la Shell";
+		return -1;
+	}
 
-int main(int argc, char** argv)
-{
-    // Initialize the window and graphics API being used, along with your game or application.
+	// Constructs the system and render interfaces, creates a window, and attaches the renderer.
+	if (!Backend::Initialize("Clipboard++", window_width, window_height, true))
+	{
+		std::cout << "Falla el Backend";
+		Shell::Shutdown();
+		return -1;
+	}
 
-    /* ... */
+	// Install the custom interfaces constructed by the backend before initializing RmlUi.
+	Rml::SetSystemInterface(Backend::GetSystemInterface());
+	Rml::SetRenderInterface(Backend::GetRenderInterface());
 
-    MyRenderInterface render_interface;
+	// RmlUi initialisation.
+	Rml::Initialise();
 
-    // Install the custom interfaces.
-    Rml::SetRenderInterface(&render_interface);
+	// Create the main RmlUi context.
+	Rml::Context* context = Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
+	if (!context)
+	{
+		std::cout << "Falla el context";
+		Rml::Shutdown();
+		Backend::Shutdown();
+		Shell::Shutdown();
+		return -1;
+	}
 
-    // Now we can initialize RmlUi.
-    Rml::Initialise();
+	Rml::Debugger::Initialise(context);
+	Rml::Debugger::SetVisible(true);
+	Shell::LoadFonts();
+	std::cout << "Ha cargado las fonts";
 
-    // Create a context to display documents within.
-    Rml::Context* context =
-        Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
+	Rml::ElementDocument* document = context->LoadDocument("assets/hello_world.rml");
+	if (!document){
+		Rml::Shutdown();
+		Backend::Shutdown();
+		Shell::Shutdown();
+		return -1;
+	}
+	
+	std::cout << "Ha cargado el documento";
+	document->Show();
 
-    // Tell RmlUi to load the given fonts.
-    Rml::LoadFontFace("LatoLatin-Regular.ttf");
-    // Fonts can be registered as fallback fonts, as in this case to display emojis.
-    Rml::LoadFontFace("NotoEmoji-Regular.ttf", true);
 
-    // Set up data bindings to synchronize application data.
-    if (Rml::DataModelConstructor constructor = context->CreateDataModel("animals"))
-    {
-        constructor.Bind("show_text", &my_data.show_text);
-        constructor.Bind("animal", &my_data.animal);
-    }
+	bool running = true;
+	while (running)
+	{
 
-    // Now we are ready to load our document.
-    Rml::ElementDocument* document = context->LoadDocument("hello_world.rml");
-    document->Show();
+		running = Backend::ProcessEvents(context, &Shell::ProcessKeyDownShortcuts, true);
+		
+		context->Update();
 
-    // Replace and style some text in the loaded document.
-    Rml::Element* element = document->GetElementById("world");
-    element->SetInnerRML(reinterpret_cast<const char*>(u8"🌍"));
-    element->SetProperty("font-size", "1.5em");
+		Backend::BeginFrame();
+		context->Render();
+		Backend::PresentFrame();
+	}
 
-    bool exit_application = false;
-    while (!exit_application)
-    {
-        // We assume here that we have some way of updating and retrieving inputs internally.
-        if (my_input->KeyPressed(KEY_ESC))
-            exit_application = true;
+	// Shutdown RmlUi.
+	Rml::Shutdown();
+	Backend::Shutdown();
+	Shell::Shutdown();
 
-        // Submit input events such as MouseMove and key events (not shown) to the context.
-        if (my_input->MouseMoved())
-            context->ProcessMouseMove(mouse_pos.x, mouse_pos.y, 0);
-
-        // Update the context to reflect any changes resulting from input events, animations,
-        // modified and added elements, or changed data in data bindings.
-        context->Update();
-
-        // Prepare the application for rendering, such as by clearing the window. This calls
-        // into the RmlUi backend interface, replace with your own procedures as appropriate.
-        Backend::BeginFrame();
-        
-        // Render the user interface. All geometry and other rendering commands are now
-        // submitted through the render interface.
-        context->Render();
-
-        // Present the rendered content, such as by swapping the swapchain. This calls into
-        // the RmlUi backend interface, replace with your own procedures as appropriate.
-        Backend::PresentFrame();
-    }
-
-    Rml::Shutdown();
-
-    return 0;
-}
+	return 0;
+ }
