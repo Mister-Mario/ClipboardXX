@@ -14,6 +14,8 @@
  #include <RmlUi_Backend.h>
  #include <Shell.h>
  #include <iostream>
+ #include <QGuiApplication>
+ #include <QClipboard>
 
  #if defined RMLUI_PLATFORM_WIN32
 	 #include <RmlUi_Include_Windows.h>
@@ -22,8 +24,17 @@
  int main(int /*argc*/, char** /*argv*/)
  #endif
  {
-	int window_width = 1024;
-	int window_height = 768;
+	int window_width = 1920;
+	int window_height = 1080;
+
+	int argc = 0;
+	QGuiApplication app(argc, nullptr);
+	QClipboard *clipboard = QGuiApplication::clipboard();
+	QString originalText = clipboard->text();
+	std::cout << qPrintable(originalText) << "\n";
+	clipboard->setText("Hello there");
+	originalText = clipboard->text();
+	std::cout << qPrintable(originalText) << "\n";
 	
 	// Initializes the shell which provides common functionality used by the included samples.
 	if (!Shell::Initialize()){
