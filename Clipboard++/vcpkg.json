@@ -3,6 +3,11 @@
     "gtest",
     "rmlui",
     "sdl3",
-    "sdl3-image"
+    "sdl3-image",
+    {
+      "name": "qtbase",
+      "default-features": false,
+      "features": ["gui"]
+    }
   ]
 }
