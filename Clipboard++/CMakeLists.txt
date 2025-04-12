@@ -16,13 +16,13 @@ include(RmlUI/DependenciesForShell.cmake)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/RmlUI/Shell)
 add_subdirectory(RmlUI/Shell)
 
-find_package(Qt6 REQUIRED COMPONENTS Gui)
+add_subdirectory(QClipboard)
 
 # Main executable
 add_executable(${PROJECT_NAME} Clipboard++.cpp)
 
 # Include RmlUi
-target_link_libraries(${PROJECT_NAME} PRIVATE RmlUi::RmlUi rmlui_backend_SDL_GL3 rmlui_shell Qt6::Gui)
+target_link_libraries(${PROJECT_NAME} PRIVATE RmlUi::RmlUi rmlui_backend_SDL_GL3 rmlui_shell QClipboard)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 

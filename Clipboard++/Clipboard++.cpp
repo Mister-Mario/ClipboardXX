@@ -18,6 +18,8 @@
 #include <QClipboard>
 #include <QGuiApplication>
 #include <QScreen>
+#include "QClipboard/ClipboardInterface.h"
+#include "QClipboard/ClipboardAdapter.h"
 
  #if defined RMLUI_PLATFORM_WIN32
 	 #include <RmlUi_Include_Windows.h>
@@ -29,7 +31,8 @@
 
 	int argc = 0;
 	QGuiApplication app(argc, nullptr);
-	QClipboard *clipboard = QGuiApplication::clipboard();
+	QClipboard *qClipboard = QGuiApplication::clipboard();
+	std::unique_ptr<ClipboardInterface> clipboard = std::make_unique<ClipboardAdapter>(qClipboard);
 	QString originalText = clipboard->text();
 	std::cout << qPrintable(originalText) << "\n";
 	clipboard->setText("Hello there");
