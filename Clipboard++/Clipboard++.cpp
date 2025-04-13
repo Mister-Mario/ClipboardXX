@@ -9,13 +9,31 @@
  *
  */
 
- #include <RmlUi/Core.h>
- #include <RmlUi/Debugger.h>
- #include <RmlUi_Backend.h>
- #include <Shell.h>
- #include <iostream>
- #include <QGuiApplication>
- #include <QClipboard>
+#include <RmlUi/Core.h>
+#include <RmlUi/Debugger.h>
+#include <RmlUi_Backend.h>
+#include <EventListenerInstancer.h>
+#include <ElementClipboard.h>
+#include <Shell.h>
+#include <iostream>
+#include <QGuiApplication>
+#include <QClipboard>
+#include <QGuiApplication>
+#include <QScreen>
+#include "QClipboard/ClipboardInterface.h"
+#include "QClipboard/ClipboardAdapter.h"
+
+void HandleFormSubmit(Rml::Event& event, void* /*user_data*/) {
+    Rml::Element* target = event.GetCurrentElement();
+    if (Rml::ElementForm* form = rmlui_dynamic_cast<Rml::ElementForm*>(target)) {
+        Rml::String username = form->GetElementById("username")->GetAttribute<Rml::String>("value", "");
+        std::cout << "Submitted username: " << username << std::endl;
+    }
+    event.StopPropagation();
+}
+
+Rml::Context* context = nullptr;
+ClipboardInterface* clipboard = nullptr;
 
  #if defined RMLUI_PLATFORM_WIN32
 	 #include <RmlUi_Include_Windows.h>
@@ -24,17 +42,24 @@
  int main(int /*argc*/, char** /*argv*/)
  #endif
  {
-	int window_width = 1920;
-	int window_height = 1080;
 
 	int argc = 0;
 	QGuiApplication app(argc, nullptr);
-	QClipboard *clipboard = QGuiApplication::clipboard();
+	QClipboard *qClipboard = QGuiApplication::clipboard();
+	clipboard = new ClipboardAdapter(qClipboard);
 	QString originalText = clipboard->text();
 	std::cout << qPrintable(originalText) << "\n";
 	clipboard->setText("Hello there");
 	originalText = clipboard->text();
 	std::cout << qPrintable(originalText) << "\n";
+
+	// Get primary screen dimensions
+	QScreen* screen = QGuiApplication::primaryScreen();
+	QRect screenGeometry = screen->geometry();
+	int maxWindowWidth = 1920 * (2-0.95);
+	int maxWindowHeight = 1080 * (2-0.875);
+	int window_width = screenGeometry.width() <= maxWindowWidth ? screenGeometry.width() * 0.95 : 1920;
+	int window_height = screenGeometry.height() <= maxWindowHeight ? screenGeometry.height() * 0.875 : 1080;
 	
 	// Initializes the shell which provides common functionality used by the included samples.
 	if (!Shell::Initialize()){
@@ -58,7 +83,7 @@
 	Rml::Initialise();
 
 	// Create the main RmlUi context.
-	Rml::Context* context = Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
+	context = Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
 	if (!context)
 	{
 		std::cout << "Falla el context";
@@ -71,7 +96,16 @@
 	Rml::Debugger::Initialise(context);
 	Rml::Debugger::SetVisible(true);
 	Shell::LoadFonts();
-	std::cout << "Ha cargado las fonts";
+
+	// Register Invader's custom element and decorator instancers.
+	Rml::ElementInstancerGeneric<ElementClipboard> element_instancer;
+	Rml::Factory::RegisterElementInstancer("app", &element_instancer);
+
+	// Initialise the event listener instancer and handlers.
+	EventListenerInstancer event_listener_instancer;
+	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
+
+	//EventManager::RegisterEventHandler("start_game", Rml::MakeUnique<EventHandlerStartGame>());
 
 	Rml::ElementDocument* document = context->LoadDocument("assets/hello_world.rml");
 	if (!document){
@@ -81,9 +115,7 @@
 		return -1;
 	}
 	
-	std::cout << "Ha cargado el documento";
 	document->Show();
-
 
 	bool running = true;
 	while (running)
