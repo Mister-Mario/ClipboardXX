@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)  # Automatización de MOC para Qt6
 set(CMAKE_BUILD_TYPE Debug)
 
+add_subdirectory(QClipboard)
+
 find_package(SDL3 REQUIRED)
 find_package(RmlUi REQUIRED)
 set(RMLUI_BACKEND SDL_GL3)
@@ -16,13 +18,17 @@ include(RmlUI/DependenciesForShell.cmake)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/RmlUI/Shell)
 add_subdirectory(RmlUI/Shell)
 
-add_subdirectory(QClipboard)
+add_subdirectory(RmlUI/EventHandlers)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/RmlUI/Elements) 
+add_subdirectory(RmlUI/Elements)
+
+
 
 # Main executable
 add_executable(${PROJECT_NAME} Clipboard++.cpp)
 
 # Include RmlUi
-target_link_libraries(${PROJECT_NAME} PRIVATE RmlUi::RmlUi rmlui_backend_SDL_GL3 rmlui_shell QClipboard)
+target_link_libraries(${PROJECT_NAME} PRIVATE RmlUi::RmlUi rmlui_backend_SDL_GL3 rmlui_shell QClipboard EventHandlers Elements)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 

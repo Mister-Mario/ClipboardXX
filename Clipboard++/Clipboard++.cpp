@@ -12,6 +12,8 @@
 #include <RmlUi/Core.h>
 #include <RmlUi/Debugger.h>
 #include <RmlUi_Backend.h>
+#include <EventListenerInstancer.h>
+#include <ElementClipboard.h>
 #include <Shell.h>
 #include <iostream>
 #include <QGuiApplication>
@@ -20,6 +22,18 @@
 #include <QScreen>
 #include "QClipboard/ClipboardInterface.h"
 #include "QClipboard/ClipboardAdapter.h"
+
+void HandleFormSubmit(Rml::Event& event, void* /*user_data*/) {
+    Rml::Element* target = event.GetCurrentElement();
+    if (Rml::ElementForm* form = rmlui_dynamic_cast<Rml::ElementForm*>(target)) {
+        Rml::String username = form->GetElementById("username")->GetAttribute<Rml::String>("value", "");
+        std::cout << "Submitted username: " << username << std::endl;
+    }
+    event.StopPropagation();
+}
+
+Rml::Context* context = nullptr;
+ClipboardInterface* clipboard = nullptr;
 
  #if defined RMLUI_PLATFORM_WIN32
 	 #include <RmlUi_Include_Windows.h>
@@ -32,7 +46,7 @@
 	int argc = 0;
 	QGuiApplication app(argc, nullptr);
 	QClipboard *qClipboard = QGuiApplication::clipboard();
-	std::unique_ptr<ClipboardInterface> clipboard = std::make_unique<ClipboardAdapter>(qClipboard);
+	clipboard = new ClipboardAdapter(qClipboard);
 	QString originalText = clipboard->text();
 	std::cout << qPrintable(originalText) << "\n";
 	clipboard->setText("Hello there");
@@ -69,7 +83,7 @@
 	Rml::Initialise();
 
 	// Create the main RmlUi context.
-	Rml::Context* context = Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
+	context = Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
 	if (!context)
 	{
 		std::cout << "Falla el context";
@@ -83,6 +97,16 @@
 	Rml::Debugger::SetVisible(true);
 	Shell::LoadFonts();
 
+	// Register Invader's custom element and decorator instancers.
+	Rml::ElementInstancerGeneric<ElementClipboard> element_instancer;
+	Rml::Factory::RegisterElementInstancer("app", &element_instancer);
+
+	// Initialise the event listener instancer and handlers.
+	EventListenerInstancer event_listener_instancer;
+	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
+
+	//EventManager::RegisterEventHandler("start_game", Rml::MakeUnique<EventHandlerStartGame>());
+
 	Rml::ElementDocument* document = context->LoadDocument("assets/hello_world.rml");
 	if (!document){
 		Rml::Shutdown();
@@ -92,7 +116,6 @@
 	}
 	
 	document->Show();
-
 
 	bool running = true;
 	while (running)

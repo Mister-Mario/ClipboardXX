@@ -4,7 +4,10 @@
     <link type="text/rcss" href="rml.rcss"/>
     <link type="text/rcss" href="window.rcss"/>
 </head>
-<body>
+<body id="main_window">
+  <app id="app">
     <p>Hello <span id="world">world</span>!</p>
+    <p id="clipboard_content"></p>
+  </app>
 </body>
 </rml>
