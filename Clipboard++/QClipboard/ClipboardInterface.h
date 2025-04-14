@@ -8,6 +8,7 @@ public:
     virtual ~ClipboardInterface() = default;
     virtual void setText(const QString& text) = 0;
     virtual QString text() const = 0;
+    virtual void clear() const = 0;
     // Add other methods you need to test
 };
 

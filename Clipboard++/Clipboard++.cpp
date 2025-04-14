@@ -94,7 +94,6 @@ ClipboardInterface* clipboard = nullptr;
 	}
 
 	Rml::Debugger::Initialise(context);
-	Rml::Debugger::SetVisible(true);
 	Shell::LoadFonts();
 
 	// Register Invader's custom element and decorator instancers.
@@ -107,7 +106,7 @@ ClipboardInterface* clipboard = nullptr;
 
 	//EventManager::RegisterEventHandler("start_game", Rml::MakeUnique<EventHandlerStartGame>());
 
-	Rml::ElementDocument* document = context->LoadDocument("assets/hello_world.rml");
+	Rml::ElementDocument* document = context->LoadDocument("assets/main.rml");
 	if (!document){
 		Rml::Shutdown();
 		Backend::Shutdown();

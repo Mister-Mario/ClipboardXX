@@ -8,6 +8,7 @@
   <app id="app">
     <p>Hello <span id="world">world</span>!</p>
     <p id="clipboard_content"></p>
+    <button onclick="clear">Clear clipboard</button>
   </app>
 </body>
 </rml>

@@ -11,6 +11,7 @@ public:
     
     void setText(const QString& text) override;
     QString text() const override;
+    void clear() const override;
     
 private:
     QClipboard* m_clipboard;
