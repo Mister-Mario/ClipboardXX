@@ -11,3 +11,7 @@ void ClipboardAdapter::setText(const QString& text) {
 QString ClipboardAdapter::text() const {
     return m_clipboard->text();
 }
+
+void ClipboardAdapter::clear() const {
+    m_clipboard->clear();
+}

@@ -11,6 +11,13 @@ add_library(EventHandlers STATIC
 target_include_directories(EventHandlers 
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
+    PRIVATE
+        ${CMAKE_SOURCE_DIR}
 )
 
-target_link_libraries(EventHandlers PUBLIC RmlUi::RmlUi)
+target_link_libraries(EventHandlers 
+    PUBLIC 
+        RmlUi::RmlUi
+    PRIVATE
+        QClipboard    
+    )

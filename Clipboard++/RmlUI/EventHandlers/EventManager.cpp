@@ -30,10 +30,11 @@
  #include <RmlUi/Core/Context.h>
  #include <RmlUi/Core/ElementDocument.h>
  #include <RmlUi/Core/ElementUtilities.h>
+#include "QClipboard/ClipboardInterface.h"
  
  // The game's element context (declared in main.cpp).
  extern Rml::Context* context;
- 
+ extern ClipboardInterface* clipboard;
  
  EventManager::EventManager() {}
  
@@ -51,13 +52,17 @@
      Rml::StringUtilities::ExpandString(commands, value, ';');
      for (size_t i = 0; i < commands.size(); ++i)
      {
-         // Check for custom commands.
-         Rml::StringList values;
-         Rml::StringUtilities::ExpandString(values, commands[i], ' ');
+        // Check for custom commands.
+        Rml::StringList values;
+        Rml::StringUtilities::ExpandString(values, commands[i], ' ');
+
+        if (values.empty())
+            return;
+        
+        if (values[0] == "clear"){
+            clipboard->clear();
+        }
         /*
-         if (values.empty())
-             return;
- 
          if (values[0] == "onescape" && values.size() > 1)
          {
              Rml::Input::KeyIdentifier key_identifier = (Rml::Input::KeyIdentifier)event.GetParameter<int>("key_identifier", 0);
