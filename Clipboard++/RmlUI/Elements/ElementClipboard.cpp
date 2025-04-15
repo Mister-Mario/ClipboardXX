@@ -54,10 +54,7 @@ extern ClipboardInterface* clipboard;
     //GetDocument searches for the body id
     Rml::Element* clipboard_title_element = context->GetDocument("main_window")->GetElementById("clipboard_content");
 	if (clipboard_title_element != nullptr){
-        QByteArray byteArray = clipboard->text().toUtf8();
-        const char* cstr = byteArray.constData();
-        Rml::String result = Rml::CreateString("Clipboard Text: %s", cstr);
-        clipboard_title_element->SetInnerRML(result);
+        clipboard_title_element->SetInnerRML(clipboard->text());
     }
 }
  

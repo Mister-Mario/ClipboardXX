@@ -9,6 +9,8 @@
     <p>Hello <span id="world">world</span>!</p>
     <p id="clipboard_content"></p>
     <button onclick="clear">Clear clipboard</button>
+    <input id="input_0" name="clipboard_input" type="text"/>
+    <button onclick="insert 0">Send to Clipboard</button>
   </app>
 </body>
 </rml>
