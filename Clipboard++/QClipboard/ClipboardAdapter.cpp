@@ -4,12 +4,12 @@ ClipboardAdapter::ClipboardAdapter(QClipboard* clipboard) : m_clipboard(clipboar
     // Empty constructor
 }
 
-void ClipboardAdapter::setText(const QString& text) {
-    m_clipboard->setText(text);
+void ClipboardAdapter::setText(const std::string text) {
+    m_clipboard->setText(QString::fromStdString(text));
 }
 
-QString ClipboardAdapter::text() const {
-    return m_clipboard->text();
+std::string ClipboardAdapter::text() const {
+    return m_clipboard->text().toStdString();
 }
 
 void ClipboardAdapter::clear() const {

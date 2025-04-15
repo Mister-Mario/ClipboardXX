@@ -9,8 +9,8 @@ public:
     explicit ClipboardAdapter(QClipboard* clipboard);
     virtual ~ClipboardAdapter() = default;
     
-    void setText(const QString& text) override;
-    QString text() const override;
+    void setText(const std::string text) override;
+    std::string text() const override;
     void clear() const override;
     
 private:

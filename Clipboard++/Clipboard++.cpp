@@ -47,11 +47,11 @@ ClipboardInterface* clipboard = nullptr;
 	QGuiApplication app(argc, nullptr);
 	QClipboard *qClipboard = QGuiApplication::clipboard();
 	clipboard = new ClipboardAdapter(qClipboard);
-	QString originalText = clipboard->text();
-	std::cout << qPrintable(originalText) << "\n";
+	auto originalText = clipboard->text();
+	std::cout << originalText << "\n";
 	clipboard->setText("Hello there");
 	originalText = clipboard->text();
-	std::cout << qPrintable(originalText) << "\n";
+	std::cout << originalText << "\n";
 
 	// Get primary screen dimensions
 	QScreen* screen = QGuiApplication::primaryScreen();
