@@ -30,12 +30,12 @@
 #include <RmlUi/Core/Context.h>
 #include <RmlUi/Core/ElementDocument.h>
 #include <RmlUi/Core/ElementUtilities.h>
-#include "QClipboard/ClipboardInterface.h"
+#include "QClipboard/MemoryCells/MemoryCellManager.h"
 #include <format>
  
  // The game's element context (declared in main.cpp).
  extern Rml::Context* context;
- extern ClipboardInterface* clipboard;
+ extern MemoryCellManager* memoryCellManager;
  
  EventManager::EventManager() {}
  
@@ -61,19 +61,28 @@
             return;
         
         if (values[0] == "clear"){
-            clipboard->clear();
+            if(auto cell = memoryCellManager->getMemoryCell(std::stoi(values[1]))){
+                cell->clear();
+            }
         }
 
         if (values[0] == "insert") {
             //value[1] should be the clipboard (0) or the memory cell selected (> 0)
-            Rml::String input = "";
             //Get the value of an input by id
-            if (auto element = event.GetCurrentElement()->GetOwnerDocument()->GetElementById(std::format("input_{}", values[1]))){
-                input = element->GetAttribute<Rml::String>("value", "");
-                element->SetAttribute("value", "");
+            if(auto cell = memoryCellManager->getMemoryCell(std::stoi(values[1]))) {
+                Rml::String input = "";
+                if (auto element = event.GetCurrentElement()->GetOwnerDocument()->GetElementById(std::format("input_{}", values[1]))){
+                    input = element->GetAttribute<Rml::String>("value", "");
+                    element->SetAttribute("value", "");
+                }
+                cell->setText(input);
+            }            
+        }
+
+        if (values[0] == "load") {
+            if(auto cell = memoryCellManager->getMemoryCell(std::stoi(values[1]))) {
+                memoryCellManager->getMemoryCell(0)->setText(cell->text());
             }
-            //Chose the item to modify with values[1]
-            clipboard->setText(input);
         }
 
 

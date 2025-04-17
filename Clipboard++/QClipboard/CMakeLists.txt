@@ -4,6 +4,10 @@ add_library(QClipboard STATIC
     ClipboardInterface.h
     ClipboardAdapter.h
     ClipboardAdapter.cpp
+    MemoryCells/MemoryCell.h
+    MemoryCells/MemoryCell.cpp
+    MemoryCells/MemoryCellManager.h
+    MemoryCells/MemoryCellManager.cpp
 )
 
 # Set include directories
