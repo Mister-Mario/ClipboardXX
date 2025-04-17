@@ -22,6 +22,7 @@
 #include <QScreen>
 #include "QClipboard/ClipboardInterface.h"
 #include "QClipboard/ClipboardAdapter.h"
+#include "QClipboard/MemoryCells/MemoryCellManager.h"
 
 void HandleFormSubmit(Rml::Event& event, void* /*user_data*/) {
     Rml::Element* target = event.GetCurrentElement();
@@ -33,7 +34,7 @@ void HandleFormSubmit(Rml::Event& event, void* /*user_data*/) {
 }
 
 Rml::Context* context = nullptr;
-ClipboardInterface* clipboard = nullptr;
+MemoryCellManager* memoryCellManager = nullptr;
 
  #if defined RMLUI_PLATFORM_WIN32
 	 #include <RmlUi_Include_Windows.h>
@@ -46,12 +47,8 @@ ClipboardInterface* clipboard = nullptr;
 	int argc = 0;
 	QGuiApplication app(argc, nullptr);
 	QClipboard *qClipboard = QGuiApplication::clipboard();
-	clipboard = new ClipboardAdapter(qClipboard);
-	auto originalText = clipboard->text();
-	std::cout << originalText << "\n";
-	clipboard->setText("Hello there");
-	originalText = clipboard->text();
-	std::cout << originalText << "\n";
+	memoryCellManager = MemoryCellManager::Instance();
+	memoryCellManager->initialize(new ClipboardAdapter(qClipboard), 2);
 
 	// Get primary screen dimensions
 	QScreen* screen = QGuiApplication::primaryScreen();

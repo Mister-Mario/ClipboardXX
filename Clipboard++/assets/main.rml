@@ -6,11 +6,21 @@
 </head>
 <body id="main_window">
   <app id="app">
-    <p>Hello <span id="world">world</span>!</p>
-    <p id="clipboard_content"></p>
-    <button onclick="clear">Clear clipboard</button>
-    <input id="input_0" name="clipboard_input" type="text"/>
-    <button onclick="insert 0">Send to Clipboard</button>
+    <div>
+      <input id="input_0" name="clipboard_input" type="text"/>
+      <button onclick="insert 0">Send to Clipboard</button>
+      <p id="cell_0"></p>
+      <button onclick="clear 0">Clear clipboard</button>
+      <button onclick="load 0" disabled="true">Load clipboard</button>
+    </div>    
+    <div>
+      <p></p>
+      <input id="input_1" name="clipboard_input" type="text"/>
+      <button onclick="insert 1">Send to Memory cell</button>
+      <p id="cell_1"></p>
+      <button onclick="clear 1">Clear clipboard</button>
+      <button onclick="load 1">Load clipboard</button>
+    </div>
   </app>
 </body>
 </rml>

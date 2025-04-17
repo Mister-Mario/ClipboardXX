@@ -32,11 +32,12 @@
  #include <RmlUi/Core/ElementDocument.h>
  #include <RmlUi/Core/Input.h>
  #include <RmlUi/Core/SystemInterface.h>
-#include "QClipboard/ClipboardInterface.h"
+#include "QClipboard/MemoryCells/MemoryCellManager.h"
+#include <format>
 
  // The applicaction's element context (declared in main.cpp).
 extern Rml::Context* context;
-extern ClipboardInterface* clipboard;
+extern MemoryCellManager* memoryCellManager;
  
  ElementClipboard::ElementClipboard(const Rml::String& tag) : Rml::Element(tag)
  {
@@ -51,10 +52,14 @@ extern ClipboardInterface* clipboard;
  
  void ElementClipboard::OnUpdate()
  {
-    //GetDocument searches for the body id
-    Rml::Element* clipboard_title_element = context->GetDocument("main_window")->GetElementById("clipboard_content");
-	if (clipboard_title_element != nullptr){
-        clipboard_title_element->SetInnerRML(clipboard->text());
+    Rml::ElementDocument* document = context->GetDocument("main_window");
+    Rml::Element* clipboard_title_element = nullptr;
+    size_t memoryCells = memoryCellManager->getMemoryCellCount();
+    for(size_t i = 0; i < memoryCells; i++) {
+        clipboard_title_element = document->GetElementById(std::format("cell_{}", i));
+        if(clipboard_title_element){
+            clipboard_title_element->SetInnerRML(memoryCellManager->getMemoryCell(i)->text());
+        }
     }
 }
  
