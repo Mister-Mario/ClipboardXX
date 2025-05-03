@@ -6,21 +6,69 @@
 </head>
 <body id="main_window">
   <app id="app">
-    <div>
-      <input id="input_0" name="clipboard_input" type="text"/>
-      <button onclick="insert 0">Send to Clipboard</button>
-      <p id="cell_0"></p>
-      <button onclick="clear 0">Clear clipboard</button>
-      <button onclick="load 0" disabled="true">Load clipboard</button>
-    </div>    
-    <div>
-      <p></p>
-      <input id="input_1" name="clipboard_input" type="text"/>
-      <button onclick="insert 1">Send to Memory cell</button>
-      <p id="cell_1"></p>
-      <button onclick="clear 1">Clear clipboard</button>
-      <button onclick="load 1">Load clipboard</button>
-    </div>
+    <header class="c-glow-border">
+          <div class="c-controls">
+              <div class="c-constrols__files">
+                  <button>Import file</button>
+                  <button>Export file</button>
+              </div>
+              <div class="c-controls__auto">
+                  <label for="autopaste">Autopaste:</label>
+                  <input class id="autopaste" type="checkbox" value="autopaste"/>
+                  <label for="autocopy">Autocopy:</label>
+                  <input class id="autocopy" type="checkbox" value="autocopy"/>
+              </div>
+              <button class="c-controls__help">?</button>
+          </div>
+    </header>        
+    <main>
+        <div class="c-cell c-glow-border">
+            <span class="c-cell__name"> Clipboard</span>
+            <div class="c-cell__content">
+                <div class="c-cell__text"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></div>
+                <div class="c-cell__actions">
+                    <button>Load to clipboard</button>
+                    <button>Clear contents</button>
+                </div>
+            </div>
+            <div class="c-cell__load">
+                <label for="text"></label>
+                <textarea id="text" name="text" placeholder="Text to be loaded"></textarea>
+                <button>Load</button>
+            </div>
+            <div class="c-cell__shortcuts">
+                <span>Paste shortcut: </span>
+                <span class="c-cell__shortcut">Ctrl + V</span>
+                <span>Load shortcut:</span>
+                <span class="c-cell__shortcut">Ctrl + C</span>
+                <button>Edit</button>
+            </div>
+        </div>
+
+        <ul class="c-cells-list c-glow-border">
+            <button>Clipboard</button>
+            <button>Memory cell 1</button>
+            <button>Memory cell 2</button>
+            <button>Memory cell 3</button>
+            <button>Memory cell 4</button>
+            <button>Memory cell 5</button>
+            <button>Memory cell 6</button>
+            <button>Memory cell 7</button>
+            <button>Memory cell 8</button>
+            <button>Memory cell 9</button>
+            <button>Memory cell 10</button>
+            <button>Memory cell 11</button>
+            <button>Memory cell 12</button>
+            <button>Memory cell 13</button>
+            <button>Memory cell 14</button>
+            <button>Memory cell 15</button>
+            <button>Memory cell 16</button>
+            <button>Memory cell 17</button>
+            <button>Memory cell 18</button>
+            <button>Memory cell 19</button>
+            <button>Memory cell 20</button>
+        </ul>
+    </main>
   </app>
 </body>
 </rml>
