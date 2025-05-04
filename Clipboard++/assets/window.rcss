@@ -134,7 +134,7 @@ main {
 }
 
 .c-cell__text {
-    width: 80%;
+    width: 75%;
     margin-right: 1.5rem;
 }
 
