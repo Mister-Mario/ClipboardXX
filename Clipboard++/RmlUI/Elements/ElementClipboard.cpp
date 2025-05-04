@@ -33,6 +33,7 @@
  #include <RmlUi/Core/Input.h>
  #include <RmlUi/Core/SystemInterface.h>
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
+#include "QClipboard/Utils/StringUtils.h"
 
  // The applicaction's element context (declared in main.cpp).
 extern Rml::Context* context;
@@ -54,8 +55,11 @@ extern MemoryCellManager* memoryCellManager;
     Rml::ElementDocument* document = context->GetDocument("main_window");
     if(Rml::Element* selectedCellNameElement = document->GetElementById("cell_name"))
         selectedCellNameElement->SetInnerRML(memoryCellManager->getSelectedCell()->name());
-    if(Rml::Element* selectedCellConentElement = document->GetElementById("cell_content"))
-        selectedCellConentElement->SetInnerRML(memoryCellManager->getSelectedCell()->text());
+    if(Rml::Element* selectedCellConentElement = document->GetElementById("cell_content")){
+        std::string content = memoryCellManager->getSelectedCell()->text().substr(0, 1000);
+        selectedCellConentElement->SetInnerRML(Utils::escapeHtml(content));
+    }
+
 }
  
  void ElementClipboard::OnRender()

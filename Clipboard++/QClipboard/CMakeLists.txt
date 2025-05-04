@@ -8,6 +8,8 @@ add_library(QClipboard STATIC
     MemoryCells/MemoryCell.cpp
     MemoryCells/MemoryCellManager.h
     MemoryCells/MemoryCellManager.cpp
+    Utils/StringUtils.h
+    Utils/StringUtils.cpp
 )
 
 # Set include directories
