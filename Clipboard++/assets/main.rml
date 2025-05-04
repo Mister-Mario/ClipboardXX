@@ -6,21 +6,69 @@
 </head>
 <body id="main_window">
   <app id="app">
-    <div>
-      <input id="input_0" name="clipboard_input" type="text"/>
-      <button onclick="insert 0">Send to Clipboard</button>
-      <p id="cell_0"></p>
-      <button onclick="clear 0">Clear clipboard</button>
-      <button onclick="load 0" disabled="true">Load clipboard</button>
-    </div>    
-    <div>
-      <p></p>
-      <input id="input_1" name="clipboard_input" type="text"/>
-      <button onclick="insert 1">Send to Memory cell</button>
-      <p id="cell_1"></p>
-      <button onclick="clear 1">Clear clipboard</button>
-      <button onclick="load 1">Load clipboard</button>
-    </div>
+    <header class="c-glow-border">
+          <div class="c-controls">
+              <div class="c-constrols__files">
+                  <button>Import file</button>
+                  <button>Export file</button>
+              </div>
+              <div class="c-controls__auto">
+                  <label for="autopaste">Autopaste:</label>
+                  <input class id="autopaste" type="checkbox" value="autopaste"/>
+                  <label for="autocopy">Autocopy:</label>
+                  <input class id="autocopy" type="checkbox" value="autocopy"/>
+              </div>
+              <button class="c-controls__help">?</button>
+          </div>
+    </header>        
+    <main>
+        <div class="c-cell c-glow-border">
+            <span id="cell_name" class="c-cell__name"></span>
+            <div class="c-cell__content">
+                <div class="c-cell__text"><p id="cell_content"></p></div>
+                <div class="c-cell__actions">
+                    <button onclick="load">Load to clipboard</button>
+                    <button onclick="clear">Clear contents</button>
+                </div>
+            </div>
+            <div class="c-cell__load">
+                <label for="input"></label>
+                <textarea id="input" name="input" placeholder="Text to be loaded"></textarea>
+                <button onclick="insert">Load</button>
+            </div>
+            <div class="c-cell__shortcuts">
+                <span>Paste shortcut: </span>
+                <span class="c-cell__shortcut">Ctrl + V</span>
+                <span>Load shortcut:</span>
+                <span class="c-cell__shortcut">Ctrl + C</span>
+                <button>Edit</button>
+            </div>
+        </div>
+
+        <ul class="c-cells-list c-glow-border">
+            <button onclick="slot 0">Clipboard</button>
+            <button onclick="slot 1">Memory cell 1</button>
+            <button onclick="slot 2">Memory cell 2</button>
+            <button onclick="slot 3">Memory cell 3</button>
+            <button onclick="slot 4">Memory cell 4</button>
+            <button onclick="slot 5">Memory cell 5</button>
+            <button onclick="slot 6">Memory cell 6</button>
+            <button onclick="slot 7">Memory cell 7</button>
+            <button onclick="slot 8">Memory cell 8</button>
+            <button onclick="slot 9">Memory cell 9</button>
+            <button onclick="slot 10">Memory cell 10</button>
+            <button onclick="slot 11">Memory cell 11</button>
+            <button onclick="slot 12">Memory cell 12</button>
+            <button onclick="slot 13">Memory cell 13</button>
+            <button onclick="slot 14">Memory cell 14</button>
+            <button onclick="slot 15">Memory cell 15</button>
+            <button onclick="slot 16">Memory cell 16</button>
+            <button onclick="slot 17">Memory cell 17</button>
+            <button onclick="slot 18">Memory cell 18</button>
+            <button onclick="slot 19">Memory cell 19</button>
+            <button onclick="slot 20">Memory cell 20</button>
+        </ul>
+    </main>
   </app>
 </body>
 </rml>

@@ -11,6 +11,7 @@ public:
     
     void setText(const std::string& text) override;
     std::string text() const override;
+    std::string name() const override;
     void clear() override;
     
 private:
