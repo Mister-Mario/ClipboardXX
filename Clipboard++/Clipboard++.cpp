@@ -48,7 +48,7 @@ MemoryCellManager* memoryCellManager = nullptr;
 	QGuiApplication app(argc, nullptr);
 	QClipboard *qClipboard = QGuiApplication::clipboard();
 	memoryCellManager = MemoryCellManager::Instance();
-	memoryCellManager->initialize(new ClipboardAdapter(qClipboard), 2);
+	memoryCellManager->initialize(new ClipboardAdapter(qClipboard), 21);
 
 	// Get primary screen dimensions
 	QScreen* screen = QGuiApplication::primaryScreen();

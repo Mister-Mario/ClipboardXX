@@ -23,18 +23,18 @@
     </header>        
     <main>
         <div class="c-cell c-glow-border">
-            <span class="c-cell__name"> Clipboard</span>
+            <span id="cell_name" class="c-cell__name"></span>
             <div class="c-cell__content">
-                <div class="c-cell__text"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></div>
+                <div class="c-cell__text"><p id="cell_content"></p></div>
                 <div class="c-cell__actions">
-                    <button>Load to clipboard</button>
-                    <button>Clear contents</button>
+                    <button onclick="load">Load to clipboard</button>
+                    <button onclick="clear">Clear contents</button>
                 </div>
             </div>
             <div class="c-cell__load">
-                <label for="text"></label>
-                <textarea id="text" name="text" placeholder="Text to be loaded"></textarea>
-                <button>Load</button>
+                <label for="input"></label>
+                <textarea id="input" name="input" placeholder="Text to be loaded"></textarea>
+                <button onclick="insert">Load</button>
             </div>
             <div class="c-cell__shortcuts">
                 <span>Paste shortcut: </span>
@@ -46,27 +46,27 @@
         </div>
 
         <ul class="c-cells-list c-glow-border">
-            <button>Clipboard</button>
-            <button>Memory cell 1</button>
-            <button>Memory cell 2</button>
-            <button>Memory cell 3</button>
-            <button>Memory cell 4</button>
-            <button>Memory cell 5</button>
-            <button>Memory cell 6</button>
-            <button>Memory cell 7</button>
-            <button>Memory cell 8</button>
-            <button>Memory cell 9</button>
-            <button>Memory cell 10</button>
-            <button>Memory cell 11</button>
-            <button>Memory cell 12</button>
-            <button>Memory cell 13</button>
-            <button>Memory cell 14</button>
-            <button>Memory cell 15</button>
-            <button>Memory cell 16</button>
-            <button>Memory cell 17</button>
-            <button>Memory cell 18</button>
-            <button>Memory cell 19</button>
-            <button>Memory cell 20</button>
+            <button onclick="slot 0">Clipboard</button>
+            <button onclick="slot 1">Memory cell 1</button>
+            <button onclick="slot 2">Memory cell 2</button>
+            <button onclick="slot 3">Memory cell 3</button>
+            <button onclick="slot 4">Memory cell 4</button>
+            <button onclick="slot 5">Memory cell 5</button>
+            <button onclick="slot 6">Memory cell 6</button>
+            <button onclick="slot 7">Memory cell 7</button>
+            <button onclick="slot 8">Memory cell 8</button>
+            <button onclick="slot 9">Memory cell 9</button>
+            <button onclick="slot 10">Memory cell 10</button>
+            <button onclick="slot 11">Memory cell 11</button>
+            <button onclick="slot 12">Memory cell 12</button>
+            <button onclick="slot 13">Memory cell 13</button>
+            <button onclick="slot 14">Memory cell 14</button>
+            <button onclick="slot 15">Memory cell 15</button>
+            <button onclick="slot 16">Memory cell 16</button>
+            <button onclick="slot 17">Memory cell 17</button>
+            <button onclick="slot 18">Memory cell 18</button>
+            <button onclick="slot 19">Memory cell 19</button>
+            <button onclick="slot 20">Memory cell 20</button>
         </ul>
     </main>
   </app>

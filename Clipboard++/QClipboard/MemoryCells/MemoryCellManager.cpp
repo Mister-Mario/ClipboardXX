@@ -1,5 +1,6 @@
 #include "MemoryCellManager.h"
 #include "MemoryCell.h"
+#include <format>
 
 MemoryCellManager* MemoryCellManager::m_instance = nullptr;
 
@@ -25,7 +26,7 @@ ClipboardInterface* MemoryCellManager::getMemoryCell(size_t index) {
 
 size_t MemoryCellManager::addMemoryCell() {
     // Create the new memory cell
-    auto newCell = std::make_unique<MemoryCell>();
+    auto newCell = std::make_unique<MemoryCell>(std::format("Memory cell {}", m_memoryCells.size()));
     
     // Do additional setup for new cell here
     // ...
@@ -50,4 +51,12 @@ void MemoryCellManager::initialize(ClipboardAdapter* clipboard, size_t initialCe
 
 void MemoryCellManager::cleanup() {
     m_memoryCells.clear();
+}
+
+void MemoryCellManager::setSelectedCell(size_t index) {
+    this->selectedCell = index;
+}
+
+ClipboardInterface* MemoryCellManager::getSelectedCell() {
+    return m_memoryCells[selectedCell].get();
 }

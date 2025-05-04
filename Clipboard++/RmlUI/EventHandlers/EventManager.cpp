@@ -61,28 +61,25 @@
             return;
         
         if (values[0] == "clear"){
-            if(auto cell = memoryCellManager->getMemoryCell(std::stoi(values[1]))){
-                cell->clear();
-            }
+            memoryCellManager->getSelectedCell()->clear();
         }
 
         if (values[0] == "insert") {
-            //value[1] should be the clipboard (0) or the memory cell selected (> 0)
-            //Get the value of an input by id
-            if(auto cell = memoryCellManager->getMemoryCell(std::stoi(values[1]))) {
-                Rml::String input = "";
-                if (auto element = event.GetCurrentElement()->GetOwnerDocument()->GetElementById(std::format("input_{}", values[1]))){
-                    input = element->GetAttribute<Rml::String>("value", "");
-                    element->SetAttribute("value", "");
-                }
-                cell->setText(input);
-            }            
+            auto cell = memoryCellManager->getSelectedCell();
+            Rml::String input = "";
+            if (auto element = event.GetCurrentElement()->GetOwnerDocument()->GetElementById("input")){
+                input = element->GetAttribute<Rml::String>("value", "");
+                element->SetAttribute("value", "");
+            }
+            cell->setText(input);       
         }
 
         if (values[0] == "load") {
-            if(auto cell = memoryCellManager->getMemoryCell(std::stoi(values[1]))) {
-                memoryCellManager->getMemoryCell(0)->setText(cell->text());
-            }
+            memoryCellManager->getMemoryCell(0)->setText(memoryCellManager->getSelectedCell()->text());
+        }
+
+        if (values[0] == "slot") {
+            memoryCellManager->setSelectedCell(std::stoi(values[1]));
         }
 
 

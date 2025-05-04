@@ -14,11 +14,14 @@ class MemoryCellManager {
         size_t addMemoryCell();
         void initialize(ClipboardAdapter* clipboard, size_t initialCells = 9);
         void cleanup();
+        void setSelectedCell(size_t index);
+        ClipboardInterface* getSelectedCell();
     protected:
         MemoryCellManager();
     private:
         static MemoryCellManager* m_instance;
         std::vector<std::unique_ptr<ClipboardInterface>> m_memoryCells;
+        size_t selectedCell = 0;
 };
 
 #endif

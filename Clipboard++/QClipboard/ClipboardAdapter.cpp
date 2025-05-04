@@ -12,6 +12,10 @@ std::string ClipboardAdapter::text() const {
     return m_clipboard->text().toStdString();
 }
 
+std::string ClipboardAdapter::name() const {
+    return "Clipboard";
+}
+
 void ClipboardAdapter::clear() {
     m_clipboard->clear();
 }
