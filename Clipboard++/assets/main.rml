@@ -7,19 +7,17 @@
 <body id="main_window">
   <app id="app">
     <header class="c-glow-border">
-          <div class="c-controls">
-              <div class="c-constrols__files">
-                  <button>Import file</button>
-                  <button>Export file</button>
-              </div>
-              <div class="c-controls__auto">
-                  <label for="autopaste">Autopaste:</label>
-                  <input class id="autopaste" type="checkbox" value="autopaste"/>
-                  <label for="autocopy">Autocopy:</label>
-                  <input class id="autocopy" type="checkbox" value="autocopy"/>
-              </div>
-              <button class="c-controls__help">?</button>
-          </div>
+        <div class="c-constrols__files">
+            <button>Import file</button>
+            <button>Export file</button>
+        </div>
+        <div class="c-controls__auto">
+            <label for="autopaste">Autopaste:</label>
+            <input class id="autopaste" type="checkbox" value="autopaste"/>
+            <label for="autocopy">Autocopy:</label>
+            <input class id="autocopy" type="checkbox" value="autocopy"/>
+        </div>
+        <button class="c-controls__help">?</button>
     </header>        
     <main>
         <div class="c-cell c-glow-border">
