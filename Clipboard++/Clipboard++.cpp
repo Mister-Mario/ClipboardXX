@@ -23,6 +23,7 @@
 #include "QClipboard/ClipboardInterface.h"
 #include "QClipboard/ClipboardAdapter.h"
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
+#include "Utils/TranslationManager.h"
 
 void HandleFormSubmit(Rml::Event& event, void* /*user_data*/) {
     Rml::Element* target = event.GetCurrentElement();
@@ -35,6 +36,7 @@ void HandleFormSubmit(Rml::Event& event, void* /*user_data*/) {
 
 Rml::Context* context = nullptr;
 MemoryCellManager* memoryCellManager = nullptr;
+TranslationManager* translator = nullptr;
 
  #if defined RMLUI_PLATFORM_WIN32
 	 #include <RmlUi_Include_Windows.h>
@@ -43,12 +45,16 @@ MemoryCellManager* memoryCellManager = nullptr;
  int main(int /*argc*/, char** /*argv*/)
  #endif
  {
-
 	int argc = 0;
 	QGuiApplication app(argc, nullptr);
 	QClipboard *qClipboard = QGuiApplication::clipboard();
+
 	memoryCellManager = MemoryCellManager::Instance();
 	memoryCellManager->initialize(new ClipboardAdapter(qClipboard), 21);
+
+	std::string language = "es-ES"; // O "en-US"
+	translator = TranslationManager::Instance(); 
+    translator->loadLanguage("assets/translations/" + language + ".json");
 
 	// Get primary screen dimensions
 	QScreen* screen = QGuiApplication::primaryScreen();

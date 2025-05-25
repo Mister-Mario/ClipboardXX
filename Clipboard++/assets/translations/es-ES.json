@@ -1,0 +1,44 @@
+{
+  "title": "Hola mundo",
+  "header": {
+    "import": "Importar archivo",
+    "export": "Exportar archivo",
+    "autopaste": "Autopegado:",
+    "autocopy": "Autocopiado:",
+    "help": "?"
+  },
+  "cell": {
+    "load_clipboard": "Cargar al portapapeles",
+    "clear_contents": "Limpiar contenido",
+    "input_placeholder": "Texto a cargar",
+    "load_button": "Cargar"
+  },
+  "shortcuts": {
+    "paste": "Atajo pegado:",
+    "load": "Atajo carga:",
+    "edit": "Editar"
+  },
+  "list": {
+    "clipboard": "Portapapeles",
+    "cell_1": "Celda memoria 1",
+    "cell_2": "Celda memoria 2",
+    "cell_3": "Celda memoria 3",
+    "cell_4": "Celda memoria 4",
+    "cell_5": "Celda memoria 5",
+    "cell_6": "Celda memoria 6",
+    "cell_7": "Celda memoria 7",
+    "cell_8": "Celda memoria 8",
+    "cell_9": "Celda memoria 9",
+    "cell_10": "Celda memoria 10",
+    "cell_11": "Celda memoria 11",
+    "cell_12": "Celda memoria 12",
+    "cell_13": "Celda memoria 13",
+    "cell_14": "Celda memoria 14",
+    "cell_15": "Celda memoria 15",
+    "cell_16": "Celda memoria 16",
+    "cell_17": "Celda memoria 17",
+    "cell_18": "Celda memoria 18",
+    "cell_19": "Celda memoria 19",
+    "cell_20": "Celda memoria 20"
+  }
+}

@@ -5,11 +5,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)  # Automatización de MOC para Qt6
 set(CMAKE_BUILD_TYPE Debug)
 
+find_package(SDL3 REQUIRED)
+find_package(RmlUi REQUIRED)
+
 add_subdirectory(Utils)
 add_subdirectory(QClipboard)
 
-find_package(SDL3 REQUIRED)
-find_package(RmlUi REQUIRED)
+
 set(RMLUI_BACKEND SDL_GL3)
 include(RmlUI/Utilities.cmake)
 include(RmlUI/DependenciesForBackends.cmake)

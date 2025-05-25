@@ -17,7 +17,7 @@ class MemoryCellManager {
         void setSelectedCell(size_t index);
         ClipboardInterface* getSelectedCell();
     protected:
-        MemoryCellManager();
+        MemoryCellManager() {}
     private:
         static MemoryCellManager* m_instance;
         std::vector<std::unique_ptr<ClipboardInterface>> m_memoryCells;

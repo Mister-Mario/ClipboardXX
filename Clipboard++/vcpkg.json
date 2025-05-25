@@ -4,6 +4,7 @@
     "rmlui",
     "sdl3",
     "sdl3-image",
+    "nlohmann-json",
     {
       "name": "qtbase",
       "default-features": false,

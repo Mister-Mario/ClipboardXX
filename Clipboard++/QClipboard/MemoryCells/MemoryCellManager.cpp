@@ -4,8 +4,6 @@
 
 MemoryCellManager* MemoryCellManager::m_instance = nullptr;
 
-MemoryCellManager::MemoryCellManager(){}
-
 MemoryCellManager* MemoryCellManager::Instance() {
     if(m_instance == nullptr) {
         m_instance = new MemoryCellManager();
