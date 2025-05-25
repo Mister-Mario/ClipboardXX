@@ -37,7 +37,6 @@
 
  // The applicaction's element context (declared in main.cpp).
 extern Rml::Context* context;
-extern MemoryCellManager* memoryCellManager;
  
  ElementClipboard::ElementClipboard(const Rml::String& tag) : Rml::Element(tag)
  {
@@ -52,6 +51,7 @@ extern MemoryCellManager* memoryCellManager;
  
  void ElementClipboard::OnUpdate()
  {
+    MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
     Rml::ElementDocument* document = context->GetDocument("main_window");
     if(Rml::Element* selectedCellNameElement = document->GetElementById("cell_name"))
         selectedCellNameElement->SetInnerRML(memoryCellManager->getSelectedCell()->name());

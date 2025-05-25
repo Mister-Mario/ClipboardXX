@@ -33,7 +33,7 @@
 #include <RmlUi/Core/SystemInterface.h>
 #include "../../Utils/TranslationManager.h"
 
-extern TranslationManager* translator;
+
 
 SystemInterface_SDL::SystemInterface_SDL()
 {
@@ -151,7 +151,7 @@ void SystemInterface_SDL::DeactivateKeyboard()
 }
 
 int SystemInterface_SDL ::TranslateString(Rml::String& translated, const Rml::String& input) {
-    const std::string& translation = translator->getString(input);
+    const std::string& translation = TranslationManager::Instance()->getString(input);
 
     if (!translation.empty()) {
         translated = translation;

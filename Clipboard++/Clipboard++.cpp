@@ -35,8 +35,6 @@ void HandleFormSubmit(Rml::Event& event, void* /*user_data*/) {
 }
 
 Rml::Context* context = nullptr;
-MemoryCellManager* memoryCellManager = nullptr;
-TranslationManager* translator = nullptr;
 
  #if defined RMLUI_PLATFORM_WIN32
 	 #include <RmlUi_Include_Windows.h>
@@ -48,13 +46,11 @@ TranslationManager* translator = nullptr;
 	int argc = 0;
 	QGuiApplication app(argc, nullptr);
 	QClipboard *qClipboard = QGuiApplication::clipboard();
-
-	memoryCellManager = MemoryCellManager::Instance();
+	MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
 	memoryCellManager->initialize(new ClipboardAdapter(qClipboard), 21);
 
-	std::string language = "es-ES"; // O "en-US"
-	translator = TranslationManager::Instance(); 
-    translator->loadLanguage("assets/translations/" + language + ".json");
+	TranslationManager* translator = TranslationManager::Instance(); 
+    translator->loadLanguage("assets/translations/es-ES.json");
 
 	// Get primary screen dimensions
 	QScreen* screen = QGuiApplication::primaryScreen();

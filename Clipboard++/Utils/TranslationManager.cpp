@@ -7,6 +7,8 @@ using json = nlohmann::json;
 
 TranslationManager* TranslationManager::m_instance = nullptr;
 
+TranslationManager::TranslationManager(){}
+
 TranslationManager* TranslationManager::Instance() {
     if(m_instance == nullptr) {
         m_instance = new TranslationManager();

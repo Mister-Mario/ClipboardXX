@@ -8,7 +8,7 @@ public:
     bool loadLanguage(const std::string& json_path);
     const std::string& getString(const std::string& key) const;
 protected:
-    TranslationManager() {}
+    TranslationManager();
 private:
     static TranslationManager* m_instance;
     std::map<std::string, std::string> m_strings;

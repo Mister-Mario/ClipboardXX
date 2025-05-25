@@ -1,17 +1,17 @@
 {
-  "title": "Hola mundo",
+  "title": "Hello",
   "header": {
     "import": "Import file",
-    "export": "Exportar archivo",
-    "autopaste": "Autopegado:",
-    "autocopy": "Autocopiado:",
+    "export": "Export file",
+    "autopaste": "Autopaste:",
+    "autocopy": "Autocopy:",
     "help": "?"
   },
   "cell": {
-    "load_clipboard": "Cargar al portapapeles",
-    "clear_contents": "Limpiar contenido",
-    "input_placeholder": "Texto a cargar",
-    "load_button": "Cargar"
+    "load_clipboard": "Load to Clipboard",
+    "clear_contents": "Clear contents",
+    "input_placeholder": "Text to load",
+    "load_button": "Load"
   },
 "shortcuts": {
     "paste": "Paste shortcut:",
