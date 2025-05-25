@@ -16,10 +16,18 @@ TranslationManager* TranslationManager::Instance() {
     return m_instance;
 }
 
-bool TranslationManager::loadLanguage(const std::string& json_path) {
-    std::ifstream file_stream(json_path);
+bool TranslationManager::loadLanguage(const std::string& code) {
+    std::string path_to_load = "assets/translations/" + code + ".json";
+
+    std::ifstream test_file(path_to_load);
+    if (!test_file.is_open()) {
+        Rml::Log::Message(Rml::Log::LT_WARNING, "Translation file not found for '%s'. Falling back to default.", code.c_str());
+        path_to_load = "assets/translations/en_US.json";
+    }
+
+    std::ifstream file_stream(path_to_load);
     if (!file_stream.is_open()) {
-        Rml::Log::Message(Rml::Log::LT_ERROR, "Cannot open translation file: %s\n", json_path.c_str());
+        Rml::Log::Message(Rml::Log::LT_ERROR, "Could not open fallback translation file: %s", path_to_load.c_str());
         return false;
     }
 
@@ -51,7 +59,7 @@ bool TranslationManager::loadLanguage(const std::string& json_path) {
     //Start the recursive from the top
     flattenJson(data, "");
 
-    Rml::Log::Message(Rml::Log::LT_INFO, "Loaded %zu from %s\n", m_strings.size(), json_path.c_str());
+    Rml::Log::Message(Rml::Log::LT_INFO, "Loaded %zu from %s\n", m_strings.size(), code.c_str());
     return true;
 }
 

@@ -20,19 +20,11 @@
 #include <QClipboard>
 #include <QGuiApplication>
 #include <QScreen>
+#include <QLocale>
 #include "QClipboard/ClipboardInterface.h"
 #include "QClipboard/ClipboardAdapter.h"
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
 #include "Utils/TranslationManager.h"
-
-void HandleFormSubmit(Rml::Event& event, void* /*user_data*/) {
-    Rml::Element* target = event.GetCurrentElement();
-    if (Rml::ElementForm* form = rmlui_dynamic_cast<Rml::ElementForm*>(target)) {
-        Rml::String username = form->GetElementById("username")->GetAttribute<Rml::String>("value", "");
-        std::cout << "Submitted username: " << username << std::endl;
-    }
-    event.StopPropagation();
-}
 
 Rml::Context* context = nullptr;
 
@@ -49,8 +41,10 @@ Rml::Context* context = nullptr;
 	MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
 	memoryCellManager->initialize(new ClipboardAdapter(qClipboard), 21);
 
+	QLocale default_locale = QLocale::system();
+    QString locale_name = default_locale.name(); // "es_ES"
 	TranslationManager* translator = TranslationManager::Instance(); 
-    translator->loadLanguage("assets/translations/es-ES.json");
+    translator->loadLanguage("locale_name.toStdString()");
 
 	// Get primary screen dimensions
 	QScreen* screen = QGuiApplication::primaryScreen();
@@ -59,7 +53,7 @@ Rml::Context* context = nullptr;
 	int maxWindowHeight = 1080 * (2-0.875);
 	int window_width = screenGeometry.width() <= maxWindowWidth ? screenGeometry.width() * 0.95 : 1920;
 	int window_height = screenGeometry.height() <= maxWindowHeight ? screenGeometry.height() * 0.875 : 1080;
-	
+
 	// Initializes the shell which provides common functionality used by the included samples.
 	if (!Shell::Initialize()){
 		std::cout << "Falla la Shell";

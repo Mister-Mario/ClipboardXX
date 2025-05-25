@@ -5,7 +5,7 @@
 class TranslationManager {
 public:
     static TranslationManager* Instance();
-    bool loadLanguage(const std::string& json_path);
+    bool loadLanguage(const std::string& code);
     const std::string& getString(const std::string& key) const;
 protected:
     TranslationManager();
