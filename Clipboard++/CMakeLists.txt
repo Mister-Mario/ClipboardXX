@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)  # Automatización de MOC para Qt6
 set(CMAKE_BUILD_TYPE Debug)
 
+add_subdirectory(Utils)
 add_subdirectory(QClipboard)
 
 find_package(SDL3 REQUIRED)

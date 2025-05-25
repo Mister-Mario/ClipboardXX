@@ -33,7 +33,7 @@
  #include <RmlUi/Core/Input.h>
  #include <RmlUi/Core/SystemInterface.h>
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
-#include "QClipboard/Utils/StringUtils.h"
+#include "Utils/StringUtils.h"
 
  // The applicaction's element context (declared in main.cpp).
 extern Rml::Context* context;
