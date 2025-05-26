@@ -35,7 +35,8 @@
  
  // The game's element context (declared in main.cpp).
  extern Rml::Context* context;
- extern MemoryCellManager* memoryCellManager;
+
+ 
  
  EventManager::EventManager() {}
  
@@ -49,6 +50,8 @@
      * Delimiter: ','
      * Output: ["apple", "banana", "cherry"]
      */
+    
+    MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
      Rml::StringList commands;
      Rml::StringUtilities::ExpandString(commands, value, ';');
      for (size_t i = 0; i < commands.size(); ++i)

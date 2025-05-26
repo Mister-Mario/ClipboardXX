@@ -10,7 +10,6 @@ public:
     virtual std::string text() const = 0;
     virtual std::string name() const = 0;
     virtual void clear() = 0;
-    // Add other methods you need to test
 };
 
 #endif

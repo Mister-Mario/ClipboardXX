@@ -1,0 +1,44 @@
+{
+  "title": "Hello",
+  "header": {
+    "import": "Import file",
+    "export": "Export file",
+    "autopaste": "Autopaste:",
+    "autocopy": "Autocopy:",
+    "help": "?"
+  },
+  "cell": {
+    "load_clipboard": "Load to Clipboard",
+    "clear_contents": "Clear contents",
+    "input_placeholder": "Text to load",
+    "load_button": "Load"
+  },
+"shortcuts": {
+    "paste": "Paste shortcut:",
+    "load": "Load shortcut:",
+    "edit": "Edit"
+  },
+  "list": {
+    "clipboard": "Clipboard",
+    "cell_1": "Memory cell 1",
+    "cell_2": "Memory cell 2",
+    "cell_3": "Memory cell 3",
+    "cell_4": "Memory cell 4",
+    "cell_5": "Memory cell 5",
+    "cell_6": "Memory cell 6",
+    "cell_7": "Memory cell 7",
+    "cell_8": "Memory cell 8",
+    "cell_9": "Memory cell 9",
+    "cell_10": "Memory cell 10",
+    "cell_11": "Memory cell 11",
+    "cell_12": "Memory cell 12",
+    "cell_13": "Memory cell 13",
+    "cell_14": "Memory cell 14",
+    "cell_15": "Memory cell 15",
+    "cell_16": "Memory cell 16",
+    "cell_17": "Memory cell 17",
+    "cell_18": "Memory cell 18",
+    "cell_19": "Memory cell 19",
+    "cell_20": "Memory cell 20"
+  }
+}

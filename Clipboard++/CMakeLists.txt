@@ -5,10 +5,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)  # Automatización de MOC para Qt6
 set(CMAKE_BUILD_TYPE Debug)
 
-add_subdirectory(QClipboard)
-
 find_package(SDL3 REQUIRED)
 find_package(RmlUi REQUIRED)
+
+add_subdirectory(Utils)
+add_subdirectory(QClipboard)
+
+
 set(RMLUI_BACKEND SDL_GL3)
 include(RmlUI/Utilities.cmake)
 include(RmlUI/DependenciesForBackends.cmake)
@@ -35,6 +38,14 @@ add_custom_command(
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_CURRENT_SOURCE_DIR}/assets
         ${CMAKE_CURRENT_BINARY_DIR}/assets
+    COMMENT "Copying assets directory to build directory"
+)
+
+add_custom_command(
+    TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_CURRENT_SOURCE_DIR}/assets
+        ${CMAKE_CURRENT_BINARY_DIR}/Tests/assets
     COMMENT "Copying assets directory to build directory"
 )
 # Copia las DLLs de Qt6 al directorio del ejecutable en Windows - DESPUÉS de definir el target
@@ -70,20 +81,4 @@ if(WIN32)
     )
 endif()
 
-
-
-if(WIN32)
-    # For Windows: Prevent overriding the parent project's compiler/linker settings
-    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-endif()
-find_package(GTest CONFIG REQUIRED)
-# Enable testing
-enable_testing()
-
-# Test executable
-add_executable(${PROJECT_NAME}_test SimpleGTest.cpp)
-target_link_libraries(${PROJECT_NAME}_test PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
-
-
-include(GoogleTest)
-gtest_discover_tests(${PROJECT_NAME}_test)
+add_subdirectory(Tests)

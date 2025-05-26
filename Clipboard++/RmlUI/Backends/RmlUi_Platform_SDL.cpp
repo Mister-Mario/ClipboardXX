@@ -31,6 +31,9 @@
 #include <RmlUi/Core/Input.h>
 #include <RmlUi/Core/StringUtilities.h>
 #include <RmlUi/Core/SystemInterface.h>
+#include "../../Utils/TranslationManager.h"
+
+
 
 SystemInterface_SDL::SystemInterface_SDL()
 {
@@ -145,6 +148,17 @@ void SystemInterface_SDL::DeactivateKeyboard()
 		SDL_StopTextInput();
 #endif
 	}
+}
+
+int SystemInterface_SDL ::TranslateString(Rml::String& translated, const Rml::String& input) {
+    const std::string& translation = TranslationManager::Instance()->getString(input);
+
+    if (!translation.empty()) {
+        translated = translation;
+        return 1;
+    }
+	translated = input;
+    return 0;
 }
 
 bool RmlSDL::InputEventHandler(Rml::Context* context, SDL_Window* window, SDL_Event& ev)

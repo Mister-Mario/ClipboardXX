@@ -20,21 +20,13 @@
 #include <QClipboard>
 #include <QGuiApplication>
 #include <QScreen>
+#include <QLocale>
 #include "QClipboard/ClipboardInterface.h"
 #include "QClipboard/ClipboardAdapter.h"
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
-
-void HandleFormSubmit(Rml::Event& event, void* /*user_data*/) {
-    Rml::Element* target = event.GetCurrentElement();
-    if (Rml::ElementForm* form = rmlui_dynamic_cast<Rml::ElementForm*>(target)) {
-        Rml::String username = form->GetElementById("username")->GetAttribute<Rml::String>("value", "");
-        std::cout << "Submitted username: " << username << std::endl;
-    }
-    event.StopPropagation();
-}
+#include "Utils/TranslationManager.h"
 
 Rml::Context* context = nullptr;
-MemoryCellManager* memoryCellManager = nullptr;
 
  #if defined RMLUI_PLATFORM_WIN32
 	 #include <RmlUi_Include_Windows.h>
@@ -43,12 +35,16 @@ MemoryCellManager* memoryCellManager = nullptr;
  int main(int /*argc*/, char** /*argv*/)
  #endif
  {
-
 	int argc = 0;
 	QGuiApplication app(argc, nullptr);
 	QClipboard *qClipboard = QGuiApplication::clipboard();
-	memoryCellManager = MemoryCellManager::Instance();
+	MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
 	memoryCellManager->initialize(new ClipboardAdapter(qClipboard), 21);
+
+	QLocale default_locale = QLocale::system();
+    QString locale_name = default_locale.name(); // "es_ES"
+	TranslationManager* translator = TranslationManager::Instance(); 
+    translator->loadLanguage("locale_name.toStdString()");
 
 	// Get primary screen dimensions
 	QScreen* screen = QGuiApplication::primaryScreen();
@@ -57,7 +53,7 @@ MemoryCellManager* memoryCellManager = nullptr;
 	int maxWindowHeight = 1080 * (2-0.875);
 	int window_width = screenGeometry.width() <= maxWindowWidth ? screenGeometry.width() * 0.95 : 1920;
 	int window_height = screenGeometry.height() <= maxWindowHeight ? screenGeometry.height() * 0.875 : 1080;
-	
+
 	// Initializes the shell which provides common functionality used by the included samples.
 	if (!Shell::Initialize()){
 		std::cout << "Falla la Shell";

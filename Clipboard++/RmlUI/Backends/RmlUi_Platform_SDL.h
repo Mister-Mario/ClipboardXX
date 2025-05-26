@@ -61,6 +61,9 @@ public:
 	void ActivateKeyboard(Rml::Vector2f caret_position, float line_height) override;
 	void DeactivateKeyboard() override;
 
+	//Method added
+	int TranslateString(Rml::String& translated, const Rml::String& input) override;
+
 private:
 	SDL_Window* window = nullptr;
 

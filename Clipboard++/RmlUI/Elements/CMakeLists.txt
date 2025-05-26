@@ -17,4 +17,5 @@ target_link_libraries(Elements
         RmlUi::RmlUi
     PRIVATE 
         QClipboard
+        ProjectUtils
 )
