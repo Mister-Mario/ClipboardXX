@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TRANSLATION_MANAGER_H
+#define TRANSLATION_MANAGER_H
 #include <string>
 #include <map>
 
@@ -15,3 +16,5 @@ private:
     //Empty string for not found keys
     const std::string m_empty_string = "";
 };
+
+#endif
