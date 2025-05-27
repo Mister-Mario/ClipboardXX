@@ -32,6 +32,7 @@
 #include <RmlUi/Core/ElementUtilities.h>
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
 #include <format>
+#include "Utils/LinkManager.h"
  
  // The game's element context (declared in main.cpp).
  extern Rml::Context* context;
@@ -83,6 +84,10 @@
 
         if (values[0] == "slot") {
             memoryCellManager->setSelectedCell(std::stoi(values[1]));
+        }
+
+        if (values[0] == "help") {
+            openHelp();
         }
 
 

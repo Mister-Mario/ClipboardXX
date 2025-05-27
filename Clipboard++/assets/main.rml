@@ -17,7 +17,7 @@
             <label for="autocopy">header.autocopy</label>
             <input class id="autocopy" type="checkbox" value="autocopy"/>
         </div>
-        <button class="c-controls__help">?</button>
+        <button onclick="help" class="c-controls__help">?</button>
     </header>        
     <main>
         <div class="c-cell c-glow-border">
