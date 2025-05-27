@@ -44,7 +44,7 @@ Rml::Context* context = nullptr;
 	QLocale default_locale = QLocale::system();
     QString locale_name = default_locale.name(); // "es_ES"
 	TranslationManager* translator = TranslationManager::Instance(); 
-    translator->loadLanguage("locale_name.toStdString()");
+    translator->loadLanguage(locale_name.toStdString());
 
 	// Get primary screen dimensions
 	QScreen* screen = QGuiApplication::primaryScreen();
