@@ -8,7 +8,7 @@
   <app id="app">
     <header class="c-glow-border">
         <div class="c-constrols__files">
-            <button>header.import</button>
+            <button onclick="import">header.import</button>
             <button>header.export</button>
         </div>
         <div class="c-controls__auto">

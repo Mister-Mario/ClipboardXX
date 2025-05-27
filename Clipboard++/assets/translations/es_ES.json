@@ -40,5 +40,8 @@
     "cell_18": "Celda memoria 18",
     "cell_19": "Celda memoria 19",
     "cell_20": "Celda memoria 20"
+  },
+  "fileDialog": {
+    "title": "Seleccione un fichero"
   }
 }

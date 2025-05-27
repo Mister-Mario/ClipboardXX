@@ -5,6 +5,7 @@
     "sdl3",
     "sdl3-image",
     "nlohmann-json",
+    "tinyfiledialogs",
     {
       "name": "qtbase",
       "default-features": false,
