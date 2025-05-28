@@ -1,5 +1,4 @@
 {
-  "title": "Hello",
   "header": {
     "import": "Import file",
     "export": "Export file",
@@ -41,7 +40,23 @@
     "cell_19": "Memory cell 19",
     "cell_20": "Memory cell 20"
   },
-  "fileDialog": {
-    "title": "Select a file"
+  "file": {
+    "button": {
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    },
+    "dialog": {
+      "title": "Select a file"
+    },    
+    "error": {
+      "delimiter": "Introduce 1 character as a delimiter",
+      "path": "Select a file"
+    },
+    "import": {
+      "title" : "Import a file",
+      "route" : "File's route",
+      "button" : "Search",
+      "delimiter" : "Delimiter"     
+    }
   }
 }

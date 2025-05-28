@@ -1,18 +1,8 @@
-/*
- * Copyright (c) 2006 - 2008
- * Wandering Monster Studios Limited
- *
- * Any use of this program is governed by the terms of Wandering Monster
- * Studios Limited's Licence Agreement included with this program, a copy
- * of which can be obtained by contacting Wandering Monster Studios
- * Limited at info@wanderingmonster.co.nz.
- *
- */
-
 #include <RmlUi/Core.h>
 #include <RmlUi/Debugger.h>
 #include <RmlUi_Backend.h>
 #include <EventListenerInstancer.h>
+#include <ElementFileManager.h>
 #include <ElementClipboard.h>
 #include <Shell.h>
 #include <iostream>
@@ -89,25 +79,25 @@ Rml::Context* context = nullptr;
 	Rml::Debugger::Initialise(context);
 	Shell::LoadFonts();
 
-	// Register Invader's custom element and decorator instancers.
-	Rml::ElementInstancerGeneric<ElementClipboard> element_instancer;
-	Rml::Factory::RegisterElementInstancer("app", &element_instancer);
+	Rml::ElementInstancerGeneric<ElementClipboard> element_clipboard_instancer;
+	Rml::Factory::RegisterElementInstancer("app", &element_clipboard_instancer);
 
-	// Initialise the event listener instancer and handlers.
+	Rml::ElementInstancerGeneric<ElementFileManager> element_file_instancer;
+	Rml::Factory::RegisterElementInstancer("fileImport", &element_file_instancer);
+
 	EventListenerInstancer event_listener_instancer;
 	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
 
-	//EventManager::RegisterEventHandler("start_game", Rml::MakeUnique<EventHandlerStartGame>());
-
-	Rml::ElementDocument* document = context->LoadDocument("assets/main.rml");
-	if (!document){
+	Rml::ElementDocument* main = context->LoadDocument("assets/main.rml");
+	Rml::ElementDocument* fileSelector = context->LoadDocument("assets/file.rml");
+	if (!main || !fileSelector){
 		Rml::Shutdown();
 		Backend::Shutdown();
 		Shell::Shutdown();
 		return -1;
 	}
 	
-	document->Show();
+	fileSelector->Show();
 
 	bool running = true;
 	while (running)
@@ -123,6 +113,8 @@ Rml::Context* context = nullptr;
 	}
 
 	// Shutdown RmlUi.
+	main->Close();
+	fileSelector->Close();
 	Rml::Shutdown();
 	Backend::Shutdown();
 	Shell::Shutdown();

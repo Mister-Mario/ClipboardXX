@@ -1,0 +1,69 @@
+.c-file-manager {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-file-manager__content {
+    background-color: black;
+    color: white;
+    border: 2px white;
+    width: 50%;
+    height: 50%;
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
+.c-file-manager__title {
+    text-decoration: underline;
+    font-size: 1.75rem;
+    font-weight: bold;
+    height: 10%;
+}
+
+.c-file-manager__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    height: 89%;
+}
+
+.c-file-manager__file-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.c-file-manager__file-input label {
+    font-size: 1.5rem;
+}
+
+
+.c-file-manager__delimiter {
+    display: flex;
+}
+
+.c-file-manager__delimiter label {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.c-file-manager__delimiter input {
+    padding-left: 10px;
+    background: white;
+    color: black;
+    font-size: 1.25rem;
+    width: 25rem;
+}
+
+.c-file-manager__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.c-file-manager__buttons button {
+    width: 100%;
+}

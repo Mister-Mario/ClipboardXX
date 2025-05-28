@@ -1,5 +1,4 @@
 {
-  "title": "Hola mundo",
   "header": {
     "import": "Importar archivo",
     "export": "Exportar archivo",
@@ -41,7 +40,23 @@
     "cell_19": "Celda memoria 19",
     "cell_20": "Celda memoria 20"
   },
-  "fileDialog": {
-    "title": "Seleccione un fichero"
+  "file": {
+    "button": {
+      "cancel": "Cancelar",
+      "confirm": "Confirmar"
+    },
+    "dialog": {
+      "title": "Seleccione un fichero"
+    },
+    "error": {
+      "delimiter": "Introduzca como delimitador 1 solo carácter",
+      "path": "Select a file"
+    },
+    "import": {
+      "title" : "Importar archivo",
+      "route" : "Ruta del archivo",
+      "button" : "Buscar",
+      "delimiter" : "Delimitador"     
+    }
   }
 }

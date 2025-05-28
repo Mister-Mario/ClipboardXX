@@ -34,31 +34,26 @@
 #include <format>
 #include "Utils/LinkManager.h"
 #include "Utils/FileManager.h"
+#include "Utils/TranslationManager.h"
  
- // The game's element context (declared in main.cpp).
- extern Rml::Context* context;
+// The game's element context (declared in main.cpp).
+extern Rml::Context* context;
+MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
+FileManager* fileManager = FileManager::Instance();
+TranslationManager* translationManager = TranslationManager::Instance();
 
- 
- 
- EventManager::EventManager() {}
- 
- EventManager::~EventManager() {}
- 
- 
- void EventManager::ProcessEvent(Rml::Event& event, const Rml::String& value)
- {
-    /**
-     * Input: "apple, banana, cherry"
-     * Delimiter: ','
-     * Output: ["apple", "banana", "cherry"]
-     */
-    
-    MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
-     Rml::StringList commands;
-     Rml::StringUtilities::ExpandString(commands, value, ';');
-     for (size_t i = 0; i < commands.size(); ++i)
-     {
-        // Check for custom commands.
+
+EventManager::EventManager() {}
+
+EventManager::~EventManager() {}
+
+
+void EventManager::ProcessEvent(Rml::Event& event, const Rml::String& value) {
+
+    Rml::StringList commands;
+    Rml::StringUtilities::ExpandString(commands, value, ';');
+    for (size_t i = 0; i < commands.size(); ++i) {
+
         Rml::StringList values;
         Rml::StringUtilities::ExpandString(values, commands[i], ' ');
 
@@ -92,56 +87,66 @@
         }
 
         if (values[0] == "import") {
-            std::vector<std::string> information = readFile(openFile().c_str(), ';');
-            memoryCellManager->loadCells(information);
+            changeDocument("file_manager_import", "main_window");
         }
 
+        if (values[0] == "import_search") {
+            fileManager->openFile();
+        }
 
-        /*
-         if (values[0] == "onescape" && values.size() > 1)
-         {
-             Rml::Input::KeyIdentifier key_identifier = (Rml::Input::KeyIdentifier)event.GetParameter<int>("key_identifier", 0);
-             if (key_identifier == Rml::Input::KI_ESCAPE)
-                 values.erase(values.begin());
-         }
- 
-         if (values[0] == "goto" && values.size() > 1)
-         {
-             if (LoadWindow(values[1]))
-                 event.GetTargetElement()->GetOwnerDocument()->Close();
-         }
-         else if (values[0] == "load" && values.size() > 1)
-         {
-             LoadWindow(values[1]);
-         }
-         else if (values[0] == "close")
-         {
-             Rml::ElementDocument* target_document = nullptr;
- 
-             if (values.size() > 1)
-                 target_document = context->GetDocument(values[1].c_str());
-             else
-                 target_document = event.GetTargetElement()->GetOwnerDocument();
- 
-             if (target_document != nullptr)
-                 target_document->Close();
-         }
-         else if (values[0] == "exit")
-         {
-             Backend::RequestExit();
-         }
-         else if (values[0] == "pause")
-         {
-             GameDetails::SetPaused(true);
-         }
-         else if (values[0] == "unpause")
-         {
-             GameDetails::SetPaused(false);
-         }
-         else
-         {
-             if (event_handler)
-                 event_handler->ProcessEvent(event, commands[i]);
-         }*/
-     }
- }
+        if (values[0] == "import_close") {
+            event.GetCurrentElement()->GetOwnerDocument()->GetElementById("delimiter-input-error")->SetInnerRML(translationManager->getString(""));
+            event.GetCurrentElement()->GetOwnerDocument()->GetElementById("file-path-error")->SetInnerRML(translationManager->getString(""));
+            changeDocument("main_window", "file_manager_import");
+        }
+
+        if (values[0] == "import_file") {
+            if(auto delimiterInput = event.GetCurrentElement()->GetOwnerDocument()->GetElementById("delimiter_input")){
+                Rml::String strDelimiter = delimiterInput->GetAttribute<Rml::String>("value", "");
+                if(strDelimiter.length() != 0 || fileManager->getLastFile().length() != 0) {
+                    const char* delimiter = strDelimiter.c_str();
+                    char finalDelimiter;
+                    if (strDelimiter.length() > 1 && strDelimiter[0] == '\\') 
+                    {
+                        switch (strDelimiter[1]) 
+                        {
+                            case 't':
+                                finalDelimiter = '\t';
+                                break;
+                            case 'n':
+                                finalDelimiter = '\n';
+                                break;
+                            case 'r':
+                                finalDelimiter = '\r';
+                                break;
+                            case '\\':
+                                finalDelimiter = '\\';
+                                break;
+                            default:
+                                finalDelimiter = strDelimiter[1];
+                                break;
+                        }
+                    }
+                    else 
+                    {
+                        finalDelimiter = strDelimiter[0];
+                    }
+                    memoryCellManager->loadCells(fileManager->readFile(fileManager->getLastFile().c_str(), finalDelimiter));
+                    changeDocument("main_window", "file_manager_import");
+                }
+                    
+            }
+
+        }
+    }
+}
+
+void EventManager::changeDocument(const Rml::String& documentToShowId, const Rml::String& documentToHideId) {
+    Rml::ElementDocument* documentToShow = context->GetDocument(documentToShowId);
+    Rml::ElementDocument* documentToHide = context->GetDocument(documentToHideId);
+
+    if (documentToShow && documentToHide) {
+        documentToHide->Hide();
+        documentToShow->Show();
+    }
+}

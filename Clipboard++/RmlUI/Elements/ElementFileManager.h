@@ -1,13 +1,13 @@
- #ifndef RMLUI_ELEMENTCLIPBOARD_H
- #define RMLUI_ELEMENTCLIPBOARD_H
+ #ifndef RMLUI_ELEMENT_FILE_MANAGER_H
+ #define RMLUI_ELEMENT_FILE_MANAGER_H
  
  #include <RmlUi/Core/Element.h>
  #include <RmlUi/Core/EventListener.h>
 
- class ElementClipboard : public Rml::Element {
+ class ElementFileManager : public Rml::Element {
  public:
-     ElementClipboard(const Rml::String& tag);
-     virtual ~ElementClipboard();
+     ElementFileManager(const Rml::String& tag);
+     virtual ~ElementFileManager();
  
      /// This will get called when we're added to the tree, which allows us to bind to events.
      void OnChildAdd(Rml::Element* element) override;
