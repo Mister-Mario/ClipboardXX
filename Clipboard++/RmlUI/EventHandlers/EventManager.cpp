@@ -33,6 +33,7 @@
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
 #include <format>
 #include "Utils/LinkManager.h"
+#include "Utils/FileManager.h"
  
  // The game's element context (declared in main.cpp).
  extern Rml::Context* context;
@@ -88,6 +89,11 @@
 
         if (values[0] == "help") {
             openHelp();
+        }
+
+        if (values[0] == "import") {
+            std::vector<std::string> information = readFile(openFile().c_str(), ';');
+            memoryCellManager->loadCells(information);
         }
 
 

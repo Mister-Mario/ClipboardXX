@@ -60,3 +60,11 @@ void MemoryCellManager::setSelectedCell(size_t index) {
 ClipboardInterface* MemoryCellManager::getSelectedCell() {
     return m_memoryCells[selectedCell].get();
 }
+
+void MemoryCellManager::loadCells(std::vector<std::string> information){
+    int sizeCells = m_memoryCells.size();
+    int sizeInformation = information.size();
+    for(int i = 0; i < sizeCells && i < sizeInformation; i++) {
+        m_memoryCells[i].get()->setText(information[i]);
+    }
+}

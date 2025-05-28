@@ -2,13 +2,13 @@
 <head>
     <title>app.title</title>
     <link type="text/rcss" href="rml.rcss"/>
-    <link type="text/rcss" href="window.rcss"/>
+    <link type="text/rcss" href="main.rcss"/>
 </head>
 <body id="main_window">
   <app id="app">
     <header class="c-glow-border">
         <div class="c-constrols__files">
-            <button>header.import</button>
+            <button onclick="import">header.import</button>
             <button>header.export</button>
         </div>
         <div class="c-controls__auto">

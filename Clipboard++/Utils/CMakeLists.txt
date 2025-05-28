@@ -1,4 +1,5 @@
 find_package(nlohmann_json REQUIRED)
+find_package(tinyfiledialogs CONFIG REQUIRED)
 find_package(Qt6 REQUIRED COMPONENTS Core Gui)
 
 add_library(ProjectUtils STATIC
@@ -6,7 +7,10 @@ add_library(ProjectUtils STATIC
     StringUtils.cpp
     TranslationManager.h
     TranslationManager.cpp
+    LinkManager.h
     LinkManager.cpp
+    FileManager.h
+    FileManager.cpp
 )
 
 target_include_directories(ProjectUtils 
@@ -20,4 +24,5 @@ target_link_libraries( ProjectUtils
         Qt::Core
         RmlUi::RmlUi
         nlohmann_json::nlohmann_json
+        tinyfiledialogs::tinyfiledialogs
 )
