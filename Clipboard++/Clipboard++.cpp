@@ -89,7 +89,7 @@ Rml::Context* context = nullptr;
 	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
 
 	Rml::ElementDocument* main = context->LoadDocument("assets/main.rml");
-	Rml::ElementDocument* fileSelector = context->LoadDocument("assets/file.rml");
+	Rml::ElementDocument* fileSelector = context->LoadDocument("assets/fileImport.rml");
 	if (!main || !fileSelector){
 		Rml::Shutdown();
 		Backend::Shutdown();
@@ -97,7 +97,7 @@ Rml::Context* context = nullptr;
 		return -1;
 	}
 	
-	fileSelector->Show();
+	main->Show();
 
 	bool running = true;
 	while (running)

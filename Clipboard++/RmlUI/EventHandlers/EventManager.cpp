@@ -95,8 +95,6 @@ void EventManager::ProcessEvent(Rml::Event& event, const Rml::String& value) {
         }
 
         if (values[0] == "import_close") {
-            event.GetCurrentElement()->GetOwnerDocument()->GetElementById("delimiter-input-error")->SetInnerRML(translationManager->getString(""));
-            event.GetCurrentElement()->GetOwnerDocument()->GetElementById("file-path-error")->SetInnerRML(translationManager->getString(""));
             changeDocument("main_window", "file_manager_import");
         }
 
