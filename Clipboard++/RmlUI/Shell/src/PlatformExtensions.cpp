@@ -76,7 +76,7 @@ Rml::String PlatformExtensions::FindSamplesRoot()
 	executable_path = executable_path.substr(0, executable_path.rfind('\\') + 1);
 
 	// We assume we have found the correct path if we can find the lookup file from it
-	const char* lookup_file = "assets\\rml.rcss";
+	const char* lookup_file = "assets\\styles\\rml.rcss";
 
 	for (const char* relative_path : candidate_paths)
 	{

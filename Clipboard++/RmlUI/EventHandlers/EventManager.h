@@ -52,6 +52,8 @@
  private:
      EventManager();
      ~EventManager();
+    static void changeDocument(const Rml::String& document_to_show, const Rml::String& document_to_hide);
+     
  };
  
  #endif

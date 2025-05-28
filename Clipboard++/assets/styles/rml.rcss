@@ -1,0 +1,115 @@
+/*
+* Default styles for all the basic elements.
+*/
+
+body {
+	font-family: LatoLatin;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 15dp;
+	color: white;
+    width: 100vw;
+    height: 100vh;
+}
+
+.c-glow-border {
+    position: relative;
+    border-radius: 20px;
+    background: #000;
+    border: .25rem white;
+}
+
+.c-button {
+    border-radius: 10px;
+    padding: .5rem;
+    text-align: center;
+	cursor: pointer;
+}
+
+.c-button--primary {
+    background: white;
+    color: black;
+}
+
+.c-button--primary:hover {
+    background: gray;
+    color: white;
+}
+
+.c-button--primary:active {
+    background: #a9a9a9;
+}
+
+.c-button--secondary {
+	background: black;
+	border: 2px white;
+	color: white;
+}
+
+.c-button--secondary:hover {
+    background: gray;
+    color: black;
+}
+
+.c-button--secondary:active {
+    background: #a9a9a9;
+}
+
+div
+{
+	display: block;
+}
+
+p
+{
+	display: block;
+	height: 1rem;
+}
+
+h1
+{
+	display: block;
+}
+
+em
+{
+	font-style: italic;
+}
+
+strong
+{
+	font-weight: bold;
+}
+
+select
+{
+	text-align: left;
+}
+
+tabset tabs
+{
+	display: block;
+}
+
+table {
+	box-sizing: border-box;
+	display: table;
+}
+tr {
+	box-sizing: border-box;
+	display: table-row;
+}
+td {
+	box-sizing: border-box;
+	display: table-cell;
+}
+col {
+	box-sizing: border-box;
+	display: table-column;
+}
+colgroup {
+	display: table-column-group;
+}
+thead, tbody, tfoot {
+	display: table-row-group;
+}

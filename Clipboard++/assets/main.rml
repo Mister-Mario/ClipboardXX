@@ -1,15 +1,14 @@
 <rml>
 <head>
-    <title>app.title</title>
-    <link type="text/rcss" href="rml.rcss"/>
-    <link type="text/rcss" href="main.rcss"/>
+    <link type="text/rcss" href="styles/rml.rcss"/>
+    <link type="text/rcss" href="styles/main.rcss"/>
 </head>
 <body id="main_window">
   <app id="app">
     <header class="c-glow-border">
         <div class="c-constrols__files">
-            <button onclick="import">header.import</button>
-            <button>header.export</button>
+            <button class="c-button c-button--primary" onclick="import">header.import</button>
+            <button class="c-button c-button--primary">header.export</button>
         </div>
         <div class="c-controls__auto">
             <label for="autopaste">header.autopaste</label>
@@ -17,7 +16,7 @@
             <label for="autocopy">header.autocopy</label>
             <input class id="autocopy" type="checkbox" value="autocopy"/>
         </div>
-        <button onclick="help" class="c-controls__help">?</button>
+        <button class="c-button c-button--primary c-controls__help" onclick="help">?</button>
     </header>        
     <main>
         <div class="c-cell c-glow-border">
@@ -25,14 +24,14 @@
             <div class="c-cell__content">
                 <div class="c-cell__text"><p id="cell_content"></p></div>
                 <div class="c-cell__actions">
-                    <button onclick="load">cell.load_clipboard</button>
-                    <button onclick="clear">cell.clear_contents</button>
+                    <button class="c-button c-button--primary" onclick="load">cell.load_clipboard</button>
+                    <button class="c-button c-button--primary" onclick="clear">cell.clear_contents</button>
                 </div>
             </div>
             <div class="c-cell__load">
                 <label for="input"></label>
                 <textarea id="input" name="input" placeholder="cell.input_placeholder"></textarea>
-                <button onclick="insert">cell.load_button</button>
+                <button class="c-button c-button--primary" onclick="insert">cell.load_button</button>
             </div>
             <div class="c-cell__shortcuts">
                 <span>shortcuts.paste</span>
@@ -44,27 +43,27 @@
         </div>
 
         <ul class="c-cells-list c-glow-border">
-            <button onclick="slot 0">list.clipboard</button>
-            <button onclick="slot 1">list.cell_1</button>
-            <button onclick="slot 2">list.cell_2</button>
-            <button onclick="slot 3">list.cell_3</button>
-            <button onclick="slot 4">list.cell_4</button>
-            <button onclick="slot 5">list.cell_5</button>
-            <button onclick="slot 6">list.cell_6</button>
-            <button onclick="slot 7">list.cell_7</button>
-            <button onclick="slot 8">list.cell_8</button>
-            <button onclick="slot 9">list.cell_9</button>
-            <button onclick="slot 10">list.cell_10</button>
-            <button onclick="slot 11">list.cell_11</button>
-            <button onclick="slot 12">list.cell_12</button>
-            <button onclick="slot 13">list.cell_13</button>
-            <button onclick="slot 14">list.cell_14</button>
-            <button onclick="slot 15">list.cell_15</button>
-            <button onclick="slot 16">list.cell_16</button>
-            <button onclick="slot 17">list.cell_17</button>
-            <button onclick="slot 18">list.cell_18</button>
-            <button onclick="slot 19">list.cell_19</button>
-            <button onclick="slot 20">list.cell_20</button>
+            <button class="c-button c-button--primary" onclick="slot 0">list.clipboard</button>
+            <button class="c-button c-button--primary" onclick="slot 1">list.cell_1</button>
+            <button class="c-button c-button--primary" onclick="slot 2">list.cell_2</button>
+            <button class="c-button c-button--primary" onclick="slot 3">list.cell_3</button>
+            <button class="c-button c-button--primary" onclick="slot 4">list.cell_4</button>
+            <button class="c-button c-button--primary" onclick="slot 5">list.cell_5</button>
+            <button class="c-button c-button--primary" onclick="slot 6">list.cell_6</button>
+            <button class="c-button c-button--primary" onclick="slot 7">list.cell_7</button>
+            <button class="c-button c-button--primary" onclick="slot 8">list.cell_8</button>
+            <button class="c-button c-button--primary" onclick="slot 9">list.cell_9</button>
+            <button class="c-button c-button--primary" onclick="slot 10">list.cell_10</button>
+            <button class="c-button c-button--primary" onclick="slot 11">list.cell_11</button>
+            <button class="c-button c-button--primary" onclick="slot 12">list.cell_12</button>
+            <button class="c-button c-button--primary" onclick="slot 13">list.cell_13</button>
+            <button class="c-button c-button--primary" onclick="slot 14">list.cell_14</button>
+            <button class="c-button c-button--primary" onclick="slot 15">list.cell_15</button>
+            <button class="c-button c-button--primary" onclick="slot 16">list.cell_16</button>
+            <button class="c-button c-button--primary" onclick="slot 17">list.cell_17</button>
+            <button class="c-button c-button--primary" onclick="slot 18">list.cell_18</button>
+            <button class="c-button c-button--primary" onclick="slot 19">list.cell_19</button>
+            <button class="c-button c-button--primary" onclick="slot 20">list.cell_20</button>
         </ul>
     </main>
   </app>

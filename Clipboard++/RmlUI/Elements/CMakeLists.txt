@@ -1,6 +1,8 @@
 add_library(Elements STATIC
     ElementClipboard.h
     ElementClipboard.cpp
+    ElementFileManager.h
+    ElementFileManager.cpp
 )
 
 # Set include directories
