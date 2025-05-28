@@ -2,8 +2,9 @@
 #define FILE_MANAGER_H
 
 #include <string>
+#include <vector>
 
 std::string openFile();
-void readFile(const char* filePath);
+std::vector<std::string> readFile(const char* filePath, char delimiter);
 
 #endif

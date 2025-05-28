@@ -5,24 +5,22 @@
 #include <iostream>
 
 std::string openFile() {
-    char const * filterPatterns[2] = { "*.txt", "*.csv" };
+    char const * filterPatterns[3] = { "*.txt", "*.csv", "*.tsv" };
 
     TranslationManager* translator = TranslationManager::Instance(); 
 
     char const * filePath = tinyfd_openFileDialog(
         translator->getString("fileDialog.title").c_str(), 
         "",                      
-        2,                       
+        3,                       
         filterPatterns,          
-        "*.txt, *.csv",    
+        "*.txt, *.csv, *.tsv",    
         0                       
-    );
-
-    
+    );    
 
     if (filePath) {
         std::string strFilePath(filePath);
-        if (strFilePath.ends_with(".txt") || strFilePath.ends_with(".csv")) {
+        if (strFilePath.ends_with(".txt") || strFilePath.ends_with(".csv") || strFilePath.ends_with(".tsv")) {
             std::cout << "File selected: " << filePath << std::endl;
             return strFilePath;
         }
@@ -36,16 +34,19 @@ std::string openFile() {
     return "";
 }
 
-void readFile(const char* filePath) {
+std::vector<std::string> readFile(const char* filePath, char delimiter) {
     std::ifstream fileStream(filePath);
     if (!fileStream.is_open()) {
         std::cerr << "Cannot open file" << std::endl;
-        return;
+        return {} ;
     }
 
-    std::string line;
-    int lineNumber = 1;
-    while (std::getline(fileStream, line)) {
-        std::cout << "Line " << lineNumber++ << ": " << line << std::endl;
+    std::vector<std::string> fields;
+    std::string field;
+
+    while (std::getline(fileStream, field, delimiter)) {
+        fields.push_back(field);
     }
+
+    return fields;
 }

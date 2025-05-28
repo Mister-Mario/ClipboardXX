@@ -2,7 +2,7 @@
 <head>
     <title>app.title</title>
     <link type="text/rcss" href="rml.rcss"/>
-    <link type="text/rcss" href="window.rcss"/>
+    <link type="text/rcss" href="main.rcss"/>
 </head>
 <body id="main_window">
   <app id="app">

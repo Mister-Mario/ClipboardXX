@@ -92,7 +92,8 @@
         }
 
         if (values[0] == "import") {
-            readFile(openFile().c_str());
+            std::vector<std::string> information = readFile(openFile().c_str(), ';');
+            memoryCellManager->loadCells(information);
         }
 
 
