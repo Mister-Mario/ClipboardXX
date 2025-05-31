@@ -3,27 +3,27 @@
         <link type="text/rcss" href="styles/rml.rcss"/>
         <link type="text/rcss" href="styles/file.rcss"/>
     </head>
-    <body id="file_manager_import" class="c-file-manager">
+    <body id="file_manager_export" class="c-file-manager">
         <div class="c-file-manager__content">
-            <h1 class="c-file-manager__title">file.import.title</h1>
+            <h1 class="c-file-manager__title">file.title.export</h1>
 
-            <fileImport id="fileImport" class="c-file-manager__form">
+            <fileExport id="fileExport" class="c-file-manager__form">
                 <div class="c-file-manager__file-input">
-                    <label>file.import.route</label>
-                    <p id="file_import_path"></p>
-                    <button class="c-button c-button--primary" onclick="import_search">file.import.button</button>
+                    <label>file.route</label>
+                    <p id="file_path"></p>
+                    <button class="c-button c-button--primary" onclick="export_search">file.button.search</button>
                 </div>
 
                 <div class="c-file-manager__delimiter">
-                    <label>file.import.delimiter</label>
+                    <label>file.delimiter</label>
                     <input type="text" id="delimiter_input" size="1"/>
                 </div>
 
                 <div class="c-file-manager__buttons">
-                    <button id="import_button_cancel" class="c-button c-button--secondary" onclick="import_close">file.button.cancel</button>
-                    <button id="import_button_import" class="c-button c-button--primary" onclick="import_file">file.button.confirm</button>
+                    <button id="import_button_cancel" class="c-button c-button--secondary" onclick="export_close">file.button.cancel</button>
+                    <button id="import_button_import" class="c-button c-button--primary" onclick="export_file">file.button.confirm</button>
                 </div>
-            </fileImport>
+            </fileExport>
         </div>
     </body>
 </rml>

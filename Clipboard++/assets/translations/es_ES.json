@@ -43,20 +43,38 @@
   "file": {
     "button": {
       "cancel": "Cancelar",
-      "confirm": "Confirmar"
+      "confirm": "Confirmar",
+      "search": "Buscar"
     },
+    "delimiter" : "Delimitador",
     "dialog": {
-      "title": "Seleccione un fichero"
+      "message": {
+        "delimiter": "Añada un delimitador para poder continuar",
+        "export": {
+          "correct": "El archivo se ha exportado correctamente.",
+          "error": "No se pudo exportar el archivo.",
+          "search": "Seleccione un fichero válido para exportar los contenidos"
+        },
+        "extension":  "La extensión del archivo no esta soportada, solo .txt, .csv o .tsv",
+        "import": {
+          "correct": "El archivo se ha importado correctamente.",
+          "error": "No se pudo importar el archivo.",
+          "search": "Seleccione un fichero válido para importar los contenidos"
+        }
+      },
+      "title": {
+        "import": "Seleccione un fichero a importar",
+        "export": "Seleccione un fichero a exportar"
+      }
     },
     "error": {
       "delimiter": "Introduzca como delimitador 1 solo carácter",
       "path": "Select a file"
     },
-    "import": {
-      "title" : "Importar archivo",
-      "route" : "Ruta del archivo",
-      "button" : "Buscar",
-      "delimiter" : "Delimitador"     
+    "route" : "Ruta del archivo" ,
+    "title" : {
+      "import": "Importar archivo",
+      "export": "Exportar archivo"
     }
   }
 }

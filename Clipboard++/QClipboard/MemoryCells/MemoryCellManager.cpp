@@ -68,3 +68,12 @@ void MemoryCellManager::loadCells(std::vector<std::string> information){
         m_memoryCells[i].get()->setText(information[i]);
     }
 }
+
+std::vector<std::string> MemoryCellManager::getContents() {
+    std::vector<std::string> contents = {};
+    int sizeCells = m_memoryCells.size();
+    for(int i = 0; i < sizeCells; i++){
+        contents.push_back(m_memoryCells[i].get()->text());
+    }
+    return contents;
+}
