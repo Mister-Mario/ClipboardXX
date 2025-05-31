@@ -26,12 +26,23 @@ ElementFileManager::~ElementFileManager()
 void ElementFileManager::OnUpdate()
 {
    FileManager* fileManager = FileManager::Instance();
-   Rml::ElementDocument* fileManagerImport = context->GetDocument("file_manager_import");
+    Rml::ElementDocument* activeDoc = nullptr;
 
-   if (!fileManagerImport)
-      return;
+    Rml::ElementDocument* importDoc = context->GetDocument("file_manager_import");
+    if (importDoc && importDoc->IsVisible()) {
+        activeDoc = importDoc;
+    } else {
+        Rml::ElementDocument* exportDoc = context->GetDocument("file_manager_export");
+        if (exportDoc && exportDoc->IsVisible()) {
+            activeDoc = exportDoc;
+        }
+    }
 
-   if(Rml::Element* filePath = fileManagerImport->GetElementById("file_import_path")){
+    if (!activeDoc) {
+        return;
+    }
+
+   if(Rml::Element* filePath = activeDoc->GetElementById("file_path")){
       std::string content = fileManager->getLastFile().substr(0, 100);
       filePath->SetInnerRML(Utils::escapeHtml(content));
    }

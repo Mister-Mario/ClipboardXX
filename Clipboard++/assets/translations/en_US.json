@@ -43,20 +43,34 @@
   "file": {
     "button": {
       "cancel": "Cancel",
-      "confirm": "Confirm"
+      "confirm": "Confirm",
+      "search": "Browse"
     },
+    "delimiter": "Delimiter",
     "dialog": {
-      "title": "Select a file"
-    },    
+      "message": {
+        "delimiter": "Add a delimiter to continue",
+        "export": {
+          "correct": "The file has been exported successfully.",
+          "error": "Failed to export the file.",
+          "search": "Select a valid file to export the contents"
+        },
+        "extension": "The file extension is not supported, only .txt, .csv or .tsv are allowed.",
+        "import": {
+          "correct": "The file has been imported successfully.",
+          "error": "Failed to import the file.",
+          "search": "Select a valid file to import the contents"
+        }
+      }
+    },
     "error": {
-      "delimiter": "Introduce 1 character as a delimiter",
+      "delimiter": "Enter a single character as delimiter",
       "path": "Select a file"
     },
-    "import": {
-      "title" : "Import a file",
-      "route" : "File's route",
-      "button" : "Search",
-      "delimiter" : "Delimiter"     
+    "route": "File path",
+    "title": {
+      "import": "Import file",
+      "export": "Export file"
     }
   }
 }

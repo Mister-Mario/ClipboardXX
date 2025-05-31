@@ -84,20 +84,22 @@ Rml::Context* context = nullptr;
 
 	Rml::ElementInstancerGeneric<ElementFileManager> element_file_instancer;
 	Rml::Factory::RegisterElementInstancer("fileImport", &element_file_instancer);
-
+	Rml::Factory::RegisterElementInstancer("fileExport", &element_file_instancer);
+	
 	EventListenerInstancer event_listener_instancer;
 	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
 
 	Rml::ElementDocument* main = context->LoadDocument("assets/main.rml");
-	Rml::ElementDocument* fileSelector = context->LoadDocument("assets/file.rml");
-	if (!main || !fileSelector){
+	Rml::ElementDocument* fileImport = context->LoadDocument("assets/fileImport.rml");
+	Rml::ElementDocument* fileExport = context->LoadDocument("assets/fileExport.rml");
+	if (!main || !fileImport || !fileExport){
 		Rml::Shutdown();
 		Backend::Shutdown();
 		Shell::Shutdown();
 		return -1;
 	}
 	
-	fileSelector->Show();
+	main->Show();
 
 	bool running = true;
 	while (running)
@@ -114,7 +116,8 @@ Rml::Context* context = nullptr;
 
 	// Shutdown RmlUi.
 	main->Close();
-	fileSelector->Close();
+	fileImport->Close();
+	fileExport->Close();
 	Rml::Shutdown();
 	Backend::Shutdown();
 	Shell::Shutdown();

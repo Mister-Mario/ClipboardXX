@@ -5,17 +5,17 @@
     </head>
     <body id="file_manager_import" class="c-file-manager">
         <div class="c-file-manager__content">
-            <h1 class="c-file-manager__title">file.import.title</h1>
+            <h1 class="c-file-manager__title">file.title.import</h1>
 
             <fileImport id="fileImport" class="c-file-manager__form">
                 <div class="c-file-manager__file-input">
-                    <label>file.import.route</label>
-                    <p id="file_import_path"></p>
-                    <button class="c-button c-button--primary" onclick="import_search">file.import.button</button>
+                    <label>file.route</label>
+                    <p id="file_path"></p>
+                    <button class="c-button c-button--primary" onclick="import_search">file.button.search</button>
                 </div>
 
                 <div class="c-file-manager__delimiter">
-                    <label>file.import.delimiter</label>
+                    <label>file.delimiter</label>
                     <input type="text" id="delimiter_input" size="1"/>
                 </div>
 
@@ -26,4 +26,4 @@
             </fileImport>
         </div>
     </body>
-</rml>
+</rml> 

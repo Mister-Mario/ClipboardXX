@@ -40,7 +40,7 @@
 extern Rml::Context* context;
 MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
 FileManager* fileManager = FileManager::Instance();
-TranslationManager* translationManager = TranslationManager::Instance();
+TranslationManager* translator = TranslationManager::Instance();
 
 
 EventManager::EventManager() {}
@@ -86,57 +86,65 @@ void EventManager::ProcessEvent(Rml::Event& event, const Rml::String& value) {
             openHelp();
         }
 
+        if (values[0] == "import_search") {
+            fileManager->searchImportFile(translator->getString("file.dialog.title.import").c_str());
+        }
+
         if (values[0] == "import") {
             changeDocument("file_manager_import", "main_window");
         }
 
-        if (values[0] == "import_search") {
-            fileManager->openFile();
-        }
-
         if (values[0] == "import_close") {
-            event.GetCurrentElement()->GetOwnerDocument()->GetElementById("delimiter-input-error")->SetInnerRML(translationManager->getString(""));
-            event.GetCurrentElement()->GetOwnerDocument()->GetElementById("file-path-error")->SetInnerRML(translationManager->getString(""));
             changeDocument("main_window", "file_manager_import");
         }
 
         if (values[0] == "import_file") {
-            if(auto delimiterInput = event.GetCurrentElement()->GetOwnerDocument()->GetElementById("delimiter_input")){
-                Rml::String strDelimiter = delimiterInput->GetAttribute<Rml::String>("value", "");
-                if(strDelimiter.length() != 0 || fileManager->getLastFile().length() != 0) {
-                    const char* delimiter = strDelimiter.c_str();
-                    char finalDelimiter;
-                    if (strDelimiter.length() > 1 && strDelimiter[0] == '\\') 
-                    {
-                        switch (strDelimiter[1]) 
-                        {
-                            case 't':
-                                finalDelimiter = '\t';
-                                break;
-                            case 'n':
-                                finalDelimiter = '\n';
-                                break;
-                            case 'r':
-                                finalDelimiter = '\r';
-                                break;
-                            case '\\':
-                                finalDelimiter = '\\';
-                                break;
-                            default:
-                                finalDelimiter = strDelimiter[1];
-                                break;
-                        }
-                    }
-                    else 
-                    {
-                        finalDelimiter = strDelimiter[0];
-                    }
-                    memoryCellManager->loadCells(fileManager->readFile(fileManager->getLastFile().c_str(), finalDelimiter));
-                    changeDocument("main_window", "file_manager_import");
+            if(auto delimiter = event.GetCurrentElement()->GetOwnerDocument()->GetElementById("delimiter_input")){
+                Rml::String strDelimiter = delimiter->GetAttribute<Rml::String>("value", "");
+                if(strDelimiter.length() == 0){
+                    fileManager->showErrorDialog(translator->getString("file.dialog.message.delimiter").c_str());
+                    continue;
                 }
-                    
+
+                if(fileManager->getLastFile().length() == 0) {
+                    fileManager->showErrorDialog(translator->getString("file.dialog.message.import.search").c_str());
+                    continue;
+                }
+
+                memoryCellManager->loadCells(fileManager->readFile(fileManager->getLastFile().c_str(), getDelimiter(strDelimiter)));
+                changeDocument("main_window", "file_manager_import");
             }
 
+        }
+
+        if (values[0] == "export") {
+            changeDocument("file_manager_export", "main_window");
+        }
+
+        if (values[0] == "export_search") {
+            fileManager->searchExportFile(translator->getString("file.dialog.title.export").c_str());
+        }
+
+        if (values[0] == "export_close") {
+            changeDocument("main_window", "file_manager_export");
+        }
+
+        if (values[0] == "export_file") {
+            if(auto delimiter = event.GetCurrentElement()->GetOwnerDocument()->GetElementById("delimiter_input")){
+                Rml::String strDelimiter = delimiter->GetAttribute<Rml::String>("value", "");
+                if(strDelimiter.length() == 0){
+                    fileManager->showErrorDialog(translator->getString("file.dialog.message.delimiter").c_str());
+                    continue;
+                }
+
+                if(fileManager->getLastFile().length() == 0) {
+                    fileManager->showErrorDialog(translator->getString("file.dialog.message.export.search").c_str());
+                    continue;
+                }
+
+                fileManager->exportFile(fileManager->getLastFile().c_str(), getDelimiter(strDelimiter), memoryCellManager->getContents());
+                changeDocument("main_window", "file_manager_export"); 
+            }
         }
     }
 }
@@ -148,5 +156,33 @@ void EventManager::changeDocument(const Rml::String& documentToShowId, const Rml
     if (documentToShow && documentToHide) {
         documentToHide->Hide();
         documentToShow->Show();
+    }
+}
+
+char EventManager::getDelimiter(const Rml::String strDelimiter) {
+    if (strDelimiter.length() > 1 && strDelimiter[0] == '\\') 
+    {
+        switch (strDelimiter[1]) 
+        {
+            case 't':
+                return '\t';
+                break;
+            case 'n':
+                return '\n';
+                break;
+            case 'r':
+                return '\r';
+                break;
+            case '\\':
+                return '\\';
+                break;
+            default:
+                return strDelimiter[1];
+                break;
+        }
+    }
+    else 
+    {
+        return strDelimiter[0];
     }
 }

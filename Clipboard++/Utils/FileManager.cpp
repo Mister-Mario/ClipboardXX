@@ -1,10 +1,10 @@
 #include "FileManager.h"
-#include "TranslationManager.h"
 #include <tinyfiledialogs.h>
 #include <fstream>                   
 #include <iostream>
 
 FileManager* FileManager::m_instance = nullptr;
+TranslationManager* FileManager::translator = TranslationManager::Instance();
 
 FileManager::FileManager(){}
 
@@ -19,13 +19,11 @@ std::string FileManager::getLastFile() const{
     return m_lastFile;
 }
 
-std::string FileManager::openFile() {
+std::string FileManager::searchImportFile(const char* title) {
     char const * filterPatterns[3] = { "*.txt", "*.csv", "*.tsv" };
 
-    TranslationManager* translator = TranslationManager::Instance(); 
-
     char const * filePath = tinyfd_openFileDialog(
-        translator->getString("file.dialog.title").c_str(), 
+        title, 
         "",                      
         3,                       
         filterPatterns,          
@@ -40,10 +38,8 @@ std::string FileManager::openFile() {
             return strFilePath;
         }
         else {
-            std::cout << "Wrong extension: " << filePath << std::endl;
+            showErrorDialog(translator->getString("file.dialog.message.extension").c_str());
         }
-    } else {
-        std::cout << "File selection canceled" << std::endl;
     }
 
     return "";
@@ -51,17 +47,67 @@ std::string FileManager::openFile() {
 
 std::vector<std::string> FileManager::readFile(const char* filePath, char delimiter) {
     std::ifstream fileStream(filePath);
-    if (!fileStream.is_open()) {
-        std::cerr << "Cannot open file" << std::endl;
+    if (fileStream.is_open()) {
+        std::vector<std::string> fields;
+        std::string field;
+
+        while (std::getline(fileStream, field, delimiter)) {
+            fields.push_back(field);
+        }
+        fileStream.close();
+        showGoodDialog(translator->getString("file.dialog.message.import.correct").c_str());
+        return fields;
+    }
+    else {
+        showErrorDialog(translator->getString("file.dialog.message.import.error").c_str());
         return {} ;
     }
 
-    std::vector<std::string> fields;
-    std::string field;
+}
 
-    while (std::getline(fileStream, field, delimiter)) {
-        fields.push_back(field);
+std::string FileManager::searchExportFile(const char* title) {
+    char const * filterPatterns[3] = { "*.txt", "*.csv", "*.tsv" };
+
+    char const * filePath = tinyfd_saveFileDialog(
+        title, 
+        m_lastFile.length() == 0 ? "Clipboard++_Export.txt" : m_lastFile.c_str(),                      
+        3,                       
+        filterPatterns,          
+        "*.txt, *.csv, *.tsv" 
+    );    
+
+    if (filePath) {
+        std::string strFilePath(filePath);
+        if (strFilePath.ends_with(".txt") || strFilePath.ends_with(".csv") || strFilePath.ends_with(".tsv")) {
+            m_lastFile = strFilePath;
+            return strFilePath;
+        }
+        else {
+            showErrorDialog(translator->getString("file.dialog.message.extension").c_str());
+        }
     }
 
-    return fields;
+    return "";
+}
+
+void FileManager::exportFile(const char* filePath, char delimiter, std::vector<std::string> content) {
+    std::ofstream exportFile(filePath);
+
+    if (exportFile.is_open()) {
+        for (const std::string& linea : content) {
+            exportFile << linea << delimiter;
+        }
+        exportFile.close();
+        showGoodDialog(translator->getString("file.dialog.message.export.correct").c_str());
+
+    } else {
+        showErrorDialog(translator->getString("file.dialog.message.export.error").c_str());
+    }
+}
+
+void FileManager::showErrorDialog(const char* message) {
+    tinyfd_messageBox(NULL, message, "ok", "error", 1); 
+}
+void FileManager::showGoodDialog(const char* message){   
+    tinyfd_messageBox(NULL, message, "ok", "info", 1);
 }
