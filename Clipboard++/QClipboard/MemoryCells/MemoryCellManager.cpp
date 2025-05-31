@@ -26,7 +26,7 @@ ClipboardInterface* MemoryCellManager::getMemoryCell(size_t index) {
 
 size_t MemoryCellManager::addMemoryCell() {
     // Create the new memory cell
-    auto newCell = std::make_unique<MemoryCell>(std::format("Memory cell {}", m_memoryCells.size()));
+    auto newCell = std::make_unique<MemoryCell>(std::format("cell_{}", m_memoryCells.size()));
     
     // Do additional setup for new cell here
     // ...

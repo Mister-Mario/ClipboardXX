@@ -6,6 +6,8 @@
 #include <RmlUi/Core/SystemInterface.h>
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
 #include "StringUtils.h"
+#include "TranslationManager.h"
+#include <format>
 
  // The applicaction's element context (declared in main.cpp).
 extern Rml::Context* context;
@@ -23,14 +25,16 @@ extern Rml::Context* context;
  
  void ElementClipboard::OnUpdate()
  {
-    MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
-    Rml::ElementDocument* document = context->GetDocument("main_window");
-    if(Rml::Element* selectedCellNameElement = document->GetElementById("cell_name"))
-        selectedCellNameElement->SetInnerRML(memoryCellManager->getSelectedCell()->name());
-    if(Rml::Element* selectedCellConentElement = document->GetElementById("cell_content")){
-        std::string content = memoryCellManager->getSelectedCell()->text().substr(0, 1000);
-        selectedCellConentElement->SetInnerRML(Utils::escapeHtml(content));
-    }
+   
+   TranslationManager* translator = TranslationManager::Instance();
+   MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
+   Rml::ElementDocument* document = context->GetDocument("main_window");
+   if(Rml::Element* selectedCellNameElement = document->GetElementById("cell_name"))
+      selectedCellNameElement->SetInnerRML(translator->getString(std::format("list.{}" ,memoryCellManager->getSelectedCell()->name())));
+   if(Rml::Element* selectedCellConentElement = document->GetElementById("cell_content")){
+      std::string content = memoryCellManager->getSelectedCell()->text().substr(0, 1000);
+      selectedCellConentElement->SetInnerRML(Utils::escapeHtml(content));
+   }
 
 }
  
