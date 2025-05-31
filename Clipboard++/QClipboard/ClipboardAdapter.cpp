@@ -13,7 +13,7 @@ std::string ClipboardAdapter::text() const {
 }
 
 std::string ClipboardAdapter::name() const {
-    return "Clipboard";
+    return "clipboard";
 }
 
 void ClipboardAdapter::clear() {

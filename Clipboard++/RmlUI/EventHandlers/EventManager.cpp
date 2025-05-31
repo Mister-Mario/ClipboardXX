@@ -40,7 +40,6 @@
 extern Rml::Context* context;
 MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
 FileManager* fileManager = FileManager::Instance();
-TranslationManager* translator = TranslationManager::Instance();
 
 
 EventManager::EventManager() {}
@@ -49,7 +48,8 @@ EventManager::~EventManager() {}
 
 
 void EventManager::ProcessEvent(Rml::Event& event, const Rml::String& value) {
-
+    
+    TranslationManager* translator = TranslationManager::Instance();
     Rml::StringList commands;
     Rml::StringUtilities::ExpandString(commands, value, ';');
     for (size_t i = 0; i < commands.size(); ++i) {
