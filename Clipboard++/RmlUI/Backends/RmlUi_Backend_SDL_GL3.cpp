@@ -384,3 +384,15 @@ void Backend::PresentFrame()
 	// Optional, used to mark frames during performance profiling.
 	RMLUI_FrameMark;
 }
+
+void Backend::ModifyWindowSize(Rml::Context* context, int w, int h) {
+	SDL_SetWindowSize(SDL_GL_GetCurrentWindow(), w, h);
+	SDL_SetWindowPosition(SDL_GL_GetCurrentWindow(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+	Rml::Vector2i dimensions = {w, h};
+	context->SetDimensions(dimensions);
+	data->render_interface.SetViewport(w, h);
+}
+
+void Backend::SetBorder(bool flag){
+	SDL_SetWindowBordered(SDL_GL_GetCurrentWindow(), flag);
+}

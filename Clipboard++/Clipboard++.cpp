@@ -1,6 +1,7 @@
 #include <RmlUi/Core.h>
 #include <RmlUi/Debugger.h>
 #include <RmlUi_Backend.h>
+#include <RmlUi_Renderer_GL3.h>
 #include <EventListenerInstancer.h>
 #include <ElementFileManager.h>
 #include <ElementClipboard.h>
@@ -62,6 +63,8 @@ Rml::Context* context = nullptr;
 	Rml::SetSystemInterface(Backend::GetSystemInterface());
 	Rml::SetRenderInterface(Backend::GetRenderInterface());
 
+
+
 	// RmlUi initialisation.
 	Rml::Initialise();
 
@@ -75,6 +78,9 @@ Rml::Context* context = nullptr;
 		Shell::Shutdown();
 		return -1;
 	}
+
+	Backend::ModifyWindowSize(context, 1200, 500);
+	Backend::SetBorder(false);
 
 	Rml::Debugger::Initialise(context);
 	Shell::LoadFonts();
@@ -92,14 +98,14 @@ Rml::Context* context = nullptr;
 	Rml::ElementDocument* main = context->LoadDocument("assets/main.rml");
 	Rml::ElementDocument* fileImport = context->LoadDocument("assets/fileImport.rml");
 	Rml::ElementDocument* fileExport = context->LoadDocument("assets/fileExport.rml");
-	if (!main || !fileImport || !fileExport){
+	Rml::ElementDocument* shortcutsMenu = context->LoadDocument("assets/shortcutsMenu.rml"); 
+	if (!main || !fileImport || !fileExport || !shortcutsMenu){
 		Rml::Shutdown();
 		Backend::Shutdown();
 		Shell::Shutdown();
 		return -1;
 	}
-	
-	main->Show();
+	shortcutsMenu->Show();
 
 	bool running = true;
 	while (running)

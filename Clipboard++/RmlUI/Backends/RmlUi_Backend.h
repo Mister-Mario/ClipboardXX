@@ -67,6 +67,10 @@ void BeginFrame();
 // Presents the rendered frame to the screen, call after rendering the RmlUi context.
 void PresentFrame();
 
+//Added methods
+void ModifyWindowSize(Rml::Context* context, int w, int h);
+void SetBorder(bool flag);
+
 } // namespace Backend
 
 #endif
