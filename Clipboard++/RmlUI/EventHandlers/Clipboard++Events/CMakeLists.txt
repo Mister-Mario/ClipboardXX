@@ -26,6 +26,8 @@ add_library(Events STATIC
     ExportCloseEvent.cpp
     ExportFileEvent.h
     ExportFileEvent.cpp
+    ExpandEvent.h
+    ExpandEvent.cpp
 )
 
 # Set include directories

@@ -70,6 +70,7 @@ void PresentFrame();
 //Added methods
 void ModifyWindowSize(Rml::Context* context, int w, int h);
 void SetBorder(bool flag);
+void MaximizeWindow(Rml::Context* context);
 
 } // namespace Backend
 

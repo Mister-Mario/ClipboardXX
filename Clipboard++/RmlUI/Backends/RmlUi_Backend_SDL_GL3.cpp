@@ -388,11 +388,17 @@ void Backend::PresentFrame()
 void Backend::ModifyWindowSize(Rml::Context* context, int w, int h) {
 	SDL_SetWindowSize(SDL_GL_GetCurrentWindow(), w, h);
 	SDL_SetWindowPosition(SDL_GL_GetCurrentWindow(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
-	Rml::Vector2i dimensions = {w, h};
-	context->SetDimensions(dimensions);
+	context->SetDimensions(Rml::Vector2i(w, h));
 	data->render_interface.SetViewport(w, h);
 }
 
 void Backend::SetBorder(bool flag){
 	SDL_SetWindowBordered(SDL_GL_GetCurrentWindow(), flag);
+}
+
+void Backend::MaximizeWindow(Rml::Context* context) {
+	SDL_MaximizeWindow(SDL_GL_GetCurrentWindow());
+	int width, height;
+	SDL_GetWindowSizeInPixels(SDL_GL_GetCurrentWindow(), &width, &height);
+	context->SetDimensions(Rml::Vector2i(width, height));
 }

@@ -16,7 +16,7 @@ void ExportFileEvent::handle(Rml::Event& event, Rml::StringList values) {
             return;
         }
 
-        m_fileManager->exportFile(m_fileManager->getLastFile().c_str(), Utils::getDelimiter(strDelimiter), m_memoryCellManager->getContents());
+        m_fileManager->exportFile(m_fileManager->getLastFile().c_str(), StringUtils::getDelimiter(strDelimiter), m_memoryCellManager->getContents());
         EventManager::ChangeDocument("main_window", "file_manager_export"); 
     }
 }

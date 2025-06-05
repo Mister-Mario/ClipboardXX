@@ -33,7 +33,7 @@ extern Rml::Context* context;
       selectedCellNameElement->SetInnerRML(translator->getString(std::format("list.{}" ,memoryCellManager->getSelectedCell()->name())));
    if(Rml::Element* selectedCellConentElement = document->GetElementById("cell_content")){
       std::string content = memoryCellManager->getSelectedCell()->text().substr(0, 1000);
-      selectedCellConentElement->SetInnerRML(Utils::escapeHtml(content));
+      selectedCellConentElement->SetInnerRML(StringUtils::escapeHtml(content));
    }
 
 }

@@ -4,7 +4,7 @@
     <link type="text/rcss" href="styles/shortcutsMenu.rcss"/>
 </head>
 <body id="shortcuts_menu">
-    <div class="shortcuts">
+    <shortcuts id="shortcuts">
         <header>
             <input id="search" type="text" placeholder="Search for a memory cell"/>
             <button class="c-button c-button--primary" onclick="expand">Expand</button>
@@ -30,6 +30,6 @@
                 <button class="c-button c-button--primary">Paste</button>
             </div>
         </ol>
-    </div>
+    </shortcuts>
 </body>
 </rml>

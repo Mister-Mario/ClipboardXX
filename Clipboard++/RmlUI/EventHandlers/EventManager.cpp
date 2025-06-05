@@ -48,6 +48,7 @@
 #include "Clipboard++Events/ExportEvent.h"
 #include "Clipboard++Events/ExportCloseEvent.h"
 #include "Clipboard++Events/ExportFileEvent.h"
+#include "Clipboard++Events/ExpandEvent.h"
 
 // The game's element context (declared in main.cpp).
 extern Rml::Context* context;
@@ -74,6 +75,7 @@ void EventManager::LoadMap() {
     events["export"] = std::make_unique<ExportEvent>();
     events["export_close"] = std::make_unique<ExportCloseEvent>();
     events["export_file"] = std::make_unique<ExportFileEvent>(memoryCellManager, fileManager, translator);
+    events["expand"] = std::make_unique<ExpandEvent>();
 }
 
 void EventManager::ProcessEvent(Rml::Event& event, const Rml::String& value) {

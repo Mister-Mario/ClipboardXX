@@ -79,8 +79,8 @@ Rml::Context* context = nullptr;
 		return -1;
 	}
 
-	// Backend::ModifyWindowSize(context, 1200, 500);
-	// Backend::SetBorder(false);
+	Backend::ModifyWindowSize(context, 1200, 500);
+	Backend::SetBorder(false);
 
 	Rml::Debugger::Initialise(context);
 	Shell::LoadFonts();
@@ -106,7 +106,7 @@ Rml::Context* context = nullptr;
 		Shell::Shutdown();
 		return -1;
 	}
-	main->Show();
+	shortcutsMenu->Show();
 
 	bool running = true;
 	while (running)
