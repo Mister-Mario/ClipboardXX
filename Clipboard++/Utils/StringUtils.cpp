@@ -22,4 +22,32 @@ namespace Utils {
         replaceAll(result, "\"", "&quot;");
         return result;
     }
+
+    char getDelimiter(const Rml::String strDelimiter) {
+    if (strDelimiter.length() > 1 && strDelimiter[0] == '\\') 
+    {
+        switch (strDelimiter[1]) 
+        {
+            case 't':
+                return '\t';
+                break;
+            case 'n':
+                return '\n';
+                break;
+            case 'r':
+                return '\r';
+                break;
+            case '\\':
+                return '\\';
+                break;
+            default:
+                return strDelimiter[1];
+                break;
+        }
+    }
+    else 
+    {
+        return strDelimiter[0];
+    }
+}
 }

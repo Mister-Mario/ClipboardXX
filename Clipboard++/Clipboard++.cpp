@@ -79,8 +79,8 @@ Rml::Context* context = nullptr;
 		return -1;
 	}
 
-	Backend::ModifyWindowSize(context, 1200, 500);
-	Backend::SetBorder(false);
+	// Backend::ModifyWindowSize(context, 1200, 500);
+	// Backend::SetBorder(false);
 
 	Rml::Debugger::Initialise(context);
 	Shell::LoadFonts();
@@ -91,7 +91,8 @@ Rml::Context* context = nullptr;
 	Rml::ElementInstancerGeneric<ElementFileManager> element_file_instancer;
 	Rml::Factory::RegisterElementInstancer("fileImport", &element_file_instancer);
 	Rml::Factory::RegisterElementInstancer("fileExport", &element_file_instancer);
-	
+
+
 	EventListenerInstancer event_listener_instancer;
 	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
 
@@ -105,7 +106,7 @@ Rml::Context* context = nullptr;
 		Shell::Shutdown();
 		return -1;
 	}
-	shortcutsMenu->Show();
+	main->Show();
 
 	bool running = true;
 	while (running)

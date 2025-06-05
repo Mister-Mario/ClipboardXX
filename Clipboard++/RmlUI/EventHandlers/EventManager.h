@@ -32,6 +32,7 @@
  #include <RmlUi/Core/ElementDocument.h>
  #include <RmlUi/Core/Event.h>
  #include <RmlUi/Core/Types.h>
+ #include "Clipboard++Events/Clipboard++Event.h"
  
  class EventHandler;
  
@@ -48,12 +49,14 @@
     /// @param[in] event The RmlUi event that spawned the application event.
     /// @param[in] value The application-specific event value.
     static void ProcessEvent(Rml::Event& event, const Rml::String& value);
-    
+    static void LoadMap();
+    static void ChangeDocument(const Rml::String& document_to_show, const Rml::String& document_to_hide);
+
  private:
      EventManager();
      ~EventManager();
-    static void changeDocument(const Rml::String& document_to_show, const Rml::String& document_to_hide);
-    static char getDelimiter(const Rml::String strDelimiter);
+    
+    static std::map<std::string, std::unique_ptr<ClipboardEvent>> events;
      
  };
  

@@ -1,3 +1,5 @@
+add_subdirectory(Clipboard++Events)
+
 add_library(EventHandlers STATIC
     EventListener.h
     EventListener.cpp
@@ -20,4 +22,5 @@ target_link_libraries(EventHandlers
         RmlUi::RmlUi
     PRIVATE
         QClipboard    
+        Events
     )

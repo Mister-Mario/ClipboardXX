@@ -32,24 +32,53 @@
 #include <RmlUi/Core/ElementUtilities.h>
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
 #include <format>
-#include "Utils/LinkManager.h"
+#include "Utils/StringUtils.h"
 #include "Utils/FileManager.h"
 #include "Utils/TranslationManager.h"
- 
+#include "Clipboard++Events/ClearEvent.h"
+#include "Clipboard++Events/InsertEvent.h"
+#include "Clipboard++Events/LoadEvent.h"
+#include "Clipboard++Events/SlotEvent.h"
+#include "Clipboard++Events/HelpEvent.h"
+#include "Clipboard++Events/ImportSearchEvent.h"
+#include "Clipboard++Events/ImportEvent.h"
+#include "Clipboard++Events/ImportCloseEvent.h"
+#include "Clipboard++Events/ImportFileEvent.h"
+#include "Clipboard++Events/ExportSearchEvent.h"
+#include "Clipboard++Events/ExportEvent.h"
+#include "Clipboard++Events/ExportCloseEvent.h"
+#include "Clipboard++Events/ExportFileEvent.h"
+
 // The game's element context (declared in main.cpp).
 extern Rml::Context* context;
 MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
 FileManager* fileManager = FileManager::Instance();
-
+TranslationManager* translator = TranslationManager::Instance();
+std::map<std::string, std::unique_ptr<ClipboardEvent>> EventManager::events;
 
 EventManager::EventManager() {}
 
 EventManager::~EventManager() {}
 
+void EventManager::LoadMap() {
+    events["clear"] = std::make_unique<ClearEvent>(memoryCellManager);
+    events["insert"] = std::make_unique<InsertEvent>(memoryCellManager);
+    events["load"] = std::make_unique<LoadEvent>(memoryCellManager);
+    events["slot"] = std::make_unique<SlotEvent>(memoryCellManager);
+    events["help"] = std::make_unique<HelpEvent>();
+    events["import_search"] = std::make_unique<ImportSearchEvent>(fileManager, translator);
+    events["import"] = std::make_unique<ImportEvent>();
+    events["import_close"] = std::make_unique<ImportCloseEvent>();
+    events["import_file"] = std::make_unique<ImportFileEvent>(memoryCellManager, fileManager, translator);
+    events["export_search"] = std::make_unique<ExportSearchEvent>(fileManager, translator);
+    events["export"] = std::make_unique<ExportEvent>();
+    events["export_close"] = std::make_unique<ExportCloseEvent>();
+    events["export_file"] = std::make_unique<ExportFileEvent>(memoryCellManager, fileManager, translator);
+}
 
 void EventManager::ProcessEvent(Rml::Event& event, const Rml::String& value) {
-    
-    TranslationManager* translator = TranslationManager::Instance();
+    if(events.empty())
+        LoadMap();
     Rml::StringList commands;
     Rml::StringUtilities::ExpandString(commands, value, ';');
     for (size_t i = 0; i < commands.size(); ++i) {
@@ -59,97 +88,14 @@ void EventManager::ProcessEvent(Rml::Event& event, const Rml::String& value) {
 
         if (values.empty())
             return;
-        
-        if (values[0] == "clear"){
-            memoryCellManager->getSelectedCell()->clear();
-        }
 
-        if (values[0] == "insert") {
-            auto cell = memoryCellManager->getSelectedCell();
-            Rml::String input = "";
-            if (auto element = event.GetCurrentElement()->GetOwnerDocument()->GetElementById("input")){
-                input = element->GetAttribute<Rml::String>("value", "");
-                element->SetAttribute("value", "");
-            }
-            cell->setText(input);       
-        }
-
-        if (values[0] == "load") {
-            memoryCellManager->getMemoryCell(0)->setText(memoryCellManager->getSelectedCell()->text());
-        }
-
-        if (values[0] == "slot") {
-            memoryCellManager->setSelectedCell(std::stoi(values[1]));
-        }
-
-        if (values[0] == "help") {
-            openHelp();
-        }
-
-        if (values[0] == "import_search") {
-            fileManager->searchImportFile(translator->getString("file.dialog.title.import").c_str());
-        }
-
-        if (values[0] == "import") {
-            changeDocument("file_manager_import", "main_window");
-        }
-
-        if (values[0] == "import_close") {
-            changeDocument("main_window", "file_manager_import");
-        }
-
-        if (values[0] == "import_file") {
-            if(auto delimiter = event.GetCurrentElement()->GetOwnerDocument()->GetElementById("delimiter_input")){
-                Rml::String strDelimiter = delimiter->GetAttribute<Rml::String>("value", "");
-                if(strDelimiter.length() == 0){
-                    fileManager->showErrorDialog(translator->getString("file.dialog.message.delimiter").c_str());
-                    continue;
-                }
-
-                if(fileManager->getLastFile().length() == 0) {
-                    fileManager->showErrorDialog(translator->getString("file.dialog.message.import.search").c_str());
-                    continue;
-                }
-
-                memoryCellManager->loadCells(fileManager->readFile(fileManager->getLastFile().c_str(), getDelimiter(strDelimiter)));
-                changeDocument("main_window", "file_manager_import");
-            }
-
-        }
-
-        if (values[0] == "export") {
-            changeDocument("file_manager_export", "main_window");
-        }
-
-        if (values[0] == "export_search") {
-            fileManager->searchExportFile(translator->getString("file.dialog.title.export").c_str());
-        }
-
-        if (values[0] == "export_close") {
-            changeDocument("main_window", "file_manager_export");
-        }
-
-        if (values[0] == "export_file") {
-            if(auto delimiter = event.GetCurrentElement()->GetOwnerDocument()->GetElementById("delimiter_input")){
-                Rml::String strDelimiter = delimiter->GetAttribute<Rml::String>("value", "");
-                if(strDelimiter.length() == 0){
-                    fileManager->showErrorDialog(translator->getString("file.dialog.message.delimiter").c_str());
-                    continue;
-                }
-
-                if(fileManager->getLastFile().length() == 0) {
-                    fileManager->showErrorDialog(translator->getString("file.dialog.message.export.search").c_str());
-                    continue;
-                }
-
-                fileManager->exportFile(fileManager->getLastFile().c_str(), getDelimiter(strDelimiter), memoryCellManager->getContents());
-                changeDocument("main_window", "file_manager_export"); 
-            }
-        }
+        auto it = events.find(values[0]);
+        if (it != events.end())
+            it->second->handle(event, values);
     }
 }
 
-void EventManager::changeDocument(const Rml::String& documentToShowId, const Rml::String& documentToHideId) {
+void EventManager::ChangeDocument(const Rml::String& documentToShowId, const Rml::String& documentToHideId) {
     Rml::ElementDocument* documentToShow = context->GetDocument(documentToShowId);
     Rml::ElementDocument* documentToHide = context->GetDocument(documentToHideId);
 
@@ -159,30 +105,3 @@ void EventManager::changeDocument(const Rml::String& documentToShowId, const Rml
     }
 }
 
-char EventManager::getDelimiter(const Rml::String strDelimiter) {
-    if (strDelimiter.length() > 1 && strDelimiter[0] == '\\') 
-    {
-        switch (strDelimiter[1]) 
-        {
-            case 't':
-                return '\t';
-                break;
-            case 'n':
-                return '\n';
-                break;
-            case 'r':
-                return '\r';
-                break;
-            case '\\':
-                return '\\';
-                break;
-            default:
-                return strDelimiter[1];
-                break;
-        }
-    }
-    else 
-    {
-        return strDelimiter[0];
-    }
-}
