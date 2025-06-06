@@ -5,6 +5,7 @@
 #include <EventListenerInstancer.h>
 #include <ElementFileManager.h>
 #include <ElementClipboard.h>
+#include <ElementShortCuts.h>
 #include <Shell.h>
 #include <iostream>
 #include <QGuiApplication>
@@ -30,7 +31,7 @@ Rml::Context* context = nullptr;
 	QGuiApplication app(argc, nullptr);
 	QClipboard *qClipboard = QGuiApplication::clipboard();
 	MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
-	memoryCellManager->initialize(new ClipboardAdapter(qClipboard), 21);
+	memoryCellManager->initialize(new ClipboardAdapter(qClipboard), 2);
 
 	QLocale default_locale = QLocale::system();
     QString locale_name = default_locale.name(); // "es_ES"
@@ -92,6 +93,8 @@ Rml::Context* context = nullptr;
 	Rml::Factory::RegisterElementInstancer("fileImport", &element_file_instancer);
 	Rml::Factory::RegisterElementInstancer("fileExport", &element_file_instancer);
 
+	Rml::ElementInstancerGeneric<ElementShortcuts> element_shortcuts_instancer;
+	Rml::Factory::RegisterElementInstancer("shortcuts", &element_shortcuts_instancer);
 
 	EventListenerInstancer event_listener_instancer;
 	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);

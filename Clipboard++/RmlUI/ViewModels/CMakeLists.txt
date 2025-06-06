@@ -1,14 +1,10 @@
-add_library(Elements STATIC
-    ElementClipboard.h
-    ElementClipboard.cpp
-    ElementFileManager.h
-    ElementFileManager.cpp
-    ElementShortcuts.h
-    ElementShortcuts.cpp
+add_library(ViewModels STATIC
+    ShortCutsViewModel.h
+    ShortCutsViewModel.cpp
 )
 
 # Set include directories
-target_include_directories(Elements 
+target_include_directories(ViewModels 
     PUBLIC 
         ${CMAKE_CURRENT_SOURCE_DIR}  # For local includes
     PRIVATE
@@ -16,11 +12,10 @@ target_include_directories(Elements
 )
 
 # Link dependencies
-target_link_libraries(Elements 
+target_link_libraries(ViewModels 
     PUBLIC 
         RmlUi::RmlUi
     PRIVATE 
         QClipboard
         ProjectUtils
-        ViewModels
 )

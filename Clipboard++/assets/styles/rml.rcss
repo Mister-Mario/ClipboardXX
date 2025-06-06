@@ -55,6 +55,10 @@ body {
     background: #a9a9a9;
 }
 
+body .c-none {
+	display: none;
+}
+
 div
 {
 	display: block;

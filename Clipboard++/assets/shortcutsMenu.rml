@@ -23,7 +23,7 @@
                 <button class="c-button c-button--primary">Load</button>
                 <button class="c-button c-button--primary">Paste</button>
             </div>
-            <div class="c-cell c-glow-border">
+            <div class="c-cell c-none">
                 <span class="c-cell__name">Memory cell 1</span>
                 <span class="c-cell__content">Testing length of this shit</span>
                 <button class="c-button c-button--primary">Load</button>
