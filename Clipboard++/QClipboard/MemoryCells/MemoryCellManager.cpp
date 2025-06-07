@@ -2,15 +2,11 @@
 #include "MemoryCell.h"
 #include <format>
 
-MemoryCellManager* MemoryCellManager::m_instance = nullptr;
-
 MemoryCellManager::MemoryCellManager(){}
 
 MemoryCellManager* MemoryCellManager::Instance() {
-    if(m_instance == nullptr) {
-        m_instance = new MemoryCellManager();
-    }
-    return m_instance;
+    static MemoryCellManager instance;
+    return &instance;
 }
 
 size_t MemoryCellManager::getMemoryCellCount() const {

@@ -17,6 +17,6 @@ void ImportFileEvent::handle(Rml::Event& event, Rml::StringList values) {
         }
 
         m_memoryCellManager->loadCells(m_fileManager->readFile(m_fileManager->getLastFile().c_str(), StringUtils::getDelimiter(strDelimiter)));
-        EventManager::ChangeDocument("main_window", "file_manager_import");
+        EventManager::ChangeDocument("shortcuts_menu", "file_manager_import");
     }
 }

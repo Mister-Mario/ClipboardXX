@@ -30,8 +30,8 @@ Rml::Context* context = nullptr;
 	int argc = 0;
 	QGuiApplication app(argc, nullptr);
 	QClipboard *qClipboard = QGuiApplication::clipboard();
-	MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
-	memoryCellManager->initialize(new ClipboardAdapter(qClipboard), 2);
+	MemoryCellManager::Instance()->initialize(new ClipboardAdapter(qClipboard), 21);
+	ShortCutsViewModel::Instance()->updateList("");
 
 	QLocale default_locale = QLocale::system();
     QString locale_name = default_locale.name(); // "es_ES"

@@ -15,6 +15,8 @@ header input {
     background: white;
     color: black;
     height: 2.5rem;
+    padding-left: .25rem;
+    padding-top: .25rem;
     width: 37.5rem;
 } 
 .c-cells-list {

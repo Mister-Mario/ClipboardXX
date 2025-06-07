@@ -1,8 +1,8 @@
-#include "ImportCloseEvent.h"
+#include "ExportCloseEvent.h"
 #include "../EventManager.h"
 
-ImportCloseEvent::ImportCloseEvent() {}
+ExportCloseEvent::ExportCloseEvent() {}
 
-void ImportCloseEvent::handle(Rml::Event& event, Rml::StringList values) {
-    EventManager::ChangeDocument("main_window", "file_manager_import");
+void ExportCloseEvent::handle(Rml::Event& event, Rml::StringList values) {
+    EventManager::ChangeDocument("main_window", "file_manager_export");
 }

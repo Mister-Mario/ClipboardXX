@@ -7,13 +7,15 @@
 
 class ShortCutsViewModel {
     public:
-        ShortCutsViewModel();
-        ~ShortCutsViewModel();
+        static ShortCutsViewModel* Instance();
         void updateList(std::string searchInput);
         void moveUpIndex();
         void moveDownIndex();
         ClipboardInterface* getMemoryCell(size_t i);
         int getSelectedCell();
+    protected:
+        ShortCutsViewModel();
+        ~ShortCutsViewModel();
     private:
         MemoryCellManager* m_memoryCellsManager;
         int cellsIndex;

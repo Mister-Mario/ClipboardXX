@@ -28,6 +28,8 @@ add_library(Events STATIC
     ExportFileEvent.cpp
     ExpandEvent.h
     ExpandEvent.cpp
+    SearchEvent.h
+    SearchEvent.cpp
 )
 
 # Set include directories
@@ -45,4 +47,5 @@ target_link_libraries(Events
     PRIVATE 
         QClipboard
         ProjectUtils
+        ViewModels
 )

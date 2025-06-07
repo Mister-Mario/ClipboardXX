@@ -1,12 +1,13 @@
 #include <ShortCutsViewModel.h>
 
-ShortCutsViewModel::ShortCutsViewModel() : viewIndex(0), cellsIndex(0) {
-    m_memoryCellsManager = MemoryCellManager::Instance();
-    size_t i = 0;
-    while(ClipboardInterface* cell = m_memoryCellsManager->getMemoryCell(i)){
-        i++;
-        m_memoryCellsShortCuts.push_back(cell);
-    }
+ShortCutsViewModel* ShortCutsViewModel::Instance() {
+    static ShortCutsViewModel instance;
+    return &instance;
+}
+
+ShortCutsViewModel::ShortCutsViewModel() : m_memoryCellsManager(MemoryCellManager::Instance()) {
+    viewIndex = 0;
+    cellsIndex = 0;
 }
 
 ShortCutsViewModel::~ShortCutsViewModel() {}
@@ -34,7 +35,7 @@ void ShortCutsViewModel::updateList(std::string searchInput) {
     std::vector<std::string> contents = m_memoryCellsManager->getContents();
     size_t size = contents.size();
     for (size_t i = 0; i < size; i++) {
-        if (contents.at(i).find(searchInput) != std::string::npos) {
+        if (searchInput == "" || contents.at(i).find(searchInput) != std::string::npos) {
             matches.push_back(i);
         }
     }

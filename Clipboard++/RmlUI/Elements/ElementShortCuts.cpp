@@ -4,7 +4,6 @@
 #include <RmlUi/Core/ElementDocument.h>
 #include <RmlUi/Core/Input.h>
 #include <RmlUi/Core/SystemInterface.h>
-#include "QClipboard/MemoryCells/MemoryCellManager.h"
 #include "StringUtils.h"
 #include "TranslationManager.h"
 #include <format>
@@ -15,14 +14,10 @@ TranslationManager* translatorShortCuts = TranslationManager::Instance();
  
  ElementShortcuts::ElementShortcuts(const Rml::String& tag) : Rml::Element(tag)
  {
-   viewModel = new ShortCutsViewModel();
+   viewModel = ShortCutsViewModel::Instance();
  }
  
- ElementShortcuts::~ElementShortcuts()
- {
-   delete viewModel;
- }
- 
+ ElementShortcuts::~ElementShortcuts() {}
  
  void ElementShortcuts::OnUpdate()
  {

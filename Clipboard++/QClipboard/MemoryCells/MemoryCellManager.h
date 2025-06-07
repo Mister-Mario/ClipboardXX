@@ -21,7 +21,6 @@ class MemoryCellManager {
     protected:
         MemoryCellManager();
     private:
-        static MemoryCellManager* m_instance;
         std::vector<std::unique_ptr<ClipboardInterface>> m_memoryCells;
         size_t selectedCell = 0;
 };
