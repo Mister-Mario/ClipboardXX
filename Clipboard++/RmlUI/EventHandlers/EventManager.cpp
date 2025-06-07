@@ -99,11 +99,6 @@ void EventManager::ProcessEvent(Rml::Event &event, const Rml::String &value)
         if (values.empty())
             return;
 
-        if (values[0] == "search")
-        {
-            ;
-        }
-
         auto it = events.find(values[0]);
         if (it != events.end())
             it->second->handle(event, values);

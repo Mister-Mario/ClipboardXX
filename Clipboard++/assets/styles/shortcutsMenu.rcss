@@ -45,5 +45,5 @@ header input {
 }
 
 .c-cell__content {
-    width: 50rem;
+    width: 45rem;
 }

@@ -25,7 +25,7 @@ void ShortCutsViewModel::moveDownIndex() {
     if(viewIndex != 2) 
         viewIndex += 1;
     else {
-        if(cellsIndex != m_memoryCellsShortCuts.size() - 1)
+        if(cellsIndex != m_memoryCellsShortCuts.size() - 1 - 2) // -2 cause view can hold 3
             cellsIndex += 1;
     }
 }
@@ -48,9 +48,10 @@ void ShortCutsViewModel::updateList(std::string searchInput) {
 }
 
 ClipboardInterface* ShortCutsViewModel::getMemoryCell(size_t i) {
-    if(i >= m_memoryCellsShortCuts.size())
+    size_t index = i + cellsIndex;
+    if(index >= m_memoryCellsShortCuts.size())
         return nullptr;
-    return m_memoryCellsShortCuts.at(i);
+    return m_memoryCellsShortCuts.at(index);
 }
 
 int ShortCutsViewModel::getSelectedCell() {

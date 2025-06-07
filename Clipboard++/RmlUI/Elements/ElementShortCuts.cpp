@@ -32,7 +32,7 @@ TranslationManager* translatorShortCuts = TranslationManager::Instance();
          if(auto celda = celdas.at(i)) {
             celda->SetClassNames("c-cell");
             celda->GetChild(0)->SetInnerRML(translatorShortCuts->getString(std::format("list.{}" ,cell->name())));
-            celda->GetChild(1)->SetInnerRML(StringUtils::escapeHtml(cell->text()).substr(0, 30));
+            celda->GetChild(1)->SetInnerRML(StringUtils::escapeHtml(cell->text()).substr(0, 90));
          }
       }
       else {
@@ -54,11 +54,33 @@ TranslationManager* translatorShortCuts = TranslationManager::Instance();
  
  void ElementShortcuts::OnChildAdd(Rml::Element* element)
  {
-    //Empty body
+   Rml::Element::OnChildAdd(element);
+
+	if (element == this)
+	{
+		GetOwnerDocument()->AddEventListener(Rml::EventId::Keydown, this);
+	}
  }
  
  void ElementShortcuts::OnChildRemove(Rml::Element* element)
  {
-    //Empty body
+   Rml::Element::OnChildRemove(element);
+
+	if (element == this)
+	{
+		GetOwnerDocument()->RemoveEventListener(Rml::EventId::Keydown, this);
+	}
+ }
+
+ void ElementShortcuts::ProcessEvent(Rml::Event& event) {
+   if (event == Rml::EventId::Keydown) {
+		bool key_down = (event == Rml::EventId::Keydown);
+		Rml::Input::KeyIdentifier key_identifier = (Rml::Input::KeyIdentifier)event.GetParameter<int>("key_identifier", 0);
+
+      if (key_identifier == Rml::Input::KI_DOWN)
+         viewModel->moveDownIndex();
+      if (key_identifier == Rml::Input::KI_UP)
+         viewModel->moveUpIndex();
+	}
  }
  
