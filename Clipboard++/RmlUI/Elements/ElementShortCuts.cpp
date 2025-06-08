@@ -32,7 +32,7 @@ TranslationManager* translatorShortCuts = TranslationManager::Instance();
          if(auto celda = celdas.at(i)) {
             celda->SetClassNames("c-cell");
             celda->GetChild(0)->SetInnerRML(translatorShortCuts->getString(std::format("list.{}" ,cell->name())));
-            celda->GetChild(1)->SetInnerRML(StringUtils::escapeHtml(cell->text()).substr(0, 90));
+            celda->GetChild(1)->SetInnerRML(StringUtils::escapeHtml(cell->text()).substr(0, 80));
          }
       }
       else {

@@ -8,17 +8,38 @@
 #include <ElementShortCuts.h>
 #include <Shell.h>
 #include <iostream>
-#include <QGuiApplication>
+#include <QApplication>
 #include <QClipboard>
-#include <QGuiApplication>
 #include <QScreen>
 #include <QLocale>
 #include "QClipboard/ClipboardInterface.h"
 #include "QClipboard/ClipboardAdapter.h"
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
+#include "QClipboard/HotKeyListener/HotKeyListener.h"
 #include "Utils/TranslationManager.h"
+#include <QSystemTrayIcon>
+#include <QMenu>
+#include <QIcon>
+#include <thread>
+#include <atomic> 
 
 Rml::Context* context = nullptr;
+bool isWindowOpened = false;
+bool running = true;
+
+void showShortcuts(Rml::ElementDocument* shortcuts) {
+	if(!isWindowOpened) {
+		shortcuts->Show();
+		Backend::ShowWindow();
+		Backend::ModifyWindowSize(context, 1200, 500);
+		Backend::SetBorder(false);
+		isWindowOpened = true;
+	}
+}
+
+void quit() {
+	running = false;
+}
 
  #if defined RMLUI_PLATFORM_WIN32
 	 #include <RmlUi_Include_Windows.h>
@@ -27,9 +48,13 @@ Rml::Context* context = nullptr;
  int main(int /*argc*/, char** /*argv*/)
  #endif
  {
+	std::thread listener(HotkeyListenerThread);
+    listener.detach();
+
 	int argc = 0;
-	QGuiApplication app(argc, nullptr);
-	QClipboard *qClipboard = QGuiApplication::clipboard();
+	QApplication app(argc, nullptr);
+	QApplication::setQuitOnLastWindowClosed(false);
+	QClipboard *qClipboard = QApplication::clipboard();
 	MemoryCellManager::Instance()->initialize(new ClipboardAdapter(qClipboard), 21);
 	ShortCutsViewModel::Instance()->updateList("");
 
@@ -39,12 +64,22 @@ Rml::Context* context = nullptr;
     translator->loadLanguage(locale_name.toStdString());
 
 	// Get primary screen dimensions
-	QScreen* screen = QGuiApplication::primaryScreen();
+	QScreen* screen = QApplication::primaryScreen();
 	QRect screenGeometry = screen->geometry();
 	int maxWindowWidth = 1920 * (2-0.95);
 	int maxWindowHeight = 1080 * (2-0.875);
 	int window_width = screenGeometry.width() <= maxWindowWidth ? screenGeometry.width() * 0.95 : 1920;
 	int window_height = screenGeometry.height() <= maxWindowHeight ? screenGeometry.height() * 0.875 : 1080;
+
+	QIcon icon(":/assets/icons/test_64.png");
+    QSystemTrayIcon trayIcon(icon);
+    trayIcon.setToolTip("Mi App (RmlUI + Hotkey)");
+    QMenu menu;
+    QAction *showAction = menu.addAction("Mostrar");
+    menu.addSeparator();
+    QAction *quitAction = menu.addAction("Salir");
+    trayIcon.setContextMenu(&menu);
+    trayIcon.show();
 
 	// Initializes the shell which provides common functionality used by the included samples.
 	if (!Shell::Initialize()){
@@ -80,9 +115,6 @@ Rml::Context* context = nullptr;
 		return -1;
 	}
 
-	Backend::ModifyWindowSize(context, 1200, 500);
-	Backend::SetBorder(false);
-
 	Rml::Debugger::Initialise(context);
 	Shell::LoadFonts();
 
@@ -109,28 +141,44 @@ Rml::Context* context = nullptr;
 		Shell::Shutdown();
 		return -1;
 	}
-	shortcutsMenu->Show();
 
-	bool running = true;
+	QObject::connect(showAction, &QAction::triggered, [shortcutsMenu]() {
+		showShortcuts(shortcutsMenu);
+	});
+    QObject::connect(quitAction, &QAction::triggered, &quit);
+
+	main->Show();
+	isWindowOpened= true;
+	running = true;
 	while (running)
 	{
+		QApplication::processEvents();
 
-		running = Backend::ProcessEvents(context, &Shell::ProcessKeyDownShortcuts, true);
+		if(isWindowOpened) {		
+			isWindowOpened = Backend::ProcessEvents(context, &Shell::ProcessKeyDownShortcuts, true);
+			context->Update();
+			Backend::BeginFrame();
+			context->Render();
+			Backend::PresentFrame();
+			if(!isWindowOpened) {
+				main->Hide();
+				fileImport->Hide();
+				fileExport->Hide();
+				Backend::HideWindow();
+			}
+		}
 		
-		context->Update();
-
-		Backend::BeginFrame();
-		context->Render();
-		Backend::PresentFrame();
+		if (g_hotkeyPressed.load()) {
+            g_hotkeyPressed.store(false);
+			showShortcuts(shortcutsMenu);
+        }
 	}
 
 	// Shutdown RmlUi.
-	main->Close();
-	fileImport->Close();
-	fileExport->Close();
 	Rml::Shutdown();
 	Backend::Shutdown();
 	Shell::Shutdown();
+	trayIcon.hide();
 
 	return 0;
  }

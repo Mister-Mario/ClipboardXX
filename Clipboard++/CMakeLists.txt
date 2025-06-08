@@ -10,7 +10,7 @@ find_package(RmlUi REQUIRED)
 
 add_subdirectory(Utils)
 add_subdirectory(QClipboard)
-
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
 
 set(RMLUI_BACKEND SDL_GL3)
 include(RmlUI/Utilities.cmake)
@@ -28,12 +28,12 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/RmlUI/Elements)
 add_subdirectory(RmlUI/Elements)
 
 
-
+set(CMAKE_AUTORCC ON)
 # Main executable
-add_executable(${PROJECT_NAME} Clipboard++.cpp)
+add_executable(${PROJECT_NAME} Clipboard++.cpp resources.qrc)
 
 # Include RmlUi
-target_link_libraries(${PROJECT_NAME} PRIVATE RmlUi::RmlUi rmlui_backend_SDL_GL3 rmlui_shell QClipboard EventHandlers Elements)
+target_link_libraries(${PROJECT_NAME} PRIVATE RmlUi::RmlUi rmlui_backend_SDL_GL3 rmlui_shell QClipboard EventHandlers Elements Qt6::Widgets)
 
 add_custom_command(
     TARGET ${PROJECT_NAME} POST_BUILD

@@ -386,8 +386,10 @@ void Backend::PresentFrame()
 }
 
 void Backend::ModifyWindowSize(Rml::Context* context, int w, int h) {
-	SDL_SetWindowSize(SDL_GL_GetCurrentWindow(), w, h);
-	SDL_SetWindowPosition(SDL_GL_GetCurrentWindow(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+	SDL_Window* window = SDL_GL_GetCurrentWindow();
+	SDL_RestoreWindow(window);
+	SDL_SetWindowSize(window, w, h);
+	SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 	context->SetDimensions(Rml::Vector2i(w, h));
 	data->render_interface.SetViewport(w, h);
 }
@@ -397,8 +399,17 @@ void Backend::SetBorder(bool flag){
 }
 
 void Backend::MaximizeWindow(Rml::Context* context) {
-	SDL_MaximizeWindow(SDL_GL_GetCurrentWindow());
+	SDL_Window* window = SDL_GL_GetCurrentWindow();
+	SDL_MaximizeWindow(window);
 	int width, height;
-	SDL_GetWindowSizeInPixels(SDL_GL_GetCurrentWindow(), &width, &height);
+	SDL_GetWindowSizeInPixels(window, &width, &height);
 	context->SetDimensions(Rml::Vector2i(width, height));
+}
+
+void Backend::HideWindow() {
+	SDL_HideWindow(SDL_GL_GetCurrentWindow());
+}
+ 
+void Backend::ShowWindow() {
+	SDL_ShowWindow(SDL_GL_GetCurrentWindow());
 }

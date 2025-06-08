@@ -10,6 +10,8 @@ add_library(QClipboard STATIC
     MemoryCells/MemoryCellManager.cpp
     KeyShortCuts/KeyShortCut.h
     KeyShortCuts/KeyShortCut.cpp
+    HotKeyListener/HotKeyListener.h
+    HotKeyListener/HotKeyListener.cpp
 )
 
 # Set include directories
