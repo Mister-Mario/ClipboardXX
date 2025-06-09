@@ -54,7 +54,7 @@
 
     //Added methods
     
-    static void _ProcessCodeEvent(const Rml::StringList& values, Rml::Event* source_event = nullptr);
+    static void _ProcessCodeEvent(const Rml::String &value, Rml::Event* source_event = nullptr);
 
  private:
      EventManager();

@@ -23,4 +23,5 @@ target_link_libraries(Elements
         QClipboard
         ProjectUtils
         ViewModels
+        EventHandlers
 )

@@ -8,8 +8,8 @@
 KeyShortCutManager* KeyShortCutManager::m_instance = nullptr;
 
 KeyShortCutManager::KeyShortCutManager(){
-    m_shortcuts.push_back(new KeyShortCut("paste 0", {Rml::Input::KI_LCONTROL, Rml::Input::KI_V}));
-    m_shortcuts.push_back(new KeyShortCut("copy 0", {Rml::Input::KI_LCONTROL, Rml::Input::KI_C}));
+    m_shortcutsBase.push_back(new KeyShortCut("paste 0", {Rml::Input::KI_LCONTROL, Rml::Input::KI_V}));
+    m_shortcutsBase.push_back(new KeyShortCut("copy 0", {Rml::Input::KI_LCONTROL, Rml::Input::KI_C}));
     LoadKeyShortCuts();
 }
 
@@ -24,9 +24,10 @@ void KeyShortCutManager::LoadKeyShortCuts() {
     auto shortcuts = SelectFile();
     size_t size = shortcuts.size() - 1;
     for(size_t i = 0; i < size; i+= 2){
-        m_shortcuts.push_back(GetShortCutFromString(shortcuts[i], std::format("paste {}", i)));
-        m_shortcuts.push_back(GetShortCutFromString(shortcuts[i + 1], std::format("copy {}", i)));
+        m_shortcutsBase.push_back(GetShortCutFromString(shortcuts[i + 1], std::format("copy {}", i/2 + 1)));
+        m_shortcutsBase.push_back(GetShortCutFromString(shortcuts[i], std::format("paste {}", i/2 + 1)));
     }
+    m_shortcuts = GetBaseList();
 }
 
 std::vector<std::string> KeyShortCutManager::SelectFile() {
@@ -58,4 +59,46 @@ KeyShortCut* KeyShortCutManager::GetCopyShortCut(size_t i) const{
     if((i * 2 + 1) < m_shortcuts.size())
         return m_shortcuts.at(i * 2 + 1);
     return nullptr;
+}
+
+std::vector<KeyShortCut*> KeyShortCutManager::GetBaseList() const {
+    return m_shortcutsBase;
+}
+
+KeyShortCut* KeyShortCutManager::FilterShortCuts(Rml::Input::KeyIdentifier key) {
+    if(key == lastKeyPressed)
+        return nullptr;
+    std::vector<KeyShortCut*> filtered = {};
+    for(KeyShortCut* shortCut : m_shortcuts){
+        if(keysFiltered < shortCut->getShortCut().size() && shortCut->getShortCut().at(keysFiltered) == key)
+            filtered.push_back(shortCut);
+    }
+
+    if(filtered.size() > 1){
+        keysFiltered += 1;
+        m_shortcuts = filtered;
+        lastKeyPressed = key;
+        return nullptr;
+    }
+    else if(filtered.size() == 0) {
+        lastKeyPressed = Rml::Input::KI_UNKNOWN;
+        keysFiltered = 0;
+        m_shortcuts = GetBaseList();
+        return nullptr;
+    }
+    else { //(filtered.size() == 1)
+        KeyShortCut* shortCut = filtered.at(0);
+        keysFiltered += 1;
+        if(shortCut->getShortCut().size() != keysFiltered){ //There is one but you need more keys
+            lastKeyPressed = key;
+            m_shortcuts = filtered;
+            return nullptr;
+        }
+        else {  // Found
+            lastKeyPressed = Rml::Input::KI_UNKNOWN;
+            keysFiltered = 0;
+            m_shortcuts = GetBaseList();
+            return shortCut;
+        }
+    }
 }

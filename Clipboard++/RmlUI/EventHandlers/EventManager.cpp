@@ -52,6 +52,7 @@
 #include "Clipboard++Events/ExportFileEvent.h"
 #include "Clipboard++Events/ExpandEvent.h"
 #include "Clipboard++Events/SearchEvent.h"
+#include <iostream>
 
 // The game's element context (declared in main.cpp).
 extern Rml::Context *context;
@@ -88,24 +89,31 @@ void EventManager::ProcessEvent(Rml::Event &event, const Rml::String &value)
 {
     if (events.empty())
         LoadMap();
+
     Rml::StringList commands;
     Rml::StringUtilities::ExpandString(commands, value, ';');
     for (size_t i = 0; i < commands.size(); ++i)
     {
-
-        Rml::StringList values;
-        Rml::StringUtilities::ExpandString(values, commands[i], ' ');
-        _ProcessCodeEvent(values, &event);
+        _ProcessCodeEvent(commands[i], &event);
     }
 }
 
-void EventManager::_ProcessCodeEvent(const Rml::StringList& values, Rml::Event* source_event) {
+void EventManager::_ProcessCodeEvent(const Rml::String &value, Rml::Event* source_event) {
+    Rml::StringList values;
+    Rml::StringUtilities::ExpandString(values, value, ' ');
+
     if (values.empty())
         return;
 
     auto it = events.find(values[0]);
     if (it != events.end())
         it->second->handle(*source_event, values);
+
+    if(values[0] == "paste")
+        std::cout << "paste " << values[1] << '\n';
+    if(values[0] == "copy")
+        std::cout << "copy " << values[1] << '\n';
+
 }
 
 void EventManager::ChangeDocument(const Rml::String &documentToShowId, const Rml::String &documentToHideId)

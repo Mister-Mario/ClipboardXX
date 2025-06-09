@@ -7,6 +7,8 @@
 #include "StringUtils.h"
 #include "TranslationManager.h"
 #include <format>
+#include "QClipboard/KeyShortCuts/KeyShortCutManager.h"
+#include "EventManager.h"
 
  // The applicaction's element context (declared in main.cpp).
 extern Rml::Context* context;
@@ -33,6 +35,8 @@ TranslationManager* translatorShortCuts = TranslationManager::Instance();
             celda->SetClassNames("c-cell");
             celda->GetChild(0)->SetInnerRML(translatorShortCuts->getString(std::format("list.{}" ,cell->name())));
             celda->GetChild(1)->SetInnerRML(StringUtils::escapeHtml(cell->text()).substr(0, 80));
+            celda->GetChild(2)->SetAttribute("onclick", cell->getKeyShortCutCopy()->getEvent());
+            celda->GetChild(3)->SetAttribute("onclick", cell->getKeyShortCutPaste()->getEvent());
          }
       }
       else {
@@ -81,6 +85,9 @@ TranslationManager* translatorShortCuts = TranslationManager::Instance();
          viewModel->moveDownIndex();
       if (key_identifier == Rml::Input::KI_UP)
          viewModel->moveUpIndex();
-	}
+
+      if(auto shortCut = KeyShortCutManager::Instance()->FilterShortCuts(key_identifier))
+         EventManager::_ProcessCodeEvent(shortCut->getEvent());
+	}  
  }
  
