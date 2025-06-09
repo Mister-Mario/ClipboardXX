@@ -1,4 +1,13 @@
 #include "StringUtils.h"
+#include <magic_enum/magic_enum.hpp>
+namespace magic_enum::customize {
+template <>
+struct enum_range<Rml::Input::KeyIdentifier> {
+    static constexpr int min = 0;
+    static constexpr int max = 255; 
+};
+}
+
 
 namespace StringUtils {
     void replaceAll(std::string& str, const std::string& from, const std::string& to)
@@ -24,30 +33,48 @@ namespace StringUtils {
     }
 
     char getDelimiter(const Rml::String strDelimiter) {
-    if (strDelimiter.length() > 1 && strDelimiter[0] == '\\') 
-    {
-        switch (strDelimiter[1]) 
+        if (strDelimiter.length() > 1 && strDelimiter[0] == '\\') 
         {
-            case 't':
-                return '\t';
-                break;
-            case 'n':
-                return '\n';
-                break;
-            case 'r':
-                return '\r';
-                break;
-            case '\\':
-                return '\\';
-                break;
-            default:
-                return strDelimiter[1];
-                break;
+            switch (strDelimiter[1]) 
+            {
+                case 't':
+                    return '\t';
+                    break;
+                case 'n':
+                    return '\n';
+                    break;
+                case 'r':
+                    return '\r';
+                    break;
+                case '\\':
+                    return '\\';
+                    break;
+                default:
+                    return strDelimiter[1];
+                    break;
+            }
+        }
+        else 
+        {
+            return strDelimiter[0];
         }
     }
-    else 
-    {
-        return strDelimiter[0];
+
+    std::string getStringFronEnum(Rml::Input::KeyIdentifier enumValue) {
+        return std::string(magic_enum::enum_name(enumValue));
+    }
+
+    Rml::Input::KeyIdentifier getEnumFronString(std::string string) {
+        auto tecla_opcional = magic_enum::enum_cast<Rml::Input::KeyIdentifier>(string);
+        if (tecla_opcional.has_value()) {
+            return tecla_opcional.value();
+        }
+        return Rml::Input::KI_UNKNOWN;
     }
 }
-}
+
+
+
+
+
+

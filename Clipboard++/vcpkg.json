@@ -6,6 +6,7 @@
     "sdl3-image",
     "nlohmann-json",
     "tinyfiledialogs",
+    "magic-enum",
     {
       "name": "qtbase",
       "default-features": false,

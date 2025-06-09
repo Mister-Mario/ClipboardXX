@@ -8,7 +8,6 @@
         <header>
             <input id="search" type="text" onchange="search" placeholder="Search for a memory cell"/>
             <button class="c-button c-button--primary" onclick="expand">Expand</button>
-            <button class="c-button c-button--primary" onclick="import">Import</button>
         </header>
 
         <ol class="c-cells-list">

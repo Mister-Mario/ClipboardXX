@@ -1,5 +1,3 @@
-find_package(Qt6 REQUIRED COMPONENTS Gui)
-
 add_library(QClipboard STATIC
     ClipboardInterface.h
     ClipboardAdapter.h
@@ -10,8 +8,11 @@ add_library(QClipboard STATIC
     MemoryCells/MemoryCellManager.cpp
     KeyShortCuts/KeyShortCut.h
     KeyShortCuts/KeyShortCut.cpp
+    KeyShortCuts/KeyShortCutManager.h
+    KeyShortCuts/KeyShortCutManager.cpp
     HotKeyListener/HotKeyListener.h
     HotKeyListener/HotKeyListener.cpp
+
 )
 
 # Set include directories
@@ -28,4 +29,5 @@ target_link_libraries(QClipboard
         Qt6::Gui
     PRIVATE
         ProjectUtils
+        RmlUi::RmlUi
 )

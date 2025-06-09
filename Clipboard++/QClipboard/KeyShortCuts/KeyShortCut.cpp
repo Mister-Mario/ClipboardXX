@@ -1,23 +1,20 @@
 #include "KeyShortCut.h"
 #include "Utils/FileManager.h"
+#include "MemoryCells/MemoryCell.h"
 
-constexpr int HOTKEY_ID_BASE = 0x7000;
-
-KeyShortCut::KeyShortCut(int id_offset, UINT fsModifiers, UINT vk)
-    : m_id(HOTKEY_ID_BASE + id_offset),
-      m_fsModifiers(fsModifiers),
-      m_vk(vk)
+KeyShortCut::KeyShortCut(std::string event, std::vector<Rml::Input::KeyIdentifier> shortCutCombination): 
+    m_event(event),
+    m_shortCutCombination(shortCutCombination)
 {}
 
-KeyShortCut::~KeyShortCut() {
-    unregisterKeyShortCut();
+std::vector<Rml::Input::KeyIdentifier> KeyShortCut::getShortCut() const {
+    return m_shortCutCombination;
 }
 
-bool KeyShortCut::registerKeyShortCut() {
-    //0x4000 is the NOREPEAT FLAG
-    return RegisterHotKey(NULL, m_id, m_fsModifiers | 0x4000, m_vk);
+void KeyShortCut::setShortCut(const std::vector<Rml::Input::KeyIdentifier>& newCombination) {
+    m_shortCutCombination = newCombination;
 }
 
-bool KeyShortCut::unregisterKeyShortCut() {
-   return UnregisterHotKey(NULL, m_id);
+std::string KeyShortCut::getEvent() const {
+    return m_event;
 }

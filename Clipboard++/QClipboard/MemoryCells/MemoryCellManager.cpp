@@ -1,6 +1,9 @@
 #include "MemoryCellManager.h"
 #include "MemoryCell.h"
 #include <format>
+#include "../KeyShortCuts/KeyShortCutManager.h"
+
+KeyShortCutManager* keyShortCutManager = KeyShortCutManager::Instance();
 
 MemoryCellManager::MemoryCellManager(){}
 
@@ -22,10 +25,9 @@ ClipboardInterface* MemoryCellManager::getMemoryCell(size_t index) {
 
 size_t MemoryCellManager::addMemoryCell() {
     // Create the new memory cell
-    auto newCell = std::make_unique<MemoryCell>(std::format("cell_{}", m_memoryCells.size()));
-    
-    // Do additional setup for new cell here
-    // ...
+    auto newCell = std::make_unique<MemoryCell>(std::format("cell_{}", m_memoryCells.size()),
+        keyShortCutManager->GetPasteShortCut(m_memoryCells.size()),
+        keyShortCutManager->GetCopyShortCut(m_memoryCells.size()));
     
     // Add to collection
     m_memoryCells.push_back(std::move(newCell));

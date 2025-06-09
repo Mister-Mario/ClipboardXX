@@ -1,7 +1,3 @@
-find_package(nlohmann_json REQUIRED)
-find_package(tinyfiledialogs CONFIG REQUIRED)
-find_package(Qt6 REQUIRED COMPONENTS Core Gui)
-
 add_library(ProjectUtils STATIC
     StringUtils.h
     StringUtils.cpp
@@ -21,8 +17,9 @@ target_include_directories(ProjectUtils
 target_link_libraries( ProjectUtils
     PRIVATE
         Qt6::Gui
-        Qt::Core
+        Qt6::Core
         RmlUi::RmlUi
         nlohmann_json::nlohmann_json
         tinyfiledialogs::tinyfiledialogs
+        magic_enum::magic_enum
 )

@@ -52,6 +52,10 @@
     static void LoadMap();
     static void ChangeDocument(const Rml::String& document_to_show, const Rml::String& document_to_hide);
 
+    //Added methods
+    
+    static void _ProcessCodeEvent(const Rml::StringList& values, Rml::Event* source_event = nullptr);
+
  private:
      EventManager();
      ~EventManager();

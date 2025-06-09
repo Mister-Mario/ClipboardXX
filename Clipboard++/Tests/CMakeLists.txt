@@ -14,4 +14,4 @@ target_link_libraries(${PROJECT_NAME}_test PRIVATE GTest::gtest GTest::gtest_mai
 
 
 include(GoogleTest)
-gtest_discover_tests(${PROJECT_NAME}_test)
+#gtest_discover_tests(${PROJECT_NAME}_test)

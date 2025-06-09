@@ -95,14 +95,17 @@ void EventManager::ProcessEvent(Rml::Event &event, const Rml::String &value)
 
         Rml::StringList values;
         Rml::StringUtilities::ExpandString(values, commands[i], ' ');
-
-        if (values.empty())
-            return;
-
-        auto it = events.find(values[0]);
-        if (it != events.end())
-            it->second->handle(event, values);
+        _ProcessCodeEvent(values, &event);
     }
+}
+
+void EventManager::_ProcessCodeEvent(const Rml::StringList& values, Rml::Event* source_event) {
+    if (values.empty())
+        return;
+
+    auto it = events.find(values[0]);
+    if (it != events.end())
+        it->second->handle(*source_event, values);
 }
 
 void EventManager::ChangeDocument(const Rml::String &documentToShowId, const Rml::String &documentToHideId)

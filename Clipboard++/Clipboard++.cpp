@@ -16,6 +16,7 @@
 #include "QClipboard/ClipboardAdapter.h"
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
 #include "QClipboard/HotKeyListener/HotKeyListener.h"
+#include "QClipboard/KeyShortCuts/KeyShortCutManager.h"
 #include "Utils/TranslationManager.h"
 #include <QSystemTrayIcon>
 #include <QMenu>
@@ -30,9 +31,9 @@ bool running = true;
 void showShortcuts(Rml::ElementDocument* shortcuts) {
 	if(!isWindowOpened) {
 		shortcuts->Show();
-		Backend::ShowWindow();
 		Backend::ModifyWindowSize(context, 1200, 500);
 		Backend::SetBorder(false);
+		Backend::ShowWindow();
 		isWindowOpened = true;
 	}
 }
@@ -55,7 +56,9 @@ void quit() {
 	QApplication app(argc, nullptr);
 	QApplication::setQuitOnLastWindowClosed(false);
 	QClipboard *qClipboard = QApplication::clipboard();
-	MemoryCellManager::Instance()->initialize(new ClipboardAdapter(qClipboard), 21);
+
+	KeyShortCutManager::Instance();
+	MemoryCellManager::Instance()->initialize(new ClipboardAdapter(qClipboard, KeyShortCutManager::Instance()->GetPasteShortCut(0), KeyShortCutManager::Instance()->GetCopyShortCut(0)), 21);
 	ShortCutsViewModel::Instance()->updateList("");
 
 	QLocale default_locale = QLocale::system();

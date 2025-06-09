@@ -6,7 +6,7 @@
 
 class MockClipboardAdapter : public ClipboardAdapter {
 public:
-    MockClipboardAdapter() : ClipboardAdapter(nullptr) {}
+    MockClipboardAdapter() : ClipboardAdapter(nullptr, NULL, NULL) {}
     MOCK_METHOD(void, setText, (const std::string& text), (override));
     MOCK_METHOD(std::string, text, (), (const, override));
     MOCK_METHOD(std::string, name, (), (const, override));

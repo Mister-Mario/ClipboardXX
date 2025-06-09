@@ -35,9 +35,9 @@
             </div>
             <div class="c-cell__shortcuts">
                 <span>shortcuts.paste</span>
-                <span class="c-cell__shortcut">Ctrl + V</span>
+                <span id="shortcut_paste" class="c-cell__shortcut">Ctrl + V</span>
                 <span>shortcuts.load</span>
-                <span class="c-cell__shortcut">Ctrl + C</span>
+                <span id="shortcut_copy" class="c-cell__shortcut">Ctrl + C</span>
                 <button>shortcuts.edit</button>
             </div>
         </div>
