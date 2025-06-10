@@ -23,10 +23,21 @@
 #include <QIcon>
 #include <thread>
 #include <atomic> 
+#ifdef _WIN32
+#include <windows.h>
+HWND lastWindow = NULL;
+#endif
 
 Rml::Context* context = nullptr;
 bool isWindowOpened = false;
 bool running = true;
+
+void captureHWND() {
+	#ifdef _WIN32
+	if(!isWindowOpened)
+		lastWindow = GetForegroundWindow();
+    #endif
+}
 
 void showShortcuts(Rml::ElementDocument* shortcuts) {
 	if(!isWindowOpened) {
@@ -35,6 +46,9 @@ void showShortcuts(Rml::ElementDocument* shortcuts) {
 		Backend::SetBorder(false);
 		Backend::ShowWindow();
 		isWindowOpened = true;
+	}
+	else {
+		Backend::ShowWindow();
 	}
 }
 
@@ -157,7 +171,7 @@ void quit() {
 	{
 		QApplication::processEvents();
 
-		if(isWindowOpened) {		
+		if(isWindowOpened && Backend::IsWindowShown()) {		
 			isWindowOpened = Backend::ProcessEvents(context, &Shell::ProcessKeyDownShortcuts, true);
 			context->Update();
 			Backend::BeginFrame();
@@ -173,6 +187,7 @@ void quit() {
 		
 		if (g_hotkeyPressed.load()) {
             g_hotkeyPressed.store(false);
+			captureHWND();
 			showShortcuts(shortcutsMenu);
         }
 	}

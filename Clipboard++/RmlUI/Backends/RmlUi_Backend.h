@@ -33,6 +33,9 @@
 #include <RmlUi/Core/RenderInterface.h>
 #include <RmlUi/Core/SystemInterface.h>
 #include <RmlUi/Core/Types.h>
+#ifdef _WIN32
+#include <windows.h>
+#endif
 
 using KeyDownCallback = bool (*)(Rml::Context* context, Rml::Input::KeyIdentifier key, int key_modifier, float native_dp_ratio, bool priority);
 
@@ -73,6 +76,7 @@ void SetBorder(bool flag);
 void MaximizeWindow(Rml::Context* context);
 void HideWindow();
 void ShowWindow();
+bool IsWindowShown();
 
 } // namespace Backend
 

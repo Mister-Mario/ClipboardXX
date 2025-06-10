@@ -53,7 +53,12 @@
 #include "Clipboard++Events/ExpandEvent.h"
 #include "Clipboard++Events/SearchEvent.h"
 #include <iostream>
-
+#ifdef _WIN32
+#include <windows.h>
+#include "Clipboard++Events/PasteEvent.h"
+#include "Clipboard++Events/CopyEvent.h"
+extern HWND lastWindow;
+#endif
 // The game's element context (declared in main.cpp).
 extern Rml::Context *context;
 MemoryCellManager *memoryCellManager = MemoryCellManager::Instance();
@@ -83,6 +88,10 @@ void EventManager::LoadMap()
     events["export_file"] = std::make_unique<ExportFileEvent>(memoryCellManager, fileManager, translator);
     events["expand"] = std::make_unique<ExpandEvent>();
     events["search"] = std::make_unique<SearchEvent>(shortCutsViewModel);
+    #ifdef _WIN32
+    events["paste"] = std::make_unique<PasteEvent>(lastWindow, memoryCellManager);
+    events["copy"] = std::make_unique<CopyEvent>(lastWindow, memoryCellManager);
+    #endif
 }
 
 void EventManager::ProcessEvent(Rml::Event &event, const Rml::String &value)
@@ -99,6 +108,9 @@ void EventManager::ProcessEvent(Rml::Event &event, const Rml::String &value)
 }
 
 void EventManager::_ProcessCodeEvent(const Rml::String &value, Rml::Event* source_event) {
+    if (events.empty())
+        LoadMap();
+
     Rml::StringList values;
     Rml::StringUtilities::ExpandString(values, value, ' ');
 
@@ -108,12 +120,6 @@ void EventManager::_ProcessCodeEvent(const Rml::String &value, Rml::Event* sourc
     auto it = events.find(values[0]);
     if (it != events.end())
         it->second->handle(*source_event, values);
-
-    if(values[0] == "paste")
-        std::cout << "paste " << values[1] << '\n';
-    if(values[0] == "copy")
-        std::cout << "copy " << values[1] << '\n';
-
 }
 
 void EventManager::ChangeDocument(const Rml::String &documentToShowId, const Rml::String &documentToHideId)

@@ -34,6 +34,7 @@
 #include <RmlUi/Core/FileInterface.h>
 #include <RmlUi/Core/Log.h>
 #include <RmlUi/Core/Profiling.h>
+#include <iostream>
 
 #if SDL_MAJOR_VERSION >= 3
 	#include <SDL3_image/SDL_image.h>
@@ -411,5 +412,21 @@ void Backend::HideWindow() {
 }
  
 void Backend::ShowWindow() {
-	SDL_ShowWindow(SDL_GL_GetCurrentWindow());
+	SDL_Window* window = SDL_GL_GetCurrentWindow();
+
+    Uint32 flags = SDL_GetWindowFlags(window);
+
+    if (flags & SDL_WINDOW_MINIMIZED) {
+        SDL_RestoreWindow(window);
+    }
+	if (flags & SDL_WINDOW_HIDDEN) {
+		SDL_ShowWindow(window);
+	}
+
+    SDL_RaiseWindow(window);
+}
+
+bool Backend::IsWindowShown() {
+	Uint32 flags = SDL_GetWindowFlags(SDL_GL_GetCurrentWindow());
+	return !(flags & SDL_WINDOW_HIDDEN) && !(flags & SDL_WINDOW_MINIMIZED) && flags != 8242;
 }

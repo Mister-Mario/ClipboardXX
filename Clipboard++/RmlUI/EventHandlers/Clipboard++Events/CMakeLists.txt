@@ -30,6 +30,10 @@ add_library(Events STATIC
     ExpandEvent.cpp
     SearchEvent.h
     SearchEvent.cpp
+    CopyEvent.h
+    CopyEvent.cpp
+    PasteEvent.h
+    PasteEvent.cpp
 )
 
 # Set include directories
