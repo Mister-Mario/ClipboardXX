@@ -11,8 +11,6 @@
             <button class="c-button c-button--primary" onclick="export">header.export</button>
         </div>
         <div class="c-controls__auto">
-            <label for="autopaste">header.autopaste</label>
-            <input class id="autopaste" type="checkbox" value="autopaste"/>
             <label for="autocopy">header.autocopy</label>
             <input class id="autocopy" type="checkbox" value="autocopy"/>
         </div>

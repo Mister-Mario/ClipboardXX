@@ -34,7 +34,7 @@ add_subdirectory(RmlUI/Elements)
 
 
 # Main executable
-add_executable(${PROJECT_NAME} Clipboard++.cpp resources.qrc)
+add_executable(${PROJECT_NAME} Clipboard++.cpp icon.rc)
 
 # Include RmlUi
 target_link_libraries(${PROJECT_NAME} PRIVATE RmlUi::RmlUi rmlui_backend_SDL_GL3 rmlui_shell QClipboard EventHandlers Elements Qt6::Widgets)

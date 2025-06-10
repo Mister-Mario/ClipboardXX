@@ -88,7 +88,7 @@ void quit() {
 	int window_width = screenGeometry.width() <= maxWindowWidth ? screenGeometry.width() * 0.95 : 1920;
 	int window_height = screenGeometry.height() <= maxWindowHeight ? screenGeometry.height() * 0.875 : 1080;
 
-	QIcon icon(":/assets/icons/test_64.png");
+	QIcon icon("assets/icons/Icono.png");
     QSystemTrayIcon trayIcon(icon);
     trayIcon.setToolTip("Mi App (RmlUI + Hotkey)");
     QMenu menu;
@@ -96,7 +96,7 @@ void quit() {
     menu.addSeparator();
     QAction *quitAction = menu.addAction("Salir");
     trayIcon.setContextMenu(&menu);
-    trayIcon.show();
+    trayIcon.show(); 
 
 	// Initializes the shell which provides common functionality used by the included samples.
 	if (!Shell::Initialize()){
