@@ -34,6 +34,14 @@ add_library(Events STATIC
     CopyEvent.cpp
     PasteEvent.h
     PasteEvent.cpp
+    EditEvent.h
+    EditEvent.cpp
+    EditCloseEvent.h
+    EditCloseEvent.cpp
+    EditDoneEvent.h
+    EditDoneEvent.cpp
+    ResetShortCutEvent.h
+    ResetShortCutEvent.cpp
 )
 
 # Set include directories

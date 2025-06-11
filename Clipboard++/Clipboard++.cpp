@@ -152,7 +152,8 @@ void quit() {
 	Rml::ElementDocument* fileImport = context->LoadDocument("assets/fileImport.rml");
 	Rml::ElementDocument* fileExport = context->LoadDocument("assets/fileExport.rml");
 	Rml::ElementDocument* shortcutsMenu = context->LoadDocument("assets/shortcutsMenu.rml"); 
-	if (!main || !fileImport || !fileExport || !shortcutsMenu){
+	Rml::ElementDocument* edit = context->LoadDocument("assets/edit.rml"); 
+	if (!main || !fileImport || !fileExport || !shortcutsMenu || !edit){
 		Rml::Shutdown();
 		Backend::Shutdown();
 		Shell::Shutdown();
@@ -181,6 +182,7 @@ void quit() {
 				main->Hide();
 				fileImport->Hide();
 				fileExport->Hide();
+				edit->Hide();
 				Backend::HideWindow();
 			}
 		}

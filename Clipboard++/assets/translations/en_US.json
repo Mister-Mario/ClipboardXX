@@ -12,11 +12,11 @@
     "input_placeholder": "Text to load",
     "load_button": "Load"
   },
-"shortcuts": {
-    "paste": "Paste shortcut:",
-    "load": "Load shortcut:",
-    "edit": "Edit"
-  },
+  "shortcuts": {
+      "paste": "Paste shortcut:",
+      "load": "Load shortcut:",
+      "edit": "Edit"
+    },
   "list": {
     "clipboard": "Clipboard",
     "cell_1": "Memory cell 1",
@@ -72,5 +72,10 @@
       "import": "Import file",
       "export": "Export file"
     }
+  },
+  "edit": {
+    "title": "Edit shortcut",
+    "old": "Current shortcut",
+    "new": "New shortcut"
   }
 }

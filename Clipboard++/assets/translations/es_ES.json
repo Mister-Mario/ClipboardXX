@@ -76,5 +76,10 @@
       "import": "Importar archivo",
       "export": "Exportar archivo"
     }
+  },
+  "edit": {
+    "title": "Editar atajo",
+    "old": "Atajo actual",
+    "new": "Atajo nuevo"
   }
 }

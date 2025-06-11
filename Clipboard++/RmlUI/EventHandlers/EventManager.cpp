@@ -36,6 +36,7 @@
 #include "Utils/FileManager.h"
 #include "Utils/TranslationManager.h"
 #include "Utils/TranslationManager.h"
+#include "QClipboard/KeyShortCuts/KeyShortCutManager.h"
 #include <ShortCutsViewModel.h>
 #include "Clipboard++Events/ClearEvent.h"
 #include "Clipboard++Events/InsertEvent.h"
@@ -52,6 +53,10 @@
 #include "Clipboard++Events/ExportFileEvent.h"
 #include "Clipboard++Events/ExpandEvent.h"
 #include "Clipboard++Events/SearchEvent.h"
+#include "Clipboard++Events/EditEvent.h"
+#include "Clipboard++Events/EditCloseEvent.h"
+#include "Clipboard++Events/EditDoneEvent.h"
+#include "Clipboard++Events/ResetShortCutEvent.h"
 #include <iostream>
 #ifdef _WIN32
 #include <windows.h>
@@ -65,6 +70,7 @@ MemoryCellManager *memoryCellManager = MemoryCellManager::Instance();
 FileManager *fileManager = FileManager::Instance();
 TranslationManager *translator = TranslationManager::Instance();
 ShortCutsViewModel *shortCutsViewModel = ShortCutsViewModel::Instance();
+KeyShortCutManager* keyShortCutsManager = keyShortCutsManager::Instance();
 std::map<std::string, std::unique_ptr<ClipboardEvent>> EventManager::events;
 
 EventManager::EventManager() {}
@@ -92,6 +98,11 @@ void EventManager::LoadMap()
     events["paste"] = std::make_unique<PasteEvent>(lastWindow, memoryCellManager);
     events["copy"] = std::make_unique<CopyEvent>(lastWindow, memoryCellManager);
     #endif
+    events["edit"] = std::make_unique<EditEvent>(memoryCellManager, keyShortCutsManager);
+    events["edit_close"] = std::make_unique<EditCloseEvent>();
+    events["edit_done"] = std::make_unique<EditDoneEvent>();
+    events["reset"] = std::make_unique<ResetShortCutEvent>();
+
 }
 
 void EventManager::ProcessEvent(Rml::Event &event, const Rml::String &value)

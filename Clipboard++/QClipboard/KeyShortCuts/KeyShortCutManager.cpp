@@ -102,3 +102,10 @@ KeyShortCut* KeyShortCutManager::FilterShortCuts(Rml::Input::KeyIdentifier key) 
         }
     }
 }
+
+KeyShortCut* KeyShortCutManager::GetSelectedShortCut() {
+    return m_selectedShortCut;
+}
+void KeyShortCutManager::SetSelectedShortCut(KeyShortCut* shortCut) {
+    m_selectedShortCut = shortCut;
+}

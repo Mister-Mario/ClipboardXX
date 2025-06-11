@@ -9,6 +9,8 @@ class KeyShortCutManager {
         KeyShortCut* GetPasteShortCut(size_t i) const;
         KeyShortCut* GetCopyShortCut(size_t i) const;
         KeyShortCut* FilterShortCuts(Rml::Input::KeyIdentifier key);
+        KeyShortCut* GetSelectedShortCut();
+        void SetSelectedShortCut(KeyShortCut* shortCut);
     protected:
         KeyShortCutManager();
     private:
@@ -17,6 +19,7 @@ class KeyShortCutManager {
         std::vector<KeyShortCut*> m_shortcuts;
         int keysFiltered = 0;
         Rml::Input::KeyIdentifier lastKeyPressed = Rml::Input::KI_UNKNOWN;
+        KeyShortCut* m_selectedShortCut;
         void LoadKeyShortCuts();
         std::vector<std::string> SelectFile();
         KeyShortCut* GetShortCutFromString(std::string shortcut, std::string event);

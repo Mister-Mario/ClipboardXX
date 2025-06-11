@@ -1,0 +1,69 @@
+.c-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-edit__content {
+    background-color: black;
+    color: white;
+    border: 2px white;
+    width: 50%;
+    height: 50%;
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
+.c-edit__title {
+    text-decoration: underline;
+    font-size: 1.75rem;
+    font-weight: bold;
+    height: 10%;
+}
+
+.c-edit__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    height: 89%;
+}
+
+.c-edit__new {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.c-edit__new label {
+    font-size: 1.5rem;
+}
+
+
+.c-edit__old {
+    display: flex;
+}
+
+.c-edit__old label {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.c-edit__old input {
+    padding-left: 10px;
+    background: white;
+    color: black;
+    font-size: 1.25rem;
+    width: 25rem;
+}
+
+.c-edit__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.c-edit__buttons button {
+    width: 100%;
+}

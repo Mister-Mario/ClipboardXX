@@ -34,9 +34,10 @@
             <div class="c-cell__shortcuts">
                 <span>shortcuts.paste</span>
                 <span id="shortcut_paste" class="c-cell__shortcut">Ctrl + V</span>
+                <button class="c-button c-button--primary" onclick="edit paste">shortcuts.edit</button>
                 <span>shortcuts.load</span>
                 <span id="shortcut_copy" class="c-cell__shortcut">Ctrl + C</span>
-                <button>shortcuts.edit</button>
+                <button class="c-button c-button--primary" onclick="edit copy">shortcuts.edit</button>
             </div>
         </div>
 
