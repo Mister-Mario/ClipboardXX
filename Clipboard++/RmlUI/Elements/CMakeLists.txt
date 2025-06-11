@@ -5,6 +5,8 @@ add_library(Elements STATIC
     ElementFileManager.cpp
     ElementShortcuts.h
     ElementShortcuts.cpp
+    ElementEdit.h
+    ElementEdit.cpp
 )
 
 # Set include directories

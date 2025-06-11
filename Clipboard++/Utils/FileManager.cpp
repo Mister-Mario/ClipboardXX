@@ -92,7 +92,7 @@ std::string FileManager::searchExportFile(const char* title) {
     return "";
 }
 
-void FileManager::exportFile(const char* filePath, char delimiter, std::vector<std::string> content) {
+void FileManager::exportFile(const char* filePath, char delimiter, std::vector<std::string> content, bool showDialog) {
     std::ofstream exportFile(filePath);
 
     if (exportFile.is_open()) {
@@ -100,10 +100,12 @@ void FileManager::exportFile(const char* filePath, char delimiter, std::vector<s
             exportFile << linea << delimiter;
         }
         exportFile.close();
-        showGoodDialog(translator->getString("file.dialog.message.export.correct").c_str());
+        if(showDialog)
+            showGoodDialog(translator->getString("file.dialog.message.export.correct").c_str());
 
     } else {
-        showErrorDialog(translator->getString("file.dialog.message.export.error").c_str());
+        if(showDialog)
+            showErrorDialog(translator->getString("file.dialog.message.export.error").c_str());
     }
 }
 

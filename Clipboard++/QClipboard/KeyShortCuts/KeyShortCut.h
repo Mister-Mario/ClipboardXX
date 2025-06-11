@@ -11,6 +11,9 @@ class KeyShortCut {
         std::vector<Rml::Input::KeyIdentifier> getShortCut() const;
         void setShortCut(const std::vector<Rml::Input::KeyIdentifier>& newCombination);
         std::string getEvent() const;
+        bool operator==(const KeyShortCut& other) const;
+        std::string toString();
+        static std::string toString(std::vector<Rml::Input::KeyIdentifier> shortCutCombination);
     private:
         std::vector<Rml::Input::KeyIdentifier> m_shortCutCombination;
         std::string m_event;

@@ -1,6 +1,8 @@
 add_library(ViewModels STATIC
     ShortCutsViewModel.h
     ShortCutsViewModel.cpp
+    EditViewModel.h
+    EditViewModel.cpp
 )
 
 # Set include directories

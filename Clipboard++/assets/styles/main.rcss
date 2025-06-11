@@ -1,6 +1,6 @@
 app {
     align-items: center;
-    background: black;
+    background: #212121;
     color: white;
     display: flex;
     flex-direction: column;
@@ -42,7 +42,7 @@ header {
 
 .c-controls__auto input {
     background: gray;
-    color: black;
+    color: #212121;
 	cursor: pointer;
     height: 1rem;
     width: 1rem;
@@ -126,7 +126,7 @@ main {
 
 .c-cell__load textarea {
     background: white;
-    color: black;
+    color: #212121;
     font-size: 1rem;
     height: 3rem;
     padding: 0.5rem;
@@ -138,11 +138,16 @@ main {
     align-items: center;
     display: flex;
     justify-content: center;
+    gap: .5rem;
     padding: .5rem;
 }
 
 .c-cell__shortcuts span {
     font-size: 1.25rem;
+    margin-right: 1rem;
+}
+
+.c-cell__shortcuts button {
     margin-right: 1rem;
 }
 

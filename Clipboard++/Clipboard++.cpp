@@ -23,6 +23,7 @@
 #include <QIcon>
 #include <thread>
 #include <atomic> 
+#include "ElementEdit.h"
 #ifdef _WIN32
 #include <windows.h>
 HWND lastWindow = NULL;
@@ -39,6 +40,13 @@ void captureHWND() {
     #endif
 }
 
+void hiceDocuments() {
+	for (int i = context->GetNumDocuments() - 1; i >= 0; --i)
+    {
+        context->GetDocument(i)->Hide();
+    }
+}
+
 void showShortcuts(Rml::ElementDocument* shortcuts) {
 	if(!isWindowOpened) {
 		shortcuts->Show();
@@ -48,7 +56,10 @@ void showShortcuts(Rml::ElementDocument* shortcuts) {
 		isWindowOpened = true;
 	}
 	else {
-		Backend::ShowWindow();
+		hiceDocuments();
+		shortcuts->Show();
+		Backend::ModifyWindowSize(context, 1200, 500);
+		Backend::SetBorder(false);
 	}
 }
 
@@ -90,11 +101,11 @@ void quit() {
 
 	QIcon icon("assets/icons/Icono.png");
     QSystemTrayIcon trayIcon(icon);
-    trayIcon.setToolTip("Mi App (RmlUI + Hotkey)");
+    trayIcon.setToolTip(QString::fromStdString((translator->getString("title"))));
     QMenu menu;
-    QAction *showAction = menu.addAction("Mostrar");
+    QAction *showAction = menu.addAction(QString::fromStdString((translator->getString("tray.show"))));
     menu.addSeparator();
-    QAction *quitAction = menu.addAction("Salir");
+    QAction *quitAction = menu.addAction(QString::fromStdString((translator->getString("tray.quit"))));
     trayIcon.setContextMenu(&menu);
     trayIcon.show(); 
 
@@ -105,7 +116,7 @@ void quit() {
 	}
 
 	// Constructs the system and render interfaces, creates a window, and attaches the renderer.
-	if (!Backend::Initialize("Clipboard++", window_width, window_height, true))
+	if (!Backend::Initialize(translator->getString("title").c_str(), window_width, window_height, true))
 	{
 		std::cout << "Falla el Backend";
 		Shell::Shutdown();
@@ -125,7 +136,6 @@ void quit() {
 	context = Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
 	if (!context)
 	{
-		std::cout << "Falla el context";
 		Rml::Shutdown();
 		Backend::Shutdown();
 		Shell::Shutdown();
@@ -145,6 +155,9 @@ void quit() {
 	Rml::ElementInstancerGeneric<ElementShortcuts> element_shortcuts_instancer;
 	Rml::Factory::RegisterElementInstancer("shortcuts", &element_shortcuts_instancer);
 
+	Rml::ElementInstancerGeneric<ElementEdit> element_edit_instancer;
+	Rml::Factory::RegisterElementInstancer("edit", &element_edit_instancer);
+
 	EventListenerInstancer event_listener_instancer;
 	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
 
@@ -154,6 +167,11 @@ void quit() {
 	Rml::ElementDocument* shortcutsMenu = context->LoadDocument("assets/shortcutsMenu.rml"); 
 	Rml::ElementDocument* edit = context->LoadDocument("assets/edit.rml"); 
 	if (!main || !fileImport || !fileExport || !shortcutsMenu || !edit){
+		if (main) main->Close();
+		if (fileImport) fileImport->Close();
+		if (fileExport) fileExport->Close();
+		if (shortcutsMenu) shortcutsMenu->Close();
+		if (edit) edit->Close();
 		Rml::Shutdown();
 		Backend::Shutdown();
 		Shell::Shutdown();
@@ -179,10 +197,7 @@ void quit() {
 			context->Render();
 			Backend::PresentFrame();
 			if(!isWindowOpened) {
-				main->Hide();
-				fileImport->Hide();
-				fileExport->Hide();
-				edit->Hide();
+				hiceDocuments();
 				Backend::HideWindow();
 			}
 		}
@@ -193,6 +208,12 @@ void quit() {
 			showShortcuts(shortcutsMenu);
         }
 	}
+
+	if (main) main->Close();
+    if (fileImport) fileImport->Close();
+    if (fileExport) fileExport->Close();
+    if (shortcutsMenu) shortcutsMenu->Close();
+    if (edit) edit->Close();
 
 	// Shutdown RmlUi.
 	Rml::Shutdown();

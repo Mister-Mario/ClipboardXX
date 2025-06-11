@@ -16,7 +16,7 @@ add_library(rmlui_shell STATIC
 
 set_common_target_options(rmlui_shell)
 
-target_link_libraries(rmlui_shell PRIVATE rmlui_backend_${RMLUI_BACKEND})
+target_link_libraries(rmlui_shell PRIVATE rmlui_backend_${RMLUI_BACKEND} ProjectUtils)
 
 target_include_directories(rmlui_shell PUBLIC "include" "${CMAKE_CURRENT_SOURCE_DIR}/RmlUI/Backends")
 

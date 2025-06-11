@@ -103,9 +103,19 @@ KeyShortCut* KeyShortCutManager::FilterShortCuts(Rml::Input::KeyIdentifier key) 
     }
 }
 
-KeyShortCut* KeyShortCutManager::GetSelectedShortCut() {
-    return m_selectedShortCut;
+void KeyShortCutManager::ModifyKeyShortCut(KeyShortCut* keyShortCut, std::vector<Rml::Input::KeyIdentifier> newShortCut) {
+    keyShortCut->setShortCut(newShortCut);
+    for(size_t i = 0; i < m_shortcutsBase.size(); i+=1)
+        if(m_shortcutsBase.at(i) == keyShortCut)
+            m_shortcutsBase.at(i)->setShortCut(newShortCut);
+    m_shortcuts = GetBaseList();
+    WriteShortCuts();
 }
-void KeyShortCutManager::SetSelectedShortCut(KeyShortCut* shortCut) {
-    m_selectedShortCut = shortCut;
+
+void KeyShortCutManager::WriteShortCuts() {
+    std::vector<std::string> shortCuts = {};
+    for(size_t i = 2; i < m_shortcutsBase.size(); i+=1) {
+        shortCuts.push_back(m_shortcutsBase.at(i)->toString());
+    }
+    FileManager::Instance()->exportFile("assets/conf/shortCuts.csv", ';', shortCuts, false);
 }

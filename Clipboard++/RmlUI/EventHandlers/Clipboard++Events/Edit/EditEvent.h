@@ -3,17 +3,17 @@
 
 #include "Clipboard++Event.h"
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
-#include "QClipboard/KeyShortCuts/KeyShortCutManager.h"
+#include <EditViewModel.h>
 
 class EditEvent : public ClipboardEvent {
 public:
-    explicit EditEvent(MemoryCellManager* memoryCellManager, KeyShortCutManager* keyShortCutsManager);
+    explicit EditEvent(MemoryCellManager* memoryCellManager, EditViewModel* editViewModel);
     virtual ~EditEvent() = default;
     
     void handle(Rml::Event& event, Rml::StringList values) override;
 private:
     MemoryCellManager* m_memoryCellManager;
-    KeyShortCutManager* m_keyShortCutsManager
+    EditViewModel* m_editViewModel;
 };
 
 #endif

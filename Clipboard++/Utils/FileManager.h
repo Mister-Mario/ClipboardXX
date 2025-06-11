@@ -12,7 +12,7 @@ class FileManager {
         std::string searchImportFile(const char* title);
         std::string searchExportFile(const char* title);
         std::vector<std::string> readFile(const char* filePath, char delimiter, bool showDialog = true);
-        void exportFile(const char* filePath, char delimiter, std::vector<std::string> content);
+        void exportFile(const char* filePath, char delimiter, std::vector<std::string> content, bool showDialog = true);
         void showErrorDialog(const char* message);
         void showGoodDialog(const char* message);
     protected:

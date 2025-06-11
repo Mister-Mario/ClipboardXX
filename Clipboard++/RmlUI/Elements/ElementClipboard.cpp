@@ -36,18 +36,10 @@ extern Rml::Context* context;
       selectedCellConentElement->SetInnerRML(StringUtils::escapeHtml(content));
    }
    if(Rml::Element* selectedCellPaste = document->GetElementById("shortcut_paste")){
-      std::string content = "";
-      for(auto key : memoryCellManager->getSelectedCell()->getKeyShortCutPaste()->getShortCut()){
-         content.append(StringUtils::getStringFronEnum(key)).append("+");
-      }
-      selectedCellPaste->SetInnerRML(StringUtils::escapeHtml(content.substr(0, content.length() - 1)));
+      selectedCellPaste->SetInnerRML(StringUtils::escapeHtml(memoryCellManager->getSelectedCell()->getKeyShortCutPaste()->toString()));
    }
    if(Rml::Element* selectedCellCopy = document->GetElementById("shortcut_copy")){
-      std::string content = "";
-      for(auto key : memoryCellManager->getSelectedCell()->getKeyShortCutCopy()->getShortCut()){
-         content.append(StringUtils::getStringFronEnum(key)).append("+");
-      }
-      selectedCellCopy->SetInnerRML(StringUtils::escapeHtml(content.substr(0, content.length() - 1)));
+      selectedCellCopy->SetInnerRML(StringUtils::escapeHtml(memoryCellManager->getSelectedCell()->getKeyShortCutCopy()->toString())); 
    }
 
 }

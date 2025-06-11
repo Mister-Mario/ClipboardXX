@@ -38,39 +38,41 @@
 #include "Utils/TranslationManager.h"
 #include "QClipboard/KeyShortCuts/KeyShortCutManager.h"
 #include <ShortCutsViewModel.h>
-#include "Clipboard++Events/ClearEvent.h"
-#include "Clipboard++Events/InsertEvent.h"
-#include "Clipboard++Events/LoadEvent.h"
-#include "Clipboard++Events/SlotEvent.h"
-#include "Clipboard++Events/HelpEvent.h"
-#include "Clipboard++Events/ImportSearchEvent.h"
-#include "Clipboard++Events/ImportEvent.h"
-#include "Clipboard++Events/ImportCloseEvent.h"
-#include "Clipboard++Events/ImportFileEvent.h"
-#include "Clipboard++Events/ExportSearchEvent.h"
-#include "Clipboard++Events/ExportEvent.h"
-#include "Clipboard++Events/ExportCloseEvent.h"
-#include "Clipboard++Events/ExportFileEvent.h"
-#include "Clipboard++Events/ExpandEvent.h"
-#include "Clipboard++Events/SearchEvent.h"
-#include "Clipboard++Events/EditEvent.h"
-#include "Clipboard++Events/EditCloseEvent.h"
-#include "Clipboard++Events/EditDoneEvent.h"
-#include "Clipboard++Events/ResetShortCutEvent.h"
+#include <EditViewModel.h>
+#include "Clipboard++Events/Main/ClearEvent.h"
+#include "Clipboard++Events/Main/InsertEvent.h"
+#include "Clipboard++Events/Main/LoadEvent.h"
+#include "Clipboard++Events/Main/SlotEvent.h"
+#include "Clipboard++Events/Main/HelpEvent.h"
+#include "Clipboard++Events/Import/ImportSearchEvent.h"
+#include "Clipboard++Events/Import/ImportEvent.h"
+#include "Clipboard++Events/Import/ImportCloseEvent.h"
+#include "Clipboard++Events/Import/ImportFileEvent.h"
+#include "Clipboard++Events/Export/ExportSearchEvent.h"
+#include "Clipboard++Events/Export/ExportEvent.h"
+#include "Clipboard++Events/Export/ExportCloseEvent.h"
+#include "Clipboard++Events/Export/ExportFileEvent.h"
+#include "Clipboard++Events/ShortCutsMenu/ExpandEvent.h"
+#include "Clipboard++Events/ShortCutsMenu/SearchEvent.h"
+#include "Clipboard++Events/Edit/EditEvent.h"
+#include "Clipboard++Events/Edit/EditCloseEvent.h"
+#include "Clipboard++Events/Edit/EditDoneEvent.h"
+#include "Clipboard++Events/Edit/ResetShortCutEvent.h"
 #include <iostream>
 #ifdef _WIN32
 #include <windows.h>
-#include "Clipboard++Events/PasteEvent.h"
-#include "Clipboard++Events/CopyEvent.h"
+#include "Clipboard++Events/ShortCutsMenu/PasteEvent.h"
+#include "Clipboard++Events/ShortCutsMenu/CopyEvent.h"
 extern HWND lastWindow;
 #endif
 // The game's element context (declared in main.cpp).
-extern Rml::Context *context;
-MemoryCellManager *memoryCellManager = MemoryCellManager::Instance();
-FileManager *fileManager = FileManager::Instance();
-TranslationManager *translator = TranslationManager::Instance();
-ShortCutsViewModel *shortCutsViewModel = ShortCutsViewModel::Instance();
-KeyShortCutManager* keyShortCutsManager = keyShortCutsManager::Instance();
+extern Rml::Context* context;
+MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
+FileManager* fileManager = FileManager::Instance();
+TranslationManager* translator = TranslationManager::Instance();
+ShortCutsViewModel* shortCutsViewModel = ShortCutsViewModel::Instance();
+KeyShortCutManager* keyShortCutsManager = KeyShortCutManager::Instance();
+EditViewModel* editViewModel = EditViewModel::Instance();
 std::map<std::string, std::unique_ptr<ClipboardEvent>> EventManager::events;
 
 EventManager::EventManager() {}
@@ -98,10 +100,10 @@ void EventManager::LoadMap()
     events["paste"] = std::make_unique<PasteEvent>(lastWindow, memoryCellManager);
     events["copy"] = std::make_unique<CopyEvent>(lastWindow, memoryCellManager);
     #endif
-    events["edit"] = std::make_unique<EditEvent>(memoryCellManager, keyShortCutsManager);
+    events["edit"] = std::make_unique<EditEvent>(memoryCellManager, editViewModel);
     events["edit_close"] = std::make_unique<EditCloseEvent>();
-    events["edit_done"] = std::make_unique<EditDoneEvent>();
-    events["reset"] = std::make_unique<ResetShortCutEvent>();
+    events["edit_done"] = std::make_unique<EditDoneEvent>(memoryCellManager, keyShortCutsManager, editViewModel, translator, fileManager);
+    events["reset"] = std::make_unique<ResetShortCutEvent>(editViewModel);
 
 }
 

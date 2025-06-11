@@ -70,10 +70,11 @@ TranslationManager* translatorShortCuts = TranslationManager::Instance();
  {
    Rml::Element::OnChildRemove(element);
 
-	if (element == this)
-	{
-		GetOwnerDocument()->RemoveEventListener(Rml::EventId::Keydown, this);
-	}
+   if (element == this) {
+      if (Rml::Element* owner_document = GetOwnerDocument()) {
+         owner_document->RemoveEventListener(Rml::EventId::Keydown, this);
+      }
+   }
  }
 
  void ElementShortcuts::ProcessEvent(Rml::Event& event) {

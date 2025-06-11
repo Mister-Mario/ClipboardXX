@@ -1,47 +1,52 @@
 add_library(Events STATIC
     Clipboard++Event.h
-    ClearEvent.h
-    ClearEvent.cpp
-    InsertEvent.h
-    InsertEvent.cpp
-    LoadEvent.h
-    LoadEvent.cpp
-    SlotEvent.h
-    SlotEvent.cpp
-    HelpEvent.h
-    HelpEvent.cpp
-    ImportSearchEvent.h
-    ImportSearchEvent.cpp
-    ImportEvent.h
-    ImportEvent.cpp
-    ImportCloseEvent.h
-    ImportCloseEvent.cpp
-    ImportFileEvent.h
-    ImportFileEvent.cpp
-    ExportSearchEvent.h
-    ExportSearchEvent.cpp
-    ExportEvent.h
-    ExportEvent.cpp
-    ExportCloseEvent.h
-    ExportCloseEvent.cpp
-    ExportFileEvent.h
-    ExportFileEvent.cpp
-    ExpandEvent.h
-    ExpandEvent.cpp
-    SearchEvent.h
-    SearchEvent.cpp
-    CopyEvent.h
-    CopyEvent.cpp
-    PasteEvent.h
-    PasteEvent.cpp
-    EditEvent.h
-    EditEvent.cpp
-    EditCloseEvent.h
-    EditCloseEvent.cpp
-    EditDoneEvent.h
-    EditDoneEvent.cpp
-    ResetShortCutEvent.h
-    ResetShortCutEvent.cpp
+
+    Edit/EditEvent.h
+    Edit/EditEvent.cpp
+    Edit/EditCloseEvent.h
+    Edit/EditCloseEvent.cpp
+    Edit/EditDoneEvent.h
+    Edit/EditDoneEvent.cpp
+    Edit/ResetShortCutEvent.h
+    Edit/ResetShortCutEvent.cpp
+
+    Export/ExportSearchEvent.h
+    Export/ExportSearchEvent.cpp
+    Export/ExportEvent.h
+    Export/ExportEvent.cpp
+    Export/ExportCloseEvent.h
+    Export/ExportCloseEvent.cpp
+    Export/ExportFileEvent.h
+    Export/ExportFileEvent.cpp
+
+    Import/ImportSearchEvent.h
+    Import/ImportSearchEvent.cpp
+    Import/ImportEvent.h
+    Import/ImportEvent.cpp
+    Import/ImportCloseEvent.h
+    Import/ImportCloseEvent.cpp
+    Import/ImportFileEvent.h
+    Import/ImportFileEvent.cpp
+
+    Main/ClearEvent.h
+    Main/ClearEvent.cpp
+    Main/InsertEvent.h
+    Main/InsertEvent.cpp
+    Main/LoadEvent.h
+    Main/LoadEvent.cpp
+    Main/SlotEvent.h
+    Main/SlotEvent.cpp
+    Main/HelpEvent.h
+    Main/HelpEvent.cpp
+
+    ShortCutsMenu/ExpandEvent.h
+    ShortCutsMenu/ExpandEvent.cpp
+    ShortCutsMenu/SearchEvent.h
+    ShortCutsMenu/SearchEvent.cpp
+    ShortCutsMenu/CopyEvent.h
+    ShortCutsMenu/CopyEvent.cpp
+    ShortCutsMenu/PasteEvent.h
+    ShortCutsMenu/PasteEvent.cpp
 )
 
 # Set include directories
