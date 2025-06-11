@@ -3,6 +3,6 @@
 
 ImportCloseEvent::ImportCloseEvent() {}
 
-void ImportCloseEvent::handle(Rml::Event& event, Rml::StringList values) {
+void ImportCloseEvent::handle(Rml::Event* event, Rml::StringList values) {
     EventManager::ChangeDocument("main_window", "file_manager_import");
 }

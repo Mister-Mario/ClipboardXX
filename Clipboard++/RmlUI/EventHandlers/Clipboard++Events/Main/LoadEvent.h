@@ -9,7 +9,7 @@ public:
     explicit LoadEvent(MemoryCellManager* memoryCellManager);
     virtual ~LoadEvent() = default;
     
-    void handle(Rml::Event& event, Rml::StringList values) override;
+    void handle(Rml::Event* event, Rml::StringList values) override;
 private:
     MemoryCellManager* m_memoryCellManager;
 };

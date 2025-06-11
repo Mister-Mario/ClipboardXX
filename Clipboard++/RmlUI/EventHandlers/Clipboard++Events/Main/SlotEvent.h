@@ -9,7 +9,7 @@ public:
     explicit SlotEvent(MemoryCellManager* memoryCellManager);
     virtual ~SlotEvent() = default;
     
-    void handle(Rml::Event& event, Rml::StringList values) override;
+    void handle(Rml::Event* event, Rml::StringList values) override;
 private:
     MemoryCellManager* m_memoryCellManager;
 };

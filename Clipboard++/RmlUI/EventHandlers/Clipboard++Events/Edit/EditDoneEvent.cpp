@@ -9,7 +9,7 @@ EditDoneEvent::EditDoneEvent(MemoryCellManager* memoryCellManager, KeyShortCutMa
     m_fileManager(fileManager)
     {}
 
-void EditDoneEvent::handle(Rml::Event& event, Rml::StringList values) {
+void EditDoneEvent::handle(Rml::Event* event, Rml::StringList values) {
     if(m_editViewModel->GetNewShortCut().size() == 0) {
         m_fileManager->showErrorDialog(m_translator->getString("file.dialog.message.edit").c_str());
         return;

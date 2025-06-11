@@ -15,7 +15,7 @@ ExpandEvent::ExpandEvent(){
 	window_height = screenGeometry.height() <= maxWindowHeight ? screenGeometry.height() * 0.875 : 1080;
 }
 
-void ExpandEvent::handle(Rml::Event& event, Rml::StringList values) {
+void ExpandEvent::handle(Rml::Event* event, Rml::StringList values) {
 	Backend::SetBorder(true);
     Backend::MaximizeWindow(context);
     EventManager::ChangeDocument("main_window", "shortcuts_menu");

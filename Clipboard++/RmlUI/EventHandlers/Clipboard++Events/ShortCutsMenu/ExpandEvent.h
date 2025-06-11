@@ -8,7 +8,7 @@ public:
     explicit ExpandEvent();
     virtual ~ExpandEvent() = default;
     
-    void handle(Rml::Event& event, Rml::StringList values) override;
+    void handle(Rml::Event* event, Rml::StringList values) override;
 private:
     int window_width;
     int window_height;

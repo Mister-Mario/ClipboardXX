@@ -2,6 +2,6 @@
 
 HelpEvent::HelpEvent() {}
 
-void HelpEvent::handle(Rml::Event& event, Rml::StringList values) {
+void HelpEvent::handle(Rml::Event* event, Rml::StringList values) {
     openHelp();
 }

@@ -7,7 +7,7 @@
 class ClipboardEvent {
 public:
     virtual ~ClipboardEvent() = default;
-    virtual void handle(Rml::Event& event, Rml::StringList values) = 0;
+    virtual void handle(Rml::Event* event, Rml::StringList values) = 0;
 };
 
 #endif

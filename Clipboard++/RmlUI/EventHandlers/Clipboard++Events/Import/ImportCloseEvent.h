@@ -8,7 +8,7 @@ public:
     explicit ImportCloseEvent();
     virtual ~ImportCloseEvent() = default;
     
-    void handle(Rml::Event& event, Rml::StringList values) override;
+    void handle(Rml::Event* event, Rml::StringList values) override;
 };
 
 #endif

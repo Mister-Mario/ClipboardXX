@@ -1,5 +1,6 @@
 #include "ClipboardAdapter.h"
 
+
 ClipboardAdapter::ClipboardAdapter(QClipboard* clipboard, KeyShortCut* keyShortCutPaste, KeyShortCut* keyShortCutCopy) :
     m_clipboard(clipboard),
     m_keyShortCutPaste(keyShortCutPaste),

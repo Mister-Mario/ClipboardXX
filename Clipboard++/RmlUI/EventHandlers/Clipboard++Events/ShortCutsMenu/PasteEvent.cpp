@@ -4,7 +4,7 @@
 
 PasteEvent::PasteEvent(HWND lastWindow, MemoryCellManager* memoryCellManager) : m_memoryCellManager(memoryCellManager), m_lastWindow(lastWindow) {}
 
-void PasteEvent::handle(Rml::Event& event, Rml::StringList values) {
+void PasteEvent::handle(Rml::Event* event, Rml::StringList values) {
     auto clipboard = m_memoryCellManager->getMemoryCell(0);
     auto selectedCell = m_memoryCellManager->getMemoryCell(std::stoi(values[1]));
     if(!clipboard || !selectedCell)

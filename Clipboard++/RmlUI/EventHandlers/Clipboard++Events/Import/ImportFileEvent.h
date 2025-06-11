@@ -12,7 +12,7 @@ public:
     explicit ImportFileEvent(MemoryCellManager* memoryCellManager, FileManager* fileManager, TranslationManager* translator);
     virtual ~ImportFileEvent() = default;
     
-    void handle(Rml::Event& event, Rml::StringList values) override;
+    void handle(Rml::Event* event, Rml::StringList values) override;
 private:
     MemoryCellManager* m_memoryCellManager;
     FileManager* m_fileManager;

@@ -14,7 +14,7 @@ public:
     explicit EditDoneEvent(MemoryCellManager* memoryCellManager, KeyShortCutManager* keyShortCutsManager, EditViewModel* editViewModel, TranslationManager* translator, FileManager* fileManager);
     virtual ~EditDoneEvent() = default;
     
-    void handle(Rml::Event& event, Rml::StringList values) override;
+    void handle(Rml::Event* event, Rml::StringList values) override;
 private:
     MemoryCellManager* m_memoryCellManager;
     EditViewModel* m_editViewModel;

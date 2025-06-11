@@ -10,7 +10,7 @@ public:
     explicit SearchEvent(ShortCutsViewModel* shortCutsViewModel);
     virtual ~SearchEvent() = default;
     
-    void handle(Rml::Event& event, Rml::StringList values) override;
+    void handle(Rml::Event* event, Rml::StringList values) override;
 private:
     ShortCutsViewModel* m_shortCutsViewModel;
 };

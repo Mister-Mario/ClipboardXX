@@ -24,6 +24,7 @@
 #include <thread>
 #include <atomic> 
 #include "ElementEdit.h"
+#include "ClipboardListener.h"
 #ifdef _WIN32
 #include <windows.h>
 HWND lastWindow = NULL;
@@ -31,16 +32,17 @@ HWND lastWindow = NULL;
 
 Rml::Context* context = nullptr;
 bool isWindowOpened = false;
+bool isShortCutsOpened = false;
 bool running = true;
 
-void captureHWND() {
+void captureHWND(bool isWindowShown) {
 	#ifdef _WIN32
-	if(!isWindowOpened)
+	if(!isWindowShown)
 		lastWindow = GetForegroundWindow();
     #endif
 }
 
-void hiceDocuments() {
+void hideDocuments() {
 	for (int i = context->GetNumDocuments() - 1; i >= 0; --i)
     {
         context->GetDocument(i)->Hide();
@@ -56,10 +58,11 @@ void showShortcuts(Rml::ElementDocument* shortcuts) {
 		isWindowOpened = true;
 	}
 	else {
-		hiceDocuments();
+		hideDocuments();
 		shortcuts->Show();
 		Backend::ModifyWindowSize(context, 1200, 500);
 		Backend::SetBorder(false);
+		Backend::ShowWindow();
 	}
 }
 
@@ -81,7 +84,7 @@ void quit() {
 	QApplication app(argc, nullptr);
 	QApplication::setQuitOnLastWindowClosed(false);
 	QClipboard *qClipboard = QApplication::clipboard();
-
+	ClipboardListener::Instance()->Initialize(qClipboard);
 	KeyShortCutManager::Instance();
 	MemoryCellManager::Instance()->initialize(new ClipboardAdapter(qClipboard, KeyShortCutManager::Instance()->GetPasteShortCut(0), KeyShortCutManager::Instance()->GetCopyShortCut(0)), 21);
 	ShortCutsViewModel::Instance()->updateList("");
@@ -197,14 +200,14 @@ void quit() {
 			context->Render();
 			Backend::PresentFrame();
 			if(!isWindowOpened) {
-				hiceDocuments();
+				hideDocuments();
 				Backend::HideWindow();
 			}
 		}
 		
 		if (g_hotkeyPressed.load()) {
             g_hotkeyPressed.store(false);
-			captureHWND();
+			captureHWND(Backend::IsWindowShown());
 			showShortcuts(shortcutsMenu);
         }
 	}

@@ -3,7 +3,7 @@
 
 EditEvent::EditEvent(MemoryCellManager* memoryCellManager,EditViewModel* editViewModel) : m_memoryCellManager(memoryCellManager), m_editViewModel(editViewModel){}
 
-void EditEvent::handle(Rml::Event& event, Rml::StringList values) {
+void EditEvent::handle(Rml::Event* event, Rml::StringList values) {
     if(values[1] == "paste"){
         m_editViewModel->SetSelectedShortCut(m_memoryCellManager->getSelectedCell()->getKeyShortCutPaste());
     }

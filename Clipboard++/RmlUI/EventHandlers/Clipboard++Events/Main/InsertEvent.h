@@ -9,7 +9,7 @@ public:
     explicit InsertEvent(MemoryCellManager* memoryCellManager);
     virtual ~InsertEvent() = default;
     
-    void handle(Rml::Event& event, Rml::StringList values) override;
+    void handle(Rml::Event* event, Rml::StringList values) override;
 private:
     MemoryCellManager* m_memoryCellManager;
 };

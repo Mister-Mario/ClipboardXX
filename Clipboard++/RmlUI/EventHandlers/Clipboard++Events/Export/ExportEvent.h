@@ -8,7 +8,7 @@ public:
     explicit ExportEvent();
     virtual ~ExportEvent() = default;
     
-    void handle(Rml::Event& event, Rml::StringList values) override;
+    void handle(Rml::Event* event, Rml::StringList values) override;
 };
 
 #endif

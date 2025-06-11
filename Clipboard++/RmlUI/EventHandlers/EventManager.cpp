@@ -102,7 +102,7 @@ void EventManager::LoadMap()
     #endif
     events["edit"] = std::make_unique<EditEvent>(memoryCellManager, editViewModel);
     events["edit_close"] = std::make_unique<EditCloseEvent>();
-    events["edit_done"] = std::make_unique<EditDoneEvent>(memoryCellManager, keyShortCutsManager, editViewModel, translator, fileManager);
+    events["edit_done"] = std::make_unique<EditDoneEvent>(memoryCellManager, keyShortCutsManager, editViewModel, translator,fileManager);
     events["reset"] = std::make_unique<ResetShortCutEvent>(editViewModel);
 
 }
@@ -131,8 +131,12 @@ void EventManager::_ProcessCodeEvent(const Rml::String &value, Rml::Event* sourc
         return;
 
     auto it = events.find(values[0]);
-    if (it != events.end())
-        it->second->handle(*source_event, values);
+    if (it != events.end()) {
+        if(source_event)
+            source_event->StopPropagation();
+        it->second->handle(source_event, values);
+    }
+
 }
 
 void EventManager::ChangeDocument(const Rml::String &documentToShowId, const Rml::String &documentToHideId)

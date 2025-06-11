@@ -10,7 +10,7 @@ public:
     explicit ImportSearchEvent(FileManager* fileManager, TranslationManager* translator);
     virtual ~ImportSearchEvent() = default;
     
-    void handle(Rml::Event& event, Rml::StringList values) override;
+    void handle(Rml::Event* event, Rml::StringList values) override;
 private:
     FileManager* m_fileManager;
     TranslationManager* m_translator;

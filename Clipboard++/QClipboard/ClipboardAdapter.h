@@ -3,6 +3,7 @@
 
 #include <ClipboardInterface.h>
 #include <QClipboard>
+#include <QObject>
 
 class ClipboardAdapter : public ClipboardInterface {
 public:
@@ -15,7 +16,7 @@ public:
     void clear() override;
     KeyShortCut* getKeyShortCutPaste() override;
     KeyShortCut* getKeyShortCutCopy() override;
-    
+
 private:
     QClipboard* m_clipboard;
     KeyShortCut* m_keyShortCutPaste;

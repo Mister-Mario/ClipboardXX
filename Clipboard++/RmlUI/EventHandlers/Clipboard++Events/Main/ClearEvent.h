@@ -9,7 +9,7 @@ public:
     explicit ClearEvent(MemoryCellManager* memoryCellManager);
     virtual ~ClearEvent() = default;
     
-    void handle(Rml::Event& event, Rml::StringList values) override;
+    void handle(Rml::Event* event, Rml::StringList values) override;
 private:
     MemoryCellManager* m_memoryCellManager;
 };

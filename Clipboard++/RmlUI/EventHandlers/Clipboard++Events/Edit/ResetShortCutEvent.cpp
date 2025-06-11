@@ -3,6 +3,6 @@
 
 ResetShortCutEvent::ResetShortCutEvent(EditViewModel* editViewModel) : m_editViewModel(editViewModel) {}
 
-void ResetShortCutEvent::handle(Rml::Event& event, Rml::StringList values) {
+void ResetShortCutEvent::handle(Rml::Event* event, Rml::StringList values) {
     m_editViewModel->ResetNewShortCut();
 }

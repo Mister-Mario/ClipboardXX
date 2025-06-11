@@ -10,7 +10,7 @@ public:
     explicit EditEvent(MemoryCellManager* memoryCellManager, EditViewModel* editViewModel);
     virtual ~EditEvent() = default;
     
-    void handle(Rml::Event& event, Rml::StringList values) override;
+    void handle(Rml::Event* event, Rml::StringList values) override;
 private:
     MemoryCellManager* m_memoryCellManager;
     EditViewModel* m_editViewModel;

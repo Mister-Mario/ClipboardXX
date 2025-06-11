@@ -3,6 +3,6 @@
 
 ExportEvent::ExportEvent() {}
 
-void ExportEvent::handle(Rml::Event& event, Rml::StringList values) {
+void ExportEvent::handle(Rml::Event* event, Rml::StringList values) {
     EventManager::ChangeDocument("file_manager_export", "main_window");
 }

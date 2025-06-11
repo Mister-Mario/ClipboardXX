@@ -1,20 +1,26 @@
 #include "CopyEvent.h"
 #include <thread>
 #include <chrono>
+#include <iostream>
+#include "QClipboard/ClipboardListener.h"
 
 CopyEvent::CopyEvent(HWND lastWindow, MemoryCellManager* memoryCellManager) : m_memoryCellManager(memoryCellManager), m_lastWindow(lastWindow) {}
 
-void CopyEvent::handle(Rml::Event& event, Rml::StringList values) {
-auto clipboard = m_memoryCellManager->getMemoryCell(0);
-    auto selectedCell = m_memoryCellManager->getMemoryCell(std::stoi(values[1]));
+void CopyEvent::handle(Rml::Event* event, Rml::StringList values) {
+    auto clipboard = m_memoryCellManager->getMemoryCell(0);
+    size_t cellIndex = std::stoi(values[1]);
+    auto selectedCell = m_memoryCellManager->getMemoryCell(cellIndex);
     if(!clipboard || !selectedCell)
         return;
 
     SetForegroundWindow(m_lastWindow);
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
     SimulateCopy();
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    selectedCell->setText(clipboard->text());
+    ClipboardListener::Instance()->AddCallback([this, cellIndex](const std::string text) {
+        auto freshSelectedCell = m_memoryCellManager->getMemoryCell(cellIndex);
+        if (freshSelectedCell)
+            freshSelectedCell->setText(text);
+    });
 }
 
 bool CopyEvent::SimulateCopy()

@@ -9,7 +9,7 @@ public:
     explicit ResetShortCutEvent(EditViewModel* editViewModel);
     virtual ~ResetShortCutEvent() = default;
     
-    void handle(Rml::Event& event, Rml::StringList values) override;
+    void handle(Rml::Event* event, Rml::StringList values) override;
 private:
     EditViewModel* m_editViewModel;
 };
