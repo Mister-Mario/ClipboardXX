@@ -1,7 +1,7 @@
 #include "AutoCopyEvent.h"
 #include <ClipboardListener.h>
 
-bool AutoCopyEvent::m_isOn = true;
+bool AutoCopyEvent::m_isOn = false;
 
 AutoCopyEvent::AutoCopyEvent(MemoryCellManager* memoryCellManager) : m_memoryCellManager(memoryCellManager) {
     ClipboardListener::Instance()->AddBaseCallback([this](const std::string text) {
