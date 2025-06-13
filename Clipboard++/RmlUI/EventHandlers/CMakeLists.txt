@@ -20,7 +20,7 @@ target_include_directories(EventHandlers
 target_link_libraries(EventHandlers 
     PUBLIC 
         RmlUi::RmlUi
+        Events
     PRIVATE
         QClipboard    
-        Events
     )

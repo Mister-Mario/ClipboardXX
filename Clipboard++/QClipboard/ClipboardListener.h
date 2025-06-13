@@ -14,6 +14,7 @@ public:
     static ClipboardListener* Instance();
     void Initialize(QClipboard* clipboard);
     void AddCallback(const std::function<void(const std::string&)>& callback);
+    void AddBaseCallback(const std::function<void(const std::string&)>& callback);
 protected:
     ClipboardListener();
 private slots:
@@ -22,6 +23,7 @@ private slots:
 private:
     QClipboard* m_clipboard;
     std::queue<std::function<void(const std::string&)>> m_actionQueue;
+    std::function<void(const std::string&)> m_baseAction;
 };
 
 #endif

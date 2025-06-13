@@ -20,8 +20,8 @@ void ClipboardListener::OnSystemClipboardChanged()
     const std::string new_text = m_clipboard->text().toStdString();
 
     if (m_actionQueue.empty()) {
-        std::cout << "Cambio en el portapapeles detectado, pero no hay acciones en la cola." << std::endl;
-        return;
+        if(m_baseAction)
+            m_baseAction(new_text);
     }
     else {
         std::function<void(const std::string&)> action_to_execute = m_actionQueue.front();
@@ -37,4 +37,8 @@ void ClipboardListener::OnSystemClipboardChanged()
 void ClipboardListener::AddCallback(const std::function<void(const std::string&)>& callback)
 {
     m_actionQueue.push(callback);
+}
+
+void ClipboardListener::AddBaseCallback(const std::function<void(const std::string&)>& callback){
+    m_baseAction = callback;
 }

@@ -44,6 +44,7 @@
 #include "Clipboard++Events/Main/LoadEvent.h"
 #include "Clipboard++Events/Main/SlotEvent.h"
 #include "Clipboard++Events/Main/HelpEvent.h"
+#include "Clipboard++Events/Main/AutoCopyEvent.h"
 #include "Clipboard++Events/Import/ImportSearchEvent.h"
 #include "Clipboard++Events/Import/ImportEvent.h"
 #include "Clipboard++Events/Import/ImportCloseEvent.h"
@@ -104,6 +105,7 @@ void EventManager::LoadMap()
     events["edit_close"] = std::make_unique<EditCloseEvent>();
     events["edit_done"] = std::make_unique<EditDoneEvent>(memoryCellManager, keyShortCutsManager, editViewModel, translator,fileManager);
     events["reset"] = std::make_unique<ResetShortCutEvent>(editViewModel);
+    events["autocopy"] = std::make_unique<AutoCopyEvent>(memoryCellManager);
 
 }
 

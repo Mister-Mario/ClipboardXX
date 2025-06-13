@@ -8,6 +8,7 @@
 #include "StringUtils.h"
 #include "TranslationManager.h"
 #include <format>
+#include <Clipboard++Events/Main/AutoCopyEvent.h>
 
  // The applicaction's element context (declared in main.cpp).
 extern Rml::Context* context;
@@ -40,6 +41,13 @@ extern Rml::Context* context;
    }
    if(Rml::Element* selectedCellCopy = document->GetElementById("shortcut_copy")){
       selectedCellCopy->SetInnerRML(StringUtils::escapeHtml(memoryCellManager->getSelectedCell()->getKeyShortCutCopy()->toString())); 
+   }
+
+   if(Rml::Element* checkbox = document->GetElementById("checkbox")){
+      if(AutoCopyEvent::isOn())
+         checkbox->SetClassNames("c-controls__checkbox c-controls__checkbox--checked");
+      else  
+         checkbox->SetClassNames("c-controls__checkbox");
    }
 
 }

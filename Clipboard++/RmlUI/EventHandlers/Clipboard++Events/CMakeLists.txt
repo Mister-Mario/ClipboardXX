@@ -40,6 +40,8 @@ add_library(Events STATIC
     Main/SlotEvent.cpp
     Main/HelpEvent.h
     Main/HelpEvent.cpp
+    Main/AutoCopyEvent.h
+    Main/AutoCopyEvent.cpp
 
     ShortCutsMenu/ExpandEvent.h
     ShortCutsMenu/ExpandEvent.cpp

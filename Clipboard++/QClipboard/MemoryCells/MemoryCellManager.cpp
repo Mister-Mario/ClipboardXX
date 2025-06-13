@@ -75,3 +75,10 @@ std::vector<std::string> MemoryCellManager::getContents() {
     }
     return contents;
 }
+
+void MemoryCellManager::moveContentsOneDown() {
+    int sizeCells = m_memoryCells.size() - 2;
+    for(int i = sizeCells; i >= 0; i--){
+        m_memoryCells.at(i + 1).get()->setText(m_memoryCells.at(i).get()->text());
+    }
+}

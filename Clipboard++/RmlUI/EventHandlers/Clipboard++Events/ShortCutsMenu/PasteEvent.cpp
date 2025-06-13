@@ -2,6 +2,7 @@
 #include <thread>
 #include <chrono>
 #include <iostream>
+#include <ClipboardListener.h>
 
 PasteEvent::PasteEvent(HWND lastWindow, MemoryCellManager* memoryCellManager) : m_memoryCellManager(memoryCellManager), WindowFocusEvent(lastWindow) {}
 
@@ -10,9 +11,11 @@ void PasteEvent::DoHandle(Rml::Event* event, Rml::StringList values) {
     auto selectedCell = m_memoryCellManager->getMemoryCell(std::stoi(values[1]));
     if(!clipboard || !selectedCell)
         return;
-    
+
     auto clipboardContents = clipboard->text();
     clipboard->setText(selectedCell->text());
+
+    ClipboardListener::Instance()->AddCallback([](const std::string text) {}); //Empty callback to not launch the base action
 
     SimulatePaste();
 }

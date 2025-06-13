@@ -18,6 +18,7 @@ class MemoryCellManager {
         ClipboardInterface* getSelectedCell();
         void loadCells(std::vector<std::string> information);
         std::vector<std::string> getContents();
+        void moveContentsOneDown();
     protected:
         MemoryCellManager();
     private:
