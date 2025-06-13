@@ -45,9 +45,9 @@ TranslationManager* translatorShortCuts = TranslationManager::Instance();
          }
       }
    }
-
-   if(auto celda = celdas.at(viewModel->getSelectedCell()))
-      celda->SetClassNames("c-cell c-glow-border");
+   if(viewModel->hasSelectedCell())
+      if(auto celda = celdas.at(viewModel->getSelectedCell()))
+         celda->SetClassNames("c-cell c-glow-border");
 
 }
  

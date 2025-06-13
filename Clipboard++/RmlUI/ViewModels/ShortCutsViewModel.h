@@ -13,6 +13,7 @@ class ShortCutsViewModel {
         void moveDownIndex();
         ClipboardInterface* getMemoryCell(size_t i);
         int getSelectedCell();
+        bool hasSelectedCell();
     protected:
         ShortCutsViewModel();
         ~ShortCutsViewModel();

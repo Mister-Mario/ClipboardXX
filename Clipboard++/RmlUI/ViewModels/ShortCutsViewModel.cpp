@@ -22,8 +22,11 @@ void ShortCutsViewModel::moveUpIndex() {
 }
 
 void ShortCutsViewModel::moveDownIndex() {
-    if(viewIndex != 2) 
+    if(viewIndex != 2){
+        if(viewIndex + 1 >= m_memoryCellsShortCuts.size())
+            return; 
         viewIndex += 1;
+    }
     else {
         if(cellsIndex != m_memoryCellsShortCuts.size() - 1 - 2) // -2 cause view can hold 3
             cellsIndex += 1;
@@ -56,4 +59,8 @@ ClipboardInterface* ShortCutsViewModel::getMemoryCell(size_t i) {
 
 int ShortCutsViewModel::getSelectedCell() {
     return viewIndex;
+}
+
+bool ShortCutsViewModel::hasSelectedCell() {
+    return m_memoryCellsShortCuts.size() != 0;
 }
