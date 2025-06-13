@@ -10,7 +10,7 @@ ClipboardListener::ClipboardListener() {}
 
 void ClipboardListener::Initialize(QClipboard* clipboard) {
     m_clipboard = clipboard;
-    connect(m_clipboard, &QClipboard::dataChanged, this, &ClipboardListener::OnSystemClipboardChanged);
+    connect(m_clipboard, &QClipboard::dataChanged, this, &ClipboardListener::OnSystemClipboardChanged); 
 }
 
 void ClipboardListener::OnSystemClipboardChanged()
@@ -25,7 +25,7 @@ void ClipboardListener::OnSystemClipboardChanged()
     }
     else {
         std::function<void(const std::string&)> action_to_execute = m_actionQueue.front();
-
+        std::cout << "Ejecutando callback" << std::endl;
         m_actionQueue.pop();
 
         if (action_to_execute) {

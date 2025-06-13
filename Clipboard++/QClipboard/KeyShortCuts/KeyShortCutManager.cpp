@@ -8,8 +8,8 @@
 KeyShortCutManager* KeyShortCutManager::m_instance = nullptr;
 
 KeyShortCutManager::KeyShortCutManager(){
-    m_shortcutsBase.push_back(new KeyShortCut("paste 0", {Rml::Input::KI_LCONTROL, Rml::Input::KI_V}));
     m_shortcutsBase.push_back(new KeyShortCut("copy 0", {Rml::Input::KI_LCONTROL, Rml::Input::KI_C}));
+    m_shortcutsBase.push_back(new KeyShortCut("paste 0", {Rml::Input::KI_LCONTROL, Rml::Input::KI_V}));
     LoadKeyShortCuts();
 }
 
@@ -24,8 +24,8 @@ void KeyShortCutManager::LoadKeyShortCuts() {
     auto shortcuts = SelectFile();
     size_t size = shortcuts.size() - 1;
     for(size_t i = 0; i < size; i+= 2){
-        m_shortcutsBase.push_back(GetShortCutFromString(shortcuts[i + 1], std::format("paste {}", i/2 + 1)));
         m_shortcutsBase.push_back(GetShortCutFromString(shortcuts[i], std::format("copy {}", i/2 + 1)));
+        m_shortcutsBase.push_back(GetShortCutFromString(shortcuts[i + 1], std::format("paste {}", i/2 + 1)));
     }
     m_shortcuts = GetBaseList();
 }
@@ -49,13 +49,13 @@ KeyShortCut* KeyShortCutManager::GetShortCutFromString(std::string shortcut, std
 }
 
 
-KeyShortCut* KeyShortCutManager::GetPasteShortCut(size_t i) const {
+KeyShortCut* KeyShortCutManager::GetCopyShortCut(size_t i) const {
     if(i * 2 < m_shortcuts.size())
         return m_shortcuts.at(i * 2);
     return nullptr;
 }
 
-KeyShortCut* KeyShortCutManager::GetCopyShortCut(size_t i) const{
+KeyShortCut* KeyShortCutManager::GetPasteShortCut(size_t i) const{
     if((i * 2 + 1) < m_shortcuts.size())
         return m_shortcuts.at(i * 2 + 1);
     return nullptr;

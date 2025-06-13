@@ -1,5 +1,7 @@
 add_library(Events STATIC
     Clipboard++Event.h
+    WindowFocusEvent.h
+    WindowFocusEvent.cpp
 
     Edit/EditEvent.h
     Edit/EditEvent.cpp

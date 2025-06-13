@@ -37,8 +37,9 @@ bool running = true;
 
 void captureHWND(bool isWindowShown) {
 	#ifdef _WIN32
-	if(!isWindowShown)
+	if(!isWindowShown){
 		lastWindow = GetForegroundWindow();
+	}
     #endif
 }
 

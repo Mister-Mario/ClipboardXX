@@ -4,23 +4,22 @@
 #include <iostream>
 #include "QClipboard/ClipboardListener.h"
 
-CopyEvent::CopyEvent(HWND lastWindow, MemoryCellManager* memoryCellManager) : m_memoryCellManager(memoryCellManager), m_lastWindow(lastWindow) {}
+CopyEvent::CopyEvent(HWND lastWindow, MemoryCellManager* memoryCellManager) : m_memoryCellManager(memoryCellManager), WindowFocusEvent(lastWindow) {}
 
-void CopyEvent::handle(Rml::Event* event, Rml::StringList values) {
+void CopyEvent::DoHandle(Rml::Event* event, Rml::StringList values) {
     auto clipboard = m_memoryCellManager->getMemoryCell(0);
     size_t cellIndex = std::stoi(values[1]);
     auto selectedCell = m_memoryCellManager->getMemoryCell(cellIndex);
     if(!clipboard || !selectedCell)
         return;
 
-    SetForegroundWindow(m_lastWindow);
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    SimulateCopy();
     ClipboardListener::Instance()->AddCallback([this, cellIndex](const std::string text) {
         auto freshSelectedCell = m_memoryCellManager->getMemoryCell(cellIndex);
         if (freshSelectedCell)
             freshSelectedCell->setText(text);
     });
+    
+    SimulateCopy();
 }
 
 bool CopyEvent::SimulateCopy()
@@ -33,7 +32,7 @@ bool CopyEvent::SimulateCopy()
 
     INPUT inputs[4] = {};
 
-    //Press Ctrl + V
+    //Press Ctrl + C
     ip.ki.wVk = VK_LCONTROL;
     ip.ki.dwFlags = 0;
     inputs[0] = ip;

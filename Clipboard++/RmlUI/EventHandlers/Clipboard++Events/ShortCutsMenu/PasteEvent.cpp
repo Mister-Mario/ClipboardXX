@@ -1,10 +1,11 @@
 #include "PasteEvent.h"
 #include <thread>
 #include <chrono>
+#include <iostream>
 
-PasteEvent::PasteEvent(HWND lastWindow, MemoryCellManager* memoryCellManager) : m_memoryCellManager(memoryCellManager), m_lastWindow(lastWindow) {}
+PasteEvent::PasteEvent(HWND lastWindow, MemoryCellManager* memoryCellManager) : m_memoryCellManager(memoryCellManager), WindowFocusEvent(lastWindow) {}
 
-void PasteEvent::handle(Rml::Event* event, Rml::StringList values) {
+void PasteEvent::DoHandle(Rml::Event* event, Rml::StringList values) {
     auto clipboard = m_memoryCellManager->getMemoryCell(0);
     auto selectedCell = m_memoryCellManager->getMemoryCell(std::stoi(values[1]));
     if(!clipboard || !selectedCell)
@@ -13,8 +14,6 @@ void PasteEvent::handle(Rml::Event* event, Rml::StringList values) {
     auto clipboardContents = clipboard->text();
     clipboard->setText(selectedCell->text());
 
-    SetForegroundWindow(m_lastWindow);
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
     SimulatePaste();
 }
 
@@ -48,5 +47,5 @@ bool PasteEvent::SimulatePaste()
 
     UINT eventos_enviados = SendInput(4, inputs, sizeof(INPUT));
 
-    return eventos_enviados != 4;
+    return eventos_enviados == 4;
 }

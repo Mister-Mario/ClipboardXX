@@ -430,3 +430,10 @@ bool Backend::IsWindowShown() {
 	Uint32 flags = SDL_GetWindowFlags(SDL_GL_GetCurrentWindow());
 	return !(flags & SDL_WINDOW_HIDDEN) && !(flags & SDL_WINDOW_MINIMIZED) && flags != 8242;
 }
+
+#ifdef _WIN32
+HWND Backend::GetOwnHWND() {
+	auto hwnd = (HWND)SDL_GetPointerProperty(SDL_GetWindowProperties(SDL_GL_GetCurrentWindow()), SDL_PROP_WINDOW_WIN32_HWND_POINTER, NULL);
+	return hwnd;
+}
+#endif

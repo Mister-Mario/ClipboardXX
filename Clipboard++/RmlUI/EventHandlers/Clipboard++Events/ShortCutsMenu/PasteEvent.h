@@ -2,15 +2,15 @@
 #define PASTE_EVENT_H
 
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
-#include "Clipboard++Event.h"
+#include "WindowFocusEvent.h"
 #include <windows.h>
 
-class PasteEvent : public ClipboardEvent {
+class PasteEvent : public WindowFocusEvent {
 public:
     explicit PasteEvent(HWND lastWindow, MemoryCellManager* memoryCellManager);
     virtual ~PasteEvent() = default;
-    
-    void handle(Rml::Event* event, Rml::StringList values) override;
+protected:
+    void DoHandle(Rml::Event* event, Rml::StringList values) override;
 private:
     MemoryCellManager* m_memoryCellManager;
     HWND m_lastWindow;

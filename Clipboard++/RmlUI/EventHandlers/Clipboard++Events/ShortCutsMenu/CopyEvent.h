@@ -2,15 +2,16 @@
 #define COPY_EVENT_H
 
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
-#include "Clipboard++Event.h"
+#include "WindowFocusEvent.h"
 #include <windows.h>
 
-class CopyEvent : public ClipboardEvent {
+class CopyEvent :  public WindowFocusEvent {
 public:
     explicit CopyEvent(HWND lastWindow, MemoryCellManager* memoryCellManager);
     virtual ~CopyEvent() = default;
     
-    void handle(Rml::Event* event, Rml::StringList values) override;
+protected:
+    void DoHandle(Rml::Event* event, Rml::StringList values) override;
 private:
     MemoryCellManager* m_memoryCellManager;
     HWND m_lastWindow;

@@ -77,6 +77,9 @@ void MaximizeWindow(Rml::Context* context);
 void HideWindow();
 void ShowWindow();
 bool IsWindowShown();
+#ifdef _WIN32
+HWND GetOwnHWND();
+#endif
 
 } // namespace Backend
 
