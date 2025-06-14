@@ -62,7 +62,7 @@ TranslationManager* translatorShortCuts = TranslationManager::Instance();
 
 	if (element == this)
 	{
-		GetOwnerDocument()->AddEventListener(Rml::EventId::Keydown, this);
+		GetOwnerDocument()->AddEventListener(Rml::EventId::Keydown, this, true);
 	}
  }
  
@@ -72,7 +72,7 @@ TranslationManager* translatorShortCuts = TranslationManager::Instance();
 
    if (element == this) {
       if (Rml::Element* owner_document = GetOwnerDocument()) {
-         owner_document->RemoveEventListener(Rml::EventId::Keydown, this);
+         owner_document->RemoveEventListener(Rml::EventId::Keydown, this, true);
       }
 
    }
@@ -83,13 +83,32 @@ TranslationManager* translatorShortCuts = TranslationManager::Instance();
 		bool key_down = (event == Rml::EventId::Keydown);
 		Rml::Input::KeyIdentifier key_identifier = (Rml::Input::KeyIdentifier)event.GetParameter<int>("key_identifier", 0);
 
-      if (key_identifier == Rml::Input::KI_DOWN)
-         viewModel->moveDownIndex();
-      if (key_identifier == Rml::Input::KI_UP)
-         viewModel->moveUpIndex();
+      if (key_identifier == Rml::Input::KI_ESCAPE) {
 
-      if(auto shortCut = KeyShortCutManager::Instance()->FilterShortCuts(key_identifier))
+         event.StopImmediatePropagation();
+
+         if (Rml::ElementDocument* owner_document = this->GetOwnerDocument()) {
+            if (Rml::Element* focused_element = owner_document->GetFocusLeafNode()) {
+               focused_element->Blur();
+            }
+         }
+         return;
+      }
+
+      if (key_identifier == Rml::Input::KI_DOWN){
+         event.StopImmediatePropagation();
+         viewModel->moveDownIndex();
+         return;
+      }
+      if (key_identifier == Rml::Input::KI_UP){
+         event.StopImmediatePropagation();
+         viewModel->moveUpIndex();
+         return;
+      }
+
+      if(auto shortCut = KeyShortCutManager::Instance()->FilterShortCuts(key_identifier)){
          EventManager::_ProcessCodeEvent(shortCut->getEvent());
+      }
 	}  
  }
  
