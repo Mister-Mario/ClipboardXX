@@ -74,6 +74,7 @@ TranslationManager* translatorShortCuts = TranslationManager::Instance();
       if (Rml::Element* owner_document = GetOwnerDocument()) {
          owner_document->RemoveEventListener(Rml::EventId::Keydown, this);
       }
+
    }
  }
 

@@ -15,9 +15,12 @@ void EditDoneEvent::handle(Rml::Event* event, Rml::StringList values) {
         return;
     }
     auto selectedCell = m_memoryCellManager->getSelectedCell();
-    if(selectedCell->getKeyShortCutCopy() == m_editViewModel->GetSelectedShortCut())
-        m_keyShortCutsManager->ModifyKeyShortCut(selectedCell->getKeyShortCutCopy(), m_editViewModel->GetNewShortCut());
-    if(selectedCell->getKeyShortCutPaste() == m_editViewModel->GetSelectedShortCut())
-        m_keyShortCutsManager->ModifyKeyShortCut(selectedCell->getKeyShortCutPaste(), m_editViewModel->GetNewShortCut());
+    if(selectedCell->getKeyShortCutCopy() == m_editViewModel->GetSelectedShortCut()){
+        selectedCell->setKeyShortCutCopy(m_editViewModel->GetNewShortCut());
+    }
+    if(selectedCell->getKeyShortCutPaste() == m_editViewModel->GetSelectedShortCut()) {
+        selectedCell->setKeyShortCutPaste(m_editViewModel->GetNewShortCut());
+    }
+    m_keyShortCutsManager->ModifyKeyShortCuts(m_memoryCellManager);
     EventManager::ChangeDocument("main_window", "edit");
 }

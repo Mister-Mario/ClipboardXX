@@ -16,6 +16,8 @@ public:
     void clear() override;
     KeyShortCut* getKeyShortCutPaste() override;
     KeyShortCut* getKeyShortCutCopy() override;
+    void setKeyShortCutPaste(std::vector<Rml::Input::KeyIdentifier> newShortCut) override;
+    void setKeyShortCutCopy(std::vector<Rml::Input::KeyIdentifier> newShortCut) override;
 
 private:
     std::string m_text;

@@ -30,3 +30,9 @@ KeyShortCut* ClipboardAdapter::getKeyShortCutPaste() {
 KeyShortCut* ClipboardAdapter::getKeyShortCutCopy() {
     return m_keyShortCutCopy;
 }
+
+void ClipboardAdapter::setKeyShortCutPaste(std::vector<Rml::Input::KeyIdentifier> newShortCut) {
+}
+
+void ClipboardAdapter::setKeyShortCutCopy(std::vector<Rml::Input::KeyIdentifier> newShortCut) {
+}

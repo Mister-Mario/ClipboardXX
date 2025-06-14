@@ -2,6 +2,7 @@
 #define KEY_SHORT_CUT_MANAGER_H
 
 #include "KeyShortCut.h"
+#include <MemoryCells/MemoryCellManager.h>
 
 class KeyShortCutManager {
     public:
@@ -9,7 +10,7 @@ class KeyShortCutManager {
         KeyShortCut* GetPasteShortCut(size_t i) const;
         KeyShortCut* GetCopyShortCut(size_t i) const;
         KeyShortCut* FilterShortCuts(Rml::Input::KeyIdentifier key);
-        void ModifyKeyShortCut(KeyShortCut* keyShortCut, std::vector<Rml::Input::KeyIdentifier> newShortCut);
+        void ModifyKeyShortCuts(MemoryCellManager* memoryCellManager);
     protected:
         KeyShortCutManager();
     private:

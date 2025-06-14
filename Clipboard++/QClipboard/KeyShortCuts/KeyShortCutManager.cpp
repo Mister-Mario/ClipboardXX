@@ -103,12 +103,14 @@ KeyShortCut* KeyShortCutManager::FilterShortCuts(Rml::Input::KeyIdentifier key) 
     }
 }
 
-void KeyShortCutManager::ModifyKeyShortCut(KeyShortCut* keyShortCut, std::vector<Rml::Input::KeyIdentifier> newShortCut) {
-    keyShortCut->setShortCut(newShortCut);
-    for(size_t i = 0; i < m_shortcutsBase.size(); i+=1)
-        if(m_shortcutsBase.at(i) == keyShortCut)
-            m_shortcutsBase.at(i)->setShortCut(newShortCut);
-    m_shortcuts = GetBaseList();
+void KeyShortCutManager::ModifyKeyShortCuts(MemoryCellManager* memoryCellManager) {
+    m_shortcutsBase.clear();
+    for(size_t i = 0; i < memoryCellManager->getMemoryCellCount(); i+= 1){
+        auto cell = memoryCellManager->getMemoryCell(i);
+        m_shortcutsBase.push_back(cell->getKeyShortCutCopy());
+        m_shortcutsBase.push_back(cell->getKeyShortCutPaste());
+    }
+    m_shortcuts= GetBaseList();
     WriteShortCuts();
 }
 

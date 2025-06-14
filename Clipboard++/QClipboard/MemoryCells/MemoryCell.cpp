@@ -31,3 +31,11 @@ KeyShortCut* MemoryCell::getKeyShortCutPaste() {
 KeyShortCut* MemoryCell::getKeyShortCutCopy() {
     return m_keyShortCutCopy;
 }
+
+void MemoryCell::setKeyShortCutPaste(std::vector<Rml::Input::KeyIdentifier> newShortCut) {
+    m_keyShortCutPaste->setShortCut(newShortCut);
+}
+
+void MemoryCell::setKeyShortCutCopy(std::vector<Rml::Input::KeyIdentifier> newShortCut) {
+    m_keyShortCutCopy->setShortCut(newShortCut);
+}
