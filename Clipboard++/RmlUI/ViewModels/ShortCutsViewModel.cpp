@@ -43,8 +43,10 @@ void ShortCutsViewModel::updateList(std::string searchInput) {
         }
     }
     m_memoryCellsShortCuts.clear();
+    m_selectedCellsIndexes.clear();
     for(const int& match : matches) {
         m_memoryCellsShortCuts.push_back(m_memoryCellsManager->getMemoryCell(match));
+        m_selectedCellsIndexes.push_back(match);
     }
     viewIndex = 0;
     cellsIndex = 0;
@@ -63,4 +65,8 @@ int ShortCutsViewModel::getSelectedCell() {
 
 bool ShortCutsViewModel::hasSelectedCell() {
     return m_memoryCellsShortCuts.size() != 0;
+}
+
+size_t ShortCutsViewModel::getSelectedCellIndex() {
+    return m_selectedCellsIndexes.at(viewIndex + cellsIndex);
 }

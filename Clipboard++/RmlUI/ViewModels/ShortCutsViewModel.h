@@ -14,6 +14,7 @@ class ShortCutsViewModel {
         ClipboardInterface* getMemoryCell(size_t i);
         int getSelectedCell();
         bool hasSelectedCell();
+        size_t getSelectedCellIndex();
     protected:
         ShortCutsViewModel();
         ~ShortCutsViewModel();
@@ -21,6 +22,7 @@ class ShortCutsViewModel {
         MemoryCellManager* m_memoryCellsManager;
         int cellsIndex;
         int viewIndex;
+        std::vector<size_t> m_selectedCellsIndexes;
         std::vector<ClipboardInterface*> m_memoryCellsShortCuts;
 };
 

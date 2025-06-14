@@ -95,7 +95,7 @@ void EventManager::LoadMap()
     events["export"] = std::make_unique<ExportEvent>();
     events["export_close"] = std::make_unique<ExportCloseEvent>();
     events["export_file"] = std::make_unique<ExportFileEvent>(memoryCellManager, fileManager, translator);
-    events["expand"] = std::make_unique<ExpandEvent>();
+    events["expand"] = std::make_unique<ExpandEvent>(memoryCellManager, shortCutsViewModel);
     events["search"] = std::make_unique<SearchEvent>(shortCutsViewModel);
     #ifdef _WIN32
     events["paste"] = std::make_unique<PasteEvent>(lastWindow, memoryCellManager);
