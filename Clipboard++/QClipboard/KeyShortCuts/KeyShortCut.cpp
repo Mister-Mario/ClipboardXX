@@ -1,5 +1,7 @@
 #include "KeyShortCut.h"
 #include <StringUtils.h>
+#include <TranslationManager.h>
+#include <format>
 
 KeyShortCut::KeyShortCut(std::string event, std::vector<Rml::Input::KeyIdentifier> shortCutCombination): 
     m_event(event),
@@ -27,9 +29,10 @@ std::string KeyShortCut::toString() {
 }
 
 std::string KeyShortCut::toString(std::vector<Rml::Input::KeyIdentifier> shortCutCombination) {
+    TranslationManager* translator = TranslationManager::Instance(); 
     std::string content = "";
     for(auto key : shortCutCombination){
-        content.append(StringUtils::getStringFronEnum(key)).append("+");
+        content.append(translator->getString(std::format("keys.{}", StringUtils::getStringFronEnum(key)))).append("+");
     }
     return content.substr(0, content.length() - 1);
 }
