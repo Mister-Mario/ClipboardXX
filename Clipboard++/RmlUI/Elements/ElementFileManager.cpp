@@ -44,7 +44,7 @@ void ElementFileManager::OnUpdate()
 
    if(Rml::Element* filePath = activeDoc->GetElementById("file_path")){
       std::string content = fileManager->getLastFile().substr(0, 100);
-      filePath->SetInnerRML(Utils::escapeHtml(content));
+      filePath->SetInnerRML(StringUtils::escapeHtml(content));
    }
 
 }

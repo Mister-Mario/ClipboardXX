@@ -18,10 +18,10 @@ class MemoryCellManager {
         ClipboardInterface* getSelectedCell();
         void loadCells(std::vector<std::string> information);
         std::vector<std::string> getContents();
+        void moveContentsOneDown();
     protected:
         MemoryCellManager();
     private:
-        static MemoryCellManager* m_instance;
         std::vector<std::unique_ptr<ClipboardInterface>> m_memoryCells;
         size_t selectedCell = 0;
 };

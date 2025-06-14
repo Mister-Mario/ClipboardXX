@@ -45,7 +45,7 @@ std::string FileManager::searchImportFile(const char* title) {
     return "";
 }
 
-std::vector<std::string> FileManager::readFile(const char* filePath, char delimiter) {
+std::vector<std::string> FileManager::readFile(const char* filePath, char delimiter, bool showDialog) {
     std::ifstream fileStream(filePath);
     if (fileStream.is_open()) {
         std::vector<std::string> fields;
@@ -55,11 +55,13 @@ std::vector<std::string> FileManager::readFile(const char* filePath, char delimi
             fields.push_back(field);
         }
         fileStream.close();
-        showGoodDialog(translator->getString("file.dialog.message.import.correct").c_str());
+        if(showDialog)
+            showGoodDialog(translator->getString("file.dialog.message.import.correct").c_str());
         return fields;
     }
     else {
-        showErrorDialog(translator->getString("file.dialog.message.import.error").c_str());
+        if(showDialog)
+            showErrorDialog(translator->getString("file.dialog.message.import.error").c_str());
         return {} ;
     }
 
@@ -90,7 +92,7 @@ std::string FileManager::searchExportFile(const char* title) {
     return "";
 }
 
-void FileManager::exportFile(const char* filePath, char delimiter, std::vector<std::string> content) {
+void FileManager::exportFile(const char* filePath, char delimiter, std::vector<std::string> content, bool showDialog) {
     std::ofstream exportFile(filePath);
 
     if (exportFile.is_open()) {
@@ -98,10 +100,12 @@ void FileManager::exportFile(const char* filePath, char delimiter, std::vector<s
             exportFile << linea << delimiter;
         }
         exportFile.close();
-        showGoodDialog(translator->getString("file.dialog.message.export.correct").c_str());
+        if(showDialog)
+            showGoodDialog(translator->getString("file.dialog.message.export.correct").c_str());
 
     } else {
-        showErrorDialog(translator->getString("file.dialog.message.export.error").c_str());
+        if(showDialog)
+            showErrorDialog(translator->getString("file.dialog.message.export.error").c_str());
     }
 }
 

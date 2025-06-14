@@ -3,6 +3,10 @@ add_library(Elements STATIC
     ElementClipboard.cpp
     ElementFileManager.h
     ElementFileManager.cpp
+    ElementShortcuts.h
+    ElementShortcuts.cpp
+    ElementEdit.h
+    ElementEdit.cpp
 )
 
 # Set include directories
@@ -20,4 +24,6 @@ target_link_libraries(Elements
     PRIVATE 
         QClipboard
         ProjectUtils
+        ViewModels
+        EventHandlers
 )

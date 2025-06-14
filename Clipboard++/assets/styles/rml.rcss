@@ -10,6 +10,7 @@ body {
 	color: white;
     width: 100vw;
     height: 100vh;
+	background: #212121;
 }
 
 .c-glow-border {
@@ -28,7 +29,7 @@ body {
 
 .c-button--primary {
     background: white;
-    color: black;
+    color: #212121;
 }
 
 .c-button--primary:hover {
@@ -41,18 +42,22 @@ body {
 }
 
 .c-button--secondary {
-	background: black;
+	background: #212121;
 	border: 2px white;
 	color: white;
 }
 
 .c-button--secondary:hover {
     background: gray;
-    color: black;
+    color: #212121;
 }
 
 .c-button--secondary:active {
     background: #a9a9a9;
+}
+
+body .c-none {
+	display: none;
 }
 
 div

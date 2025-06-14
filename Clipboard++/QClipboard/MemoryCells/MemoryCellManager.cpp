@@ -1,16 +1,15 @@
 #include "MemoryCellManager.h"
 #include "MemoryCell.h"
 #include <format>
+#include "../KeyShortCuts/KeyShortCutManager.h"
 
-MemoryCellManager* MemoryCellManager::m_instance = nullptr;
+KeyShortCutManager* keyShortCutManager = KeyShortCutManager::Instance();
 
 MemoryCellManager::MemoryCellManager(){}
 
 MemoryCellManager* MemoryCellManager::Instance() {
-    if(m_instance == nullptr) {
-        m_instance = new MemoryCellManager();
-    }
-    return m_instance;
+    static MemoryCellManager instance;
+    return &instance;
 }
 
 size_t MemoryCellManager::getMemoryCellCount() const {
@@ -26,10 +25,9 @@ ClipboardInterface* MemoryCellManager::getMemoryCell(size_t index) {
 
 size_t MemoryCellManager::addMemoryCell() {
     // Create the new memory cell
-    auto newCell = std::make_unique<MemoryCell>(std::format("cell_{}", m_memoryCells.size()));
-    
-    // Do additional setup for new cell here
-    // ...
+    auto newCell = std::make_unique<MemoryCell>(std::format("cell_{}", m_memoryCells.size()),
+        keyShortCutManager->GetPasteShortCut(m_memoryCells.size()),
+        keyShortCutManager->GetCopyShortCut(m_memoryCells.size()));
     
     // Add to collection
     m_memoryCells.push_back(std::move(newCell));
@@ -76,4 +74,11 @@ std::vector<std::string> MemoryCellManager::getContents() {
         contents.push_back(m_memoryCells[i].get()->text());
     }
     return contents;
+}
+
+void MemoryCellManager::moveContentsOneDown() {
+    int sizeCells = m_memoryCells.size() - 2;
+    for(int i = sizeCells; i >= 0; i--){
+        m_memoryCells.at(i + 1).get()->setText(m_memoryCells.at(i).get()->text());
+    }
 }

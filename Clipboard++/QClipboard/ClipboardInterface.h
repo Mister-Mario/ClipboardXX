@@ -2,7 +2,7 @@
 #define CLIPBOARD_INTERFACE_H
 
 #include <string>
-
+#include <KeyShortCuts/KeyShortCut.h>
 class ClipboardInterface {
 public:
     virtual ~ClipboardInterface() = default;
@@ -10,6 +10,10 @@ public:
     virtual std::string text() const = 0;
     virtual std::string name() const = 0;
     virtual void clear() = 0;
+    virtual KeyShortCut* getKeyShortCutPaste() = 0;
+    virtual KeyShortCut* getKeyShortCutCopy() = 0;
+    virtual void setKeyShortCutPaste(std::vector<Rml::Input::KeyIdentifier> newShortCut) = 0;
+    virtual void setKeyShortCutCopy(std::vector<Rml::Input::KeyIdentifier> newShortCut) = 0;
 };
 
 #endif

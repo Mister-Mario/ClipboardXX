@@ -8,6 +8,7 @@
 #include "StringUtils.h"
 #include "TranslationManager.h"
 #include <format>
+#include <Clipboard++Events/Main/AutoCopyEvent.h>
 
  // The applicaction's element context (declared in main.cpp).
 extern Rml::Context* context;
@@ -33,7 +34,20 @@ extern Rml::Context* context;
       selectedCellNameElement->SetInnerRML(translator->getString(std::format("list.{}" ,memoryCellManager->getSelectedCell()->name())));
    if(Rml::Element* selectedCellConentElement = document->GetElementById("cell_content")){
       std::string content = memoryCellManager->getSelectedCell()->text().substr(0, 1000);
-      selectedCellConentElement->SetInnerRML(Utils::escapeHtml(content));
+      selectedCellConentElement->SetInnerRML(StringUtils::escapeHtml(content));
+   }
+   if(Rml::Element* selectedCellPaste = document->GetElementById("shortcut_paste")){
+      selectedCellPaste->SetInnerRML(StringUtils::escapeHtml(memoryCellManager->getSelectedCell()->getKeyShortCutPaste()->toString()));
+   }
+   if(Rml::Element* selectedCellCopy = document->GetElementById("shortcut_copy")){
+      selectedCellCopy->SetInnerRML(StringUtils::escapeHtml(memoryCellManager->getSelectedCell()->getKeyShortCutCopy()->toString())); 
+   }
+
+   if(Rml::Element* checkbox = document->GetElementById("checkbox")){
+      if(AutoCopyEvent::isOn())
+         checkbox->SetClassNames("c-controls__checkbox c-controls__checkbox--checked");
+      else  
+         checkbox->SetClassNames("c-controls__checkbox");
    }
 
 }

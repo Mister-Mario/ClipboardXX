@@ -1,0 +1,29 @@
+<rml>
+    <head>
+        <link type="text/rcss" href="styles/rml.rcss"/>
+        <link type="text/rcss" href="styles/edit.rcss"/>
+    </head>
+    <body id="edit" class="c-edit">
+        <div class="c-edit__content">
+            <h1 class="c-edit__title">edit.title</h1>
+
+            <edit id="edit" class="c-edit__form">
+                <div class="c-edit__old">
+                    <label>edit.old</label>
+                    <p type="text" id="old"/>
+                </div>
+
+                <div class="c-edit__new">
+                    <label>edit.new</label>
+                    <p id="new"></p>
+                    <button class="c-button c-button--primary" onclick="reset">edit.reset</button>
+                </div>
+
+                <div class="c-edit__buttons">
+                    <button id="import_button_cancel" class="c-button c-button--secondary" onclick="edit_close">file.button.cancel</button>
+                    <button id="import_button_import" class="c-button c-button--primary" onclick="edit_done">file.button.confirm</button>
+                </div>
+            </edit>
+        </div>
+    </body>
+</rml> 

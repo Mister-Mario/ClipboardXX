@@ -34,6 +34,7 @@
 #include <RmlUi/Core/ElementDocument.h>
 #include <RmlUi/Core/Input.h>
 #include <RmlUi/Debugger.h>
+#include "LinkManager.h"
 
 static Rml::UniquePtr<ShellFileInterface> file_interface;
 
@@ -96,14 +97,17 @@ bool Shell::ProcessKeyDownShortcuts(Rml::Context* context, Rml::Input::KeyIdenti
 		{
 			Rml::Debugger::SetVisible(!Rml::Debugger::IsVisible());
 		}
-		else if (key == Rml::Input::KI_0 && key_modifier & Rml::Input::KM_CTRL)
-		{
-			context->SetDensityIndependentPixelRatio(native_dp_ratio);
+		else if (key == Rml::Input::KI_F1){
+			openHelp();
 		}
-		else if (key == Rml::Input::KI_1 && key_modifier & Rml::Input::KM_CTRL)
-		{
-			context->SetDensityIndependentPixelRatio(1.f);
-		}
+		// else if (key == Rml::Input::KI_0 && key_modifier & Rml::Input::KM_CTRL)
+		// {
+		// 	context->SetDensityIndependentPixelRatio(native_dp_ratio);
+		// }
+		// else if (key == Rml::Input::KI_1 && key_modifier & Rml::Input::KM_CTRL)
+		// {
+		// 	context->SetDensityIndependentPixelRatio(1.f);
+		// }
 		else if ((key == Rml::Input::KI_OEM_MINUS || key == Rml::Input::KI_SUBTRACT) && key_modifier & Rml::Input::KM_CTRL)
 		{
 			const float new_dp_ratio = Rml::Math::Max(context->GetDensityIndependentPixelRatio() / 1.2f, 0.5f);

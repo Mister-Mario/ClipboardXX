@@ -1,6 +1,6 @@
 app {
     align-items: center;
-    background: black;
+    background: #212121;
     color: white;
     display: flex;
     flex-direction: column;
@@ -34,27 +34,30 @@ header {
 .c-controls__auto {
     align-items: center;
     display: flex;
-    gap: 3rem;
-    justify-content: space-evenly;
+    gap: .25rem;
+    justify-content: center;
     padding: .5rem 0rem;
-    padding-left: 2rem;
 }
 
-.c-controls__auto input {
+.c-controls__checkbox {
     background: gray;
+    color: gray;
+	cursor: pointer;
+    height: 1rem;
+    text-align: center;
+    width: 1rem;
+}
+
+.c-controls__checkbox :hover {
+    background: #a9a9a9;
+}
+
+.c-controls__checkbox--checked {
+    background: white;
     color: black;
 	cursor: pointer;
     height: 1rem;
     width: 1rem;
-}
-
-.c-controls__auto input:hover {
-    background: #a9a9a9;
-}
-
-.c-controls__auto input:checked {
-    background: white;
-    color: white;
 }
 
 main {   
@@ -96,12 +99,12 @@ main {
     margin-bottom: 1rem;
     margin-left: 1rem;
     margin-right: 1rem;
-    word-break: break-all;
 }
 
 .c-cell__text {
     width: 80%;
     margin-right: 1.5rem;
+    word-break: break-all;
 }
 
 .c-cell__actions {
@@ -126,7 +129,7 @@ main {
 
 .c-cell__load textarea {
     background: white;
-    color: black;
+    color: #212121;
     font-size: 1rem;
     height: 3rem;
     padding: 0.5rem;
@@ -138,6 +141,7 @@ main {
     align-items: center;
     display: flex;
     justify-content: center;
+    gap: .5rem;
     padding: .5rem;
 }
 
@@ -146,9 +150,14 @@ main {
     margin-right: 1rem;
 }
 
+.c-cell__shortcuts button {
+    margin-right: 1rem;
+}
+
 span.c-cell__shortcut {
     font-size: 1.5rem;
     font-weight: bold;
+    word-break: break-all;
 }
 
 .c-cells-list {

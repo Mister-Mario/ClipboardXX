@@ -3,14 +3,19 @@ project(Clipboard++ LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)  # Automatización de MOC para Qt6
+set(CMAKE_AUTORCC ON)
+
 set(CMAKE_BUILD_TYPE Debug)
 
 find_package(SDL3 REQUIRED)
 find_package(RmlUi REQUIRED)
+find_package(nlohmann_json REQUIRED)
+find_package(tinyfiledialogs CONFIG REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+find_package(magic_enum CONFIG REQUIRED)
 
 add_subdirectory(Utils)
 add_subdirectory(QClipboard)
-
 
 set(RMLUI_BACKEND SDL_GL3)
 include(RmlUI/Utilities.cmake)
@@ -20,18 +25,19 @@ add_subdirectory(RmlUI/Backends)
 include(RmlUI/DependenciesForShell.cmake)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/RmlUI/Shell)
 add_subdirectory(RmlUI/Shell)
-
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/RmlUI/ViewModels) 
+add_subdirectory(RmlUI/ViewModels)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/RmlUI/EventHandlers) 
 add_subdirectory(RmlUI/EventHandlers)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/RmlUI/Elements) 
 add_subdirectory(RmlUI/Elements)
 
 
-
 # Main executable
-add_executable(${PROJECT_NAME} Clipboard++.cpp)
+add_executable(${PROJECT_NAME} Clipboard++.cpp icon.rc)
 
 # Include RmlUi
-target_link_libraries(${PROJECT_NAME} PRIVATE RmlUi::RmlUi rmlui_backend_SDL_GL3 rmlui_shell QClipboard EventHandlers Elements)
+target_link_libraries(${PROJECT_NAME} PRIVATE RmlUi::RmlUi rmlui_backend_SDL_GL3 rmlui_shell QClipboard EventHandlers Elements Qt6::Widgets)
 
 add_custom_command(
     TARGET ${PROJECT_NAME} POST_BUILD

@@ -1,22 +1,75 @@
 #include <RmlUi/Core.h>
 #include <RmlUi/Debugger.h>
 #include <RmlUi_Backend.h>
+#include <RmlUi_Renderer_GL3.h>
 #include <EventListenerInstancer.h>
 #include <ElementFileManager.h>
 #include <ElementClipboard.h>
+#include <ElementShortCuts.h>
 #include <Shell.h>
 #include <iostream>
-#include <QGuiApplication>
+#include <QApplication>
 #include <QClipboard>
-#include <QGuiApplication>
 #include <QScreen>
 #include <QLocale>
 #include "QClipboard/ClipboardInterface.h"
 #include "QClipboard/ClipboardAdapter.h"
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
+#include "QClipboard/HotKeyListener/HotKeyListener.h"
+#include "QClipboard/KeyShortCuts/KeyShortCutManager.h"
 #include "Utils/TranslationManager.h"
+#include <QSystemTrayIcon>
+#include <QMenu>
+#include <QIcon>
+#include <thread>
+#include <atomic> 
+#include "ElementEdit.h"
+#include "ClipboardListener.h"
+#ifdef _WIN32
+#include <windows.h>
+HWND lastWindow = NULL;
+#endif
 
 Rml::Context* context = nullptr;
+bool isWindowOpened = false;
+bool isShortCutsOpened = false;
+bool running = true;
+
+void captureHWND(bool isWindowShown) {
+	#ifdef _WIN32
+	if(!isWindowShown){
+		lastWindow = GetForegroundWindow();
+	}
+    #endif
+}
+
+void hideDocuments() {
+	for (int i = context->GetNumDocuments() - 1; i >= 0; --i)
+    {
+        context->GetDocument(i)->Hide();
+    }
+}
+
+void showShortcuts(Rml::ElementDocument* shortcuts) {
+	if(!isWindowOpened) {
+		shortcuts->Show();
+		Backend::ModifyWindowSize(context, 1200, 500);
+		Backend::SetBorder(false);
+		Backend::ShowWindow();
+		isWindowOpened = true;
+	}
+	else {
+		hideDocuments();
+		shortcuts->Show();
+		Backend::ModifyWindowSize(context, 1200, 500);
+		Backend::SetBorder(false);
+		Backend::ShowWindow();
+	}
+}
+
+void quit() {
+	running = false;
+}
 
  #if defined RMLUI_PLATFORM_WIN32
 	 #include <RmlUi_Include_Windows.h>
@@ -25,11 +78,17 @@ Rml::Context* context = nullptr;
  int main(int /*argc*/, char** /*argv*/)
  #endif
  {
+	std::thread listener(HotkeyListenerThread);
+    listener.detach();
+
 	int argc = 0;
-	QGuiApplication app(argc, nullptr);
-	QClipboard *qClipboard = QGuiApplication::clipboard();
-	MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
-	memoryCellManager->initialize(new ClipboardAdapter(qClipboard), 21);
+	QApplication app(argc, nullptr);
+	QApplication::setQuitOnLastWindowClosed(false);
+	QClipboard *qClipboard = QApplication::clipboard();
+	ClipboardListener::Instance()->Initialize(qClipboard);
+	KeyShortCutManager::Instance();
+	MemoryCellManager::Instance()->initialize(new ClipboardAdapter(qClipboard, KeyShortCutManager::Instance()->GetPasteShortCut(0), KeyShortCutManager::Instance()->GetCopyShortCut(0)), 21);
+	ShortCutsViewModel::Instance()->updateList("");
 
 	QLocale default_locale = QLocale::system();
     QString locale_name = default_locale.name(); // "es_ES"
@@ -37,12 +96,22 @@ Rml::Context* context = nullptr;
     translator->loadLanguage(locale_name.toStdString());
 
 	// Get primary screen dimensions
-	QScreen* screen = QGuiApplication::primaryScreen();
+	QScreen* screen = QApplication::primaryScreen();
 	QRect screenGeometry = screen->geometry();
 	int maxWindowWidth = 1920 * (2-0.95);
 	int maxWindowHeight = 1080 * (2-0.875);
 	int window_width = screenGeometry.width() <= maxWindowWidth ? screenGeometry.width() * 0.95 : 1920;
 	int window_height = screenGeometry.height() <= maxWindowHeight ? screenGeometry.height() * 0.875 : 1080;
+
+	QIcon icon("assets/icons/Icono.png");
+    QSystemTrayIcon trayIcon(icon);
+    trayIcon.setToolTip(QString::fromStdString((translator->getString("title"))));
+    QMenu menu;
+    QAction *showAction = menu.addAction(QString::fromStdString((translator->getString("tray.show"))));
+    menu.addSeparator();
+    QAction *quitAction = menu.addAction(QString::fromStdString((translator->getString("tray.quit"))));
+    trayIcon.setContextMenu(&menu);
+    trayIcon.show(); 
 
 	// Initializes the shell which provides common functionality used by the included samples.
 	if (!Shell::Initialize()){
@@ -51,7 +120,7 @@ Rml::Context* context = nullptr;
 	}
 
 	// Constructs the system and render interfaces, creates a window, and attaches the renderer.
-	if (!Backend::Initialize("Clipboard++", window_width, window_height, true))
+	if (!Backend::Initialize(translator->getString("title").c_str(), window_width, window_height, true))
 	{
 		std::cout << "Falla el Backend";
 		Shell::Shutdown();
@@ -62,6 +131,8 @@ Rml::Context* context = nullptr;
 	Rml::SetSystemInterface(Backend::GetSystemInterface());
 	Rml::SetRenderInterface(Backend::GetRenderInterface());
 
+
+
 	// RmlUi initialisation.
 	Rml::Initialise();
 
@@ -69,7 +140,6 @@ Rml::Context* context = nullptr;
 	context = Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
 	if (!context)
 	{
-		std::cout << "Falla el context";
 		Rml::Shutdown();
 		Backend::Shutdown();
 		Shell::Shutdown();
@@ -85,42 +155,75 @@ Rml::Context* context = nullptr;
 	Rml::ElementInstancerGeneric<ElementFileManager> element_file_instancer;
 	Rml::Factory::RegisterElementInstancer("fileImport", &element_file_instancer);
 	Rml::Factory::RegisterElementInstancer("fileExport", &element_file_instancer);
-	
+
+	Rml::ElementInstancerGeneric<ElementShortcuts> element_shortcuts_instancer;
+	Rml::Factory::RegisterElementInstancer("shortcuts", &element_shortcuts_instancer);
+
+	Rml::ElementInstancerGeneric<ElementEdit> element_edit_instancer;
+	Rml::Factory::RegisterElementInstancer("edit", &element_edit_instancer);
+
 	EventListenerInstancer event_listener_instancer;
 	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
 
 	Rml::ElementDocument* main = context->LoadDocument("assets/main.rml");
 	Rml::ElementDocument* fileImport = context->LoadDocument("assets/fileImport.rml");
 	Rml::ElementDocument* fileExport = context->LoadDocument("assets/fileExport.rml");
-	if (!main || !fileImport || !fileExport){
+	Rml::ElementDocument* shortcutsMenu = context->LoadDocument("assets/shortcutsMenu.rml"); 
+	Rml::ElementDocument* edit = context->LoadDocument("assets/edit.rml"); 
+	if (!main || !fileImport || !fileExport || !shortcutsMenu || !edit){
+		if (main) main->Close();
+		if (fileImport) fileImport->Close();
+		if (fileExport) fileExport->Close();
+		if (shortcutsMenu) shortcutsMenu->Close();
+		if (edit) edit->Close();
 		Rml::Shutdown();
 		Backend::Shutdown();
 		Shell::Shutdown();
 		return -1;
 	}
-	
-	main->Show();
 
-	bool running = true;
+	QObject::connect(showAction, &QAction::triggered, [shortcutsMenu]() {
+		showShortcuts(shortcutsMenu);
+	});
+    QObject::connect(quitAction, &QAction::triggered, &quit);
+
+	main->Show();
+	isWindowOpened= true;
+	running = true;
 	while (running)
 	{
+		QApplication::processEvents();
 
-		running = Backend::ProcessEvents(context, &Shell::ProcessKeyDownShortcuts, true);
+		if(isWindowOpened && Backend::IsWindowShown()) {		
+			isWindowOpened = Backend::ProcessEvents(context, &Shell::ProcessKeyDownShortcuts, true);
+			context->Update();
+			Backend::BeginFrame();
+			context->Render();
+			Backend::PresentFrame();
+			if(!isWindowOpened) {
+				hideDocuments();
+				Backend::HideWindow();
+			}
+		}
 		
-		context->Update();
-
-		Backend::BeginFrame();
-		context->Render();
-		Backend::PresentFrame();
+		if (g_hotkeyPressed.load()) {
+            g_hotkeyPressed.store(false);
+			captureHWND(Backend::IsWindowShown());
+			showShortcuts(shortcutsMenu);
+        }
 	}
 
+	if (main) main->Close();
+    if (fileImport) fileImport->Close();
+    if (fileExport) fileExport->Close();
+    if (shortcutsMenu) shortcutsMenu->Close();
+    if (edit) edit->Close();
+
 	// Shutdown RmlUi.
-	main->Close();
-	fileImport->Close();
-	fileExport->Close();
 	Rml::Shutdown();
 	Backend::Shutdown();
 	Shell::Shutdown();
+	trayIcon.hide();
 
 	return 0;
  }

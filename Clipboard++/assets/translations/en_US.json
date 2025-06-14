@@ -1,4 +1,5 @@
 {
+  "title": "Clipboard++",
   "header": {
     "import": "Import file",
     "export": "Export file",
@@ -12,11 +13,11 @@
     "input_placeholder": "Text to load",
     "load_button": "Load"
   },
-"shortcuts": {
-    "paste": "Paste shortcut:",
-    "load": "Load shortcut:",
-    "edit": "Edit"
-  },
+  "shortcuts": {
+      "paste": "Paste shortcut:",
+      "load": "Load shortcut:",
+      "edit": "Edit"
+    },
   "list": {
     "clipboard": "Clipboard",
     "cell_1": "Memory cell 1",
@@ -50,6 +51,7 @@
     "dialog": {
       "message": {
         "delimiter": "Add a delimiter to continue",
+        "edit": "Enter a new shortcut",
         "export": {
           "correct": "The file has been exported successfully.",
           "error": "Failed to export the file.",
@@ -72,5 +74,16 @@
       "import": "Import file",
       "export": "Export file"
     }
+  },
+  "edit": {
+    "title": "Edit shortcut",
+    "new": "New shortcut",
+    "old": "Current shortcut",
+    "reset": "Reset",
+    "placeholder": "Press keys to create a new shortcut..."
+  },
+  "tray": {
+    "show": "Show",
+    "quit": "Quit"
   }
 }

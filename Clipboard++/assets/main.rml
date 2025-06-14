@@ -11,10 +11,8 @@
             <button class="c-button c-button--primary" onclick="export">header.export</button>
         </div>
         <div class="c-controls__auto">
-            <label for="autopaste">header.autopaste</label>
-            <input class id="autopaste" type="checkbox" value="autopaste"/>
             <label for="autocopy">header.autocopy</label>
-            <input class id="autocopy" type="checkbox" value="autocopy"/>
+            <button id="checkbox" class="c-controls__checkbox" onclick="autocopy"></button>
         </div>
         <button class="c-button c-button--primary c-controls__help" onclick="help">?</button>
     </header>        
@@ -34,11 +32,12 @@
                 <button class="c-button c-button--primary" onclick="insert">cell.load_button</button>
             </div>
             <div class="c-cell__shortcuts">
-                <span>shortcuts.paste</span>
-                <span class="c-cell__shortcut">Ctrl + V</span>
                 <span>shortcuts.load</span>
-                <span class="c-cell__shortcut">Ctrl + C</span>
-                <button>shortcuts.edit</button>
+                <span id="shortcut_copy" class="c-cell__shortcut">Ctrl + C</span>
+                <button class="c-button c-button--primary" onclick="edit copy">shortcuts.edit</button>
+                <span>shortcuts.paste</span>
+                <span id="shortcut_paste" class="c-cell__shortcut">Ctrl + V</span>
+                <button class="c-button c-button--primary" onclick="edit paste">shortcuts.edit</button>
             </div>
         </div>
 

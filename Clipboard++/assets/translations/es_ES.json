@@ -1,4 +1,5 @@
 {
+  "title": "Clipboard++",
   "header": {
     "import": "Importar archivo",
     "export": "Exportar archivo",
@@ -50,6 +51,7 @@
     "dialog": {
       "message": {
         "delimiter": "Añada un delimitador para poder continuar",
+        "edit": "Introduzca un nuevo atajo",
         "export": {
           "correct": "El archivo se ha exportado correctamente.",
           "error": "No se pudo exportar el archivo.",
@@ -76,5 +78,16 @@
       "import": "Importar archivo",
       "export": "Exportar archivo"
     }
+  },
+  "edit": {
+    "title": "Editar atajo",
+    "new": "Atajo nuevo",
+    "reset": "Reiniciar",
+    "old": "Atajo actual",
+    "placeholder": "Presione teclas para crear el nuevo atajo..."
+  },
+  "tray": {
+    "show": "Mostrar",
+    "quit": "Cerrar"
   }
 }

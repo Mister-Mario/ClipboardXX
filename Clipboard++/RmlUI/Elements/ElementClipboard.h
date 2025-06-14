@@ -2,7 +2,6 @@
  #define RMLUI_ELEMENTCLIPBOARD_H
  
  #include <RmlUi/Core/Element.h>
- #include <RmlUi/Core/EventListener.h>
 
  class ElementClipboard : public Rml::Element {
  public:
@@ -14,7 +13,7 @@
  
      /// This will get called when we're removed from the tree, which allows us to clean up the event listeners previously added.
      void OnChildRemove(Element* element) override;
- 
+
  protected:
      /// Updates the game.
      void OnUpdate() override;

@@ -34,6 +34,7 @@
 #include <RmlUi/Core/FileInterface.h>
 #include <RmlUi/Core/Log.h>
 #include <RmlUi/Core/Profiling.h>
+#include <iostream>
 
 #if SDL_MAJOR_VERSION >= 3
 	#include <SDL3_image/SDL_image.h>
@@ -384,3 +385,55 @@ void Backend::PresentFrame()
 	// Optional, used to mark frames during performance profiling.
 	RMLUI_FrameMark;
 }
+
+void Backend::ModifyWindowSize(Rml::Context* context, int w, int h) {
+	SDL_Window* window = SDL_GL_GetCurrentWindow();
+	SDL_RestoreWindow(window);
+	SDL_SetWindowSize(window, w, h);
+	SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+	context->SetDimensions(Rml::Vector2i(w, h));
+	data->render_interface.SetViewport(w, h);
+}
+
+void Backend::SetBorder(bool flag){
+	SDL_SetWindowBordered(SDL_GL_GetCurrentWindow(), flag);
+}
+
+void Backend::MaximizeWindow(Rml::Context* context) {
+	SDL_Window* window = SDL_GL_GetCurrentWindow();
+	SDL_MaximizeWindow(window);
+	int width, height;
+	SDL_GetWindowSizeInPixels(window, &width, &height);
+	context->SetDimensions(Rml::Vector2i(width, height));
+}
+
+void Backend::HideWindow() {
+	SDL_HideWindow(SDL_GL_GetCurrentWindow());
+}
+ 
+void Backend::ShowWindow() {
+	SDL_Window* window = SDL_GL_GetCurrentWindow();
+
+    Uint32 flags = SDL_GetWindowFlags(window);
+
+    if (flags & SDL_WINDOW_MINIMIZED) {
+        SDL_RestoreWindow(window);
+    }
+	if (flags & SDL_WINDOW_HIDDEN) {
+		SDL_ShowWindow(window);
+	}
+
+    SDL_RaiseWindow(window);
+}
+
+bool Backend::IsWindowShown() {
+	Uint32 flags = SDL_GetWindowFlags(SDL_GL_GetCurrentWindow());
+	return !(flags & SDL_WINDOW_HIDDEN) && !(flags & SDL_WINDOW_MINIMIZED) && flags != 8242;
+}
+
+#ifdef _WIN32
+HWND Backend::GetOwnHWND() {
+	auto hwnd = (HWND)SDL_GetPointerProperty(SDL_GetWindowProperties(SDL_GL_GetCurrentWindow()), SDL_PROP_WINDOW_WIN32_HWND_POINTER, NULL);
+	return hwnd;
+}
+#endif
