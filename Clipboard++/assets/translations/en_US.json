@@ -85,6 +85,11 @@
   "tray": {
     "show": "Show",
     "quit": "Quit"
+  },  
+  "shortcutsView": {
+    "load" : "Load", 
+    "paste": "Paste",
+    "expand": "Expand"
   },
   "keys":{
     "KI_UNKNOWN": "Unknown",

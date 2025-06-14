@@ -71,7 +71,7 @@ void BeginFrame();
 void PresentFrame();
 
 //Added methods
-void ModifyWindowSize(Rml::Context* context, int w, int h);
+void ModifyWindowSize(Rml::Context* context, float w, float h);
 void SetBorder(bool flag);
 void MaximizeWindow(Rml::Context* context);
 void HideWindow();
@@ -80,6 +80,7 @@ bool IsWindowShown();
 #ifdef _WIN32
 HWND GetOwnHWND();
 #endif
+float GetDPIScale();
 
 } // namespace Backend
 

@@ -9,10 +9,8 @@
 #include "TranslationManager.h"
 #include <format>
 #include <Clipboard++Events/Main/AutoCopyEvent.h>
+#include <GlobalFunctions.h>
 
- // The applicaction's element context (declared in main.cpp).
-extern Rml::Context* context;
- 
  ElementClipboard::ElementClipboard(const Rml::String& tag) : Rml::Element(tag)
  {
     //Empty body
@@ -29,7 +27,7 @@ extern Rml::Context* context;
    
    TranslationManager* translator = TranslationManager::Instance();
    MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
-   Rml::ElementDocument* document = context->GetDocument("main_window");
+   Rml::ElementDocument* document = GlobalFunctions::context->GetDocument("main_window");
    if(Rml::Element* selectedCellNameElement = document->GetElementById("cell_name"))
       selectedCellNameElement->SetInnerRML(translator->getString(std::format("list.{}" ,memoryCellManager->getSelectedCell()->name())));
    if(Rml::Element* selectedCellConentElement = document->GetElementById("cell_content")){
@@ -45,9 +43,9 @@ extern Rml::Context* context;
 
    if(Rml::Element* checkbox = document->GetElementById("checkbox")){
       if(AutoCopyEvent::isOn())
-         checkbox->SetClassNames("c-controls__checkbox c-controls__checkbox--checked");
+         checkbox->SetInnerRML("On"); 
       else  
-         checkbox->SetClassNames("c-controls__checkbox");
+         checkbox->SetInnerRML("Off");
    }
 
 }

@@ -9,9 +9,7 @@
 #include <format>
 #include "QClipboard/KeyShortCuts/KeyShortCutManager.h"
 #include "EventManager.h"
-
- // The applicaction's element context (declared in main.cpp).
-extern Rml::Context* context;
+#include <GlobalFunctions.h>
 TranslationManager* translatorShortCuts = TranslationManager::Instance();
  
  ElementShortcuts::ElementShortcuts(const Rml::String& tag) : Rml::Element(tag)
@@ -24,7 +22,7 @@ TranslationManager* translatorShortCuts = TranslationManager::Instance();
  void ElementShortcuts::OnUpdate()
  {
    
-   Rml::ElementDocument* document = context->GetDocument("shortcuts_menu");
+   Rml::ElementDocument* document = GlobalFunctions::context->GetDocument("shortcuts_menu");
 
    Rml::ElementList celdas;
    document->GetElementsByClassName(celdas, "c-cell");

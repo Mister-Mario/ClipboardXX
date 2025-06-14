@@ -22,7 +22,7 @@ KeyShortCutManager* KeyShortCutManager::Instance() {
 
 void KeyShortCutManager::LoadKeyShortCuts() {
     auto shortcuts = SelectFile();
-    size_t size = shortcuts.size() - 1;
+    size_t size = shortcuts.size() == 0 ? 0 : shortcuts.size() - 1;
     for(size_t i = 0; i < size; i+= 2){
         m_shortcutsBase.push_back(GetShortCutFromString(shortcuts[i], std::format("copy {}", i/2 + 1)));
         m_shortcutsBase.push_back(GetShortCutFromString(shortcuts[i + 1], std::format("paste {}", i/2 + 1)));

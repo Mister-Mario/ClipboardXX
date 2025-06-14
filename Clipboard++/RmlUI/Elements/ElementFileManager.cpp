@@ -7,10 +7,7 @@
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
 #include "StringUtils.h"
 #include "FileManager.h"
-
-
-// The applicaction's element context (declared in main.cpp).
-extern Rml::Context* context;
+#include <GlobalFunctions.h>
 
 ElementFileManager::ElementFileManager(const Rml::String& tag) : Rml::Element(tag)
 {
@@ -28,11 +25,11 @@ void ElementFileManager::OnUpdate()
    FileManager* fileManager = FileManager::Instance();
     Rml::ElementDocument* activeDoc = nullptr;
 
-    Rml::ElementDocument* importDoc = context->GetDocument("file_manager_import");
+    Rml::ElementDocument* importDoc = GlobalFunctions::context->GetDocument("file_manager_import");
     if (importDoc && importDoc->IsVisible()) {
         activeDoc = importDoc;
     } else {
-        Rml::ElementDocument* exportDoc = context->GetDocument("file_manager_export");
+        Rml::ElementDocument* exportDoc = GlobalFunctions::context->GetDocument("file_manager_export");
         if (exportDoc && exportDoc->IsVisible()) {
             activeDoc = exportDoc;
         }

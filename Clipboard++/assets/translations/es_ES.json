@@ -90,6 +90,11 @@
     "show": "Mostrar",
     "quit": "Cerrar"
   },
+  "shortcutsView": {
+    "load" : "Cargar", 
+    "paste": "Pegar",
+    "expand": "Expandir"
+  },
   "keys": {
     "KI_UNKNOWN": "Desconocido",
     "KI_SPACE": "Espacio",
