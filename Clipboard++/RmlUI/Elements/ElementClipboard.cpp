@@ -31,7 +31,7 @@
    if(Rml::Element* selectedCellNameElement = document->GetElementById("cell_name"))
       selectedCellNameElement->SetInnerRML(translator->getString(std::format("list.{}" ,memoryCellManager->getSelectedCell()->name())));
    if(Rml::Element* selectedCellConentElement = document->GetElementById("cell_content")){
-      std::string content = memoryCellManager->getSelectedCell()->text().substr(0, 1000);
+      std::string content = memoryCellManager->getSelectedCell()->text().substr(0, 350);
       selectedCellConentElement->SetInnerRML(StringUtils::escapeHtml(content));
    }
    if(Rml::Element* selectedCellPaste = document->GetElementById("shortcut_paste")){

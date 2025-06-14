@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)  # Automatización de MOC para Qt6
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Release)
 
 find_package(SDL3 REQUIRED)
 find_package(RmlUi REQUIRED)
@@ -79,7 +79,7 @@ if(WIN32)
             $<TARGET_FILE_DIR:${PROJECT_NAME}>/platforms
     )
 
-    #target_link_options(${PROJECT_NAME} PRIVATE -mwindows) #GUI application no console
+    target_link_options(${PROJECT_NAME} PRIVATE -mwindows) #GUI application no console
 endif()
 
 add_subdirectory(Tests)
@@ -94,28 +94,66 @@ set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/dist")
 
 
 install(TARGETS ${PROJECT_NAME}
-    RUNTIME DESTINATION bin
+    RUNTIME DESTINATION .
 )
 
 install(
     DIRECTORY ${CMAKE_SOURCE_DIR}/assets 
-    DESTINATION bin/assets
+    DESTINATION .
 )
 
 set(VCPKG_BIN_DIR "${CMAKE_BINARY_DIR}/vcpkg_installed/${VCPKG_TARGET_TRIPLET}/bin")
 file(GLOB DLL_FILES "${VCPKG_BIN_DIR}/*.dll")
-install(FILES ${DLL_FILES} DESTINATION bin)
+install(FILES ${DLL_FILES} DESTINATION .)
 
 if(WIN32)
     install(
         DIRECTORY ${CMAKE_BINARY_DIR}/platforms
-        DESTINATION bin
+        DESTINATION .
         USE_SOURCE_PERMISSIONS
     )
     install(
         DIRECTORY ${CMAKE_BINARY_DIR}/imageformats
-        DESTINATION bin
+        DESTINATION .
         USE_SOURCE_PERMISSIONS
         OPTIONAL
     )
 endif()
+
+if(WIN32 AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+
+
+    get_filename_component(MINGW_BIN_DIR ${CMAKE_CXX_COMPILER} DIRECTORY)
+
+    set(MINGW_RUNTIME_DLLS
+        libstdc++-6.dll
+        libgcc_s_seh-1.dll
+        libwinpthread-1.dll
+    )
+
+    set(MINGW_RUNTIME_DLL_FILES "")
+    foreach(DLL_NAME ${MINGW_RUNTIME_DLLS})
+        list(APPEND MINGW_RUNTIME_DLL_FILES "${MINGW_BIN_DIR}/${DLL_NAME}")
+    endforeach()
+
+    install(FILES ${MINGW_RUNTIME_DLL_FILES} DESTINATION .)
+
+
+endif()
+
+
+# ===================================================================
+# CPACK
+# ===================================================================
+
+
+set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
+set(CPACK_PACKAGE_VERSION "1.0.0")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "An application that covers the windows clipboard with extra functionalities")
+set(CPACK_PACKAGE_VENDOR "Mario Junquera Rojas")
+set(CPACK_PACKAGE_CONTACT "mariojr2003@gmail.com")
+set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-win64")
+
+set(CPACK_GENERATOR "ZIP")
+
+include(CPack)

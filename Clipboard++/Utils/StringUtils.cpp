@@ -29,6 +29,9 @@ namespace StringUtils {
         replaceAll(result, "<", "&lt;");
         replaceAll(result, ">", "&gt;");
         replaceAll(result, "\"", "&quot;");
+        replaceAll(result, "{", "&#123;");
+        replaceAll(result, "}", "&#125;");
+        
         return result;
     }
 
