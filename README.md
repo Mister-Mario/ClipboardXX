@@ -1,4 +1,4 @@
-# Advanced-Clipboard
+# ClipboardXX
 
 This project can be done thanks to the use of other projects:
   - [RmlUi - The HTML/CSS User Interface Library Evolved](https://github.com/mikke89/RmlUi)
