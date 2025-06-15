@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)  # Automatización de MOC para Qt6
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_BUILD_TYPE Debug)
 
 find_package(SDL3 REQUIRED)
 find_package(RmlUi REQUIRED)
@@ -34,7 +34,7 @@ add_subdirectory(RmlUI/Elements)
 
 
 # Main executable
-add_executable(${PROJECT_NAME} Clipboard++.cpp GlobalFunctions.h GlobalFunctions.cpp icon.rc)
+add_executable(${PROJECT_NAME} Clipboard++.cpp ClipboardXX.h ClipboardXX.cpp icon.rc)
 
 # Include RmlUi
 target_link_libraries(${PROJECT_NAME} PRIVATE RmlUi::RmlUi rmlui_backend_SDL_GL3 rmlui_shell QClipboard EventHandlers Elements Qt6::Widgets)

@@ -71,9 +71,9 @@ void BeginFrame();
 void PresentFrame();
 
 //Added methods
-void ModifyWindowSize(Rml::Context* context, float w, float h);
+void ModifyWindowSize(float w, float h);
 void SetBorder(bool flag);
-void MaximizeWindow(Rml::Context* context);
+void MaximizeWindow();
 void HideWindow();
 void ShowWindow();
 bool IsWindowShown();
