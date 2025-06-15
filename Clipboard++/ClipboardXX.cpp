@@ -13,18 +13,34 @@
 #include "ClipboardListener.h"
 
 
+// Global variables used across the application
 extern std::atomic<bool> g_hotkeyPressed;
 Rml::Context* contextClipboardXX = nullptr;
 HWND lastWindowClipboardXX = NULL;
 
+/**
+ * @brief Constructor for the ClipboardXX class.
+ * @details Initializes the QApplication.
+ * @param argc The number of command-line arguments.
+ * @param argv The array of command-line arguments.
+ */
 ClipboardXX::ClipboardXX(int argc, char* argv[]) {
     m_app = std::make_unique<QApplication>(argc, argv);
 }
 
+/**
+ * @brief Destructor for the ClipboardXX class.
+ * @details Calls the shutdown method to release all resources.
+ */
 ClipboardXX::~ClipboardXX() {
     shutdown();
 }
 
+/**
+ * @brief Starts the main execution of the application.
+ * @details First, it initializes the components and, if successful, enters the main loop.
+ * @return int Returns 0 on successful execution, -1 if there was an initialization error.
+ */
 int ClipboardXX::Run() {
     if (!initialize()) {
         shutdown();
@@ -35,6 +51,12 @@ int ClipboardXX::Run() {
     return 0;
 }
 
+/**
+ * @brief Initializes all application subsystems.
+ * @details Configures the hotkey listener, Qt clipboard, memory cell and shortcut managers, 
+ * the translation system, the system tray icon, and the graphics backend with RmlUi.
+ * @return bool Returns true if initialization was successful, false otherwise.
+ */
 bool ClipboardXX::initialize() {
     m_hotkeyListenerThread = std::thread(HotkeyListenerThread);
     m_hotkeyListenerThread.detach();
@@ -78,16 +100,16 @@ bool ClipboardXX::initialize() {
 
     Shell::LoadFonts();
     
-    // ... Registro de Instancers ...
-	
-	Rml::Factory::RegisterElementInstancer("app", &element_clipboard_instancer);
-	Rml::Factory::RegisterElementInstancer("fileImport", &element_file_instancer);
-	Rml::Factory::RegisterElementInstancer("fileExport", &element_file_instancer);
-	Rml::Factory::RegisterElementInstancer("shortcuts", &element_shortcuts_instancer);
-	Rml::Factory::RegisterElementInstancer("edit", &element_edit_instancer);
+    // Register Instancers for custom RmlUi elements
+    Rml::Factory::RegisterElementInstancer("app", &element_clipboard_instancer);
+    Rml::Factory::RegisterElementInstancer("fileImport", &element_file_instancer);
+    Rml::Factory::RegisterElementInstancer("fileExport", &element_file_instancer);
+    Rml::Factory::RegisterElementInstancer("shortcuts", &element_shortcuts_instancer);
+    Rml::Factory::RegisterElementInstancer("edit", &element_edit_instancer);
 
-	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
+    Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
     
+    // Load RML documents for the user interface
     m_doc_main = contextClipboardXX->LoadDocument("assets/main.rml");
     m_doc_fileImport = contextClipboardXX->LoadDocument("assets/fileImport.rml");
     m_doc_fileExport = contextClipboardXX->LoadDocument("assets/fileExport.rml");
@@ -96,6 +118,7 @@ bool ClipboardXX::initialize() {
 
     if (!m_doc_main || !m_doc_fileImport || !m_doc_fileExport || !m_doc_shortcutsMenu || !m_doc_edit) return false;
 
+    // Connect system tray signals to slots
     QObject::connect(showAction, &QAction::triggered, this, &ClipboardXX::showShortcuts);
     QObject::connect(quitAction, &QAction::triggered, this, &ClipboardXX::quit);
     
@@ -105,6 +128,11 @@ bool ClipboardXX::initialize() {
     return true;
 }
 
+/**
+ * @brief The main loop of the application.
+ * @details Processes application events (Qt and RmlUi) and handles rendering logic 
+ * and response to global keyboard shortcuts.
+ */
 void ClipboardXX::mainLoop() {
     m_running = true;
     while (m_running) {
@@ -130,6 +158,11 @@ void ClipboardXX::mainLoop() {
     }
 }
 
+/**
+ * @brief Releases all resources used by the application.
+ * @details Closes all RML documents, shuts down RmlUi, the backend, and the shell,
+ * and hides the system tray icon.
+ */
 void ClipboardXX::shutdown() {
     if (m_doc_main) m_doc_main->Close();
     if (m_doc_fileImport) m_doc_fileImport->Close();
@@ -144,6 +177,12 @@ void ClipboardXX::shutdown() {
     if(m_trayIcon) m_trayIcon->hide();
 }
 
+/**
+ * @brief Captures the HWND (window handle) of the foreground window.
+ * @details Only executes on Windows. It saves the handle of the window that was active 
+ * before the clipboard application was shown.
+ * @note This is useful for returning focus to the original window afterwards.
+ */
 void ClipboardXX::captureHWND() {
 #ifdef _WIN32
     if (!Backend::IsWindowShown()) {
@@ -152,6 +191,9 @@ void ClipboardXX::captureHWND() {
 #endif
 }
 
+/**
+ * @brief Hides all RML documents loaded in the current context.
+ */
 void ClipboardXX::hideAllDocuments() {
     if (!contextClipboardXX) return;
     for (int i = 0; i < contextClipboardXX->GetNumDocuments(); ++i) {
@@ -159,6 +201,11 @@ void ClipboardXX::hideAllDocuments() {
     }
 }
 
+/**
+ * @brief Displays the main window with the shortcuts menu.
+ * @details If the window is not open, it creates it, adjusts its size, and shows it. 
+ * If it's already open, it simply ensures the shortcuts document is visible.
+ */
 void ClipboardXX::showShortcuts() {
     if (!m_isWindowOpened) {
         m_doc_shortcutsMenu->Show();
@@ -175,6 +222,10 @@ void ClipboardXX::showShortcuts() {
     }
 }
 
+/**
+ * @brief Signals the end of the application's execution.
+ * @details Sets the main loop's control variable to false to terminate it.
+ */
 void ClipboardXX::quit() {
     m_running = false;
 }
