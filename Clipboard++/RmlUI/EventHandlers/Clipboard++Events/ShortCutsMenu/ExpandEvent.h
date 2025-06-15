@@ -12,8 +12,6 @@ public:
     
     void handle(Rml::Event* event, Rml::StringList values) override;
 private:
-    int window_width;
-    int window_height;
     MemoryCellManager* m_memoryCellManager; 
     ShortCutsViewModel* m_shortCutsViewModel; 
 };

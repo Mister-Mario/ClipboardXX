@@ -64,10 +64,9 @@
 #include <windows.h>
 #include "Clipboard++Events/ShortCutsMenu/PasteEvent.h"
 #include "Clipboard++Events/ShortCutsMenu/CopyEvent.h"
-extern HWND lastWindow;
 #endif
+#include <GlobalFunctions.h>
 // The game's element context (declared in main.cpp).
-extern Rml::Context* context;
 MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
 FileManager* fileManager = FileManager::Instance();
 TranslationManager* translator = TranslationManager::Instance();
@@ -98,8 +97,8 @@ void EventManager::LoadMap()
     events["expand"] = std::make_unique<ExpandEvent>(memoryCellManager, shortCutsViewModel);
     events["search"] = std::make_unique<SearchEvent>(shortCutsViewModel);
     #ifdef _WIN32
-    events["paste"] = std::make_unique<PasteEvent>(lastWindow, memoryCellManager);
-    events["copy"] = std::make_unique<CopyEvent>(lastWindow, memoryCellManager);
+    events["paste"] = std::make_unique<PasteEvent>(GlobalFunctions::lastWindow, memoryCellManager);
+    events["copy"] = std::make_unique<CopyEvent>(GlobalFunctions::lastWindow, memoryCellManager);
     #endif
     events["edit"] = std::make_unique<EditEvent>(memoryCellManager, editViewModel);
     events["edit_close"] = std::make_unique<EditCloseEvent>();
@@ -143,8 +142,8 @@ void EventManager::_ProcessCodeEvent(const Rml::String &value, Rml::Event* sourc
 
 void EventManager::ChangeDocument(const Rml::String &documentToShowId, const Rml::String &documentToHideId)
 {
-    Rml::ElementDocument *documentToShow = context->GetDocument(documentToShowId);
-    Rml::ElementDocument *documentToHide = context->GetDocument(documentToHideId);
+    Rml::ElementDocument *documentToShow = GlobalFunctions::context->GetDocument(documentToShowId);
+    Rml::ElementDocument *documentToHide = GlobalFunctions::context->GetDocument(documentToHideId);
 
     if (documentToShow && documentToHide)
     {

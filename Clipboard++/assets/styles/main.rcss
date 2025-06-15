@@ -39,27 +39,6 @@ header {
     padding: .5rem 0rem;
 }
 
-.c-controls__checkbox {
-    background: gray;
-    color: gray;
-	cursor: pointer;
-    height: 1rem;
-    text-align: center;
-    width: 1rem;
-}
-
-.c-controls__checkbox :hover {
-    background: #a9a9a9;
-}
-
-.c-controls__checkbox--checked {
-    background: white;
-    color: black;
-	cursor: pointer;
-    height: 1rem;
-    width: 1rem;
-}
-
 main {   
     align-items: center;
     display: flex;

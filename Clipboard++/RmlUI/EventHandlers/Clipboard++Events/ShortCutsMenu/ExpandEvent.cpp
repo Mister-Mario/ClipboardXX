@@ -1,24 +1,14 @@
 #include "ExpandEvent.h"
 #include "../EventManager.h"
 #include <RmlUi_Backend.h>
-#include <QGuiApplication>
-#include <QScreen>
+#include <GlobalFunctions.h>
 
-extern Rml::Context* context;
-
-ExpandEvent::ExpandEvent(MemoryCellManager* memoryCellManager, ShortCutsViewModel* shortCutsViewModel) : m_memoryCellManager(memoryCellManager), m_shortCutsViewModel(shortCutsViewModel) {
-    QScreen* screen = QGuiApplication::primaryScreen();
-	QRect screenGeometry = screen->geometry();
-	int maxWindowWidth = 1920 * (2-0.95);
-	int maxWindowHeight = 1080 * (2-0.875);
-	window_width = screenGeometry.width() <= maxWindowWidth ? screenGeometry.width() * 0.95 : 1920;
-	window_height = screenGeometry.height() <= maxWindowHeight ? screenGeometry.height() * 0.875 : 1080;
-}
+ExpandEvent::ExpandEvent(MemoryCellManager* memoryCellManager, ShortCutsViewModel* shortCutsViewModel) : m_memoryCellManager(memoryCellManager), m_shortCutsViewModel(shortCutsViewModel) {}
 
 void ExpandEvent::handle(Rml::Event* event, Rml::StringList values) {
 	if(m_shortCutsViewModel->hasSelectedCell())
 		m_memoryCellManager->setSelectedCell(m_shortCutsViewModel->getSelectedCellIndex());
 	Backend::SetBorder(true);
-    Backend::MaximizeWindow(context);
+    Backend::MaximizeWindow(GlobalFunctions::context);
     EventManager::ChangeDocument("main_window", "shortcuts_menu");
 }

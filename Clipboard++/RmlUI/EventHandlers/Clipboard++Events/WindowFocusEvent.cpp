@@ -12,7 +12,7 @@ void WindowFocusEvent::handle(Rml::Event* event, Rml::StringList values) {
     Attach();
     ShowWindow();
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(200));
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
     DoHandle(event, values);
     

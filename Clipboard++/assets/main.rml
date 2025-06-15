@@ -12,7 +12,7 @@
         </div>
         <div class="c-controls__auto">
             <label for="autocopy">header.autocopy</label>
-            <button id="checkbox" class="c-controls__checkbox" onclick="autocopy"></button>
+            <button id="checkbox" class="c-button c-button--primary" onclick="autocopy">Off</button>
         </div>
         <button class="c-button c-button--primary c-controls__help" onclick="help">?</button>
     </header>        

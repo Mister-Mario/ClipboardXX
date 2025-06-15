@@ -18,7 +18,6 @@ void ClipboardListener::OnSystemClipboardChanged()
     if (!m_clipboard) return;
 
     const std::string new_text = m_clipboard->text().toStdString();
-
     if (m_actionQueue.empty()) {
         if(m_baseAction)
             m_baseAction(new_text);

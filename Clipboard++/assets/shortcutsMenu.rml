@@ -7,27 +7,27 @@
     <shortcuts id="shortcuts">
         <header>
             <input id="search" type="text" onchange="search" placeholder="Search for a memory cell"/>
-            <button class="c-button c-button--primary" onclick="expand">Expand</button>
+            <button class="c-button c-button--primary" onclick="expand">shortcutsView.expand</button>
         </header>
 
         <ol class="c-cells-list">
             <div class="c-cell">
                 <span class="c-cell__name">Memory cell 1</span>
                 <span class="c-cell__content">Testing length of this shit</span>
-                <button class="c-button c-button--primary">Load</button>
-                <button class="c-button c-button--primary">Paste</button>
+                <button class="c-button c-button--primary">shortcutsView.load</button>
+                <button class="c-button c-button--primary">shortcutsView.paste</button>
             </div>
             <div class="c-cell">
                 <span class="c-cell__name">Memory cell 1</span>
                 <span class="c-cell__content">Testing length of this shit</span>
-                <button class="c-button c-button--primary">Load</button>
-                <button class="c-button c-button--primary">Paste</button>
+                <button class="c-button c-button--primary">shortcutsView.load</button>
+                <button class="c-button c-button--primary">shortcutsView.paste</button>
             </div>
             <div class="c-cell c-none">
                 <span class="c-cell__name">Memory cell 1</span>
                 <span class="c-cell__content">Testing length of this shit</span>
-                <button class="c-button c-button--primary">Load</button>
-                <button class="c-button c-button--primary">Paste</button>
+                <button class="c-button c-button--primary">shortcutsView.load</button>
+                <button class="c-button c-button--primary">shortcutsView.paste</button>
             </div>
         </ol>
     </shortcuts>

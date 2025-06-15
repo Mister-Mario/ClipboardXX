@@ -10,7 +10,6 @@
 #include <iostream>
 #include <QApplication>
 #include <QClipboard>
-#include <QScreen>
 #include <QLocale>
 #include "QClipboard/ClipboardInterface.h"
 #include "QClipboard/ClipboardAdapter.h"
@@ -27,50 +26,8 @@
 #include "ClipboardListener.h"
 #ifdef _WIN32
 #include <windows.h>
-HWND lastWindow = NULL;
 #endif
-
-Rml::Context* context = nullptr;
-bool isWindowOpened = false;
-bool isShortCutsOpened = false;
-bool running = true;
-
-void captureHWND(bool isWindowShown) {
-	#ifdef _WIN32
-	if(!isWindowShown){
-		lastWindow = GetForegroundWindow();
-	}
-    #endif
-}
-
-void hideDocuments() {
-	for (int i = context->GetNumDocuments() - 1; i >= 0; --i)
-    {
-        context->GetDocument(i)->Hide();
-    }
-}
-
-void showShortcuts(Rml::ElementDocument* shortcuts) {
-	if(!isWindowOpened) {
-		shortcuts->Show();
-		Backend::ModifyWindowSize(context, 1200, 500);
-		Backend::SetBorder(false);
-		Backend::ShowWindow();
-		isWindowOpened = true;
-	}
-	else {
-		hideDocuments();
-		shortcuts->Show();
-		Backend::ModifyWindowSize(context, 1200, 500);
-		Backend::SetBorder(false);
-		Backend::ShowWindow();
-	}
-}
-
-void quit() {
-	running = false;
-}
-
+#include "GlobalFunctions.h"
  #if defined RMLUI_PLATFORM_WIN32
 	 #include <RmlUi_Include_Windows.h>
  int APIENTRY WinMain(HINSTANCE /*instance_handle*/, HINSTANCE /*previous_instance_handle*/, char* /*command_line*/, int /*command_show*/)
@@ -95,14 +52,6 @@ void quit() {
 	TranslationManager* translator = TranslationManager::Instance(); 
     translator->loadLanguage(locale_name.toStdString());
 
-	// Get primary screen dimensions
-	QScreen* screen = QApplication::primaryScreen();
-	QRect screenGeometry = screen->geometry();
-	int maxWindowWidth = 1920 * (2-0.95);
-	int maxWindowHeight = 1080 * (2-0.875);
-	int window_width = screenGeometry.width() <= maxWindowWidth ? screenGeometry.width() * 0.95 : 1920;
-	int window_height = screenGeometry.height() <= maxWindowHeight ? screenGeometry.height() * 0.875 : 1080;
-
 	QIcon icon("assets/icons/Icono.png");
     QSystemTrayIcon trayIcon(icon);
     trayIcon.setToolTip(QString::fromStdString((translator->getString("title"))));
@@ -120,7 +69,7 @@ void quit() {
 	}
 
 	// Constructs the system and render interfaces, creates a window, and attaches the renderer.
-	if (!Backend::Initialize(translator->getString("title").c_str(), window_width, window_height, true))
+	if (!Backend::Initialize(translator->getString("title").c_str(), 100, 100, false))
 	{
 		std::cout << "Falla el Backend";
 		Shell::Shutdown();
@@ -131,22 +80,23 @@ void quit() {
 	Rml::SetSystemInterface(Backend::GetSystemInterface());
 	Rml::SetRenderInterface(Backend::GetRenderInterface());
 
-
-
 	// RmlUi initialisation.
 	Rml::Initialise();
 
 	// Create the main RmlUi context.
-	context = Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
-	if (!context)
+	GlobalFunctions::context = Rml::CreateContext("main", Rml::Vector2i(0, 0));
+	if (!GlobalFunctions::context)
 	{
 		Rml::Shutdown();
 		Backend::Shutdown();
 		Shell::Shutdown();
 		return -1;
 	}
+	GlobalFunctions::context->SetDensityIndependentPixelRatio(Backend::GetDPIScale());
 
-	Rml::Debugger::Initialise(context);
+	Backend::MaximizeWindow(GlobalFunctions::context);
+
+	//Rml::Debugger::Initialise(GlobalFunctions::context);
 	Shell::LoadFonts();
 
 	Rml::ElementInstancerGeneric<ElementClipboard> element_clipboard_instancer;
@@ -165,11 +115,11 @@ void quit() {
 	EventListenerInstancer event_listener_instancer;
 	Rml::Factory::RegisterEventListenerInstancer(&event_listener_instancer);
 
-	Rml::ElementDocument* main = context->LoadDocument("assets/main.rml");
-	Rml::ElementDocument* fileImport = context->LoadDocument("assets/fileImport.rml");
-	Rml::ElementDocument* fileExport = context->LoadDocument("assets/fileExport.rml");
-	Rml::ElementDocument* shortcutsMenu = context->LoadDocument("assets/shortcutsMenu.rml"); 
-	Rml::ElementDocument* edit = context->LoadDocument("assets/edit.rml"); 
+	Rml::ElementDocument* main = GlobalFunctions::context->LoadDocument("assets/main.rml");
+	Rml::ElementDocument* fileImport = GlobalFunctions::context->LoadDocument("assets/fileImport.rml");
+	Rml::ElementDocument* fileExport = GlobalFunctions::context->LoadDocument("assets/fileExport.rml");
+	Rml::ElementDocument* shortcutsMenu = GlobalFunctions::context->LoadDocument("assets/shortcutsMenu.rml"); 
+	Rml::ElementDocument* edit = GlobalFunctions::context->LoadDocument("assets/edit.rml"); 
 	if (!main || !fileImport || !fileExport || !shortcutsMenu || !edit){
 		if (main) main->Close();
 		if (fileImport) fileImport->Close();
@@ -183,34 +133,35 @@ void quit() {
 	}
 
 	QObject::connect(showAction, &QAction::triggered, [shortcutsMenu]() {
-		showShortcuts(shortcutsMenu);
+		GlobalFunctions::showShortcuts(shortcutsMenu);
 	});
-    QObject::connect(quitAction, &QAction::triggered, &quit);
+    QObject::connect(quitAction, &QAction::triggered, &GlobalFunctions::quit);
 
 	main->Show();
-	isWindowOpened= true;
-	running = true;
-	while (running)
+	GlobalFunctions::isWindowOpened= true;
+	GlobalFunctions::running = true;
+
+	while (GlobalFunctions::running)
 	{
 		QApplication::processEvents();
 
-		if(isWindowOpened && Backend::IsWindowShown()) {		
-			isWindowOpened = Backend::ProcessEvents(context, &Shell::ProcessKeyDownShortcuts, true);
-			context->Update();
+		if(GlobalFunctions::isWindowOpened && Backend::IsWindowShown()) {
+			GlobalFunctions::isWindowOpened = Backend::ProcessEvents(GlobalFunctions::context, &Shell::ProcessKeyDownShortcuts, false);
+			GlobalFunctions::context->Update();
 			Backend::BeginFrame();
-			context->Render();
+			GlobalFunctions::context->Render();
 			Backend::PresentFrame();
-			if(!isWindowOpened) {
-				hideDocuments();
+			if(!GlobalFunctions::isWindowOpened) {
+				GlobalFunctions::hideAllDocuments();
 				Backend::HideWindow();
 			}
 		}
 		
 		if (g_hotkeyPressed.load()) {
             g_hotkeyPressed.store(false);
-			captureHWND(Backend::IsWindowShown());
-			showShortcuts(shortcutsMenu);
-        }
+			GlobalFunctions::captureHWND();
+			GlobalFunctions::showShortcuts(shortcutsMenu);
+		}
 	}
 
 	if (main) main->Close();

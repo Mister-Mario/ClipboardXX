@@ -34,7 +34,9 @@
 #include <RmlUi/Core/FileInterface.h>
 #include <RmlUi/Core/Log.h>
 #include <RmlUi/Core/Profiling.h>
-#include <iostream>
+#include <QGuiApplication>
+#include <QScreen>
+#include "iostream"
 
 #if SDL_MAJOR_VERSION >= 3
 	#include <SDL3_image/SDL_image.h>
@@ -47,6 +49,7 @@
 #elif SDL_MAJOR_VERSION == 2 && !(SDL_VIDEO_RENDER_OGL)
 	#error "Only the OpenGL SDL backend is supported."
 #endif
+
 
 /**
     Custom render interface example for the SDL/GL3 backend.
@@ -386,13 +389,19 @@ void Backend::PresentFrame()
 	RMLUI_FrameMark;
 }
 
-void Backend::ModifyWindowSize(Rml::Context* context, int w, int h) {
+void Backend::ModifyWindowSize(Rml::Context* context, float w, float h) {
+	const float dpi_scale = GetDPIScale();
+	const float base_rem_size = 16.0f;
+
+	const int new_width_px = (int)(w * base_rem_size * dpi_scale);
+	const int new_height_px = (int)(h * base_rem_size * dpi_scale);
+
 	SDL_Window* window = SDL_GL_GetCurrentWindow();
 	SDL_RestoreWindow(window);
-	SDL_SetWindowSize(window, w, h);
+	SDL_SetWindowSize(window, new_width_px, new_height_px);
 	SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
-	context->SetDimensions(Rml::Vector2i(w, h));
-	data->render_interface.SetViewport(w, h);
+	context->SetDimensions(Rml::Vector2i(new_width_px, new_height_px));
+	data->render_interface.SetViewport(new_width_px, new_height_px);
 }
 
 void Backend::SetBorder(bool flag){
@@ -400,11 +409,13 @@ void Backend::SetBorder(bool flag){
 }
 
 void Backend::MaximizeWindow(Rml::Context* context) {
-	SDL_Window* window = SDL_GL_GetCurrentWindow();
-	SDL_MaximizeWindow(window);
-	int width, height;
-	SDL_GetWindowSizeInPixels(window, &width, &height);
-	context->SetDimensions(Rml::Vector2i(width, height));
+	QScreen* screen = QGuiApplication::primaryScreen();
+	QRect screenGeometry = screen->geometry();
+	int maxWindowWidth = 1920 * (2-0.95);
+	int maxWindowHeight = 800 * (2-0.875);
+	int window_width = screenGeometry.width() <= maxWindowWidth ? screenGeometry.width() * 0.95 : 1920;
+	int window_height = screenGeometry.height() <= maxWindowHeight ? screenGeometry.height() * 0.875 : 800;
+	ModifyWindowSize(context, window_width/16.0f, window_height/16.0f);
 }
 
 void Backend::HideWindow() {
@@ -427,8 +438,9 @@ void Backend::ShowWindow() {
 }
 
 bool Backend::IsWindowShown() {
-	Uint32 flags = SDL_GetWindowFlags(SDL_GL_GetCurrentWindow());
-	return !(flags & SDL_WINDOW_HIDDEN) && !(flags & SDL_WINDOW_MINIMIZED) && flags != 8242;
+    Uint64 flags = SDL_GetWindowFlags(SDL_GL_GetCurrentWindow());
+    
+    return !(flags & SDL_WINDOW_HIDDEN) && !(flags & SDL_WINDOW_MINIMIZED) && flags & SDL_WINDOW_INPUT_FOCUS;
 }
 
 #ifdef _WIN32
@@ -437,3 +449,7 @@ HWND Backend::GetOwnHWND() {
 	return hwnd;
 }
 #endif
+
+float Backend::GetDPIScale() {
+	return SDL_GetWindowDisplayScale(SDL_GL_GetCurrentWindow());
+}
