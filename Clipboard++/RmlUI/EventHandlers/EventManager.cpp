@@ -35,7 +35,6 @@
 #include "Utils/StringUtils.h"
 #include "Utils/FileManager.h"
 #include "Utils/TranslationManager.h"
-#include "Utils/TranslationManager.h"
 #include "QClipboard/KeyShortCuts/KeyShortCutManager.h"
 #include <ShortCutsViewModel.h>
 #include <EditViewModel.h>
@@ -67,6 +66,7 @@
 extern HWND lastWindowClipboardXX;
 #endif
 
+// External and singleton instances
 extern Rml::Context* contextClipboardXX;
 MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
 FileManager* fileManager = FileManager::Instance();
@@ -76,10 +76,21 @@ KeyShortCutManager* keyShortCutsManager = KeyShortCutManager::Instance();
 EditViewModel* editViewModel = EditViewModel::Instance();
 std::map<std::string, std::unique_ptr<ClipboardEvent>> EventManager::events;
 
+/**
+ * @brief Constructor for the EventManager.
+ */
 EventManager::EventManager() {}
 
+/**
+ * @brief Destructor for the EventManager.
+ */
 EventManager::~EventManager() {}
 
+/**
+ * @brief Initializes and populates the map of event handlers.
+ * @details This function lazily loads all the available event handler classes,
+ * associating them with a unique string key for later retrieval.
+ */
 void EventManager::LoadMap()
 {
     events["clear"] = std::make_unique<ClearEvent>(memoryCellManager);
@@ -106,9 +117,15 @@ void EventManager::LoadMap()
     events["edit_done"] = std::make_unique<EditDoneEvent>(memoryCellManager, keyShortCutsManager, editViewModel, translator,fileManager);
     events["reset"] = std::make_unique<ResetShortCutEvent>(editViewModel);
     events["autocopy"] = std::make_unique<AutoCopyEvent>(memoryCellManager);
-
 }
 
+/**
+ * @brief Processes a generic RmlUi event.
+ * @details This is the primary entry point for handling events from the UI. It parses
+ * a semicolon-separated string of commands and processes each one individually.
+ * @param event The source event object from RmlUi.
+ * @param value The string value from the 'data-event' attribute, containing commands.
+ */
 void EventManager::ProcessEvent(Rml::Event &event, const Rml::String &value)
 {
     if (events.empty())
@@ -122,6 +139,13 @@ void EventManager::ProcessEvent(Rml::Event &event, const Rml::String &value)
     }
 }
 
+/**
+ * @brief Processes a single command string.
+ * @details It parses the command, finds the corresponding event handler in the map,
+ * and executes it, passing along any parameters.
+ * @param value The single command string to process (e.g., "clear", "slot 1").
+ * @param source_event The original RmlUi event that triggered this command.
+ */
 void EventManager::_ProcessCodeEvent(const Rml::String &value, Rml::Event* source_event) {
     if (events.empty())
         LoadMap();
@@ -138,9 +162,14 @@ void EventManager::_ProcessCodeEvent(const Rml::String &value, Rml::Event* sourc
             source_event->StopPropagation();
         it->second->handle(source_event, values);
     }
-
 }
 
+/**
+ * @brief Hides one RmlUi document and shows another.
+ * @details Utility function to easily switch between different UI screens.
+ * @param documentToShowId The ID of the RmlUi document to make visible.
+ * @param documentToHideId The ID of the RmlUi document to hide.
+ */
 void EventManager::ChangeDocument(const Rml::String &documentToShowId, const Rml::String &documentToHideId)
 {
     Rml::ElementDocument *documentToShow = contextClipboardXX->GetDocument(documentToShowId);

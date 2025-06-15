@@ -391,54 +391,83 @@ void Backend::PresentFrame()
 	RMLUI_FrameMark;
 }
 
+/**
+ * @brief Modifies the window size based on REM-like units and centers it.
+ * @details Calculates the new pixel dimensions by multiplying the input values by a base
+ * REM size (16.0f) and the current display's DPI scale. It then applies this size to
+ * the SDL window, centers it, and updates the RmlUi context and render viewport.
+ * @param w The desired width in REM-like units.
+ * @param h The desired height in REM-like units.
+ */
 void Backend::ModifyWindowSize(float w, float h) {
-	const float dpi_scale = GetDPIScale();
-	const float base_rem_size = 16.0f;
+    const float dpi_scale = GetDPIScale();
+    const float base_rem_size = 16.0f;
 
-	const int new_width_px = (int)(w * base_rem_size * dpi_scale);
-	const int new_height_px = (int)(h * base_rem_size * dpi_scale);
+    const int new_width_px = (int)(w * base_rem_size * dpi_scale);
+    const int new_height_px = (int)(h * base_rem_size * dpi_scale);
 
-	SDL_Window* window = SDL_GL_GetCurrentWindow();
-	SDL_RestoreWindow(window);
-	SDL_SetWindowSize(window, new_width_px, new_height_px);
-	SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
-	contextClipboardXX->SetDimensions(Rml::Vector2i(new_width_px, new_height_px));
-	data->render_interface.SetViewport(new_width_px, new_height_px);
+    SDL_Window* window = SDL_GL_GetCurrentWindow();
+    SDL_RestoreWindow(window);
+    SDL_SetWindowSize(window, new_width_px, new_height_px);
+    SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+    contextClipboardXX->SetDimensions(Rml::Vector2i(new_width_px, new_height_px));
+    data->render_interface.SetViewport(new_width_px, new_height_px);
 }
 
+/**
+ * @brief Toggles the window's border.
+ * @param flag If true, the window will have a border; if false, it will be borderless.
+ */
 void Backend::SetBorder(bool flag){
-	SDL_SetWindowBordered(SDL_GL_GetCurrentWindow(), flag);
+    SDL_SetWindowBordered(SDL_GL_GetCurrentWindow(), flag);
 }
 
+/**
+ * @brief Resizes the window to a "maximized" state appropriate for the primary screen.
+ * @details It retrieves the primary screen's geometry using Qt and calculates a target size,
+ * then calls ModifyWindowSize to apply the new dimensions. This is not a true system maximize.
+ */
 void Backend::MaximizeWindow() {
-	QScreen* screen = QGuiApplication::primaryScreen();
-	QRect screenGeometry = screen->geometry();
-	int maxWindowWidth = 1920 * (2-0.95);
-	int maxWindowHeight = 800 * (2-0.875);
-	int window_width = screenGeometry.width() <= maxWindowWidth ? screenGeometry.width() * 0.95 : 1920;
-	int window_height = screenGeometry.height() <= maxWindowHeight ? screenGeometry.height() * 0.875 : 800;
-	ModifyWindowSize(window_width/16.0f, window_height/16.0f);
+    QScreen* screen = QGuiApplication::primaryScreen();
+    QRect screenGeometry = screen->geometry();
+    int maxWindowWidth = 1920 * (2-0.95);
+    int maxWindowHeight = 800 * (2-0.875);
+    int window_width = screenGeometry.width() <= maxWindowWidth ? screenGeometry.width() * 0.95 : 1920;
+    int window_height = screenGeometry.height() <= maxWindowHeight ? screenGeometry.height() * 0.875 : 800;
+    ModifyWindowSize(window_width/16.0f, window_height/16.0f);
 }
 
+/**
+ * @brief Hides the main SDL window.
+ */
 void Backend::HideWindow() {
-	SDL_HideWindow(SDL_GL_GetCurrentWindow());
+    SDL_HideWindow(SDL_GL_GetCurrentWindow());
 }
- 
+    
+/**
+ * @brief Shows the main SDL window.
+ * @details If the window is minimized, it's restored. If hidden, it's shown.
+ * The window is also raised to the top of the window stack.
+ */
 void Backend::ShowWindow() {
-	SDL_Window* window = SDL_GL_GetCurrentWindow();
+    SDL_Window* window = SDL_GL_GetCurrentWindow();
 
     Uint32 flags = SDL_GetWindowFlags(window);
 
     if (flags & SDL_WINDOW_MINIMIZED) {
         SDL_RestoreWindow(window);
     }
-	if (flags & SDL_WINDOW_HIDDEN) {
-		SDL_ShowWindow(window);
-	}
+    if (flags & SDL_WINDOW_HIDDEN) {
+        SDL_ShowWindow(window);
+    }
 
     SDL_RaiseWindow(window);
 }
 
+/**
+ * @brief Checks if the window is currently visible and has focus.
+ * @return bool True if the window is not hidden, not minimized, and has input focus. False otherwise.
+ */
 bool Backend::IsWindowShown() {
     Uint64 flags = SDL_GetWindowFlags(SDL_GL_GetCurrentWindow());
     
@@ -446,12 +475,21 @@ bool Backend::IsWindowShown() {
 }
 
 #ifdef _WIN32
+/**
+ * @brief Gets the native window handle (HWND) on Windows.
+ * @return HWND The HWND of the application's main SDL window.
+ */
 HWND Backend::GetOwnHWND() {
-	auto hwnd = (HWND)SDL_GetPointerProperty(SDL_GetWindowProperties(SDL_GL_GetCurrentWindow()), SDL_PROP_WINDOW_WIN32_HWND_POINTER, NULL);
-	return hwnd;
+    auto hwnd = (HWND)SDL_GetPointerProperty(SDL_GetWindowProperties(SDL_GL_GetCurrentWindow()), SDL_PROP_WINDOW_WIN32_HWND_POINTER, NULL);
+    return hwnd;
 }
 #endif
 
+/**
+ * @brief Gets the DPI scale factor of the display the window is on.
+ * @return float The display's DPI scale (e.g., 1.0 for 100%, 1.5 for 150%).
+ */
 float Backend::GetDPIScale() {
-	return SDL_GetWindowDisplayScale(SDL_GL_GetCurrentWindow());
+    return SDL_GetWindowDisplayScale(SDL_GL_GetCurrentWindow());
 }
+
