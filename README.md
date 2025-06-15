@@ -9,3 +9,6 @@ This project can be done thanks to the use of other projects:
   - [magic-enum](https://github.com/Neargye/magic_enum)
   - [sld3](https://www.libsdl.org/index.php)
   - [sdl3-image](https://github.com/libsdl-org/SDL_image)
+For generating the documentation found at [Clipboard++ Documentation](https://mister-mario.github.io/ClipboardXX/index.html) the follwing tools were used:
+  - [doxygen](https://www.doxygen.nl/index.html)
+  - [graphviz](https://graphviz.org/)
