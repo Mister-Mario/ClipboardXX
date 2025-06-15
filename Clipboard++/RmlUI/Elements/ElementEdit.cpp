@@ -8,7 +8,8 @@
 #include "TranslationManager.h"
 #include <format>
 #include "EventManager.h"
-#include <GlobalFunctions.h>
+
+extern Rml::Context* contextClipboardXX;
 
  // The applicaction's element context (declared in main.cpp).
 TranslationManager* translatorEdit = TranslationManager::Instance();
@@ -23,7 +24,7 @@ TranslationManager* translatorEdit = TranslationManager::Instance();
  void ElementEdit::OnUpdate()
  {
    
-   Rml::ElementDocument* document = GlobalFunctions::context->GetDocument("edit");
+   Rml::ElementDocument* document = contextClipboardXX->GetDocument("edit");
     auto oldShortCut = document->GetElementById("old");
    if(viewModel->GetSelectedShortCut() && oldShortCut){
       oldShortCut->SetInnerRML(StringUtils::escapeHtml(viewModel->GetSelectedShortCut()->toString()));

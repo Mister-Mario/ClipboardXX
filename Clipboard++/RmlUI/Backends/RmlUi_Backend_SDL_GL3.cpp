@@ -38,6 +38,8 @@
 #include <QScreen>
 #include "iostream"
 
+extern Rml::Context* contextClipboardXX;
+
 #if SDL_MAJOR_VERSION >= 3
 	#include <SDL3_image/SDL_image.h>
 #else
@@ -389,7 +391,7 @@ void Backend::PresentFrame()
 	RMLUI_FrameMark;
 }
 
-void Backend::ModifyWindowSize(Rml::Context* context, float w, float h) {
+void Backend::ModifyWindowSize(float w, float h) {
 	const float dpi_scale = GetDPIScale();
 	const float base_rem_size = 16.0f;
 
@@ -400,7 +402,7 @@ void Backend::ModifyWindowSize(Rml::Context* context, float w, float h) {
 	SDL_RestoreWindow(window);
 	SDL_SetWindowSize(window, new_width_px, new_height_px);
 	SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
-	context->SetDimensions(Rml::Vector2i(new_width_px, new_height_px));
+	contextClipboardXX->SetDimensions(Rml::Vector2i(new_width_px, new_height_px));
 	data->render_interface.SetViewport(new_width_px, new_height_px);
 }
 
@@ -408,14 +410,14 @@ void Backend::SetBorder(bool flag){
 	SDL_SetWindowBordered(SDL_GL_GetCurrentWindow(), flag);
 }
 
-void Backend::MaximizeWindow(Rml::Context* context) {
+void Backend::MaximizeWindow() {
 	QScreen* screen = QGuiApplication::primaryScreen();
 	QRect screenGeometry = screen->geometry();
 	int maxWindowWidth = 1920 * (2-0.95);
 	int maxWindowHeight = 800 * (2-0.875);
 	int window_width = screenGeometry.width() <= maxWindowWidth ? screenGeometry.width() * 0.95 : 1920;
 	int window_height = screenGeometry.height() <= maxWindowHeight ? screenGeometry.height() * 0.875 : 800;
-	ModifyWindowSize(context, window_width/16.0f, window_height/16.0f);
+	ModifyWindowSize(window_width/16.0f, window_height/16.0f);
 }
 
 void Backend::HideWindow() {

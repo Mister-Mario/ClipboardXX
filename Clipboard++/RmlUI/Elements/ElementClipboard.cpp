@@ -9,7 +9,8 @@
 #include "TranslationManager.h"
 #include <format>
 #include <Clipboard++Events/Main/AutoCopyEvent.h>
-#include <GlobalFunctions.h>
+
+extern Rml::Context* contextClipboardXX;
 
  ElementClipboard::ElementClipboard(const Rml::String& tag) : Rml::Element(tag)
  {
@@ -27,7 +28,7 @@
    
    TranslationManager* translator = TranslationManager::Instance();
    MemoryCellManager* memoryCellManager = MemoryCellManager::Instance();
-   Rml::ElementDocument* document = GlobalFunctions::context->GetDocument("main_window");
+   Rml::ElementDocument* document = contextClipboardXX->GetDocument("main_window");
    if(Rml::Element* selectedCellNameElement = document->GetElementById("cell_name"))
       selectedCellNameElement->SetInnerRML(translator->getString(std::format("list.{}" ,memoryCellManager->getSelectedCell()->name())));
    if(Rml::Element* selectedCellConentElement = document->GetElementById("cell_content")){
