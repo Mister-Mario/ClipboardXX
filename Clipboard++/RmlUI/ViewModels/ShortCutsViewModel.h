@@ -15,6 +15,8 @@ class ShortCutsViewModel {
         int getSelectedCell();
         bool hasSelectedCell();
         size_t getSelectedCellIndex();
+        bool canMoveUp();
+        bool canMoveDown();
     protected:
         ShortCutsViewModel();
         ~ShortCutsViewModel();

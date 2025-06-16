@@ -48,6 +48,21 @@ extern Rml::Context* contextClipboardXX;
       if(auto celda = celdas.at(viewModel->getSelectedCell()))
          celda->SetClassNames("c-cell c-glow-border");
 
+   Rml::ElementList borders;
+   document->GetElementsByClassName(borders, "c-cells__border");
+   if(borders.size() == 2){
+      if(!viewModel->canMoveUp())
+         borders[0]->SetClassNames("c-cells__border c-none");
+      else
+         borders[0]->SetClassNames("c-cells__border");
+
+      if(!viewModel->canMoveDown()) 
+         borders[1]->SetClassNames("c-cells__border c-none");
+      else
+         borders[1]->SetClassNames("c-cells__border");
+   }
+
+
 }
  
  void ElementShortcuts::OnRender()

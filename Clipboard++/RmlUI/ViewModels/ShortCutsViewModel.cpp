@@ -114,3 +114,20 @@ bool ShortCutsViewModel::hasSelectedCell() {
 size_t ShortCutsViewModel::getSelectedCellIndex() {
     return m_selectedCellsIndexes.at(viewIndex + cellsIndex);
 }
+
+/**
+ * @brief Checks if there is any cell currently over the showed ones.
+ * @return bool True if there is a cell over, false otherwise.
+ */
+bool ShortCutsViewModel::canMoveUp() {
+    return cellsIndex != 0;
+}
+
+/**
+ * @brief Checks if there is any cell under the showed ones.
+ * @return bool True if there is a cell under, false otherwise.
+ */
+bool ShortCutsViewModel::canMoveDown() {
+    int max =  m_memoryCellsShortCuts.size() - 1 - 2;
+    return max > 0 && cellsIndex < max;
+}

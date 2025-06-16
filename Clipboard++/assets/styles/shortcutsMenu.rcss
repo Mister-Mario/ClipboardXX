@@ -26,6 +26,11 @@ header input {
     padding: 1rem 2rem 0;
 }
 
+.c-cells__border {
+    align-self: center;
+    text-decoration: underline;
+}
+
 .c-cell {
     align-items: center;
     position: relative;
@@ -47,3 +52,4 @@ header input {
 .c-cell__content {
     width: 45rem;
 }
+
