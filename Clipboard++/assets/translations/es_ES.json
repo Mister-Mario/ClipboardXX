@@ -92,6 +92,7 @@
   },
   "shortcutsView": {
     "load" : "Cargar", 
+    "more" : "Más celdas",
     "paste": "Pegar",
     "expand": "Expandir"
   },

@@ -98,6 +98,7 @@ bool ClipboardXX::initialize() {
     contextClipboardXX->SetDensityIndependentPixelRatio(Backend::GetDPIScale());
     Backend::MaximizeWindow();
 
+    Rml::Debugger::Initialise(contextClipboardXX);
     Shell::LoadFonts();
     
     // Register Instancers for custom RmlUi elements
@@ -122,8 +123,7 @@ bool ClipboardXX::initialize() {
     QObject::connect(showAction, &QAction::triggered, this, &ClipboardXX::showShortcuts);
     QObject::connect(quitAction, &QAction::triggered, this, &ClipboardXX::quit);
     
-    m_doc_main->Show();
-    m_isWindowOpened = true;
+    showShortcuts();
 
     return true;
 }
@@ -152,7 +152,6 @@ void ClipboardXX::mainLoop() {
         
         if (g_hotkeyPressed.load()) {
             g_hotkeyPressed.store(false);
-            captureHWND();
             showShortcuts();
         }
     }
@@ -207,16 +206,17 @@ void ClipboardXX::hideAllDocuments() {
  * If it's already open, it simply ensures the shortcuts document is visible.
  */
 void ClipboardXX::showShortcuts() {
+    captureHWND();
     if (!m_isWindowOpened) {
         m_doc_shortcutsMenu->Show();
-        Backend::ModifyWindowSize(950/16.0f, 350/16.0f);
+        Backend::ModifyWindowSize(950/16.0f, 375/16.0f);
         Backend::SetBorder(false);
         Backend::ShowWindow();
         m_isWindowOpened = true;
     } else {
         hideAllDocuments();
         m_doc_shortcutsMenu->Show();
-        Backend::ModifyWindowSize(950/16.0f, 350/16.0f);
+        Backend::ModifyWindowSize(950/16.0f, 375/16.0f);
         Backend::SetBorder(false);
         Backend::ShowWindow();
     }
