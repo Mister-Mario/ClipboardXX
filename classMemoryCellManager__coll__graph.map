@@ -1,0 +1,7 @@
+<map id="MemoryCellManager" name="MemoryCellManager">
+<area shape="rect" id="Node000001" title=" " alt="" coords="85,148,282,433"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,209,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,85,115,123,117,132,112,133,110,125,105,86"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="233,13,285,78"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="252,79,235,133,230,131,247,78"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Gfx::FramebufferData" name="Gfx::FramebufferData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="30,207,185,272"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,36,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="15,71,11,125,14,154,24,181,33,194,29,197,20,184,9,156,5,125,10,71"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="174,5,217,71"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,71,189,126,181,156,168,184,160,196,156,193,164,181,176,154,184,124,192,70"/>
+</map>

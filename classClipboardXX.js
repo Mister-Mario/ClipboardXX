@@ -1,0 +1,28 @@
+var classClipboardXX =
+[
+    [ "ClipboardXX", "classClipboardXX.html#a016f18c6597171875c4d4fded60f5be5", null ],
+    [ "~ClipboardXX", "classClipboardXX.html#a2b755e4f78f921b660fd67f5907582e6", null ],
+    [ "captureHWND", "classClipboardXX.html#ae1ddd1c18b53f645bfee7629b2ceaced", null ],
+    [ "hideAllDocuments", "classClipboardXX.html#a23da498ded06e48dc1f8e25018c05b97", null ],
+    [ "initialize", "classClipboardXX.html#ab19892d969c5f26ae50f50f615d9eee3", null ],
+    [ "mainLoop", "classClipboardXX.html#ad3dab6b9579e992c1901a12709979f73", null ],
+    [ "quit", "classClipboardXX.html#a784d30d935fb43655d072c341ce18498", null ],
+    [ "Run", "classClipboardXX.html#a3107e3a63389006e264bb8ba9ed471aa", null ],
+    [ "showShortcuts", "classClipboardXX.html#af298625f9bc83492b3b306a751d8c0ef", null ],
+    [ "shutdown", "classClipboardXX.html#a7c304b4fe471185187af40b4c5c24724", null ],
+    [ "element_clipboard_instancer", "classClipboardXX.html#a106f9498ca993d141557a8c22bbb715f", null ],
+    [ "element_edit_instancer", "classClipboardXX.html#a5cdfd6ee4df2d42fe1d70587287b6259", null ],
+    [ "element_file_instancer", "classClipboardXX.html#a330e94108ab57b62683e253d7a0e728e", null ],
+    [ "element_shortcuts_instancer", "classClipboardXX.html#ae46ff48ad45085e0f8c5fdd91fba526e", null ],
+    [ "event_listener_instancer", "classClipboardXX.html#a875c24d68f02b6ced6d0bdd73fcbd7fd", null ],
+    [ "m_app", "classClipboardXX.html#a7991ba98666c84a82feb81691921cbdd", null ],
+    [ "m_doc_edit", "classClipboardXX.html#ac4795cc2ce7dd4e8770b85fc1c23946f", null ],
+    [ "m_doc_fileExport", "classClipboardXX.html#aea490468cccc943e4600530e6631a5d4", null ],
+    [ "m_doc_fileImport", "classClipboardXX.html#a48b6cda99051edb8bd64e9ffeff19432", null ],
+    [ "m_doc_main", "classClipboardXX.html#adce0696149e7a77c1d104a5be8106c8b", null ],
+    [ "m_doc_shortcutsMenu", "classClipboardXX.html#a7671b8beb61049e7beffe2c80557b63a", null ],
+    [ "m_hotkeyListenerThread", "classClipboardXX.html#ac8d0a76df54a803a46acacf9f0c76dc0", null ],
+    [ "m_isWindowOpened", "classClipboardXX.html#aa9a3a50b8f090164e1650e8042e8debc", null ],
+    [ "m_running", "classClipboardXX.html#a454b4bbd61ddc308f30a24497d6fbc1d", null ],
+    [ "m_trayIcon", "classClipboardXX.html#a6b7e1855b750986b20df18112f898d9a", null ]
+];

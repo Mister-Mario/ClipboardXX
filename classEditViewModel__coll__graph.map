@@ -1,0 +1,10 @@
+<map id="EditViewModel" name="EditViewModel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,396,179,601"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="25,5,162,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,86,85,148,83,267,87,379,82,379,78,267,80,148,86,85"/>
+<area shape="rect" id="Node000003" href="$classKeyShortCut.html" title=" " alt="" coords="189,148,307,333"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="101,85,107,105,118,122,130,131,142,135,156,138,171,146,178,151,174,155,168,150,154,143,141,140,127,136,114,126,102,107,95,87"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="194,335,165,383,160,380,190,332"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="288,13,339,78"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="305,79,287,133,282,132,300,77"/>
+</map>

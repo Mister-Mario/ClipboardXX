@@ -1,0 +1,14 @@
+<map id="ImportSearchEvent" name="ImportSearchEvent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="167,481,340,587"/>
+<area shape="rect" id="Node000002" href="$classClipboardEvent.html" title=" " alt="" coords="5,263,155,349"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,358,216,480,212,483,118,362"/>
+<area shape="rect" id="Node000003" href="$classFileManager.html" title=" " alt="" coords="179,193,328,419"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="256,419,256,464,251,464,251,419"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="329,278,347,288,355,306,352,318,345,326,341,323,347,315,349,306,343,291,327,283"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="228,35,279,101"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="256,101,256,177,251,177,251,101"/>
+<area shape="rect" id="Node000005" href="$classTranslationManager.html" title=" " alt="" coords="341,5,507,131"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="451,130,469,194,480,269,481,308,477,347,468,384,452,420,433,446,410,467,356,501,354,496,406,463,429,442,447,417,463,383,472,346,475,308,475,269,463,195,446,132"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="381,133,340,190,335,187,377,130"/>
+<area shape="poly" id="edge6_Node000005_Node000005" title=" " alt="" coords="509,49,526,55,534,68,531,76,525,82,521,77,527,73,529,68,523,60,507,54"/>
+</map>

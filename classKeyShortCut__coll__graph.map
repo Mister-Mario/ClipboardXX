@@ -1,0 +1,7 @@
+<map id="KeyShortCut" name="KeyShortCut">
+<area shape="rect" id="Node000001" title=" " alt="" coords="113,148,232,333"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,143,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,85,73,105,78,123,89,147,105,170,100,173,85,150,73,125,68,105,67,86"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="247,13,298,78"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="265,79,246,125,241,134,236,132,241,123,260,77"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="ClipboardAdapter" name="ClipboardAdapter">
+<area shape="rect" id="Node000001" title=" " alt="" coords="165,451,340,696"/>
+<area shape="rect" id="Node000002" href="$classClipboardInterface.html" title=" " alt="" coords="5,148,180,373"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,385,192,449,188,452,154,387"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="204,228,301,293"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="255,293,255,434,250,434,250,293"/>
+<area shape="rect" id="Node000004" href="$classKeyShortCut.html" title=" " alt="" coords="325,168,444,353"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="372,354,350,428,346,437,341,435,345,426,367,353"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="217,5,355,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="283,86,285,105,290,123,300,135,315,146,320,153,316,156,311,150,297,139,285,125,279,106,278,86"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="459,13,510,78"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="476,79,458,125,444,155,439,152,453,123,471,77"/>
+</map>

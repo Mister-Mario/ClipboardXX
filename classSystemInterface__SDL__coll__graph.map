@@ -1,0 +1,9 @@
+<map id="SystemInterface_SDL" name="SystemInterface_SDL">
+<area shape="rect" id="Node000001" title=" " alt="" coords="144,221,333,467"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,160,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,82,179,220,174,223,103,85"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="184,5,293,71"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="241,71,241,205,236,205,236,71"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="317,5,416,71"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="357,72,306,198,303,207,298,205,302,196,352,70"/>
+</map>

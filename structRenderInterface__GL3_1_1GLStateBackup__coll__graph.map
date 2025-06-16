@@ -1,0 +1,14 @@
+<map id="RenderInterface_GL3::GLStateBackup" name="RenderInterface_GL3::GLStateBackup">
+<area shape="rect" id="Node000001" title=" " alt="" coords="377,504,528,584"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="6,269,49,335"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="19,335,11,369,8,407,13,445,20,463,31,478,52,494,83,507,169,526,268,536,361,540,361,545,268,541,168,531,82,512,49,499,27,482,15,465,8,447,3,407,6,368,14,334"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="193,5,224,71"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,71,185,132,174,212,173,256,176,299,186,342,203,381,234,424,274,459,318,487,363,509,361,514,316,492,271,463,230,427,198,384,181,343,171,300,167,256,168,212,180,131,196,70"/>
+<area shape="rect" id="Node000006" href="$structRenderInterface__GL3_1_1GLStateBackup_1_1Stencil.html" title=" " alt="" coords="367,262,539,342"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="226,54,407,248,404,252,222,58"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="563,269,606,335"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="589,335,588,368,583,406,573,445,555,481,542,497,538,493,550,479,568,443,578,405,583,367,584,335"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="689,269,795,335"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="749,335,750,369,747,408,736,447,715,482,687,499,645,514,545,534,544,529,644,509,685,495,711,478,731,445,742,407,745,369,744,335"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="455,342,455,488,450,488,450,342"/>
+</map>

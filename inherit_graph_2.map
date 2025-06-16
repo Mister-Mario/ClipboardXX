@@ -1,0 +1,49 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classClipboardEvent.html" title=" " alt="" coords="5,499,127,524"/>
+<area shape="rect" id="Node000001" href="$classAutoCopyEvent.html" title=" " alt="" coords="189,5,312,31"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="67,485,79,387,100,254,115,187,131,126,151,75,173,40,188,29,191,33,177,44,155,78,136,127,120,188,106,255,84,388,73,485"/>
+<area shape="rect" id="Node000002" href="$classClearEvent.html" title=" " alt="" coords="204,55,297,80"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="68,485,81,396,104,278,134,165,153,120,173,90,187,79,203,72,205,77,189,83,177,93,157,123,139,167,109,280,87,397,73,485"/>
+<area shape="rect" id="Node000003" href="$classEditCloseEvent.html" title=" " alt="" coords="191,104,311,129"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="64,485,68,416,83,324,96,274,115,225,140,180,173,139,189,127,192,131,177,143,145,182,120,228,101,276,88,325,73,417,70,485"/>
+<area shape="rect" id="Node000004" href="$classEditDoneEvent.html" title=" " alt="" coords="191,153,310,179"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="66,484,72,424,89,345,103,303,121,261,144,222,173,188,190,176,193,181,176,192,148,226,126,264,108,305,94,346,78,425,71,485"/>
+<area shape="rect" id="Node000005" href="$classEditEvent.html" title=" " alt="" coords="209,203,293,228"/>
+<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="68,484,77,433,96,366,126,298,148,266,173,237,189,226,207,219,209,224,192,231,176,241,152,269,131,300,101,368,82,434,73,485"/>
+<area shape="rect" id="Node000006" href="$classExpandEvent.html" title=" " alt="" coords="197,252,304,277"/>
+<area shape="poly" id="edge6_Node000000_Node000006" title=" " alt="" coords="70,485,82,442,102,389,132,334,151,309,173,287,196,273,198,278,176,291,155,312,137,337,107,391,87,444,75,486"/>
+<area shape="rect" id="Node000007" href="$classExportCloseEvent.html" title=" " alt="" coords="182,301,319,327"/>
+<area shape="poly" id="edge7_Node000000_Node000007" title=" " alt="" coords="74,484,89,451,110,411,138,371,173,336,193,324,195,329,176,340,142,374,115,414,94,453,79,487"/>
+<area shape="rect" id="Node000008" href="$classExportEvent.html" title=" " alt="" coords="200,351,301,376"/>
+<area shape="poly" id="edge8_Node000000_Node000008" title=" " alt="" coords="80,485,118,435,144,408,173,385,199,373,201,377,176,390,148,412,123,438,85,489"/>
+<area shape="rect" id="Node000009" href="$classExportFileEvent.html" title=" " alt="" coords="189,400,313,425"/>
+<area shape="poly" id="edge9_Node000000_Node000009" title=" " alt="" coords="91,488,129,461,173,434,201,423,203,428,176,439,132,465,95,492"/>
+<area shape="rect" id="Node000010" href="$classExportSearchEvent.html" title=" " alt="" coords="178,449,323,475"/>
+<area shape="poly" id="edge10_Node000000_Node000010" title=" " alt="" coords="127,493,201,472,203,477,128,498"/>
+<area shape="rect" id="Node000011" href="$classHelpEvent.html" title=" " alt="" coords="206,499,295,524"/>
+<area shape="poly" id="edge11_Node000000_Node000011" title=" " alt="" coords="140,509,206,509,206,514,140,514"/>
+<area shape="rect" id="Node000012" href="$classImportCloseEvent.html" title=" " alt="" coords="181,548,320,573"/>
+<area shape="poly" id="edge12_Node000000_Node000012" title=" " alt="" coords="128,525,203,545,201,550,127,530"/>
+<area shape="rect" id="Node000013" href="$classImportEvent.html" title=" " alt="" coords="199,597,302,623"/>
+<area shape="poly" id="edge13_Node000000_Node000013" title=" " alt="" coords="95,530,133,557,176,582,206,595,204,600,173,587,130,561,92,535"/>
+<area shape="rect" id="Node000014" href="$classImportFileEvent.html" title=" " alt="" coords="188,647,313,672"/>
+<area shape="poly" id="edge14_Node000000_Node000014" title=" " alt="" coords="85,534,123,583,148,609,176,632,201,644,199,649,173,636,144,613,119,587,80,537"/>
+<area shape="rect" id="Node000015" href="$classImportSearchEvent.html" title=" " alt="" coords="177,696,324,721"/>
+<area shape="poly" id="edge15_Node000000_Node000015" title=" " alt="" coords="79,536,94,569,115,608,142,647,176,681,198,694,195,698,173,685,138,651,110,611,89,571,74,538"/>
+<area shape="rect" id="Node000016" href="$classInsertEvent.html" title=" " alt="" coords="203,745,299,771"/>
+<area shape="poly" id="edge16_Node000000_Node000016" title=" " alt="" coords="76,537,88,579,108,631,137,685,155,709,176,731,204,746,201,751,173,735,151,713,133,688,103,633,83,581,70,538"/>
+<area shape="rect" id="Node000017" href="$classLoadEvent.html" title=" " alt="" coords="205,795,296,820"/>
+<area shape="poly" id="edge17_Node000000_Node000017" title=" " alt="" coords="73,537,82,588,101,653,131,721,152,752,176,780,190,790,206,797,204,802,188,795,173,784,148,756,127,724,96,655,77,589,68,538"/>
+<area shape="rect" id="Node000018" href="$classResetShortCutEvent.html" title=" " alt="" coords="175,844,327,869"/>
+<area shape="poly" id="edge18_Node000000_Node000018" title=" " alt="" coords="71,537,78,597,95,675,108,717,126,758,149,796,176,829,194,842,191,846,173,833,144,799,121,760,103,719,89,677,73,598,66,538"/>
+<area shape="rect" id="Node000019" href="$classSearchEvent.html" title=" " alt="" coords="199,893,302,919"/>
+<area shape="poly" id="edge19_Node000000_Node000019" title=" " alt="" coords="70,538,74,605,88,697,102,745,120,794,145,839,176,879,201,894,198,899,173,883,141,842,116,796,97,747,83,698,68,606,64,538"/>
+<area shape="rect" id="Node000020" href="$classSlotEvent.html" title=" " alt="" coords="209,943,293,968"/>
+<area shape="poly" id="edge20_Node000000_Node000020" title=" " alt="" coords="73,537,87,625,109,742,140,855,157,898,177,928,192,939,209,947,207,952,189,944,173,932,153,901,135,856,104,743,81,626,68,538"/>
+<area shape="rect" id="Node000021" href="$classWindowFocusEvent.html" title=" " alt="" coords="177,992,325,1017"/>
+<area shape="poly" id="edge21_Node000000_Node000021" title=" " alt="" coords="73,537,85,634,106,766,120,833,137,894,156,944,177,978,193,990,190,994,173,981,151,946,132,896,115,834,101,767,79,635,67,538"/>
+<area shape="rect" id="Node000022" href="$classCopyEvent.html" title=" " alt="" coords="376,967,468,992"/>
+<area shape="poly" id="edge22_Node000021_Node000022" title=" " alt="" coords="338,989,375,983,376,989,339,994"/>
+<area shape="rect" id="Node000023" href="$classPasteEvent.html" title=" " alt="" coords="375,1016,469,1041"/>
+<area shape="poly" id="edge23_Node000021_Node000023" title=" " alt="" coords="339,1014,375,1019,374,1025,338,1020"/>
+</map>

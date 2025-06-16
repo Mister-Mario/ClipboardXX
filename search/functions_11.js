@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['read_0',['Read',['../classShellFileInterface.html#ab31fefee930cd3fd221a4afcb3c1afa5',1,'ShellFileInterface']]],
+  ['readfile_1',['readFile',['../classFileManager.html#af0fe96b074a04f6d32a71dcc09c6996e',1,'FileManager']]],
+  ['registerkey_2',['RegisterKey',['../classEditViewModel.html#a6bf4a2d87e5978a6a056c36239310b95',1,'EditViewModel']]],
+  ['releasefilter_3',['ReleaseFilter',['../classRenderInterface__GL3.html#ac629e99938376b712147154eb04df5be',1,'RenderInterface_GL3']]],
+  ['releasegeometry_4',['ReleaseGeometry',['../classRenderInterface__GL3.html#a0a1f98a7bef5b0b13546eb1f5980b672',1,'RenderInterface_GL3']]],
+  ['releaseshader_5',['ReleaseShader',['../classRenderInterface__GL3.html#a6fa01ad48f2e8fba5cddcb94193ae479',1,'RenderInterface_GL3']]],
+  ['releasetexture_6',['ReleaseTexture',['../classRenderInterface__GL3.html#aa60544e5ff95b1a87124055b976943f5',1,'RenderInterface_GL3']]],
+  ['renderblur_7',['RenderBlur',['../classRenderInterface__GL3.html#aa3191017d085fc71c0a7ac037720aa6b',1,'RenderInterface_GL3']]],
+  ['renderfilters_8',['RenderFilters',['../classRenderInterface__GL3.html#aa80faf1945c430c9923d078ca49e7996',1,'RenderInterface_GL3']]],
+  ['rendergeometry_9',['RenderGeometry',['../classRenderInterface__GL3.html#ab7a7949f04ac8c6be5c32012f9d58f09',1,'RenderInterface_GL3']]],
+  ['renderinterface_5fgl3_10',['RenderInterface_GL3',['../classRenderInterface__GL3.html#a1f84ef0ec991af2edd7bd558ad22bbc2',1,'RenderInterface_GL3']]],
+  ['renderinterface_5fgl3_5fsdl_11',['RenderInterface_GL3_SDL',['../classRenderInterface__GL3__SDL.html#a460195557974096fa66e28e960a8d24a',1,'RenderInterface_GL3_SDL']]],
+  ['renderlayerstack_12',['RenderLayerStack',['../classRenderInterface__GL3_1_1RenderLayerStack.html#a09f8bb1dce8a4196d0684e9e021545ec',1,'RenderInterface_GL3::RenderLayerStack']]],
+  ['rendershader_13',['RenderShader',['../classRenderInterface__GL3.html#af9cfc9599280e112344606605dbb6f1f',1,'RenderInterface_GL3']]],
+  ['rendertoclipmask_14',['RenderToClipMask',['../classRenderInterface__GL3.html#ac95abfbb62b266d07771a4e0fd07738e',1,'RenderInterface_GL3']]],
+  ['replaceall_15',['replaceAll',['../namespaceStringUtils.html#afc0ce8bfd29e59a79261f68b5289ed15',1,'StringUtils']]],
+  ['requestexit_16',['RequestExit',['../namespaceBackend.html#a4ef87b0ca8ee4bfaa3ea756ed90cf8a4',1,'Backend']]],
+  ['resetnewshortcut_17',['ResetNewShortCut',['../classEditViewModel.html#a6167c63b7c0e0208118b03c9c7d74de1',1,'EditViewModel']]],
+  ['resetprogram_18',['ResetProgram',['../classRenderInterface__GL3.html#a5583ae695f5a2f23718ec93ce02aeedf',1,'RenderInterface_GL3']]],
+  ['resetshortcutevent_19',['ResetShortCutEvent',['../classResetShortCutEvent.html#a1d304d78f9ca04e073fb4da4eba7a346',1,'ResetShortCutEvent']]],
+  ['run_20',['Run',['../classClipboardXX.html#a3107e3a63389006e264bb8ba9ed471aa',1,'ClipboardXX']]]
+];

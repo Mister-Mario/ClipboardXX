@@ -1,0 +1,11 @@
+<map id="InsertEvent" name="InsertEvent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="78,496,202,601"/>
+<area shape="rect" id="Node000002" href="$classClipboardEvent.html" title=" " alt="" coords="5,248,155,333"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,346,130,495,125,496,90,347"/>
+<area shape="rect" id="Node000003" href="$classMemoryCellManager.html" title=" " alt="" coords="179,148,376,433"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,435,178,483,173,480,199,432"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="99,5,303,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="204,85,209,123,211,132,206,133,204,125,199,86"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="327,13,379,78"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="346,79,329,133,324,131,341,78"/>
+</map>

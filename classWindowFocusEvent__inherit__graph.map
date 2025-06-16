@@ -1,0 +1,9 @@
+<map id="WindowFocusEvent" name="WindowFocusEvent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="114,139,290,324"/>
+<area shape="rect" id="Node000003" href="$classCopyEvent.html" title=" " alt="" coords="5,372,191,517"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,338,136,373,131,370,148,336"/>
+<area shape="rect" id="Node000004" href="$classPasteEvent.html" title=" " alt="" coords="215,372,400,517"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="256,335,274,370,269,373,252,338"/>
+<area shape="rect" id="Node000002" href="$classClipboardEvent.html" title=" " alt="" coords="127,5,277,91"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,104,205,138,199,138,199,104"/>
+</map>

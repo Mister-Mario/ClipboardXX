@@ -1,0 +1,17 @@
+<map id="ElementShortcuts" name="ElementShortcuts">
+<area shape="rect" id="Node000001" title=" " alt="" coords="118,716,283,901"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,478,108,543"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,555,122,652,153,715,149,717,117,654,73,557"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="132,478,269,543"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,557,203,716,198,716,198,557"/>
+<area shape="rect" id="Node000004" href="$classShortCutsViewModel.html" title=" " alt="" coords="293,368,479,653"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="299,655,269,704,264,701,295,652"/>
+<area shape="rect" id="Node000005" href="$classMemoryCellManager.html" title=" " alt="" coords="30,5,227,291"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="126,290,137,318,153,342,167,353,180,359,209,359,242,357,260,359,280,366,278,371,259,364,242,362,209,365,179,364,164,358,149,346,132,320,121,292"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="317,115,348,181"/>
+<area shape="poly" id="edge5_Node000004_Node000008" title=" " alt="" coords="333,181,330,256,337,344,338,352,333,353,331,344,325,256,327,181"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="378,115,501,181"/>
+<area shape="poly" id="edge6_Node000004_Node000009" title=" " alt="" coords="437,182,412,352,407,351,432,181"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="529,115,745,181"/>
+<area shape="poly" id="edge7_Node000004_Node000010" title=" " alt="" coords="637,181,624,259,609,304,588,345,545,399,494,444,490,440,541,395,584,343,604,302,618,258,632,180"/>
+</map>

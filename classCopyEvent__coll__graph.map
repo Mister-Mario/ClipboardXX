@@ -1,0 +1,16 @@
+<map id="CopyEvent" name="CopyEvent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="191,501,321,627"/>
+<area shape="rect" id="Node000002" href="$classWindowFocusEvent.html" title=" " alt="" coords="32,203,208,389"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,400,227,500,222,502,171,403"/>
+<area shape="rect" id="Node000003" href="$classClipboardEvent.html" title=" " alt="" coords="5,5,155,91"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="92,104,108,202,102,203,86,105"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="203,15,261,81"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="238,81,240,115,256,484,251,485,235,115,232,81"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="204,70,168,93,144,102,135,107,128,116,114,150,109,188,103,187,109,149,123,113,132,103,142,98,165,88,201,66"/>
+<area shape="rect" id="Node000005" href="$classMemoryCellManager.html" title=" " alt="" coords="385,153,583,439"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="387,419,369,440,325,491,321,487,365,437,383,415"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="333,8,537,88"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="438,88,443,129,444,137,439,137,437,130,433,88"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="561,15,613,81"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="578,82,560,130,556,139,551,137,555,128,573,80"/>
+</map>

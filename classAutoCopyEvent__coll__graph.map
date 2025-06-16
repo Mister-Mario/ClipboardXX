@@ -1,0 +1,13 @@
+<map id="AutoCopyEvent" name="AutoCopyEvent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="185,496,335,621"/>
+<area shape="rect" id="Node000002" href="$classClipboardEvent.html" title=" " alt="" coords="5,248,155,333"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,344,169,432,214,494,210,497,164,435,109,346"/>
+<area shape="rect" id="Node000003" href="$classMemoryCellManager.html" title=" " alt="" coords="179,148,376,433"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="266,434,264,457,263,480,258,479,259,457,260,433"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="99,5,303,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="204,85,209,123,211,132,206,133,204,125,199,86"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="327,13,379,78"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="346,79,329,133,324,131,341,78"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="416,258,499,323"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="463,324,463,357,460,396,449,437,430,474,414,492,394,508,351,532,349,528,391,504,410,488,426,470,444,435,454,395,458,357,458,324"/>
+</map>
