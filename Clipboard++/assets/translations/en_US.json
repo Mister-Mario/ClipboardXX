@@ -86,9 +86,10 @@
     "show": "Show",
     "quit": "Quit"
   },  
-  "shortcutsView": {
+  "shortcutsView": {    
+    "above" : "More cells above...",
+    "below": "More cells below...",
     "load" : "Load", 
-    "more" : "More cells",
     "paste": "Paste",
     "expand": "Expand"
   },

@@ -27,11 +27,11 @@ TranslationManager* translatorEdit = TranslationManager::Instance();
    Rml::ElementDocument* document = contextClipboardXX->GetDocument("edit");
     auto oldShortCut = document->GetElementById("old");
    if(viewModel->GetSelectedShortCut() && oldShortCut){
-      oldShortCut->SetInnerRML(StringUtils::escapeHtml(viewModel->GetSelectedShortCut()->toString()));
+      oldShortCut->SetInnerRML(StringUtils::escapeHtml(KeyShortCut::toStringTranslated(viewModel->GetSelectedShortCut()->getShortCut())));
    }
 
    if(auto newShortCut = document->GetElementById("new")){
-      std::string content = KeyShortCut::toString(viewModel->GetNewShortCut());
+      std::string content = KeyShortCut::toStringTranslated(viewModel->GetNewShortCut());
 
       if(content == "")
          newShortCut->SetInnerRML(translatorEdit->getString("edit.placeholder"));

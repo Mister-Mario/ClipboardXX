@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "StringUtils.h" 
+#include <RmlUi/Core/Input.h>
 
 TEST(ReplaceAllTest, ReplacesAllOccurrences)
 {
@@ -48,4 +49,32 @@ TEST(EscapeHtmlTest, HandlesAmpersandCorrectlyFirst)
     std::string result = StringUtils::escapeHtml(original);
 
     EXPECT_EQ(result, expected);
+}
+
+TEST(EscapeHtmlTest, EscapesCurlyBracesForRmlUiDataBinding)
+{
+    const std::string original = "JSON: {\"id\": 100, \"data\": \"<value>\"}}";
+    const std::string expected = "JSON: &#123;&quot;id&quot;: 100, &quot;data&quot;: &quot;&lt;value&gt;&quot;&#125;&#125;";
+    std::string result = StringUtils::escapeHtml(original);
+
+    EXPECT_EQ(result, expected);
+}
+
+TEST(GetDelimiterTest, HandlesSequences) {
+    EXPECT_EQ(StringUtils::getDelimiter("t"), 't');
+    EXPECT_EQ(StringUtils::getDelimiter("ta"), 't');
+    EXPECT_EQ(StringUtils::getDelimiter("\\t"), '\t');
+    EXPECT_EQ(StringUtils::getDelimiter("\\n"), '\n');
+    EXPECT_EQ(StringUtils::getDelimiter("\\r"), '\r');
+    EXPECT_EQ(StringUtils::getDelimiter("\\\\"), '\\');
+}
+
+
+TEST(EnumStringConversionTest, EnumToString) {
+    EXPECT_EQ(StringUtils::getStringFronEnum(Rml::Input::KI_A), "KI_A");
+}
+
+TEST(EnumStringConversionTest, StringToEnum) {
+    EXPECT_EQ(StringUtils::getEnumFronString("KI_SPACE"), Rml::Input::KI_SPACE);
+    EXPECT_EQ(StringUtils::getEnumFronString(""), Rml::Input::KI_UNKNOWN);
 }

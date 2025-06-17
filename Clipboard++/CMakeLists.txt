@@ -82,6 +82,7 @@ if(WIN32)
     target_link_options(${PROJECT_NAME} PRIVATE -mwindows) #GUI application no console
 endif()
 
+message(STATUS "Main CMake: A punto de entrar en el subdirectorio de Tests...")
 add_subdirectory(Tests)
 
 

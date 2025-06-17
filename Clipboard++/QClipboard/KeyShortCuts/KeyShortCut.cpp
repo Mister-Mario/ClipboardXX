@@ -48,25 +48,31 @@ bool KeyShortCut::operator==(const KeyShortCut& other) const {
 }
 
 /**
- * @brief Converts the instance's shortcut combination to a human-readable string.
- * @return std::string A string representation of the shortcut (e.g., "Ctrl+C").
- */
-std::string KeyShortCut::toString() {
-    return toString(m_shortCutCombination);
-}
-
-/**
  * @brief Converts a given shortcut combination to a human-readable string.
  * @details Iterates through the keys, gets their localized string representation,
  * and joins them with a '+' character.
  * @param shortCutCombination The vector of keys to convert.
  * @return std::string A string representation of the provided shortcut.
  */
-std::string KeyShortCut::toString(std::vector<Rml::Input::KeyIdentifier> shortCutCombination) {
+std::string KeyShortCut::toStringTranslated(std::vector<Rml::Input::KeyIdentifier> shortCutCombination) {
     TranslationManager* translator = TranslationManager::Instance(); 
     std::string content = "";
     for(auto key : shortCutCombination){
         content.append(translator->getString(std::format("keys.{}", StringUtils::getStringFronEnum(key)))).append("+");
+    }
+    // Remove the trailing '+'
+    return content.substr(0, content.length() - 1);
+}
+
+/**
+ * @brief Converts this shortcut to string.
+ * @details Iterates through the keys and joins them with a '+' character.
+ * @return std::string A string representation of the provided shortcut.
+ */
+std::string KeyShortCut::toString() {
+    std::string content = "";
+    for(auto key : m_shortCutCombination){
+        content.append(StringUtils::getStringFronEnum(key)).append("+");
     }
     // Remove the trailing '+'
     return content.substr(0, content.length() - 1);

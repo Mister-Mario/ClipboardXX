@@ -36,10 +36,10 @@ extern Rml::Context* contextClipboardXX;
       selectedCellConentElement->SetInnerRML(StringUtils::escapeHtml(content));
    }
    if(Rml::Element* selectedCellPaste = document->GetElementById("shortcut_paste")){
-      selectedCellPaste->SetInnerRML(StringUtils::escapeHtml(memoryCellManager->getSelectedCell()->getKeyShortCutPaste()->toString()));
+      selectedCellPaste->SetInnerRML(StringUtils::escapeHtml(KeyShortCut::toStringTranslated(memoryCellManager->getSelectedCell()->getKeyShortCutPaste()->getShortCut())));
    }
    if(Rml::Element* selectedCellCopy = document->GetElementById("shortcut_copy")){
-      selectedCellCopy->SetInnerRML(StringUtils::escapeHtml(memoryCellManager->getSelectedCell()->getKeyShortCutCopy()->toString())); 
+      selectedCellCopy->SetInnerRML(StringUtils::escapeHtml(KeyShortCut::toStringTranslated(memoryCellManager->getSelectedCell()->getKeyShortCutCopy()->getShortCut())));
    }
 
    if(Rml::Element* checkbox = document->GetElementById("checkbox")){
