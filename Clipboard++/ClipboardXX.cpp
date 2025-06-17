@@ -98,7 +98,7 @@ bool ClipboardXX::initialize() {
     contextClipboardXX->SetDensityIndependentPixelRatio(Backend::GetDPIScale());
     Backend::MaximizeWindow();
 
-    Rml::Debugger::Initialise(contextClipboardXX);
+    //Rml::Debugger::Initialise(contextClipboardXX);
     Shell::LoadFonts();
     
     // Register Instancers for custom RmlUi elements

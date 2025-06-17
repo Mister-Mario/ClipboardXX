@@ -11,7 +11,7 @@
         </header>
 
         <ol class="c-cells-list">
-            <div class="c-cells__border">shortcutsView.more</div>
+            <div class="c-cells__border">shortcutsView.above</div>
             <div class="c-cell">
                 <span class="c-cell__name">Memory cell 1</span>
                 <span class="c-cell__content">Testing length of this shit</span>
@@ -30,7 +30,7 @@
                 <button class="c-button c-button--primary">shortcutsView.load</button>
                 <button class="c-button c-button--primary">shortcutsView.paste</button>
             </div>
-            <div class="c-cells__border">shortcutsView.more</div>
+            <div class="c-cells__border">shortcutsView.below</div>
         </ol>
     </shortcuts>
 </body>
