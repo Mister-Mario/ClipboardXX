@@ -1,12 +1,12 @@
 <map id="ResetShortCutEvent" name="ResetShortCutEvent">
-<area shape="rect" id="Node000001" title=" " alt="" coords="11,664,191,769"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="47,664,227,769"/>
 <area shape="rect" id="Node000002" href="$classClipboardEvent.html" title=" " alt="" coords="5,456,155,541"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,555,99,663,94,664,83,555"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,554,126,663,121,664,92,555"/>
 <area shape="rect" id="Node000003" href="$classEditViewModel.html" title=" " alt="" coords="179,396,352,601"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="190,603,152,653,148,649,186,600"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="162,5,299,85"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="230,86,225,148,220,241,220,281,225,333,234,379,228,380,220,334,215,282,215,241,220,148,224,85"/>
-<area shape="rect" id="Node000005" href="$classKeyShortCut.html" title=" " alt="" coords="327,148,446,333"/>
-<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="264,84,319,151,315,154,260,87"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="346,335,323,382,318,380,341,332"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="207,603,179,651,174,648,203,600"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="119,5,257,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="183,86,175,136,170,198,171,266,181,333,198,380,193,382,176,334,166,266,165,198,170,135,178,85"/>
+<area shape="rect" id="Node000005" href="$classKeyShortCut.html" title=" " alt="" coords="284,148,441,333"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="225,84,275,138,271,142,221,87"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="330,334,312,382,307,380,325,333"/>
 </map>

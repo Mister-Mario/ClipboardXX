@@ -46,7 +46,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 444;
+var viewWidth = 451;
 var viewHeight = 641;
 var sectionId = 'dynsection-1';
 </script>
@@ -170,14 +170,14 @@ var sectionId = 'dynsection-1';
 <g id="Node000005" class="node">
 <title>Node5</title>
 <g id="a_Node000005"><a xlink:title=" ">
-<polygon fill="white" stroke="transparent" points="307,-633 204,-633 204,-573 307,-573 307,-633"/>
-<text text-anchor="start" x="209.5" y="-621" font-family="Helvetica,sans-Serif" font-size="10.00">vector&lt; Rml::Input</text>
-<text text-anchor="start" x="216.5" y="-610" font-family="Helvetica,sans-Serif" font-size="10.00">::KeyIdentifier &gt;</text>
-<text text-anchor="start" x="254" y="-595" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<text text-anchor="start" x="254" y="-580" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polygon fill="#666666" stroke="#666666" points="204.5,-605 204.5,-605 307.5,-605 307.5,-605 204.5,-605"/>
-<polygon fill="#666666" stroke="#666666" points="204.5,-590 204.5,-590 307.5,-590 307.5,-590 204.5,-590"/>
-<polygon fill="none" stroke="#666666" points="204,-573 204,-633 307,-633 307,-573 204,-573"/>
+<polygon fill="white" stroke="transparent" points="304,-633 201,-633 201,-573 304,-573 304,-633"/>
+<text text-anchor="start" x="206.5" y="-621" font-family="Helvetica,sans-Serif" font-size="10.00">vector&lt; Rml::Input</text>
+<text text-anchor="start" x="213.5" y="-610" font-family="Helvetica,sans-Serif" font-size="10.00">::KeyIdentifier &gt;</text>
+<text text-anchor="start" x="251" y="-595" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<text text-anchor="start" x="251" y="-580" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polygon fill="#666666" stroke="#666666" points="201.5,-605 201.5,-605 304.5,-605 304.5,-605 201.5,-605"/>
+<polygon fill="#666666" stroke="#666666" points="201.5,-590 201.5,-590 304.5,-590 304.5,-590 201.5,-590"/>
+<polygon fill="none" stroke="#666666" points="201,-573 201,-633 304,-633 304,-573 201,-573"/>
 </a>
 </g>
 </g>
@@ -185,36 +185,36 @@ var sectionId = 'dynsection-1';
 <g id="edge4_Node000004_Node000005" class="edge">
 <title>Node5&#45;&gt;Node4</title>
 <g id="a_edge4_Node000004_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M252.65,-572.8C251.42,-558.68 250.11,-541.47 249.5,-526 247.07,-464.27 241.66,-448.28 249.5,-387 250.95,-375.63 253.14,-363.81 255.69,-352.19"/>
-<polygon fill="none" stroke="#63b8ff" points="255.77,-351.87 253.22,-345.12 258.47,-340.18 261.02,-346.92 255.77,-351.87"/>
+<path fill="none" stroke="#63b8ff" d="M249.18,-572.81C247.73,-558.69 246.21,-541.49 245.5,-526 242.66,-464.29 236.73,-448.15 245.5,-387 247.16,-375.44 249.65,-363.44 252.56,-351.68"/>
+<polygon fill="none" stroke="#63b8ff" points="252.58,-351.64 250.22,-344.82 255.6,-340.02 257.96,-346.84 252.58,-351.64"/>
 </a>
 </g>
-<text text-anchor="middle" x="284.5" y="-454" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> &#45;newShortCut</text>
+<text text-anchor="middle" x="280.5" y="-454" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> &#45;newShortCut</text>
 </g>
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
 <g id="a_Node000006"><a xlink:href="classKeyShortCut.html" target="_top" xlink:title=" ">
-<polygon fill="#fff0f0" stroke="transparent" points="417,-526 328,-526 328,-387 417,-387 417,-526"/>
-<text text-anchor="start" x="342.5" y="-513.5" font-family="Helvetica,sans-Serif" font-size="10.00">KeyShortCut</text>
-<text text-anchor="start" x="371" y="-498.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<text text-anchor="start" x="332.5" y="-483.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="345.5" y="-483.5" font-family="Helvetica,sans-Serif" font-size="10.00">KeyShortCut()</text>
-<text text-anchor="start" x="332.5" y="-468.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="345.5" y="-468.5" font-family="Helvetica,sans-Serif" font-size="10.00">getShortCut()</text>
-<text text-anchor="start" x="332.5" y="-453.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="345.5" y="-453.5" font-family="Helvetica,sans-Serif" font-size="10.00">setShortCut()</text>
-<text text-anchor="start" x="332.5" y="-438.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="345.5" y="-438.5" font-family="Helvetica,sans-Serif" font-size="10.00">getEvent()</text>
-<text text-anchor="start" x="332.5" y="-423.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="345.5" y="-423.5" font-family="Helvetica,sans-Serif" font-size="10.00">operator==()</text>
-<text text-anchor="start" x="332.5" y="-408.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="345.5" y="-408.5" font-family="Helvetica,sans-Serif" font-size="10.00">toString()</text>
-<text text-anchor="start" x="332.5" y="-393.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="345.5" y="-393.5" font-family="Helvetica,sans-Serif" font-size="10.00">toString()</text>
-<polygon fill="red" stroke="red" points="328.5,-508.5 328.5,-508.5 417.5,-508.5 417.5,-508.5 328.5,-508.5"/>
-<polygon fill="red" stroke="red" points="328.5,-493.5 328.5,-493.5 417.5,-493.5 417.5,-493.5 328.5,-493.5"/>
-<polygon fill="none" stroke="red" points="328,-387 328,-526 417,-526 417,-387 328,-387"/>
+<polygon fill="#fff0f0" stroke="transparent" points="442.5,-526 324.5,-526 324.5,-387 442.5,-387 442.5,-526"/>
+<text text-anchor="start" x="353" y="-513.5" font-family="Helvetica,sans-Serif" font-size="10.00">KeyShortCut</text>
+<text text-anchor="start" x="381.5" y="-498.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<text text-anchor="start" x="328.5" y="-483.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="341.5" y="-483.5" font-family="Helvetica,sans-Serif" font-size="10.00">KeyShortCut()</text>
+<text text-anchor="start" x="328.5" y="-468.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="341.5" y="-468.5" font-family="Helvetica,sans-Serif" font-size="10.00">getShortCut()</text>
+<text text-anchor="start" x="328.5" y="-453.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="341.5" y="-453.5" font-family="Helvetica,sans-Serif" font-size="10.00">setShortCut()</text>
+<text text-anchor="start" x="328.5" y="-438.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="341.5" y="-438.5" font-family="Helvetica,sans-Serif" font-size="10.00">getEvent()</text>
+<text text-anchor="start" x="328.5" y="-423.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="341.5" y="-423.5" font-family="Helvetica,sans-Serif" font-size="10.00">operator==()</text>
+<text text-anchor="start" x="328.5" y="-408.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="341.5" y="-408.5" font-family="Helvetica,sans-Serif" font-size="10.00">toString()</text>
+<text text-anchor="start" x="328.5" y="-393.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="341.5" y="-393.5" font-family="Helvetica,sans-Serif" font-size="10.00">toStringTranslated()</text>
+<polygon fill="red" stroke="red" points="324.5,-508.5 324.5,-508.5 442.5,-508.5 442.5,-508.5 324.5,-508.5"/>
+<polygon fill="red" stroke="red" points="324.5,-493.5 324.5,-493.5 442.5,-493.5 442.5,-493.5 324.5,-493.5"/>
+<polygon fill="none" stroke="red" points="324.5,-387 324.5,-526 442.5,-526 442.5,-387 324.5,-387"/>
 </a>
 </g>
 </g>
@@ -222,21 +222,21 @@ var sectionId = 'dynsection-1';
 <g id="edge6_Node000006_Node000005" class="edge">
 <title>Node5&#45;&gt;Node6</title>
 <g id="a_edge6_Node000006_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M279.18,-572.76C290.95,-558.22 305.69,-540.02 319.94,-522.41"/>
-<polygon fill="none" stroke="#63b8ff" points="320.24,-522.04 320.91,-514.86 327.8,-512.71 327.13,-519.89 320.24,-522.04"/>
+<path fill="none" stroke="#63b8ff" d="M279.01,-572.76C289.84,-560.81 302.92,-546.39 316.09,-531.85"/>
+<polygon fill="none" stroke="#63b8ff" points="316.23,-531.7 317.3,-524.57 324.29,-522.81 323.22,-529.94 316.23,-531.7"/>
 </a>
 </g>
-<text text-anchor="middle" x="362.5" y="-547" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> &#45;m_shortCutCombination</text>
+<text text-anchor="middle" x="364.5" y="-547" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> &#45;m_shortCutCombination</text>
 </g>
 <!-- Node6&#45;&gt;Node4 -->
 <g id="edge5_Node000004_Node000006" class="edge">
 <title>Node6&#45;&gt;Node4</title>
 <g id="a_edge5_Node000004_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M339.9,-386.91C334.4,-375.32 328.62,-363.16 322.92,-351.17"/>
-<polygon fill="none" stroke="#63b8ff" points="322.88,-351.08 316.69,-347.38 317.73,-340.24 323.92,-343.94 322.88,-351.08"/>
+<path fill="none" stroke="#63b8ff" d="M346.96,-386.91C340.79,-375.32 334.31,-363.16 327.93,-351.17"/>
+<polygon fill="none" stroke="#63b8ff" points="327.75,-350.83 321.4,-347.42 322.11,-340.24 328.46,-343.65 327.75,-350.83"/>
 </a>
 </g>
-<text text-anchor="middle" x="382.5" y="-361" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> &#45;m_selectedShortCut</text>
+<text text-anchor="middle" x="388.5" y="-361" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> &#45;m_selectedShortCut</text>
 </g>
 </g>
 </svg>

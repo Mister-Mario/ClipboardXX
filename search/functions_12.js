@@ -27,7 +27,7 @@ var searchData=
   ['showgooddialog_24',['showGoodDialog',['../classFileManager.html#ae5c28a957623bb4342ec0ecf66f3d9fd',1,'FileManager']]],
   ['showshortcuts_25',['showShortcuts',['../classClipboardXX.html#af298625f9bc83492b3b306a751d8c0ef',1,'ClipboardXX']]],
   ['showwindow_26',['showwindow',['../classWindowFocusEvent.html#aaeb4557052d9ad1c24fa6d9aae630e4f',1,'WindowFocusEvent::ShowWindow()'],['../namespaceBackend.html#abfa201a1674d7d2653380bb5c55c2ce7',1,'Backend::ShowWindow()']]],
-  ['shutdown_27',['shutdown',['../namespaceShell.html#a5433fa08fbb1afd5c72a582c98d28797',1,'Shell::Shutdown()'],['../namespaceRmlGL3.html#a7139f87162d2b0738c07137d07622572',1,'RmlGL3::Shutdown()'],['../namespaceBackend.html#a7306fe6e3eb644325fc00aad68c41371',1,'Backend::Shutdown()'],['../classClipboardXX.html#a7c304b4fe471185187af40b4c5c24724',1,'ClipboardXX::shutdown()'],['../classEventManager.html#a1480cd8daca99c6c077bc63bff3bb593',1,'EventManager::Shutdown()']]],
+  ['shutdown_27',['shutdown',['../namespaceShell.html#a5433fa08fbb1afd5c72a582c98d28797',1,'Shell::Shutdown()'],['../namespaceRmlGL3.html#a7139f87162d2b0738c07137d07622572',1,'RmlGL3::Shutdown()'],['../namespaceBackend.html#a7306fe6e3eb644325fc00aad68c41371',1,'Backend::Shutdown()'],['../classEventManager.html#a1480cd8daca99c6c077bc63bff3bb593',1,'EventManager::Shutdown()'],['../classClipboardXX.html#a7c304b4fe471185187af40b4c5c24724',1,'ClipboardXX::shutdown()']]],
   ['simulatecopy_28',['SimulateCopy',['../classCopyEvent.html#a1a3638abfb68bdde77c11f97eb6b4964',1,'CopyEvent']]],
   ['simulatepaste_29',['SimulatePaste',['../classPasteEvent.html#abaf8e44b25e349323d6788c84174242a',1,'PasteEvent']]],
   ['slotevent_30',['SlotEvent',['../classSlotEvent.html#ac42bbd1965b7fce034fdbc43f91fa7c1',1,'SlotEvent']]],

@@ -123,14 +123,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a2b8d1639623f944d6210276155016bb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality operator overload.  <br /></td></tr>
 <tr class="separator:a2b8d1639623f944d6210276155016bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0287a20916eaffcb0385a6bdc2cdbdac" id="r_a0287a20916eaffcb0385a6bdc2cdbdac"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKeyShortCut.html#a0287a20916eaffcb0385a6bdc2cdbdac">toString</a> ()</td></tr>
-<tr class="memdesc:a0287a20916eaffcb0385a6bdc2cdbdac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the instance's shortcut combination to a human-readable string.  <br /></td></tr>
+<tr class="memdesc:a0287a20916eaffcb0385a6bdc2cdbdac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts this shortcut to string.  <br /></td></tr>
 <tr class="separator:a0287a20916eaffcb0385a6bdc2cdbdac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:af38b265973df2a433e83823376ffeb8f" id="r_af38b265973df2a433e83823376ffeb8f"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKeyShortCut.html#af38b265973df2a433e83823376ffeb8f">toString</a> (std::vector&lt; Rml::Input::KeyIdentifier &gt; shortCutCombination)</td></tr>
-<tr class="memdesc:af38b265973df2a433e83823376ffeb8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a given shortcut combination to a human-readable string.  <br /></td></tr>
-<tr class="separator:af38b265973df2a433e83823376ffeb8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfb5d290ca7e9ab954559fa421a85fe2" id="r_adfb5d290ca7e9ab954559fa421a85fe2"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKeyShortCut.html#adfb5d290ca7e9ab954559fa421a85fe2">toStringTranslated</a> (std::vector&lt; Rml::Input::KeyIdentifier &gt; shortCutCombination)</td></tr>
+<tr class="memdesc:adfb5d290ca7e9ab954559fa421a85fe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a given shortcut combination to a human-readable string.  <br /></td></tr>
+<tr class="separator:adfb5d290ca7e9ab954559fa421a85fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -272,7 +272,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a0287a20916eaffcb0385a6bdc2cdbdac" name="a0287a20916eaffcb0385a6bdc2cdbdac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0287a20916eaffcb0385a6bdc2cdbdac">&#9670;&#160;</a></span>toString() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0287a20916eaffcb0385a6bdc2cdbdac">&#9670;&#160;</a></span>toString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -286,13 +286,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Converts the instance's shortcut combination to a human-readable string. </p>
-<dl class="section return"><dt>Returns</dt><dd>std::string A string representation of the shortcut (e.g., "Ctrl+C"). </dd></dl>
+<p>Converts this shortcut to string. </p>
+<p>Iterates through the keys and joins them with a '+' character. </p><dl class="section return"><dt>Returns</dt><dd>std::string A string representation of the provided shortcut. </dd></dl>
 
 </div>
 </div>
-<a id="af38b265973df2a433e83823376ffeb8f" name="af38b265973df2a433e83823376ffeb8f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af38b265973df2a433e83823376ffeb8f">&#9670;&#160;</a></span>toString() <span class="overload">[2/2]</span></h2>
+<a id="adfb5d290ca7e9ab954559fa421a85fe2" name="adfb5d290ca7e9ab954559fa421a85fe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfb5d290ca7e9ab954559fa421a85fe2">&#9670;&#160;</a></span>toStringTranslated()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -301,7 +301,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string KeyShortCut::toString </td>
+          <td class="memname">std::string KeyShortCut::toStringTranslated </td>
           <td>(</td>
           <td class="paramtype">std::vector&lt; Rml::Input::KeyIdentifier &gt;&#160;</td>
           <td class="paramname"><em>shortCutCombination</em></td><td>)</td>

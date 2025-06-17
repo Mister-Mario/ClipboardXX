@@ -2,11 +2,11 @@
 <area shape="rect" id="Node000001" title=" " alt="" coords="141,451,316,696"/>
 <area shape="rect" id="Node000002" href="$classClipboardInterface.html" title=" " alt="" coords="5,148,180,373"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,385,178,449,173,452,145,387"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="219,13,270,78"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,78,243,148,235,434,230,434,238,148,241,78"/>
-<area shape="rect" id="Node000004" href="$classKeyShortCut.html" title=" " alt="" coords="320,168,439,353"/>
-<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="267,77,315,153,311,156,262,79"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="337,354,297,437,292,435,333,352"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="311,5,448,85"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="382,86,382,151,377,151,377,86"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="229,13,279,78"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="252,78,243,148,235,296,232,434,226,434,230,296,238,148,246,78"/>
+<area shape="rect" id="Node000004" href="$classKeyShortCut.html" title=" " alt="" coords="319,168,477,353"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="277,77,329,153,325,156,273,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="350,355,305,437,301,435,346,352"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="329,5,467,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="401,86,401,151,395,151,395,86"/>
 </map>
