@@ -79,7 +79,7 @@ if(WIN32)
             $<TARGET_FILE_DIR:${PROJECT_NAME}>/platforms
     )
 
-    target_link_options(${PROJECT_NAME} PRIVATE -mwindows) #GUI application no console
+   # target_link_options(${PROJECT_NAME} PRIVATE -mwindows) #GUI application no console
 endif()
 
 message(STATUS "Main CMake: A punto de entrar en el subdirectorio de Tests...")

@@ -10,7 +10,7 @@
 
 class WindowFocusEvent : public ClipboardEvent {
 public:
-    explicit WindowFocusEvent(HWND lastWindow);
+    explicit WindowFocusEvent();
     virtual ~WindowFocusEvent() = default;
     void handle(Rml::Event* event, Rml::StringList values) final;
 
@@ -20,8 +20,6 @@ protected:
     virtual void ShowWindow();
     virtual void DoHandle(Rml::Event* event, Rml::StringList values) = 0;
     virtual void DeAttach();
-
-    HWND m_lastWindow;
 
 private:
     #ifdef _WIN32

@@ -3,11 +3,12 @@
 #include <thread>
 #include <chrono>
 
+extern HWND lastWindowClipboardXX;
+
 /**
  * @brief Constructor for WindowFocusEvent.
- * @param lastWindow The handle to the window that should receive focus.
  */
-WindowFocusEvent::WindowFocusEvent(HWND lastWindow) : m_lastWindow(lastWindow) {}
+WindowFocusEvent::WindowFocusEvent() {}
 
 /**
  * @brief Handles the main logic for switching window focus.
@@ -18,7 +19,7 @@ WindowFocusEvent::WindowFocusEvent(HWND lastWindow) : m_lastWindow(lastWindow) {
  * @param values A list of string parameters associated with the event.
  */
 void WindowFocusEvent::handle(Rml::Event* event, Rml::StringList values) {
-    if (!IsWindow(m_lastWindow)) return;
+    if (!IsWindow(lastWindowClipboardXX)) return;
 
     Attach();
     ShowWindow();
@@ -39,7 +40,7 @@ void WindowFocusEvent::handle(Rml::Event* event, Rml::StringList values) {
 void WindowFocusEvent::Attach() {
 #ifdef _WIN32
     m_currentThreadId = GetCurrentThreadId();
-    m_targetThreadId = GetWindowThreadProcessId(m_lastWindow, NULL);
+    m_targetThreadId = GetWindowThreadProcessId(lastWindowClipboardXX, NULL);
 
     if (m_targetThreadId != 0)
         AttachThreadInput(m_currentThreadId, m_targetThreadId, TRUE);
@@ -53,11 +54,11 @@ void WindowFocusEvent::Attach() {
  */
 void WindowFocusEvent::ShowWindow() {
 #ifdef _WIN32
-    if (IsIconic(m_lastWindow)) {
-        ::ShowWindow(m_lastWindow, SW_RESTORE);
+    if (IsIconic(lastWindowClipboardXX)) {
+        ::ShowWindow(lastWindowClipboardXX, SW_RESTORE);
     }
 
-    SetForegroundWindow(m_lastWindow);
+    SetForegroundWindow(lastWindowClipboardXX);
 #endif
 }
 

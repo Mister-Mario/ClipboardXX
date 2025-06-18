@@ -109,8 +109,8 @@ void EventManager::LoadMap()
     events["expand"] = std::make_unique<ExpandEvent>(memoryCellManager, shortCutsViewModel);
     events["search"] = std::make_unique<SearchEvent>(shortCutsViewModel);
     #ifdef _WIN32
-    events["paste"] = std::make_unique<PasteEvent>(lastWindowClipboardXX, memoryCellManager);
-    events["copy"] = std::make_unique<CopyEvent>(lastWindowClipboardXX, memoryCellManager);
+    events["paste"] = std::make_unique<PasteEvent>(memoryCellManager);
+    events["copy"] = std::make_unique<CopyEvent>(memoryCellManager);
     #endif
     events["edit"] = std::make_unique<EditEvent>(memoryCellManager, editViewModel);
     events["edit_close"] = std::make_unique<EditCloseEvent>();
