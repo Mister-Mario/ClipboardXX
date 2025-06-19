@@ -123,7 +123,7 @@ The autocopy functionality listens to any changes in the clipboard and moves **A
 
 There are mainly 2 options:
   1. Using Win + Alt + V
-  2. Through the system tray icon (Insert gif)
+  2. Through the system tray icon
 
 Any other way might make that the [Shortcuts View](#shortcuts-view) doesn't work as expected
 
