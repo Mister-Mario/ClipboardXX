@@ -1,5 +1,9 @@
 # ClipboardXX
-
+## Help
+Help guides can found here:
+  - [Help guide](https://github.com/Mister-Mario/ClipboardXX/blob/main/help-guides/help-en_US.md)
+  - [Guía de ayuda](https://github.com/Mister-Mario/ClipboardXX/blob/main/help-guides/help-es_ES.md)
+## External project
 This project can be done thanks to the use of other projects:
   - [RmlUi - The HTML/CSS User Interface Library Evolved](https://github.com/mikke89/RmlUi)
   - [GoogleTest](https://github.com/google/googletest)
