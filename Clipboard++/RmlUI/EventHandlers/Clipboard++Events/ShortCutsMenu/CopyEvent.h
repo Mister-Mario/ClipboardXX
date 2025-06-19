@@ -7,14 +7,13 @@
 
 class CopyEvent :  public WindowFocusEvent {
 public:
-    explicit CopyEvent(HWND lastWindow, MemoryCellManager* memoryCellManager);
+    explicit CopyEvent(MemoryCellManager* memoryCellManager);
     virtual ~CopyEvent() = default;
     
 protected:
     void DoHandle(Rml::Event* event, Rml::StringList values) override;
 private:
     MemoryCellManager* m_memoryCellManager;
-    HWND m_lastWindow;
     bool SimulateCopy();
 };
 

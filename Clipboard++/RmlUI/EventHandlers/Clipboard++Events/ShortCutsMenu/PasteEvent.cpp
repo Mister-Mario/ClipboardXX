@@ -6,10 +6,9 @@
 
 /**
  * @brief Constructor for the PasteEvent.
- * @param lastWindow The handle to the window that should receive the paste action.
  * @param memoryCellManager A pointer to the manager for clipboard memory cells.
  */
-PasteEvent::PasteEvent(HWND lastWindow, MemoryCellManager* memoryCellManager) : m_memoryCellManager(memoryCellManager), WindowFocusEvent(lastWindow) {}
+PasteEvent::PasteEvent(MemoryCellManager* memoryCellManager) : m_memoryCellManager(memoryCellManager) {}
 
 /**
  * @brief Performs the core logic of the paste event.

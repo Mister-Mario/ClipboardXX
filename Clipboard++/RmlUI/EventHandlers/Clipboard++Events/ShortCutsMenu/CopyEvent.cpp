@@ -6,10 +6,9 @@
 
 /**
  * @brief Constructor for the CopyEvent.
- * @param lastWindow The handle to the window that should receive the copy action.
  * @param memoryCellManager A pointer to the manager for clipboard memory cells.
  */
-CopyEvent::CopyEvent(HWND lastWindow, MemoryCellManager* memoryCellManager) : m_memoryCellManager(memoryCellManager), WindowFocusEvent(lastWindow) {}
+CopyEvent::CopyEvent(MemoryCellManager* memoryCellManager) : m_memoryCellManager(memoryCellManager) {}
 
 /**
  * @brief Performs the core logic of the copy event.

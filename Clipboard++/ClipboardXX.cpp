@@ -12,6 +12,7 @@
 #include "Utils/TranslationManager.h"
 #include "ClipboardListener.h"
 
+#include <iostream>
 
 // Global variables used across the application
 extern std::atomic<bool> g_hotkeyPressed;
@@ -185,6 +186,8 @@ void ClipboardXX::shutdown() {
 void ClipboardXX::captureHWND() {
 #ifdef _WIN32
     if (!Backend::IsWindowShown()) {
+        auto var = GetForegroundWindow();
+        std::cout << var << '\n';
         lastWindowClipboardXX = GetForegroundWindow();
     }
 #endif
