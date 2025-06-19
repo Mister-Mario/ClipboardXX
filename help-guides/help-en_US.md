@@ -68,19 +68,23 @@ If a shortcut is not working:
   2. Check that your shortcuts follow the [Good practices](#good-practices)
 
 ## Expanded View
-To access the expanded view of Clipboard++ just click the Expand button on shortcuts view (Insertar gif haciendolo)
+To access the expanded view of Clipboard++ just click the Expand button on shortcuts view
+
+![Expand](./images/en-US/Expand.gif)
 
 
 **In this window no shorcuts can be done**
 
 ### Cell managment
-For changing the selected cell we know have access to some buttons (gif haciendolo)
+For changing the selected cell we know have access to some buttons
 
 #### Modifying content
-We can modify the contents of a memory cell by loading some text through the text input or by clearing the existant text. (gif haciendo ambos)
+We can modify the contents of a memory cell by loading some text through the text input or by clearing the existant text.
+
+![Load and Clear](./images/en-US/Load&Clear.gif)
 
 #### Modifying clipboard
-We can also load any text form any of the memory cells to the clipboard with the load to clipboard button (gif)
+We can also load any text form any of the memory cells to the clipboard with the load to clipboard button
 
 #### Shortcuts
 
@@ -89,7 +93,8 @@ For editing a shortcut:
   1. Press the correct edit button
   2. Press the desired shorcut
   3. Confirm
-(gif de como hacerlo) 
+ 
+![Edit](./images/en-US/Edit.gif)
 
 ##### Good practices
 
@@ -110,11 +115,9 @@ Import and export process is practically the same:
   2. Select a file
   3. Introduce a delimiter. No program can 100% detect the delimiter of a file so please use one that is not present in the text of the file provided.
   4. Confirm
-(Gif doing an import)
 
 ## Autocopy
 The autocopy functionality listnes to any changes in the clipboard and moves **ALL** memory cells contens one down. This means that the contents of memory cell 20 will be lost when the clipboard contents changes. So use at your own risk.
-(Gif of how it works)
 
 ## Opening back
 
@@ -127,4 +130,6 @@ Any other way might make that the [Shortcuts View](#shortcuts-view) doesn't work
 ## Quitting
 
 For quitting Clipboard++ it is not enough to close the window.
-You will need to use the Quit option on the system tray icon. (gif haciendolo)
+You will need to use the Quit option on the system tray icon.
+
+![Quit](./images/en-US/Quit.gif)
