@@ -42,8 +42,8 @@
 <area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="2130,48,2490,56,2978,72,3219,84,3433,98,3597,116,3655,125,3694,136,3726,154,3753,176,3750,180,3723,158,3692,141,3654,131,3597,121,3432,104,3219,89,2977,78,2489,61,2130,53"/>
 <area shape="rect" id="Node000022" href="$classWindowFocusEvent.html" title=" " alt="" coords="3915,139,4091,324"/>
 <area shape="poly" id="edge21_Node000001_Node000022" title=" " alt="" coords="2130,47,2531,53,3085,67,3362,79,3606,94,3794,113,3861,124,3904,136,3916,142,3914,147,3902,141,3860,129,3794,118,3605,99,3361,84,3085,73,2531,58,2130,53"/>
-<area shape="rect" id="Node000023" href="$classCopyEvent.html" title=" " alt="" coords="3805,372,3991,517"/>
-<area shape="poly" id="edge22_Node000022_Node000023" title=" " alt="" coords="3954,338,3936,373,3932,370,3949,335"/>
-<area shape="rect" id="Node000024" href="$classPasteEvent.html" title=" " alt="" coords="4015,372,4200,517"/>
-<area shape="poly" id="edge23_Node000022_Node000024" title=" " alt="" coords="4057,336,4074,370,4069,373,4052,338"/>
+<area shape="rect" id="Node000023" href="$classCopyEvent.html" title=" " alt="" coords="3805,372,3991,497"/>
+<area shape="poly" id="edge22_Node000022_Node000023" title=" " alt="" coords="3951,338,3933,373,3928,371,3947,335"/>
+<area shape="rect" id="Node000024" href="$classPasteEvent.html" title=" " alt="" coords="4015,372,4200,497"/>
+<area shape="poly" id="edge23_Node000022_Node000024" title=" " alt="" coords="4059,335,4078,371,4073,373,4055,338"/>
 </map>

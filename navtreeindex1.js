@@ -1,6 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"classImportSearchEvent.html#a365a65cb13e6c7184d041b46023537e7":[1,0,35,3],
 "classImportSearchEvent.html#a3f3d4cf44185aa04f40c0cb1034b1e62":[1,0,35,1],
 "classImportSearchEvent.html#a4de2abc96473a112a822e11e4e49a056":[1,0,35,4],
 "classInsertEvent.html":[1,0,36],
@@ -72,10 +71,9 @@ var NAVTREEINDEX1 =
 "classMemoryCellManager.html#affdaba1710f023f0d77a7132b7f73b32":[1,0,41,7],
 "classPasteEvent.html":[1,0,42],
 "classPasteEvent.html#a349bdbdbd0607d12aa88207f9c5a641d":[1,0,42,2],
-"classPasteEvent.html#a523739719429dbed7e6d7b7a7dcec8bf":[1,0,42,5],
-"classPasteEvent.html#ab121258ae569fceb10bef926b00af627":[1,0,42,0],
+"classPasteEvent.html#a523739719429dbed7e6d7b7a7dcec8bf":[1,0,42,4],
+"classPasteEvent.html#a670c99ae78e88ce8e9306f87a239f154":[1,0,42,0],
 "classPasteEvent.html#abaf8e44b25e349323d6788c84174242a":[1,0,42,3],
-"classPasteEvent.html#ac73ed7e23c06196b60e3b739538e49d5":[1,0,42,4],
 "classPasteEvent.html#aeef8b0913fc9b6579b7f1786b1b4e5a6":[1,0,42,1],
 "classQObject.html":[1,0,43],
 "classRenderInterface__GL3.html":[1,0,44],
@@ -229,12 +227,11 @@ var NAVTREEINDEX1 =
 "classTranslationManager.html#aed882496d303194027ce3f20078131d6":[1,0,53,6],
 "classTranslationManager.html#af618fe62f08908bb1415cd2ea93186f4":[1,0,53,0],
 "classWindowFocusEvent.html":[1,0,54],
-"classWindowFocusEvent.html#a0189c94a527d605daa28cfa02d5e6f4a":[1,0,54,0],
 "classWindowFocusEvent.html#a537c718c47ebbd0409534c52bb2513d9":[1,0,54,5],
-"classWindowFocusEvent.html#a65bcb1d0ef892ba5e3714686946007fa":[1,0,54,7],
 "classWindowFocusEvent.html#a6856a166e2a92e0d08f5d59be207b5f8":[1,0,54,2],
 "classWindowFocusEvent.html#a7021a1d7461583f926551dbe44fec972":[1,0,54,3],
 "classWindowFocusEvent.html#a8a4abcb5d37764d90ce44f43fd373bc2":[1,0,54,1],
+"classWindowFocusEvent.html#a9be88bc3b472746413bad3fe43bb42c8":[1,0,54,0],
 "classWindowFocusEvent.html#aaeb4557052d9ad1c24fa6d9aae630e4f":[1,0,54,6],
 "classWindowFocusEvent.html#ab5524a3978ed59d710c595002b155cd0":[1,0,54,4],
 "classes.html":[1,1],
@@ -246,8 +243,11 @@ var NAVTREEINDEX1 =
 "functions_d.html":[1,3,0,4],
 "functions_e.html":[1,3,0,5],
 "functions_f.html":[1,3,0,6],
-"functions_func.html":[1,3,1],
 "functions_func.html":[1,3,1,0],
+"functions_func.html":[1,3,1],
 "functions_func_a.html":[1,3,1,1],
-"functions_func_b.html":[1,3,1,2]
+"functions_func_b.html":[1,3,1,2],
+"functions_func_c.html":[1,3,1,3],
+"functions_func_d.html":[1,3,1,4],
+"functions_func_e.html":[1,3,1,5]
 };
