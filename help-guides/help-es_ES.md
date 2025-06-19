@@ -126,7 +126,7 @@ La funcionalidad de autocopiado escucha cualquier cambio en el portapapeles y mu
 
 Hay principalmente 2 opciones:
   1. Usando Win + Alt + V.
-  2. A través del icono de la bandeja del sistema (Insertar gif).
+  2. A través del icono de la bandeja del sistema.
 
 Cualquier otra forma podría hacer que la [Vista de Atajos](#vista-de-atajos) no funcione como se espera.
 
