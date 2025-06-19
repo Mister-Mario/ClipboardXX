@@ -43,6 +43,7 @@ There are some visual guides to show if there are more cells below or above:
 #### Text search
 The second method is by using the search text on top.
 This can be accesed via a click or via a tab. After that introduce the text that might contain some cells:
+
 ![Search](./images/en-US/Search.gif)
 
 If you have many results you can also move up or down to reach the desired cell.
