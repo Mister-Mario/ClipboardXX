@@ -61,7 +61,7 @@ Paste:
 ![Paste](./images/en-US/Paste.gif)
 
 ### Using shortucts
-Every cell has a defined load and a defined paste shorcut as seing in [Shortcuts](#shortcuts)
+Every cell has a defined load and a defined paste shorcut as seeing in [Shortcuts](#shortcuts)
 Pressing the correct shortcut will have the same effect as it corresponding [Load or Paste button](#load-and-paste)
 If a shortcut is not working:
   1. Check the search doesnt have the focus, press Esc to free the focus.
@@ -84,7 +84,7 @@ We can modify the contents of a memory cell by loading some text through the tex
 ![Load and Clear](./images/en-US/Load&Clear.gif)
 
 #### Modifying clipboard
-We can also load any text form any of the memory cells to the clipboard with the load to clipboard button
+We can also load any text from any of the memory cells to the clipboard with the load to clipboard button
 
 #### Shortcuts
 
@@ -117,7 +117,7 @@ Import and export process is practically the same:
   4. Confirm
 
 ## Autocopy
-The autocopy functionality listnes to any changes in the clipboard and moves **ALL** memory cells contens one down. This means that the contents of memory cell 20 will be lost when the clipboard contents changes. So use at your own risk.
+The autocopy functionality listens to any changes in the clipboard and moves **ALL** memory cells contens one down. This means that the contents of memory cell 20 will be lost when the clipboard contents changes. So use at your own risk.
 
 ## Opening back
 
