@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)  # Automatización de MOC para Qt6
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Release)
 
 find_package(SDL3 REQUIRED)
 find_package(RmlUi REQUIRED)
@@ -79,7 +79,7 @@ if(WIN32)
             $<TARGET_FILE_DIR:${PROJECT_NAME}>/platforms
     )
 
-   # target_link_options(${PROJECT_NAME} PRIVATE -mwindows) #GUI application no console
+   target_link_options(${PROJECT_NAME} PRIVATE -mwindows) #GUI application no console
 endif()
 
 message(STATUS "Main CMake: A punto de entrar en el subdirectorio de Tests...")
