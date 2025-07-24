@@ -17,7 +17,9 @@
 // Global variables used across the application
 extern std::atomic<bool> g_hotkeyPressed;
 Rml::Context* contextClipboardXX = nullptr;
-HWND lastWindowClipboardXX = NULL;
+#ifdef _WIN32
+    HWND lastWindowClipboardXX = NULL;
+#endif
 
 /**
  * @brief Constructor for the ClipboardXX class.
