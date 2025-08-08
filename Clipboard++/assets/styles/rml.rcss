@@ -33,12 +33,13 @@ body {
 }
 
 .c-button--primary:hover {
-    background: gray;
+    background: #595959;
     color: white;
 }
 
 .c-button--primary:active {
     background: #a9a9a9;
+	color: black;
 }
 
 .c-button--secondary {
@@ -48,12 +49,13 @@ body {
 }
 
 .c-button--secondary:hover {
-    background: gray;
-    color: #212121;
+    background: #595959;
+    color: white;
 }
 
 .c-button--secondary:active {
     background: #a9a9a9;
+	color: black;
 }
 
 body .c-none {
