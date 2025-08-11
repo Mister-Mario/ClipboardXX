@@ -19,6 +19,8 @@ doxyOut/
 *.user
 *.userosscache
 *.sln.docstates
+*.jar
+*.class
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
