@@ -1,5 +1,4 @@
 #include <KeyShortCuts/KeyShortCutManager.h>
-#include "Utils/FileManager.h"
 #include "Utils/StringUtils.h"
 #include <RmlUi/Core/Types.h>
 #include <RmlUi/Core/StringUtilities.h>
@@ -8,14 +7,19 @@
 // Initialize the static singleton instance to nullptr.
 KeyShortCutManager* KeyShortCutManager::m_instance = nullptr;
 
+
+KeyShortCutManager::KeyShortCutManager(){}
+
 /**
- * @brief Private constructor for the KeyShortCutManager.
+ * @brief Initializes the KeyShortCutManager.
  * @details Initializes the base shortcuts for system-wide copy/paste
  * and then loads custom shortcuts from a file.
+ * @param fileManager A pointer to the file manager, stored for future operations.
  */
-KeyShortCutManager::KeyShortCutManager(){
-    m_shortcutsBase.push_back(new KeyShortCut("copy 0", {Rml::Input::KI_LCONTROL, Rml::Input::KI_C}));
-    m_shortcutsBase.push_back(new KeyShortCut("paste 0", {Rml::Input::KI_LCONTROL, Rml::Input::KI_V}));
+void KeyShortCutManager::Initialize(IFileManager* fileManager){
+    m_fileManager = fileManager;
+    m_shortcutsBase.push_back(new KeyShortCut("!copy 0", {Rml::Input::KI_LCONTROL, Rml::Input::KI_C}));
+    m_shortcutsBase.push_back(new KeyShortCut("!paste 0", {Rml::Input::KI_LCONTROL, Rml::Input::KI_V}));
     LoadKeyShortCuts();
 }
 
@@ -52,9 +56,8 @@ void KeyShortCutManager::LoadKeyShortCuts() {
  * @return std::vector<std::string> A list of strings, each representing a shortcut definition.
  */
 std::vector<std::string> KeyShortCutManager::SelectFile() {
-    FileManager* fileManager = FileManager::Instance();
-    auto shortcuts = fileManager->readFile("assets/conf/shortCuts.csv", ';', false);
-    auto baseShortcuts = fileManager->readFile("assets/conf/shortCutsBase.csv", ';', false);
+    auto shortcuts = m_fileManager->readFile("assets/conf/shortCuts.csv", ';', false);
+    auto baseShortcuts = m_fileManager->readFile("assets/conf/shortCutsBase.csv", ';', false);
     return shortcuts.size() != baseShortcuts.size() ? baseShortcuts : shortcuts;
 }
 
@@ -81,8 +84,8 @@ KeyShortCut* KeyShortCutManager::GetShortCutFromString(std::string shortcut, std
  * @return KeyShortCut* A pointer to the corresponding copy shortcut, or nullptr if out of bounds.
  */
 KeyShortCut* KeyShortCutManager::GetCopyShortCut(size_t i) const {
-    if(i * 2 < m_shortcuts.size())
-        return m_shortcuts.at(i * 2);
+    if(i * 2 < m_shortcutsBase.size())
+        return m_shortcutsBase.at(i * 2);
     return nullptr;
 }
 
@@ -92,8 +95,8 @@ KeyShortCut* KeyShortCutManager::GetCopyShortCut(size_t i) const {
  * @return KeyShortCut* A pointer to the corresponding paste shortcut, or nullptr if out of bounds.
  */
 KeyShortCut* KeyShortCutManager::GetPasteShortCut(size_t i) const{
-    if((i * 2 + 1) < m_shortcuts.size())
-        return m_shortcuts.at(i * 2 + 1);
+    if((i * 2 + 1) < m_shortcutsBase.size())
+        return m_shortcutsBase.at(i * 2 + 1);
     return nullptr;
 }
 
@@ -180,5 +183,5 @@ void KeyShortCutManager::WriteShortCuts() {
     for(size_t i = 2; i < m_shortcutsBase.size(); i+=1) {
         shortCuts.push_back(m_shortcutsBase.at(i)->toString());
     }
-    FileManager::Instance()->exportFile("assets/conf/shortCuts.csv", ';', shortCuts, false);
+    m_fileManager->exportFile("assets/conf/shortCuts.csv", ';', shortCuts, false);
 }

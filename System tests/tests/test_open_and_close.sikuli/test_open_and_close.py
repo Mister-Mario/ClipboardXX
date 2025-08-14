@@ -19,5 +19,5 @@ except FindFailed:
     print "Path of screen capture", ruta_captura
 
 finally:
-    utils.close_clipboardXX()
+    utils.after_each()
     

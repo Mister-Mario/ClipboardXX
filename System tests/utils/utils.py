@@ -17,7 +17,7 @@ def before_each():
 
 def create_img(imgPath):
     pattern = Pattern(imgPath)
-    pattern.similar(0.9)
+    pattern.similar(0.85)
     return pattern
 
 def open_clipboardXX():
@@ -31,3 +31,6 @@ def close_clipboardXX():
     rightClick(create_img("External\Clipboard++TrayIcon.png"))
     wait(0.25) 
     click(create_img("External\CloseTrayIcon.png"))
+
+def after_each():
+    close_clipboardXX()

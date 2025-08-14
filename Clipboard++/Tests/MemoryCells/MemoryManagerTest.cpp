@@ -2,7 +2,7 @@
 #include <gmock/gmock.h>
 
 #include "MemoryCells/MemoryCellManager.h"
-#include "MockClipboardAdapter.h"
+#include "../Mocks/MockClipboardAdapter.h"
 
 class MemoryCellManagerTest : public ::testing::Test {
 protected:
