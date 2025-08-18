@@ -2,7 +2,7 @@
 #include "StringUtils.h" 
 #include <RmlUi/Core/Input.h>
 
-TEST(ReplaceAllTest, ReplacesAllOccurrences)
+TEST(StringUtilsTest, ReplacesAllOccurrences)
 {
     std::string original = "uno dos uno tres uno";
     const std::string from = "uno";
@@ -14,7 +14,7 @@ TEST(ReplaceAllTest, ReplacesAllOccurrences)
     EXPECT_EQ(original, expected);
 }
 
-TEST(ReplaceAllTest, HandlesOverlappingAndEmptyCases)
+TEST(StringUtilsTest, HandlesOverlappingAndEmptyCases)
 {
 
     std::string original = "ababab";
@@ -31,7 +31,7 @@ TEST(ReplaceAllTest, HandlesOverlappingAndEmptyCases)
     EXPECT_EQ(original_empty_to, expected_empty_to);
 }
 
-TEST(EscapeHtmlTest, EscapesAllSpecialCharacters)
+TEST(StringUtilsTest, EscapesAllSpecialCharacters)
 {
     const std::string original = "<h1>\"Hello & World\"</h1>";
     const std::string expected = "&lt;h1&gt;&quot;Hello &amp; World&quot;&lt;/h1&gt;";
@@ -41,7 +41,7 @@ TEST(EscapeHtmlTest, EscapesAllSpecialCharacters)
     EXPECT_EQ(result, expected);
 }
 
-TEST(EscapeHtmlTest, HandlesAmpersandCorrectlyFirst)
+TEST(StringUtilsTest, HandlesAmpersandCorrectlyFirst)
 {
     const std::string original = "Este texto ya tiene un &amp; y un <.";
     const std::string expected = "Este texto ya tiene un &amp;amp; y un &lt;.";
@@ -51,7 +51,7 @@ TEST(EscapeHtmlTest, HandlesAmpersandCorrectlyFirst)
     EXPECT_EQ(result, expected);
 }
 
-TEST(EscapeHtmlTest, EscapesCurlyBracesForRmlUiDataBinding)
+TEST(StringUtilsTest, EscapesCurlyBracesForRmlUiDataBinding)
 {
     const std::string original = "JSON: {\"id\": 100, \"data\": \"<value>\"}}";
     const std::string expected = "JSON: &#123;&quot;id&quot;: 100, &quot;data&quot;: &quot;&lt;value&gt;&quot;&#125;&#125;";
@@ -60,7 +60,7 @@ TEST(EscapeHtmlTest, EscapesCurlyBracesForRmlUiDataBinding)
     EXPECT_EQ(result, expected);
 }
 
-TEST(GetDelimiterTest, HandlesSequences) {
+TEST(StringUtilsTest, HandlesSequences) {
     EXPECT_EQ(StringUtils::getDelimiter("t"), 't');
     EXPECT_EQ(StringUtils::getDelimiter("ta"), 't');
     EXPECT_EQ(StringUtils::getDelimiter("\\t"), '\t');
@@ -70,11 +70,11 @@ TEST(GetDelimiterTest, HandlesSequences) {
 }
 
 
-TEST(EnumStringConversionTest, EnumToString) {
+TEST(StringUtilsTest, EnumToString) {
     EXPECT_EQ(StringUtils::getStringFronEnum(Rml::Input::KI_A), "KI_A");
 }
 
-TEST(EnumStringConversionTest, StringToEnum) {
+TEST(StringUtilsTest, StringToEnum) {
     EXPECT_EQ(StringUtils::getEnumFronString("KI_SPACE"), Rml::Input::KI_SPACE);
     EXPECT_EQ(StringUtils::getEnumFronString(""), Rml::Input::KI_UNKNOWN);
 }

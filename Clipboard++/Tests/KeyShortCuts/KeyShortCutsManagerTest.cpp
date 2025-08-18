@@ -74,8 +74,8 @@ TEST_F(KeyShortCutManagerTest, CompletesSuccessfulUniqueSequence) {
 }
 
 TEST_F(KeyShortCutManagerTest, CompletesAfterBadKey) {
-    std::vector<std::string> fake_user_shortcuts = {};
-    std::vector<std::string> fake_base_shortcuts = {};
+    std::vector<std::string> fake_user_shortcuts = {"KI_LSHIFT+KI_A", "KI_LSHIFT+KI_B"};
+    std::vector<std::string> fake_base_shortcuts = {"KI_LSHIFT+KI_A", "KI_LSHIFT+KI_B"};
 
     EXPECT_CALL(mockFileManager, readFile(::testing::StrEq("assets/conf/shortCuts.csv"), ';', false))
         .WillOnce(::testing::Return(fake_user_shortcuts));
@@ -89,15 +89,15 @@ TEST_F(KeyShortCutManagerTest, CompletesAfterBadKey) {
     result = keyShortCutManager->FilterShortCuts(Rml::Input::KI_LCONTROL);
     ASSERT_EQ(result, nullptr);
 
+    result = keyShortCutManager->FilterShortCuts(Rml::Input::KI_A);
+    ASSERT_EQ(result, nullptr);
+
     result = keyShortCutManager->FilterShortCuts(Rml::Input::KI_LSHIFT);
     ASSERT_EQ(result, nullptr);
 
-    result = keyShortCutManager->FilterShortCuts(Rml::Input::KI_LCONTROL);
-    ASSERT_EQ(result, nullptr);
-
-    result = keyShortCutManager->FilterShortCuts(Rml::Input::KI_C);
+    result = keyShortCutManager->FilterShortCuts(Rml::Input::KI_A);
     ASSERT_NE(result, nullptr);
-    EXPECT_EQ(result->getEvent(), "!copy 0");
+    EXPECT_EQ(result->getEvent(), "copy 1");
 }
 
 TEST_F(KeyShortCutManagerTest, CompletesAfterWaitingForLastKey) {
@@ -138,6 +138,23 @@ TEST_F(KeyShortCutManagerTest, FilterDoesntModifyShortCutsList) {
     
     keyShortCutManager->Initialize(&mockFileManager);
 
+    KeyShortCut* copy_shortcut_base = keyShortCutManager->GetCopyShortCut(0);
+    ASSERT_NE(copy_shortcut_base, nullptr);
+    EXPECT_EQ(copy_shortcut_base->getEvent(), "!copy 0");
+
+    KeyShortCut* copy_shortcut_file = keyShortCutManager->GetCopyShortCut(1);
+    ASSERT_NE(copy_shortcut_file, nullptr);
+    EXPECT_EQ(copy_shortcut_file->getEvent(), "copy 1");
+
+    KeyShortCut* paste_shortcut_base = keyShortCutManager->GetPasteShortCut(0);
+    ASSERT_NE(paste_shortcut_base, nullptr);
+    EXPECT_EQ(paste_shortcut_base->getEvent(), "!paste 0");
+
+    KeyShortCut* paste_shortcut_file = keyShortCutManager->GetPasteShortCut(1);
+    ASSERT_NE(paste_shortcut_file, nullptr);
+    EXPECT_EQ(paste_shortcut_file->getEvent(), "paste 1");
+
+    
     KeyShortCut* result = nullptr;
     result = keyShortCutManager->FilterShortCuts(Rml::Input::KI_LSHIFT);
     ASSERT_EQ(result, nullptr);
@@ -158,9 +175,4 @@ TEST_F(KeyShortCutManagerTest, FilterDoesntModifyShortCutsList) {
     KeyShortCut* paste_shortcut_file = keyShortCutManager->GetPasteShortCut(1);
     ASSERT_NE(paste_shortcut_file, nullptr);
     EXPECT_EQ(paste_shortcut_file->getEvent(), "paste 1");
-    
-    auto keys = copy_shortcut_file->getShortCut();
-    ASSERT_EQ(keys.size(), 2);
-    EXPECT_EQ(keys[0], Rml::Input::KI_LSHIFT);
-    EXPECT_EQ(keys[1], Rml::Input::KI_A);
 }
