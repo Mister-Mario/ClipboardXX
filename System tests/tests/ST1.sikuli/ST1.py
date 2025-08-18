@@ -11,7 +11,7 @@ if parent_path not in sys.path:
 from utils import utils, navigation
 try:
     utils.set_up()
-    navigation.go_to_main_window()
+    navigation.go_to_main_window_from_shortcuts()
     #Load to memory cell 1 Hello
     click(utils.create_img("MainView\\MemoryCell1.png"))
     wait(0.25)

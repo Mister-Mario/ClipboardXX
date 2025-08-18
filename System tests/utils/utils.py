@@ -42,6 +42,8 @@ def close_clipboardXX():
 def delete_file(my_file):
     if os.path.isfile(my_file):
         os.remove(my_file)
+    else:
+        print("Error deleting: ", my_file)
 
 def restore_shortcuts():
     base_shortcuts = None
@@ -85,6 +87,7 @@ def restore_existent_files():
     restore_blank()
 
 def delete_new_files():
+    delete_file(test_files_path + "\\ST2_export.txt")
     delete_file(test_files_path + "\\ST3_1_export.txt")
     delete_file(test_files_path + "\\ST3_2_export.txt")
     delete_file(test_files_path + "\\ST4_export.tx")
@@ -94,6 +97,7 @@ def delete_new_files():
 def set_up():
     print("Starting test")
     intialize_sikulix()
+    paste("")#Clear system's clipboard
     open_clipboardXX()
 
 def tear_down():
@@ -101,3 +105,33 @@ def tear_down():
     restore_existent_files()
     delete_new_files()
     print("Finished test")
+
+
+def export_file(file_name, separator):
+    click(create_img("Export&ImportView\\SearchButton.png"))
+    wait(create_img("Export&ImportView\\SearchView.png"))
+    type(Key.BACKSPACE) #There is a base name
+    wait(0.1)
+    type(test_files_path +  "\\" + file_name)
+    click(create_img("Export&ImportView\\SaveFileButton.png"))
+    type(create_img("Export&ImportView\\Separator.png"), separator)
+    click(create_img("Export&ImportView\\ConfirmButton.png"))
+    wait(create_img("Export&ImportView\\CorrectExport.png"))
+    click(create_img("Export&ImportView\\CorrectMsgButton.png"))
+
+def import_file(file_name, separator):
+    click(create_img("Export&ImportView\\SearchButton.png"))
+    wait(create_img("Export&ImportView\\SearchView.png"))
+    type(test_files_path +  "\\" + file_name)
+    click(create_img("Export&ImportView\\OpenFileButton.png"))
+    type(create_img("Export&ImportView\\Separator.png"), separator)
+    click(create_img("Export&ImportView\\ConfirmButton.png"))
+    wait(create_img("Export&ImportView\\CorrectImport.png"))
+    click(create_img("Export&ImportView\\CorrectMsgButton.png"))
+
+def compare_files(file_path_1, file_path_2):
+    try:
+        with open(file_path_1, 'r') as f1, open(file_path_2, 'r') as f2:
+            return f1.readlines() == f2.readlines() #Can compare directly cause the expected file lenght is just 1 line
+    except FileNotFoundError:
+        return False

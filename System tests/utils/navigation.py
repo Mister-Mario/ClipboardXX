@@ -8,7 +8,22 @@ if sikuli_jar_path not in sys.path:
 from sikuli import *
 from utils import create_img
 
-def go_to_main_window():
+def go_to_main_window_from_shortcuts():
     click(create_img("ShortcutsView\\ExpandButton.png"))
+    wait(0.25)
+    wait(create_img("MainView\\MainView.png"))
+
+def go_to_export():
+    click(create_img("MainView\\ExportButton.png"))
+    wait(0.25)
+    wait(create_img("Export&ImportView\\ExportView.png"))
+
+def go_to_import():
+    click(create_img("MainView\\ImportButton.png"))
+    wait(0.25)
+    wait(create_img("Export&ImportView\\ImportView.png"))
+
+def go_back_to_main_window():
+    click(create_img("MainView\\CancelButton.png"))
     wait(0.25)
     wait(create_img("MainView\\MainView.png"))
