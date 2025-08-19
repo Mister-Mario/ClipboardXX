@@ -160,19 +160,19 @@ TEST_F(KeyShortCutManagerTest, FilterDoesntModifyShortCutsList) {
     ASSERT_EQ(result, nullptr);
 
 
-    KeyShortCut* copy_shortcut_base = keyShortCutManager->GetCopyShortCut(0);
+    copy_shortcut_base = keyShortCutManager->GetCopyShortCut(0);
     ASSERT_NE(copy_shortcut_base, nullptr);
     EXPECT_EQ(copy_shortcut_base->getEvent(), "!copy 0");
 
-    KeyShortCut* copy_shortcut_file = keyShortCutManager->GetCopyShortCut(1);
+    copy_shortcut_file = keyShortCutManager->GetCopyShortCut(1);
     ASSERT_NE(copy_shortcut_file, nullptr);
     EXPECT_EQ(copy_shortcut_file->getEvent(), "copy 1");
 
-    KeyShortCut* paste_shortcut_base = keyShortCutManager->GetPasteShortCut(0);
+    paste_shortcut_base = keyShortCutManager->GetPasteShortCut(0);
     ASSERT_NE(paste_shortcut_base, nullptr);
     EXPECT_EQ(paste_shortcut_base->getEvent(), "!paste 0");
 
-    KeyShortCut* paste_shortcut_file = keyShortCutManager->GetPasteShortCut(1);
+    paste_shortcut_file = keyShortCutManager->GetPasteShortCut(1);
     ASSERT_NE(paste_shortcut_file, nullptr);
     EXPECT_EQ(paste_shortcut_file->getEvent(), "paste 1");
 }

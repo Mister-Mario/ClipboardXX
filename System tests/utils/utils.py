@@ -1,18 +1,16 @@
 import sys
 import os
-#Needs to be edited for each system
-shortcuts_path = "C:\\Users\\mario\\Desktop\\Clipboard++-1.0.1-win64\\assets\\conf"
-app_exe_path = "C:\\Users\\mario\\Desktop\\Clipboard++-1.0.1-win64\\Clipboard++.exe - Acceso directo.lnk"
-sikuli_jar_path = "C:\\Users\\mario\\Desktop\\Uni\\TFG\\Advanced-Clipboard\\System tests\\sikulixide-2.0.5.jar"
 
+from paths import *
+sikuli_jar_path = get_sikulix_jar_path()
 if sikuli_jar_path not in sys.path:
     sys.path.append(sikuli_jar_path)
 
 from sikuli import *
 
-app_name = "Clipboard++.exe" 
 script_path = getBundlePath() #This path will be from inside the tests folder
 test_files_path = script_path + "\\..\\..\\resources\\files"
+shortcuts_path = get_shortcuts_path()
 
 def get_test_files_path():
     return test_files_path
@@ -28,9 +26,12 @@ def create_img(imgPath):
     return pattern
 
 def open_clipboardXX():
-    App.open(app_exe_path)
-    wait(0.25)
-    wait(create_img("ShortcutsView\\ShortcutsView.png"))
+    try:
+        App.open(get_app_exe_path())
+        wait(0.25)
+        wait(create_img("ShortcutsView\\ShortcutsView.png"))
+    except Exception as e:
+        print("Set up error: ", e)
 
 def close_clipboardXX():
     click(create_img("External\\TrayIcon.png"))

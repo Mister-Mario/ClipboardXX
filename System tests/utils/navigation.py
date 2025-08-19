@@ -1,7 +1,7 @@
 import sys
-#Needs to be edited for each system
-sikuli_jar_path = "C:\\Users\\mario\\Desktop\\Uni\\TFG\\Advanced-Clipboard\\System tests\\sikulixide-2.0.5.jar"
 
+from paths import *
+sikuli_jar_path = get_sikulix_jar_path()
 if sikuli_jar_path not in sys.path:
     sys.path.append(sikuli_jar_path)
 
