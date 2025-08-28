@@ -27,3 +27,11 @@ def go_back_to_main_window():
     click(create_img("MainView\\CancelButton.png"))
     wait(0.25)
     wait(create_img("MainView\\MainView.png"))
+
+def bring_forward_tray_icon():
+    click(create_img("External\\TrayIcon.png"))
+    wait(0.25)
+    rightClick(create_img("External\\Clipboard++TrayIcon.png"))
+    wait(0.25) 
+    click(create_img("External\\ShowTrayIcon.png"))
+    wait(create_img("ShortcutsView\\ShortcutsView.png"))

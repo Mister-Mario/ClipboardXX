@@ -30,3 +30,6 @@ def get_app_exe_path():
 
 def get_sikulix_jar_path():
     return get_from_paths("sikuli_jar_path")
+
+def get_text_editor_name():
+    return get_from_paths("text_editor")
