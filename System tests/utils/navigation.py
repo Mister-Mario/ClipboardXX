@@ -35,3 +35,7 @@ def bring_forward_tray_icon():
     wait(0.25) 
     click(create_img("External\\ShowTrayIcon.png"))
     wait(create_img("ShortcutsView\\ShortcutsView.png"))
+
+def bring_forward_shortcut():
+    type("v", Key.WIN + Key.ALT)
+    wait(create_img("ShortcutsView\\ShortcutsView.png"))
