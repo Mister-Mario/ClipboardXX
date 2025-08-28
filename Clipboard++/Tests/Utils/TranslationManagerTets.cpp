@@ -34,3 +34,13 @@ TEST_F(TranslationManagerTest, GetReturnsKeyItselfForNonExistentKey)
 
     EXPECT_EQ(result, expected_value);
 }
+TEST_F(TranslationManagerTest, LoadDefaultLanguage)
+{
+    translator->loadLanguage("NOT_A_LANGUAGE");
+    const std::string non_existent_key = "list.clipboard";
+    const std::string expected_value = "Clipboard";
+
+    const std::string result = translator->getString(non_existent_key);
+
+    EXPECT_EQ(result, expected_value);
+}

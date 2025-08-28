@@ -7,11 +7,14 @@ add_library(ProjectUtils STATIC
     LinkManager.cpp
     FileManager.h
     FileManager.cpp
+    IFileManager.h
 )
 
 target_include_directories(ProjectUtils 
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
+    PRIVATE
+        ${CMAKE_SOURCE_DIR}
 )
 
 target_link_libraries( ProjectUtils

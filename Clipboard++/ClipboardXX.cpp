@@ -10,6 +10,7 @@
 #include "QClipboard/HotKeyListener/HotKeyListener.h"
 #include "QClipboard/KeyShortCuts/KeyShortCutManager.h"
 #include "Utils/TranslationManager.h"
+#include "Utils/FileManager.h"
 #include "ClipboardListener.h"
 
 #include <iostream>
@@ -67,7 +68,7 @@ bool ClipboardXX::initialize() {
     QApplication::setQuitOnLastWindowClosed(false);
     QClipboard* qClipboard = QApplication::clipboard();
     ClipboardListener::Instance()->Initialize(qClipboard);
-    KeyShortCutManager::Instance();
+    KeyShortCutManager::Instance()->Initialize(FileManager::Instance());
     MemoryCellManager::Instance()->initialize(new ClipboardAdapter(qClipboard, KeyShortCutManager::Instance()->GetPasteShortCut(0), KeyShortCutManager::Instance()->GetCopyShortCut(0)), 21);
     ShortCutsViewModel::Instance()->updateList("");
 

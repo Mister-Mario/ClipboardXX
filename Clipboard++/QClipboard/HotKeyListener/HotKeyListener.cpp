@@ -49,7 +49,7 @@ std::atomic<bool> g_hotkeyPressed{false};
  * RegisterHotKey API is not available. It does nothing.
  */
 void HotkeyListenerThread() {
-    // Nothing to do for Linux, macOS, etc. in this implementation.
+    // Nothing to do for Linux in this implementation.
 }
 
 #endif
