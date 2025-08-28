@@ -1,5 +1,17 @@
 var NAVTREEINDEX3 =
 {
+"structTGAHeader.html#a229a0efe7024c92622a1656c89630bb6":[1,0,53,1],
+"structTGAHeader.html#a2935268c9e9ab9033cbe8cd556f8336e":[1,0,53,8],
+"structTGAHeader.html#a3e82f50e8e5c9be9fc8d485ada97c0a4":[1,0,53,10],
+"structTGAHeader.html#a449f82dee56b17f41d0580265b834768":[1,0,53,0],
+"structTGAHeader.html#a7c2b1da2330784f568aad8d25b02dc9b":[1,0,53,11],
+"structTGAHeader.html#a9128d6f03bf87ad3b348c6e1333bc619":[1,0,53,2],
+"structTGAHeader.html#aabc3f0834122573abf1735d35a4afce0":[1,0,53,4],
+"structTGAHeader.html#ad8bd861d455ebb46345e11f816464f9d":[1,0,53,3],
+"structTGAHeader.html#adf5d2f2990fb38d1d74dafc58bb07644":[1,0,53,7],
+"structTGAHeader.html#aeb056ec5a8129293e37d721a2256afb0":[1,0,53,6],
+"structTGAHeader.html#af0938de1c7c245cf7349f4e60d68e62f":[1,0,53,9],
+"structmagic__enum_1_1customize_1_1enum__range_3_01Rml_1_1Input_1_1KeyIdentifier_01_4.html":[1,0,1,0,0],
 "structmagic__enum_1_1customize_1_1enum__range_3_01Rml_1_1Input_1_1KeyIdentifier_01_4.html":[0,0,2,0,0],
 "structmagic__enum_1_1customize_1_1enum__range_3_01Rml_1_1Input_1_1KeyIdentifier_01_4.html#ab0c7c763d1ea23b57b9a8fe69a5002f7":[0,0,2,0,0,1],
 "structmagic__enum_1_1customize_1_1enum__range_3_01Rml_1_1Input_1_1KeyIdentifier_01_4.html#ab0c7c763d1ea23b57b9a8fe69a5002f7":[1,0,1,0,0,1],

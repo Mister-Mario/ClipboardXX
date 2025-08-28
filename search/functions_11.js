@@ -1,7 +1,7 @@
 var searchData=
 [
   ['read_0',['Read',['../classShellFileInterface.html#ab31fefee930cd3fd221a4afcb3c1afa5',1,'ShellFileInterface']]],
-  ['readfile_1',['readFile',['../classFileManager.html#af0fe96b074a04f6d32a71dcc09c6996e',1,'FileManager']]],
+  ['readfile_1',['readfile',['../classFileManager.html#a3903126bbda777d8fcf260607ffb7a80',1,'FileManager::readFile()'],['../classIFileManager.html#a642bf9a9d06ce4265372b0b7e17986b7',1,'IFileManager::readFile()']]],
   ['registerkey_2',['RegisterKey',['../classEditViewModel.html#a6bf4a2d87e5978a6a056c36239310b95',1,'EditViewModel']]],
   ['releasefilter_3',['ReleaseFilter',['../classRenderInterface__GL3.html#ac629e99938376b712147154eb04df5be',1,'RenderInterface_GL3']]],
   ['releasegeometry_4',['ReleaseGeometry',['../classRenderInterface__GL3.html#a0a1f98a7bef5b0b13546eb1f5980b672',1,'RenderInterface_GL3']]],

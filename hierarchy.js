@@ -58,10 +58,12 @@ var hierarchy =
     [ "Rml::FileInterface", null, [
       [ "ShellFileInterface", "classShellFileInterface.html", null ]
     ] ],
-    [ "FileManager", "classFileManager.html", null ],
     [ "Gfx::FragShaderDefinition", "structGfx_1_1FragShaderDefinition.html", null ],
     [ "Gfx::FramebufferData", "structGfx_1_1FramebufferData.html", null ],
     [ "RenderInterface_GL3::GLStateBackup", "structRenderInterface__GL3_1_1GLStateBackup.html", null ],
+    [ "IFileManager", "classIFileManager.html", [
+      [ "FileManager", "classFileManager.html", null ]
+    ] ],
     [ "RendererExtensions::Image", "structRendererExtensions_1_1Image.html", null ],
     [ "KeyShortCut", "classKeyShortCut.html", null ],
     [ "KeyShortCutManager", "classKeyShortCutManager.html", null ],

@@ -47,6 +47,7 @@ var annotated_dup =
     [ "ExportSearchEvent", "classExportSearchEvent.html", "classExportSearchEvent" ],
     [ "FileManager", "classFileManager.html", "classFileManager" ],
     [ "HelpEvent", "classHelpEvent.html", "classHelpEvent" ],
+    [ "IFileManager", "classIFileManager.html", "classIFileManager" ],
     [ "ImportCloseEvent", "classImportCloseEvent.html", "classImportCloseEvent" ],
     [ "ImportEvent", "classImportEvent.html", "classImportEvent" ],
     [ "ImportFileEvent", "classImportFileEvent.html", "classImportFileEvent" ],

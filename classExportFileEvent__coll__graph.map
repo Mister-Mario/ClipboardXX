@@ -1,20 +1,22 @@
 <map id="ExportFileEvent" name="ExportFileEvent">
-<area shape="rect" id="Node000001" title=" " alt="" coords="300,541,452,647"/>
-<area shape="rect" id="Node000002" href="$classClipboardEvent.html" title=" " alt="" coords="5,293,155,379"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,390,134,435,169,477,199,502,233,525,301,560,298,565,230,529,196,507,165,481,129,438,102,393"/>
-<area shape="rect" id="Node000003" href="$classMemoryCellManager.html" title=" " alt="" coords="179,193,376,479"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="269,478,281,516,291,532,287,535,276,518,264,480"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="62,28,266,108"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="169,108,174,138,183,169,186,177,181,179,177,170,169,139,164,109"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="290,35,342,101"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="314,101,303,177,298,176,309,100"/>
-<area shape="rect" id="Node000006" href="$classFileManager.html" title=" " alt="" coords="400,223,549,449"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="469,450,461,485,448,518,442,529,437,527,443,516,456,483,464,448"/>
-<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="551,303,569,314,576,336,573,350,566,361,562,357,568,348,571,336,565,317,548,307"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="449,35,500,101"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="477,101,477,207,472,207,472,101"/>
-<area shape="rect" id="Node000008" href="$classTranslationManager.html" title=" " alt="" coords="575,5,742,131"/>
-<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="684,130,704,207,712,251,717,298,716,346,710,393,696,439,673,480,654,503,631,523,579,553,523,574,469,586,468,581,522,569,577,549,628,519,650,499,668,477,691,436,704,392,711,346,711,298,707,252,699,208,679,132"/>
-<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="618,132,561,215,557,212,614,129"/>
-<area shape="poly" id="edge9_Node000008_Node000008" title=" " alt="" coords="743,49,761,55,769,68,766,76,759,82,756,77,762,73,763,68,758,60,742,54"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="300,621,452,727"/>
+<area shape="rect" id="Node000002" href="$classClipboardEvent.html" title=" " alt="" coords="5,373,155,459"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,470,134,515,169,557,199,582,233,605,301,640,298,645,230,609,196,587,165,561,129,518,102,473"/>
+<area shape="rect" id="Node000003" href="$classMemoryCellManager.html" title=" " alt="" coords="179,273,376,559"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="269,558,281,596,291,612,287,615,276,598,264,560"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="23,68,227,148"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="132,148,140,197,157,248,172,278,168,281,152,250,135,198,126,149"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="251,75,303,141"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="280,141,280,257,275,257,275,141"/>
+<area shape="rect" id="Node000006" href="$classFileManager.html" title=" " alt="" coords="400,293,549,539"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="467,540,448,598,442,609,437,607,443,596,462,538"/>
+<area shape="poly" id="edge7_Node000006_Node000006" title=" " alt="" coords="551,383,569,394,576,416,573,430,566,441,562,437,568,428,571,416,565,397,548,387"/>
+<area shape="rect" id="Node000007" href="$classIFileManager.html" title=" " alt="" coords="328,5,477,211"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="432,224,449,293,443,294,427,225"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="501,75,552,141"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="524,141,501,277,496,276,519,140"/>
+<area shape="rect" id="Node000009" href="$classTranslationManager.html" title=" " alt="" coords="601,45,767,171"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="704,170,721,254,726,304,728,356,725,410,716,463,699,514,673,560,653,583,631,603,579,633,523,654,469,666,468,661,522,649,577,629,628,599,650,579,668,557,694,511,711,462,720,409,723,356,721,304,716,255,699,171"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="644,172,561,293,557,290,640,169"/>
+<area shape="poly" id="edge10_Node000009_Node000009" title=" " alt="" coords="769,82,787,91,794,108,791,119,785,126,781,123,787,116,789,108,783,95,767,87"/>
 </map>

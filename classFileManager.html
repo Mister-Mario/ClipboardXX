@@ -102,34 +102,44 @@ $(document).ready(function(){initNavTree('classFileManager.html',''); initResiza
 
 <p><code>#include &lt;FileManager.h&gt;</code></p>
 <div class="dynheader">
+Inheritance diagram for FileManager:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFileManager__inherit__graph.svg" width="160" height="550"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
 Collaboration diagram for FileManager:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classFileManager__coll__graph.svg" width="363" height="567"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classFileManager__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aed2839b3df848109815caffed42cabd3" id="r_aed2839b3df848109815caffed42cabd3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#aed2839b3df848109815caffed42cabd3">getLastFile</a> () const</td></tr>
-<tr class="memdesc:aed2839b3df848109815caffed42cabd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the path of the last file that was successfully opened or saved.  <br /></td></tr>
-<tr class="separator:aed2839b3df848109815caffed42cabd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5bf7d195318a37c909d2e2bece68e59" id="r_aa5bf7d195318a37c909d2e2bece68e59"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#aa5bf7d195318a37c909d2e2bece68e59">searchImportFile</a> (const char *title)</td></tr>
-<tr class="memdesc:aa5bf7d195318a37c909d2e2bece68e59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a system dialog for the user to select a file for import.  <br /></td></tr>
-<tr class="separator:aa5bf7d195318a37c909d2e2bece68e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c9ef8090f442eb8a7c49173183bed4d" id="r_a0c9ef8090f442eb8a7c49173183bed4d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#a0c9ef8090f442eb8a7c49173183bed4d">searchExportFile</a> (const char *title)</td></tr>
-<tr class="memdesc:a0c9ef8090f442eb8a7c49173183bed4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a system "save as" dialog for the user to specify a file for export.  <br /></td></tr>
-<tr class="separator:a0c9ef8090f442eb8a7c49173183bed4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0fe96b074a04f6d32a71dcc09c6996e" id="r_af0fe96b074a04f6d32a71dcc09c6996e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#af0fe96b074a04f6d32a71dcc09c6996e">readFile</a> (const char *filePath, char delimiter, bool showDialog=true)</td></tr>
-<tr class="memdesc:af0fe96b074a04f6d32a71dcc09c6996e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the contents of a file, splitting it by a delimiter.  <br /></td></tr>
-<tr class="separator:af0fe96b074a04f6d32a71dcc09c6996e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3038ef81dc175332560ae403d11705b" id="r_ad3038ef81dc175332560ae403d11705b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#ad3038ef81dc175332560ae403d11705b">exportFile</a> (const char *filePath, char delimiter, std::vector&lt; std::string &gt; content, bool showDialog=true)</td></tr>
-<tr class="memdesc:ad3038ef81dc175332560ae403d11705b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a vector of strings to a file, separating them with a delimiter.  <br /></td></tr>
-<tr class="separator:ad3038ef81dc175332560ae403d11705b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e147cd7eb82ccd514a4c64fc7a3c6ed" id="r_a6e147cd7eb82ccd514a4c64fc7a3c6ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#a6e147cd7eb82ccd514a4c64fc7a3c6ed">showErrorDialog</a> (const char *message)</td></tr>
-<tr class="memdesc:a6e147cd7eb82ccd514a4c64fc7a3c6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays a standard error message box.  <br /></td></tr>
-<tr class="separator:a6e147cd7eb82ccd514a4c64fc7a3c6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5c28a957623bb4342ec0ecf66f3d9fd" id="r_ae5c28a957623bb4342ec0ecf66f3d9fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#ae5c28a957623bb4342ec0ecf66f3d9fd">showGoodDialog</a> (const char *message)</td></tr>
-<tr class="memdesc:ae5c28a957623bb4342ec0ecf66f3d9fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays a standard informational message box.  <br /></td></tr>
-<tr class="separator:ae5c28a957623bb4342ec0ecf66f3d9fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36b7a8bcda7d424f9cb24e9062cf7b19" id="r_a36b7a8bcda7d424f9cb24e9062cf7b19"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#a36b7a8bcda7d424f9cb24e9062cf7b19">~FileManager</a> ()=default</td></tr>
+<tr class="separator:a36b7a8bcda7d424f9cb24e9062cf7b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae33d265ad2209970378da9543d60b830" id="r_ae33d265ad2209970378da9543d60b830"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#ae33d265ad2209970378da9543d60b830">getLastFile</a> () const override</td></tr>
+<tr class="memdesc:ae33d265ad2209970378da9543d60b830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the path of the last file that was successfully opened or saved.  <br /></td></tr>
+<tr class="separator:ae33d265ad2209970378da9543d60b830"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb0fd6bd1b227f11b82d0102bd37494e" id="r_aeb0fd6bd1b227f11b82d0102bd37494e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#aeb0fd6bd1b227f11b82d0102bd37494e">searchImportFile</a> (const char *title) override</td></tr>
+<tr class="memdesc:aeb0fd6bd1b227f11b82d0102bd37494e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a system dialog for the user to select a file for import.  <br /></td></tr>
+<tr class="separator:aeb0fd6bd1b227f11b82d0102bd37494e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac88aeeb6bb93857f023cf65355599c27" id="r_ac88aeeb6bb93857f023cf65355599c27"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#ac88aeeb6bb93857f023cf65355599c27">searchExportFile</a> (const char *title) override</td></tr>
+<tr class="memdesc:ac88aeeb6bb93857f023cf65355599c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a system "save as" dialog for the user to specify a file for export.  <br /></td></tr>
+<tr class="separator:ac88aeeb6bb93857f023cf65355599c27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3903126bbda777d8fcf260607ffb7a80" id="r_a3903126bbda777d8fcf260607ffb7a80"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#a3903126bbda777d8fcf260607ffb7a80">readFile</a> (const char *filePath, char delimiter, bool showDialog=true) override</td></tr>
+<tr class="memdesc:a3903126bbda777d8fcf260607ffb7a80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the contents of a file, splitting it by a delimiter.  <br /></td></tr>
+<tr class="separator:a3903126bbda777d8fcf260607ffb7a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5c1de749225cbe82194efd88dad2ed5" id="r_aa5c1de749225cbe82194efd88dad2ed5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#aa5c1de749225cbe82194efd88dad2ed5">exportFile</a> (const char *filePath, char delimiter, std::vector&lt; std::string &gt; content, bool showDialog=true) override</td></tr>
+<tr class="memdesc:aa5c1de749225cbe82194efd88dad2ed5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a vector of strings to a file, separating them with a delimiter.  <br /></td></tr>
+<tr class="separator:aa5c1de749225cbe82194efd88dad2ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e1fd0daecf55b0e75c13b13d3a00b8a" id="r_a7e1fd0daecf55b0e75c13b13d3a00b8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#a7e1fd0daecf55b0e75c13b13d3a00b8a">showErrorDialog</a> (const char *message) override</td></tr>
+<tr class="memdesc:a7e1fd0daecf55b0e75c13b13d3a00b8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays a standard error message box.  <br /></td></tr>
+<tr class="separator:a7e1fd0daecf55b0e75c13b13d3a00b8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13fd82b92aff4bb7fac02f25d16c27d4" id="r_a13fd82b92aff4bb7fac02f25d16c27d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileManager.html#a13fd82b92aff4bb7fac02f25d16c27d4">showGoodDialog</a> (const char *message) override</td></tr>
+<tr class="memdesc:a13fd82b92aff4bb7fac02f25d16c27d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays a standard informational message box.  <br /></td></tr>
+<tr class="separator:a13fd82b92aff4bb7fac02f25d16c27d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classIFileManager"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classIFileManager')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classIFileManager.html">IFileManager</a></td></tr>
+<tr class="memitem:ac49ce841b6fd11f232064443b6f3f040 inherit pub_methods_classIFileManager" id="r_ac49ce841b6fd11f232064443b6f3f040"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIFileManager.html#ac49ce841b6fd11f232064443b6f3f040">~IFileManager</a> ()=default</td></tr>
+<tr class="separator:ac49ce841b6fd11f232064443b6f3f040 inherit pub_methods_classIFileManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -156,6 +166,31 @@ Static Private Attributes</h2></td></tr>
 <tr class="separator:a55b0660f9d15b65c87f0ca2717f108fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a36b7a8bcda7d424f9cb24e9062cf7b19" name="a36b7a8bcda7d424f9cb24e9062cf7b19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36b7a8bcda7d424f9cb24e9062cf7b19">&#9670;&#160;</a></span>~FileManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual FileManager::~FileManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a8afd512c06be9daf140cc19d71f9b391" name="a8afd512c06be9daf140cc19d71f9b391"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8afd512c06be9daf140cc19d71f9b391">&#9670;&#160;</a></span>FileManager()</h2>
 
@@ -184,11 +219,14 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad3038ef81dc175332560ae403d11705b" name="ad3038ef81dc175332560ae403d11705b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3038ef81dc175332560ae403d11705b">&#9670;&#160;</a></span>exportFile()</h2>
+<a id="aa5c1de749225cbe82194efd88dad2ed5" name="aa5c1de749225cbe82194efd88dad2ed5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5c1de749225cbe82194efd88dad2ed5">&#9670;&#160;</a></span>exportFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void FileManager::exportFile </td>
@@ -220,6 +258,11 @@ Static Private Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Writes a vector of strings to a file, separating them with a delimiter. </p>
@@ -233,13 +276,18 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
+<p>Implements <a class="el" href="classIFileManager.html#aa98c34bbc765d05c549f6135e6fdfa80">IFileManager</a>.</p>
+
 </div>
 </div>
-<a id="aed2839b3df848109815caffed42cabd3" name="aed2839b3df848109815caffed42cabd3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed2839b3df848109815caffed42cabd3">&#9670;&#160;</a></span>getLastFile()</h2>
+<a id="ae33d265ad2209970378da9543d60b830" name="ae33d265ad2209970378da9543d60b830"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae33d265ad2209970378da9543d60b830">&#9670;&#160;</a></span>getLastFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::string FileManager::getLastFile </td>
@@ -248,10 +296,17 @@ Static Private Attributes</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Gets the path of the last file that was successfully opened or saved. </p>
 <dl class="section return"><dt>Returns</dt><dd>std::string The full path to the last used file. </dd></dl>
+
+<p>Implements <a class="el" href="classIFileManager.html#add9a86c8d658e4d0828aa2c5fc4bdf88">IFileManager</a>.</p>
 
 </div>
 </div>
@@ -283,11 +338,14 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af0fe96b074a04f6d32a71dcc09c6996e" name="af0fe96b074a04f6d32a71dcc09c6996e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0fe96b074a04f6d32a71dcc09c6996e">&#9670;&#160;</a></span>readFile()</h2>
+<a id="a3903126bbda777d8fcf260607ffb7a80" name="a3903126bbda777d8fcf260607ffb7a80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3903126bbda777d8fcf260607ffb7a80">&#9670;&#160;</a></span>readFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; std::string &gt; FileManager::readFile </td>
@@ -313,6 +371,11 @@ Static Private Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Reads the contents of a file, splitting it by a delimiter. </p>
@@ -326,13 +389,18 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::string&gt; A vector of strings, each being a segment from the file. </dd></dl>
 
+<p>Implements <a class="el" href="classIFileManager.html#a642bf9a9d06ce4265372b0b7e17986b7">IFileManager</a>.</p>
+
 </div>
 </div>
-<a id="a0c9ef8090f442eb8a7c49173183bed4d" name="a0c9ef8090f442eb8a7c49173183bed4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c9ef8090f442eb8a7c49173183bed4d">&#9670;&#160;</a></span>searchExportFile()</h2>
+<a id="ac88aeeb6bb93857f023cf65355599c27" name="ac88aeeb6bb93857f023cf65355599c27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac88aeeb6bb93857f023cf65355599c27">&#9670;&#160;</a></span>searchExportFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::string FileManager::searchExportFile </td>
@@ -342,6 +410,11 @@ Static Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Opens a system "save as" dialog for the user to specify a file for export. </p>
@@ -353,13 +426,18 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::string The path of the chosen file, or an empty string if canceled or invalid. </dd></dl>
 
+<p>Implements <a class="el" href="classIFileManager.html#a5da6899d521331ee1ff4a1ddac6fd42f">IFileManager</a>.</p>
+
 </div>
 </div>
-<a id="aa5bf7d195318a37c909d2e2bece68e59" name="aa5bf7d195318a37c909d2e2bece68e59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5bf7d195318a37c909d2e2bece68e59">&#9670;&#160;</a></span>searchImportFile()</h2>
+<a id="aeb0fd6bd1b227f11b82d0102bd37494e" name="aeb0fd6bd1b227f11b82d0102bd37494e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb0fd6bd1b227f11b82d0102bd37494e">&#9670;&#160;</a></span>searchImportFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::string FileManager::searchImportFile </td>
@@ -369,6 +447,11 @@ Static Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Opens a system dialog for the user to select a file for import. </p>
@@ -380,13 +463,18 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::string The path of the selected file, or an empty string if canceled or invalid. </dd></dl>
 
+<p>Implements <a class="el" href="classIFileManager.html#aff674b55e5e203f1db709ffaf19abaa0">IFileManager</a>.</p>
+
 </div>
 </div>
-<a id="a6e147cd7eb82ccd514a4c64fc7a3c6ed" name="a6e147cd7eb82ccd514a4c64fc7a3c6ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e147cd7eb82ccd514a4c64fc7a3c6ed">&#9670;&#160;</a></span>showErrorDialog()</h2>
+<a id="a7e1fd0daecf55b0e75c13b13d3a00b8a" name="a7e1fd0daecf55b0e75c13b13d3a00b8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e1fd0daecf55b0e75c13b13d3a00b8a">&#9670;&#160;</a></span>showErrorDialog()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void FileManager::showErrorDialog </td>
@@ -396,6 +484,11 @@ Static Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Displays a standard error message box. </p>
@@ -406,13 +499,18 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
+<p>Implements <a class="el" href="classIFileManager.html#a049062f44946d6489c1be4f35b4a5ca1">IFileManager</a>.</p>
+
 </div>
 </div>
-<a id="ae5c28a957623bb4342ec0ecf66f3d9fd" name="ae5c28a957623bb4342ec0ecf66f3d9fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5c28a957623bb4342ec0ecf66f3d9fd">&#9670;&#160;</a></span>showGoodDialog()</h2>
+<a id="a13fd82b92aff4bb7fac02f25d16c27d4" name="a13fd82b92aff4bb7fac02f25d16c27d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13fd82b92aff4bb7fac02f25d16c27d4">&#9670;&#160;</a></span>showGoodDialog()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void FileManager::showGoodDialog </td>
@@ -422,6 +520,11 @@ Static Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Displays a standard informational message box. </p>
@@ -431,6 +534,8 @@ Static Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p>Implements <a class="el" href="classIFileManager.html#a6b9027e7cd312e0a67743fec04532e1a">IFileManager</a>.</p>
 
 </div>
 </div>

@@ -31,12 +31,12 @@ var searchData=
   ['event_5flistener_5finstancer_28',['event_listener_instancer',['../classClipboardXX.html#a875c24d68f02b6ced6d0bdd73fcbd7fd',1,'ClipboardXX']]],
   ['eventlistener_29',['eventlistener',['../classEventListener.html',1,'EventListener'],['../classEventListener.html#ac73aa18c1e17992d039e97ef7e273bc6',1,'EventListener::EventListener()']]],
   ['eventlistenerinstancer_30',['eventlistenerinstancer',['../classEventListenerInstancer.html#afd4646a12a34b4d57e648b0cf1c9fee8',1,'EventListenerInstancer::EventListenerInstancer()'],['../classEventListenerInstancer.html',1,'EventListenerInstancer']]],
-  ['eventmanager_31',['eventmanager',['../classEventManager.html',1,'EventManager'],['../classEventManager.html#a89099b22114f158b5c530edfea52371d',1,'EventManager::EventManager()']]],
+  ['eventmanager_31',['eventmanager',['../classEventManager.html#a89099b22114f158b5c530edfea52371d',1,'EventManager::EventManager()'],['../classEventManager.html',1,'EventManager']]],
   ['events_32',['events',['../classEventManager.html#a60fc2f4f916acb0ac94c19f4246fb237',1,'EventManager']]],
   ['expandevent_33',['expandevent',['../classExpandEvent.html',1,'ExpandEvent'],['../classExpandEvent.html#aa254ffd520b784e24e5eee956c74f45d',1,'ExpandEvent::ExpandEvent()']]],
   ['exportcloseevent_34',['exportcloseevent',['../classExportCloseEvent.html',1,'ExportCloseEvent'],['../classExportCloseEvent.html#a1e0a91675b1e4f07074aee3967e03ec8',1,'ExportCloseEvent::ExportCloseEvent()']]],
   ['exportevent_35',['exportevent',['../classExportEvent.html',1,'ExportEvent'],['../classExportEvent.html#a5b0dd160885646a88247c0c8dad0908c',1,'ExportEvent::ExportEvent()']]],
-  ['exportfile_36',['exportFile',['../classFileManager.html#ad3038ef81dc175332560ae403d11705b',1,'FileManager']]],
+  ['exportfile_36',['exportfile',['../classFileManager.html#aa5c1de749225cbe82194efd88dad2ed5',1,'FileManager::exportFile()'],['../classIFileManager.html#aa98c34bbc765d05c549f6135e6fdfa80',1,'IFileManager::exportFile()']]],
   ['exportfileevent_37',['exportfileevent',['../classExportFileEvent.html#a5158f4fb5444a70a567325ffe3666d72',1,'ExportFileEvent::ExportFileEvent()'],['../classExportFileEvent.html',1,'ExportFileEvent']]],
   ['exportsearchevent_38',['exportsearchevent',['../classExportSearchEvent.html',1,'ExportSearchEvent'],['../classExportSearchEvent.html#a663c9247294dce90416df35552fc9929',1,'ExportSearchEvent::ExportSearchEvent()']]]
 ];

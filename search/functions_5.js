@@ -20,7 +20,7 @@ var searchData=
   ['expandevent_17',['ExpandEvent',['../classExpandEvent.html#aa254ffd520b784e24e5eee956c74f45d',1,'ExpandEvent']]],
   ['exportcloseevent_18',['ExportCloseEvent',['../classExportCloseEvent.html#a1e0a91675b1e4f07074aee3967e03ec8',1,'ExportCloseEvent']]],
   ['exportevent_19',['ExportEvent',['../classExportEvent.html#a5b0dd160885646a88247c0c8dad0908c',1,'ExportEvent']]],
-  ['exportfile_20',['exportFile',['../classFileManager.html#ad3038ef81dc175332560ae403d11705b',1,'FileManager']]],
+  ['exportfile_20',['exportfile',['../classFileManager.html#aa5c1de749225cbe82194efd88dad2ed5',1,'FileManager::exportFile()'],['../classIFileManager.html#aa98c34bbc765d05c549f6135e6fdfa80',1,'IFileManager::exportFile()']]],
   ['exportfileevent_21',['ExportFileEvent',['../classExportFileEvent.html#a5158f4fb5444a70a567325ffe3666d72',1,'ExportFileEvent']]],
   ['exportsearchevent_22',['ExportSearchEvent',['../classExportSearchEvent.html#a663c9247294dce90416df35552fc9929',1,'ExportSearchEvent']]]
 ];
