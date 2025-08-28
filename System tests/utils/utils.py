@@ -51,16 +51,17 @@ def restore_shortcuts():
     user_shortcuts = None
     
     try:
-        base_shortcuts = open(shortcuts_path + "\\shortCutsBase.csv", 'r', encoding='utf-8')
-        user_shortcuts = open(shortcuts_path + "\\shortCuts.csv", 'w', encoding='utf-8')
+        base_shortcuts = open(shortcuts_path + "\\shortCutsBase.csv", 'r')
+        user_shortcuts = open(shortcuts_path + "\\shortCuts.csv", 'w')
         
         for linea in base_shortcuts:
             user_shortcuts.write(linea)
             
         print("Shortcuts restored")
 
-    except Exception:
+    except Exception as e:
         print("Error while restoring shortcuts")
+        print(e)
 
     finally:
         if base_shortcuts:
