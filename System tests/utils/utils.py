@@ -91,9 +91,9 @@ def delete_new_files():
     delete_file(test_files_path + "\\ST2_export.txt")
     delete_file(test_files_path + "\\ST3_1_export.txt")
     delete_file(test_files_path + "\\ST3_2_export.txt")
-    delete_file(test_files_path + "\\ST4_export.tx")
-    delete_file(test_files_path + "\\ST5_export.tx")
-    delete_file(test_files_path + "\\ST6_export.tx")
+    delete_file(test_files_path + "\\ST4_export.txt")
+    delete_file(test_files_path + "\\ST5_export.txt")
+    delete_file(test_files_path + "\\ST6_export.txt")
 
 def set_up():
     print("Starting test")
