@@ -1,7 +1,7 @@
 #ifndef CLIPBOARD_ADAPTER_H
 #define CLIPBOARD_ADAPTER_H
 
-#include <ClipboardInterface.h>
+#include <Clipboard/ClipboardInterface.h>
 #include <QClipboard>
 #include <QObject>
 

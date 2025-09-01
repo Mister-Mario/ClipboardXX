@@ -5,13 +5,13 @@
 #include <Shell.h>
 #include <QScreen>
 #include <QLocale>
-#include "QClipboard/ClipboardAdapter.h"
+#include "QClipboard/Clipboard/ClipboardAdapter.h"
 #include "QClipboard/MemoryCells/MemoryCellManager.h"
 #include "QClipboard/HotKeyListener/HotKeyListener.h"
 #include "QClipboard/KeyShortCuts/KeyShortCutManager.h"
 #include "Utils/TranslationManager.h"
 #include "Utils/FileManager.h"
-#include "ClipboardListener.h"
+#include "Clipboard/ClipboardListener.h"
 
 #include <iostream>
 

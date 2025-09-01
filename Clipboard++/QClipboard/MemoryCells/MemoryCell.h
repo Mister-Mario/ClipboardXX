@@ -1,7 +1,7 @@
 #ifndef MEMORY_CELL_H
 #define MEMORY_CELL_H
 
-#include <ClipboardInterface.h>
+#include <Clipboard/ClipboardInterface.h>
 #include <QClipboard>
 
 

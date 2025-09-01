@@ -1,9 +1,9 @@
 add_library(QClipboard STATIC
-    ClipboardInterface.h
-    ClipboardAdapter.h
-    ClipboardAdapter.cpp
-    ClipboardListener.h
-    ClipboardListener.cpp
+    Clipboard/ClipboardInterface.h
+    Clipboard/ClipboardAdapter.h
+    Clipboard/ClipboardAdapter.cpp
+    Clipboard/ClipboardListener.h
+    Clipboard/ClipboardListener.cpp
     MemoryCells/MemoryCell.h
     MemoryCells/MemoryCell.cpp
     MemoryCells/MemoryCellManager.h

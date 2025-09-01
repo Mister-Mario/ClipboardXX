@@ -1,7 +1,7 @@
 #ifndef SHORTCUTS_VIEW_MODEL_H
 #define SHORTCUTS_VIEW_MODEL_H
 
-#include <ClipboardInterface.h>
+#include <Clipboard/ClipboardInterface.h>
 #include <MemoryCells/MemoryCellManager.h>
 #include <vector>
 

@@ -1,8 +1,8 @@
 #ifndef MEMORY_CELL_MANAGER_H
 #define MEMORY_CELL_MANAGER_H
 
-#include <ClipboardInterface.h>
-#include <ClipboardAdapter.h>
+#include <Clipboard/ClipboardInterface.h>
+#include <Clipboard/ClipboardAdapter.h>
 #include <vector>
 #include <memory>
 

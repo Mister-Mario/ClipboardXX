@@ -2,7 +2,7 @@
 #include <thread>
 #include <chrono>
 #include <iostream>
-#include "QClipboard/ClipboardListener.h"
+#include "QClipboard/Clipboard/ClipboardListener.h"
 
 /**
  * @brief Constructor for the CopyEvent.

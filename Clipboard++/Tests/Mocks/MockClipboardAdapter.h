@@ -2,7 +2,7 @@
 #define MOCK_CLIPBOARD_ADAPTER_H
 
 #include <gmock/gmock.h>
-#include "ClipboardAdapter.h"
+#include "Clipboard/ClipboardAdapter.h"
 
 class MockClipboardAdapter : public ClipboardAdapter {
 public:

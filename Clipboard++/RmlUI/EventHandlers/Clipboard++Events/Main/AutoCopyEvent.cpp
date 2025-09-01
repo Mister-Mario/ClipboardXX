@@ -1,5 +1,5 @@
 #include "AutoCopyEvent.h"
-#include <ClipboardListener.h>
+#include <Clipboard/ClipboardListener.h>
 
 // Initialize the static flag to false by default.
 bool AutoCopyEvent::m_isOn = false;
