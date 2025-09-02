@@ -8,7 +8,7 @@ var searchData=
   ['changedocument_5',['ChangeDocument',['../classEventManager.html#a6845e6986d7fcef9eb52a71903f0f271',1,'EventManager']]],
   ['checkglerror_6',['CheckGLError',['../namespaceGfx.html#ad0de4550771fd83db67c33457a0ce4ac',1,'Gfx']]],
   ['cleanup_7',['cleanup',['../classMemoryCellManager.html#a581626a37a27f20f820ec3978603da59',1,'MemoryCellManager']]],
-  ['clear_8',['clear',['../classMemoryCell.html#a88d2b366e96f84486102599a07463988',1,'MemoryCell::clear()'],['../classClipboardInterface.html#a425f52d58fae217f78bf5ffe942ddffa',1,'ClipboardInterface::clear()'],['../classClipboardAdapter.html#a7ff2de23c3fa1e1e27d75782295d37c0',1,'ClipboardAdapter::clear()'],['../classRenderInterface__GL3.html#ac98b438b6fb7842486a6467628bb23cc',1,'RenderInterface_GL3::Clear()']]],
+  ['clear_8',['clear',['../classRenderInterface__GL3.html#ac98b438b6fb7842486a6467628bb23cc',1,'RenderInterface_GL3::Clear()'],['../classMemoryCell.html#a88d2b366e96f84486102599a07463988',1,'MemoryCell::clear()'],['../classClipboardInterface.html#a425f52d58fae217f78bf5ffe942ddffa',1,'ClipboardInterface::clear()'],['../classClipboardAdapter.html#a7ff2de23c3fa1e1e27d75782295d37c0',1,'ClipboardAdapter::clear()']]],
   ['clearevent_9',['clearevent',['../classClearEvent.html#a26ef96be47c8787ccb1ff2988a56759a',1,'ClearEvent::ClearEvent()'],['../classClearEvent.html',1,'ClearEvent']]],
   ['clipboardadapter_10',['clipboardadapter',['../classClipboardAdapter.html',1,'ClipboardAdapter'],['../classClipboardAdapter.html#adc303e7bf40b74fb359af74f3be785b2',1,'ClipboardAdapter::ClipboardAdapter()']]],
   ['clipboardevent_11',['ClipboardEvent',['../classClipboardEvent.html',1,'']]],
