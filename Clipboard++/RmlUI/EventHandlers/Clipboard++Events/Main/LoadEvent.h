@@ -1,7 +1,7 @@
 #ifndef LOAD_EVENT_H
 #define LOAD_EVENT_H
 
-#include "QClipboard/MemoryCells/MemoryCellManager.h"
+#include "ClipboardLogic/MemoryCells/MemoryCellManager.h"
 #include "Clipboard++Event.h"
 
 class LoadEvent : public ClipboardEvent {

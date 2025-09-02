@@ -2,7 +2,7 @@
 #define EDIT_EVENT_H
 
 #include "Clipboard++Event.h"
-#include "QClipboard/MemoryCells/MemoryCellManager.h"
+#include "ClipboardLogic/MemoryCells/MemoryCellManager.h"
 #include <EditViewModel.h>
 
 class EditEvent : public ClipboardEvent {

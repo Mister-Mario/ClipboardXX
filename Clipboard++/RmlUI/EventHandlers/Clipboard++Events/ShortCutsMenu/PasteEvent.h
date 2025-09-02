@@ -1,7 +1,7 @@
 #ifndef PASTE_EVENT_H
 #define PASTE_EVENT_H
 
-#include "QClipboard/MemoryCells/MemoryCellManager.h"
+#include "ClipboardLogic/MemoryCells/MemoryCellManager.h"
 #include "WindowFocusEvent.h"
 #include <windows.h>
 

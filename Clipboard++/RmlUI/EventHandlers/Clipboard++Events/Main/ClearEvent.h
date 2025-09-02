@@ -1,7 +1,7 @@
 #ifndef CLEAR_EVENT_H
 #define CLEAR_EVENT_H
 
-#include "QClipboard/MemoryCells/MemoryCellManager.h"
+#include "ClipboardLogic/MemoryCells/MemoryCellManager.h"
 #include "Clipboard++Event.h"
 
 class ClearEvent : public ClipboardEvent {

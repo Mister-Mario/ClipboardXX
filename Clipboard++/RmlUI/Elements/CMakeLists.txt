@@ -22,7 +22,7 @@ target_link_libraries(Elements
     PUBLIC 
         RmlUi::RmlUi
     PRIVATE 
-        QClipboard
+        ClipboardLogic
         ProjectUtils
         ViewModels
         EventHandlers

@@ -1,7 +1,7 @@
 #ifndef EXPORT_FILE_EVENT_H
 #define EXPORT_FILE_EVENT_H
 
-#include "QClipboard/MemoryCells/MemoryCellManager.h"
+#include "ClipboardLogic/MemoryCells/MemoryCellManager.h"
 #include "Utils/FileManager.h"
 #include "Utils/TranslationManager.h"
 #include "Utils/StringUtils.h"

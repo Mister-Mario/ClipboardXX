@@ -2,7 +2,7 @@
 #define EDIT_DONE_EVENT_H
 
 #include "Clipboard++Event.h"
-#include "QClipboard/MemoryCells/MemoryCellManager.h"
+#include "ClipboardLogic/MemoryCells/MemoryCellManager.h"
 #include <EditViewModel.h>
 #include <KeyShortCuts/KeyShortCutManager.h>
 #include <Utils/TranslationManager.h>

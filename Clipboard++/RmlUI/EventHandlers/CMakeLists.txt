@@ -22,5 +22,5 @@ target_link_libraries(EventHandlers
         RmlUi::RmlUi
         Events
     PRIVATE
-        QClipboard    
+        ClipboardLogic    
     )

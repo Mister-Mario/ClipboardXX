@@ -1,7 +1,7 @@
 #ifndef SEARCH_EVENT_H
 #define SEARCH_EVENT_H
 
-#include "QClipboard/MemoryCells/MemoryCellManager.h"
+#include "ClipboardLogic/MemoryCells/MemoryCellManager.h"
 #include "Clipboard++Event.h"
 #include <ShortCutsViewModel.h>
 

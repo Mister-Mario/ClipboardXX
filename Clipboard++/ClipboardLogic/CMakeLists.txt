@@ -1,4 +1,4 @@
-add_library(QClipboard STATIC
+add_library(ClipboardLogic STATIC
     Clipboard/ClipboardInterface.h
     Clipboard/ClipboardAdapter.h
     Clipboard/ClipboardAdapter.cpp
@@ -18,15 +18,15 @@ add_library(QClipboard STATIC
 )
 
 # Set include directories
-target_include_directories(QClipboard 
+target_include_directories(ClipboardLogic 
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}  # So other targets can include files using "QClipboard/ClipboardInterface.h"
+        ${CMAKE_CURRENT_SOURCE_DIR}  # So other targets can include files using "ClipboardLogic/Clipboard/ClipboardInterface.h"
     PRIVATE
         ${CMAKE_SOURCE_DIR}  # To allow includes relative to project root
 )
 
 # Link Qt libraries
-target_link_libraries(QClipboard 
+target_link_libraries(ClipboardLogic 
     PUBLIC 
         Qt6::Gui
     PRIVATE

@@ -9,7 +9,7 @@ enable_testing()
 # Test executable
 file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS "*.cpp")
 add_executable(${PROJECT_NAME}_test ${TEST_SOURCES})
-target_link_libraries(${PROJECT_NAME}_test PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main ProjectUtils QClipboard RmlUi::RmlUi)
+target_link_libraries(${PROJECT_NAME}_test PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main ProjectUtils ClipboardLogic RmlUi::RmlUi)
 
 
 include(GoogleTest)

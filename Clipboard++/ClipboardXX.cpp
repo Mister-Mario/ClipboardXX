@@ -5,10 +5,10 @@
 #include <Shell.h>
 #include <QScreen>
 #include <QLocale>
-#include "QClipboard/Clipboard/ClipboardAdapter.h"
-#include "QClipboard/MemoryCells/MemoryCellManager.h"
-#include "QClipboard/HotKeyListener/HotKeyListener.h"
-#include "QClipboard/KeyShortCuts/KeyShortCutManager.h"
+#include "ClipboardLogic/Clipboard/ClipboardAdapter.h"
+#include "ClipboardLogic/MemoryCells/MemoryCellManager.h"
+#include "ClipboardLogic/HotKeyListener/HotKeyListener.h"
+#include "ClipboardLogic/KeyShortCuts/KeyShortCutManager.h"
 #include "Utils/TranslationManager.h"
 #include "Utils/FileManager.h"
 #include "Clipboard/ClipboardListener.h"

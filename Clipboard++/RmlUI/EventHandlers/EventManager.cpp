@@ -30,12 +30,12 @@
 #include <RmlUi/Core/Context.h>
 #include <RmlUi/Core/ElementDocument.h>
 #include <RmlUi/Core/ElementUtilities.h>
-#include "QClipboard/MemoryCells/MemoryCellManager.h"
+#include "ClipboardLogic/MemoryCells/MemoryCellManager.h"
 #include <format>
 #include "Utils/StringUtils.h"
 #include "Utils/FileManager.h"
 #include "Utils/TranslationManager.h"
-#include "QClipboard/KeyShortCuts/KeyShortCutManager.h"
+#include "ClipboardLogic/KeyShortCuts/KeyShortCutManager.h"
 #include <ShortCutsViewModel.h>
 #include <EditViewModel.h>
 #include "Clipboard++Events/Main/ClearEvent.h"

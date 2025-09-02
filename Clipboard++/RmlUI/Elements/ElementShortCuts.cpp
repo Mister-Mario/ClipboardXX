@@ -7,7 +7,7 @@
 #include "StringUtils.h"
 #include "TranslationManager.h"
 #include <format>
-#include "QClipboard/KeyShortCuts/KeyShortCutManager.h"
+#include "ClipboardLogic/KeyShortCuts/KeyShortCutManager.h"
 #include "EventManager.h"
 
 TranslationManager* translatorShortCuts = TranslationManager::Instance();

@@ -15,7 +15,7 @@ find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
 find_package(magic_enum CONFIG REQUIRED)
 
 add_subdirectory(Utils)
-add_subdirectory(QClipboard)
+add_subdirectory(ClipboardLogic)
 
 set(RMLUI_BACKEND SDL_GL3)
 include(RmlUI/Utilities.cmake)
@@ -37,7 +37,7 @@ add_subdirectory(RmlUI/Elements)
 add_executable(${PROJECT_NAME} Clipboard++.cpp ClipboardXX.h ClipboardXX.cpp icon.rc)
 
 # Include RmlUi
-target_link_libraries(${PROJECT_NAME} PRIVATE RmlUi::RmlUi rmlui_backend_SDL_GL3 rmlui_shell QClipboard EventHandlers Elements Qt6::Widgets)
+target_link_libraries(${PROJECT_NAME} PRIVATE RmlUi::RmlUi rmlui_backend_SDL_GL3 rmlui_shell ClipboardLogic EventHandlers Elements Qt6::Widgets)
 
 add_custom_command(
     TARGET ${PROJECT_NAME} POST_BUILD

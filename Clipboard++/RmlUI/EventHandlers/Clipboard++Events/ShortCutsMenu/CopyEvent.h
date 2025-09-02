@@ -1,7 +1,7 @@
 #ifndef COPY_EVENT_H
 #define COPY_EVENT_H
 
-#include "QClipboard/MemoryCells/MemoryCellManager.h"
+#include "ClipboardLogic/MemoryCells/MemoryCellManager.h"
 #include "WindowFocusEvent.h"
 #include <windows.h>
 

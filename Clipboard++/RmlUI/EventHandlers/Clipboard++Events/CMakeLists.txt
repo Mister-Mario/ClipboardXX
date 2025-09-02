@@ -66,7 +66,7 @@ target_link_libraries(Events
     PUBLIC 
         RmlUi::RmlUi
     PRIVATE 
-        QClipboard
+        ClipboardLogic
         ProjectUtils
         ViewModels
 )
