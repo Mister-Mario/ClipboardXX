@@ -5,21 +5,13 @@
       "name": "default",
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build-x64",
+      "environment": {
+        "VCPKG_DEFAULT_HOST_TRIPLET": "x64-mingw-dynamic"
+      },
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-        "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
         "VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic",
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "1"
-      }
-    },
-    {
-      "name": "vcpkg-x86",
-      "generator": "Ninja",
-      "binaryDir": "${sourceDir}/build-x86",
-      "cacheVariables": {
-        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
         "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
-        "VCPKG_TARGET_TRIPLET": "x86-mingw-dynamic",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "1"
       }
     }

@@ -56,28 +56,22 @@ add_custom_command(
 )
 # Copia las DLLs de Qt6 al directorio del ejecutable en Windows - DESPUÉS de definir el target
 if(WIN32)
-    get_target_property(_qmake_executable Qt6::qmake IMPORTED_LOCATION)
-    get_filename_component(_qt_bin_dir "${_qmake_executable}" DIRECTORY)
-   
-    # Usa windeployqt en lugar de copiar manualmente (recomendado)
-    find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${_qt_bin_dir}")
-   
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND "${WINDEPLOYQT_EXECUTABLE}"
-            --verbose 0
-            --no-compiler-runtime
-            "$<TARGET_FILE:${PROJECT_NAME}>"
-        COMMENT "Deploying Qt6 dependencies using windeployqt"
-    )
-    
-    # Copia el plugin de plataforma Windows desde la ubicación correcta
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory
-            $<TARGET_FILE_DIR:${PROJECT_NAME}>/platforms
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            ${CMAKE_CURRENT_BINARY_DIR}/vcpkg_installed/${VCPKG_TARGET_TRIPLET}/Qt6/plugins/platforms/qwindows.dll
-            $<TARGET_FILE_DIR:${PROJECT_NAME}>/platforms
-    )
+    set(QT_TOOLS_BIN_DIR "${CMAKE_BINARY_DIR}/vcpkg_installed/${VCPKG_TARGET_TRIPLET}/tools/Qt6/bin")
+    find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${QT_TOOLS_BIN_DIR}")
+
+    if(NOT WINDEPLOYQT_EXECUTABLE)
+        message(WARNING "windeployqt.exe not found at ${QT_TOOLS_BIN_DIR}.")
+    else()
+        message(STATUS "windeployqt found at: ${WINDEPLOYQT_EXECUTABLE}")
+
+        add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND "${WINDEPLOYQT_EXECUTABLE}"
+                --verbose 0
+                --no-compiler-runtime
+                "$<TARGET_FILE:${PROJECT_NAME}>"
+            COMMENT "Deploying Qt6 dependencies for MinGW using windeployqt"
+        )
+    endif()
 
    target_link_options(${PROJECT_NAME} PRIVATE -mwindows) #GUI application no console
 endif()

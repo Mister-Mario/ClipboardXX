@@ -8,7 +8,7 @@ parent_path = os.path.abspath(os.path.join(script_path, "..\\.."))
 if parent_path not in sys.path:
     sys.path.append(parent_path)
 
-from utils import utils, navigation
+from utils import utils, navigation, paths
 try:
     utils.set_up()
     navigation.go_to_main_window_from_shortcuts()
@@ -49,10 +49,11 @@ try:
                             utils.get_test_files_path() + "\\ST6_export.txt")):
         raise ValueError("Files are not the same")
 
-except Exception:
+except Exception as e:
     print("Test Failed, capturing actual screen")
     ruta_captura = capture(SCREEN)
     print("Path of screen capture", ruta_captura)
+    print(e)
 
 finally:
     utils.tear_down()

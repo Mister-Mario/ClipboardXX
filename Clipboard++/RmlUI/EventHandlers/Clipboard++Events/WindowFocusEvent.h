@@ -16,12 +16,14 @@ public:
 
 protected:
 
-    virtual void Attach();
-    virtual void ShowWindow();
     virtual void DoHandle(Rml::Event* event, Rml::StringList values) = 0;
-    virtual void DeAttach();
 
 private:
+
+    void Attach();
+    void ShowWindow();
+    void DeAttach();
+
     #ifdef _WIN32
     DWORD m_currentThreadId = 0;
     DWORD m_targetThreadId = 0;
