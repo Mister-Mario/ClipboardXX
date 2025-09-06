@@ -55,12 +55,12 @@
 <text text-anchor="start" x="7.5" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
 <text text-anchor="start" x="20.5" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00">handle()</text>
 <text text-anchor="start" x="7.5" y="-181.5" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="20.5" y="-181.5" font-family="Helvetica,sans-Serif" font-size="10.00">Attach()</text>
-<text text-anchor="start" x="7.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="20.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">ShowWindow()</text>
-<text text-anchor="start" x="7.5" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="20.5" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00">DoHandle()</text>
-<text text-anchor="start" x="7.5" y="-136.5" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="20.5" y="-181.5" font-family="Helvetica,sans-Serif" font-size="10.00">DoHandle()</text>
+<text text-anchor="start" x="10" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="20.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">Attach()</text>
+<text text-anchor="start" x="10" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="20.5" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00">ShowWindow()</text>
+<text text-anchor="start" x="10" y="-136.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
 <text text-anchor="start" x="20.5" y="-136.5" font-family="Helvetica,sans-Serif" font-size="10.00">DeAttach()</text>
 <polygon fill="#666666" stroke="#666666" points="3.5,-251.5 3.5,-251.5 135.5,-251.5 135.5,-251.5 3.5,-251.5"/>
 <polygon fill="#666666" stroke="#666666" points="3.5,-236.5 3.5,-236.5 135.5,-236.5 135.5,-236.5 3.5,-236.5"/>

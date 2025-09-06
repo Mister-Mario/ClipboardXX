@@ -43,12 +43,12 @@
 <text text-anchor="start" x="4" y="-245" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
 <text text-anchor="start" x="17" y="-245" font-family="Helvetica,sans-Serif" font-size="10.00">handle()</text>
 <text text-anchor="start" x="4" y="-230" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="17" y="-230" font-family="Helvetica,sans-Serif" font-size="10.00">Attach()</text>
-<text text-anchor="start" x="4" y="-215" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="17" y="-215" font-family="Helvetica,sans-Serif" font-size="10.00">ShowWindow()</text>
-<text text-anchor="start" x="4" y="-200" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="17" y="-200" font-family="Helvetica,sans-Serif" font-size="10.00">DoHandle()</text>
-<text text-anchor="start" x="4" y="-185" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="17" y="-230" font-family="Helvetica,sans-Serif" font-size="10.00">DoHandle()</text>
+<text text-anchor="start" x="6.5" y="-215" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="17" y="-215" font-family="Helvetica,sans-Serif" font-size="10.00">Attach()</text>
+<text text-anchor="start" x="6.5" y="-200" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="17" y="-200" font-family="Helvetica,sans-Serif" font-size="10.00">ShowWindow()</text>
+<text text-anchor="start" x="6.5" y="-185" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
 <text text-anchor="start" x="17" y="-185" font-family="Helvetica,sans-Serif" font-size="10.00">DeAttach()</text>
 <polygon fill="#666666" stroke="#666666" points="0,-300 0,-300 132,-300 132,-300 0,-300"/>
 <polygon fill="#666666" stroke="#666666" points="0,-285 0,-285 132,-285 132,-285 0,-285"/>
