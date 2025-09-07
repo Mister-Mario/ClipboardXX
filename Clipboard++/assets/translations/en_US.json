@@ -5,7 +5,8 @@
     "export": "Export file",
     "autopaste": "Autopaste:",
     "autocopy": "Autocopy:",
-    "help": "?"
+    "help": "?",
+    "edit": "Re-open shortcut"
   },
   "cell": {
     "load_clipboard": "Load to Clipboard",
@@ -91,7 +92,8 @@
     "below": "More cells below...",
     "load" : "Load", 
     "paste": "Paste",
-    "expand": "Expand"
+    "expand": "Expand",
+    "search": "Search:"
   },
   "keys":{
     "KI_UNKNOWN": "Unknown",
