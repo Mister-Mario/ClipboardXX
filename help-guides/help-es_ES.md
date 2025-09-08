@@ -17,7 +17,7 @@
   - [Importar y Exportar archivos](#importar-y-exportar-archivos)
   - [Autocopiado](#autocopiado)
   - [Reabrir la aplicación](#reabrir-la-aplicación)
-  - [Salir de la aplicación](#salir-de-la-aplicación)
+  - [Cerrar completamente de la aplicación](#cerrar-completamente-de-la-aplicación)
 
 ---
 
@@ -48,16 +48,19 @@ Se puede acceder a ella con un clic o con la tecla de tabulación. Después, int
 Si tienes muchos resultados, también puedes moverte hacia arriba o hacia abajo para alcanzar la celda deseada.
 
 ### Cargar y Pegar
-Ambos métodos siguen el mismo proceso:
- 1. Haz foco en la ventana donde quieres copiar o pegar el texto.
- 2. Abre la ventana de atajos. La forma más fácil es Win+Alt+V, pero hay otras [formas de reabrir](#reabrir-la-aplicación).
- 3. Selecciona tu opción.
+Ambos métodos siguen un proceso parecido.
 
 Copiar:
+ 1. Selecciona el texto a copiar.
+ 2. Abre la ventana de atajos con Win+Alt+V.
+ 3. Selecciona la opción de Cargar en la celda de memoria deseada.
 
 ![Copiar](./images/en-US/Copy.gif)
 
 Pegar:
+ 1. Posiciona el cursor donde quieras pegar el texto.
+ 2. Abre la ventana de atajos con Win+Alt+V.
+ 3. Selecciona la opción de Pegar en la celda de memoria deseada.
 
 ![Pegar](./images/en-US/Paste.gif)
 
@@ -130,7 +133,7 @@ Hay principalmente 2 opciones:
 
 Cualquier otra forma podría hacer que la [Vista de Atajos](#vista-de-atajos) no funcione como se espera.
 
-## Salir de la aplicación
+## Cerrar completamente de la aplicación
 
 Para salir de Clipboard++ no es suficiente con cerrar la ventana.
 Necesitarás usar la opción Salir en el icono de la bandeja del sistema.

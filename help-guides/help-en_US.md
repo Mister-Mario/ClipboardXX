@@ -49,15 +49,19 @@ This can be accesed via a click or via a tab. After that introduce the text that
 If you have many results you can also move up or down to reach the desired cell.
 
 ### Load and Paste
-Both methods follow the same process:
- 1. Focus the window where you want to copy or paste text
- 2. Open the shortcuts window. Easiest way is Win+Alt+V but there are others [Opening back](#opening-back)
- 3. Select your option
+Both methods follow the a similar process.
+
 Copy:
+ 1. Select the text to be loaded.
+ 2. Open the shortcuts window with the Win+Alt+V shortcut.
+ 3. Select the Load option of the desired memory cell.
 
 ![Copy](./images/en-US/Copy.gif)
 
 Paste:
+ 1. Place the cursor where you want to paste the text.
+ 2. Open the shortcuts window with the Win+Alt+V shortcut.
+ 3. Select the Paste option of the desired memory cell.
 
 ![Paste](./images/en-US/Paste.gif)
 
