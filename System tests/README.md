@@ -12,3 +12,8 @@ Secondly create a paths.json at the same level as this readme file, paths.json m
 }
 ```
 This paths are used by sikulix to open different kind of files and launch executables.
+
+## Take into account
+SikuliX relies on the similarity of the capture took with what is shown in the screen.
+This means that it depends on the resolution of the screen used to take the captures.
+The resolution used was 1920x1800.

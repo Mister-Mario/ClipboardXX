@@ -5,7 +5,8 @@
     "export": "Exportar archivo",
     "autopaste": "Autopegado:",
     "autocopy": "Autocopiado:",
-    "help": "?"
+    "help": "?",
+    "edit": "Atajo reabrir"
   },
   "cell": {
     "load_clipboard": "Cargar al portapapeles",
@@ -95,7 +96,8 @@
     "below": "Más celdas debajo...",
     "load" : "Cargar", 
     "paste": "Pegar",
-    "expand": "Expandir"
+    "expand": "Expandir",
+    "search": "Buscar:"
   },
   "keys": {
     "KI_UNKNOWN": "Desconocido",

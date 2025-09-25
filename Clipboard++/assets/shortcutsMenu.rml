@@ -6,7 +6,10 @@
 <body id="shortcuts_menu">
     <shortcuts id="shortcuts">
         <header>
-            <input id="search" type="text" onchange="search" placeholder="Search for a memory cell"/>
+            <div class="c-search">
+                <label for="search">shortcutsView.search</label>
+                <input id="search" type="text" onchange="search"/>
+            </div>
             <button class="c-button c-button--primary" onclick="expand">shortcutsView.expand</button>
         </header>
 

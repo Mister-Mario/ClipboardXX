@@ -143,7 +143,7 @@ endif()
 
 
 set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
-set(CPACK_PACKAGE_VERSION "1.0.0")
+set(CPACK_PACKAGE_VERSION "1.0.2")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "An application that covers the windows clipboard with extra functionalities")
 set(CPACK_PACKAGE_VENDOR "Mario Junquera Rojas")
 set(CPACK_PACKAGE_CONTACT "mariojr2003@gmail.com")
