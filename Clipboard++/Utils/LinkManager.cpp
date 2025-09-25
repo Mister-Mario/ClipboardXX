@@ -18,9 +18,9 @@ void openHelp()  {
 
     // Select the appropriate URL based on the system's locale.
     if(locale_name.contains("es"))
-        link_string = "https://github.com/Mister-Mario/Advanced-Clipboard/blob/main/help-guides/help-es_ES.md";
+        link_string = "https://github.com/Mister-Mario/ClipboardXX/wiki/help-es-ES";
     else
-        link_string = "https://github.com/Mister-Mario/Advanced-Clipboard/blob/main/help-guides/help-en_US.md";
+        link_string = "https://github.com/Mister-Mario/ClipboardXX/wiki/help-en_US";
     
     QUrl url(link_string);
 
